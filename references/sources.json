@@ -1,0 +1,298 @@
+[
+  {
+    "repo": "joonspk-research/generative_agents",
+    "commit": "fe05a71d3e4ed7d10bf68aa4eda6dd995ec070f4",
+    "path": "environment/frontend_server/static_dirs/assets/the_ville/visuals/the_ville.tmx",
+    "local": "smallville/data/the_ville/visuals/the_ville.tmx",
+    "sha256": "9d08f52252507a079ccb9856d0ffee32c6650ccb0deb0808a4ad59e60c52d2b7",
+    "bytes": 612604
+  },
+  {
+    "repo": "joonspk-research/generative_agents",
+    "commit": "fe05a71d3e4ed7d10bf68aa4eda6dd995ec070f4",
+    "path": "environment/frontend_server/static_dirs/assets/the_ville/matrix/maze/collision_maze.csv",
+    "local": "smallville/data/the_ville/matrix/maze/collision_maze.csv",
+    "sha256": "90268d18431d595101af4ed9a17060ffd4db2a22cfa62369a5cd56829a03e4d6",
+    "bytes": 50254
+  },
+  {
+    "repo": "joonspk-research/generative_agents",
+    "commit": "fe05a71d3e4ed7d10bf68aa4eda6dd995ec070f4",
+    "path": "environment/frontend_server/static_dirs/assets/the_ville/matrix/maze/sector_maze.csv",
+    "local": "smallville/data/the_ville/matrix/maze/sector_maze.csv",
+    "sha256": "5eaf1908d4d6be75d470fc0e50a8c75c5423d204d0c93dbbd5f134c786eca94b",
+    "bytes": 56334
+  },
+  {
+    "repo": "joonspk-research/generative_agents",
+    "commit": "fe05a71d3e4ed7d10bf68aa4eda6dd995ec070f4",
+    "path": "environment/frontend_server/static_dirs/assets/the_ville/matrix/special_blocks/sector_blocks.csv",
+    "local": "smallville/data/the_ville/matrix/special_blocks/sector_blocks.csv",
+    "sha256": "7f35dbb97d7bddde7c0ea3f8b22e924c6e8bbe94f27dc279567fd0ad6bd064f1",
+    "bytes": 787
+  },
+  {
+    "repo": "joonspk-research/generative_agents",
+    "commit": "fe05a71d3e4ed7d10bf68aa4eda6dd995ec070f4",
+    "path": "environment/frontend_server/static_dirs/assets/the_ville/matrix/maze_meta_info.json",
+    "local": "smallville/data/the_ville/matrix/maze_meta_info.json",
+    "sha256": "fb134fbaa4d39eef19f54a74e6f531e37fe676fe03a665fba8bfaef88cc1ef20",
+    "bytes": 117
+  },
+  {
+    "repo": "joonspk-research/generative_agents",
+    "commit": "fe05a71d3e4ed7d10bf68aa4eda6dd995ec070f4",
+    "path": "environment/frontend_server/static_dirs/assets/the_ville/agent_history_init_n25.csv",
+    "local": "smallville/data/the_ville/agent_history_init_n25.csv",
+    "sha256": "8ece7515e24c18a7ada70f767791735beebb3e1ac03d3210057e2fa6e802cba9",
+    "bytes": 17709
+  },
+  {
+    "repo": "google-deepmind/concordia",
+    "commit": "239f0e8275a55b186b99e133e06432cd681ff2e3",
+    "path": "concordia/components/game_master/event_resolution.py",
+    "local": "scratch/references/concordia__event_resolution.py",
+    "sha256": "1833e3b8c5d73f6166ae52936df530d865ae31e1ca94f34a47aa744b24b52bd9",
+    "bytes": 50232
+  },
+  {
+    "repo": "google-deepmind/concordia",
+    "commit": "239f0e8275a55b186b99e133e06432cd681ff2e3",
+    "path": "concordia/components/game_master/scene_tracker.py",
+    "local": "scratch/references/concordia__scene_tracker.py",
+    "sha256": "418bd43e3ce6c6de1dc6ff3bf98ad577685b030245e8133eb359b2708df2ab20",
+    "bytes": 20212
+  },
+  {
+    "repo": "facebookresearch/meta-agents-research-environments",
+    "commit": "a9fd2edccb4bc7e22fbf45c8482a5fef30a2a5a4",
+    "path": "docs/foundations/events.rst",
+    "local": "scratch/references/meta-agents-research-environments__events.rst",
+    "sha256": "1758651acb49bb1b0cc52100be0223fd4f7927a3f285a262352745ea0e6430bd",
+    "bytes": 11814
+  },
+  {
+    "repo": "facebookresearch/meta-agents-research-environments",
+    "commit": "a9fd2edccb4bc7e22fbf45c8482a5fef30a2a5a4",
+    "path": "docs/foundations/notifications.rst",
+    "local": "scratch/references/meta-agents-research-environments__notifications.rst",
+    "sha256": "4dfa2b7663e7c52e718f6247e35af0dce6ea02302dd7a9efb91f21d0f5648572",
+    "bytes": 4700
+  },
+  {
+    "repo": "HumanoidAgents/HumanoidAgents",
+    "commit": "9718c674ea47bad9e7697611b1d9d557d3c2d8b7",
+    "path": "humanoidagents/humanoid_agent.py",
+    "local": "scratch/references/HumanoidAgents__humanoid_agent.py",
+    "sha256": "ea2bcfac6ad89ff01a7854d0a775abd5db2487f68032140e66f52b79dfb91ffa",
+    "bytes": 21004
+  },
+  {
+    "repo": "StanfordHCI/genagents",
+    "commit": "96854071ef4c2d79c93144c973c7820722d52bab",
+    "path": "genagents/genagents.py",
+    "local": "scratch/references/genagents__genagents.py",
+    "sha256": "aba1a32854e63983155164591dd21df337626e01a2094fbe838d2a1f61d49cac",
+    "bytes": 4074
+  },
+  {
+    "repo": "joonspk-research/generative_agents",
+    "commit": "fe05a71d3e4ed7d10bf68aa4eda6dd995ec070f4",
+    "path": "environment/frontend_server/storage/base_the_ville_n25/personas/Abigail Chen/bootstrap_memory/scratch.json",
+    "local": "smallville/data/seeds/Abigail Chen.json",
+    "sha256": "a766bd3467811aa326bc90b4b7c2c7cf6f276946e8faa24f05fcb484c17396be",
+    "bytes": 1726
+  },
+  {
+    "repo": "joonspk-research/generative_agents",
+    "commit": "fe05a71d3e4ed7d10bf68aa4eda6dd995ec070f4",
+    "path": "environment/frontend_server/storage/base_the_ville_n25/personas/Adam Smith/bootstrap_memory/scratch.json",
+    "local": "smallville/data/seeds/Adam Smith.json",
+    "sha256": "f6e5c0ee383450d631d537705c995c1ec7ef8126e877d2b9581b37cd16480e04",
+    "bytes": 1693
+  },
+  {
+    "repo": "joonspk-research/generative_agents",
+    "commit": "fe05a71d3e4ed7d10bf68aa4eda6dd995ec070f4",
+    "path": "environment/frontend_server/storage/base_the_ville_n25/personas/Arthur Burton/bootstrap_memory/scratch.json",
+    "local": "smallville/data/seeds/Arthur Burton.json",
+    "sha256": "9e1d0e7ca3f71a32e1661a3863ea41483cd25b282436b6fa0c28688a718c0bf7",
+    "bytes": 1846
+  },
+  {
+    "repo": "joonspk-research/generative_agents",
+    "commit": "fe05a71d3e4ed7d10bf68aa4eda6dd995ec070f4",
+    "path": "environment/frontend_server/storage/base_the_ville_n25/personas/Ayesha Khan/bootstrap_memory/scratch.json",
+    "local": "smallville/data/seeds/Ayesha Khan.json",
+    "sha256": "a0102ced6a3ab808ce6b9c8989d9907fd04bb3fd20481051142ba0b8232c2b16",
+    "bytes": 1816
+  },
+  {
+    "repo": "joonspk-research/generative_agents",
+    "commit": "fe05a71d3e4ed7d10bf68aa4eda6dd995ec070f4",
+    "path": "environment/frontend_server/storage/base_the_ville_n25/personas/Carlos Gomez/bootstrap_memory/scratch.json",
+    "local": "smallville/data/seeds/Carlos Gomez.json",
+    "sha256": "82d40b7cff04a73e84a1f0519bec5908381b8812bebd5db8d59ac9f67e67d3a2",
+    "bytes": 1664
+  },
+  {
+    "repo": "joonspk-research/generative_agents",
+    "commit": "fe05a71d3e4ed7d10bf68aa4eda6dd995ec070f4",
+    "path": "environment/frontend_server/storage/base_the_ville_n25/personas/Carmen Ortiz/bootstrap_memory/scratch.json",
+    "local": "smallville/data/seeds/Carmen Ortiz.json",
+    "sha256": "f22b0a0ce25449d8fb77c14d8b9dcb7c640182ec912779fa4cec2289c15b043e",
+    "bytes": 1881
+  },
+  {
+    "repo": "joonspk-research/generative_agents",
+    "commit": "fe05a71d3e4ed7d10bf68aa4eda6dd995ec070f4",
+    "path": "environment/frontend_server/storage/base_the_ville_n25/personas/Eddy Lin/bootstrap_memory/scratch.json",
+    "local": "smallville/data/seeds/Eddy Lin.json",
+    "sha256": "aad9dbd5c8030ab0fb253f073baec6139c4b809d735bce9d4177049de25b693f",
+    "bytes": 1807
+  },
+  {
+    "repo": "joonspk-research/generative_agents",
+    "commit": "fe05a71d3e4ed7d10bf68aa4eda6dd995ec070f4",
+    "path": "environment/frontend_server/storage/base_the_ville_n25/personas/Francisco Lopez/bootstrap_memory/scratch.json",
+    "local": "smallville/data/seeds/Francisco Lopez.json",
+    "sha256": "61a2c10db8a4af85a425b36ae5a7aa59fd1f0ff259da8b558b12076cdffaab3a",
+    "bytes": 1664
+  },
+  {
+    "repo": "joonspk-research/generative_agents",
+    "commit": "fe05a71d3e4ed7d10bf68aa4eda6dd995ec070f4",
+    "path": "environment/frontend_server/storage/base_the_ville_n25/personas/Giorgio Rossi/bootstrap_memory/scratch.json",
+    "local": "smallville/data/seeds/Giorgio Rossi.json",
+    "sha256": "c0c811ff09462870538a341b3e0bf6a82fe9c9f5d2ad4dc876795f4465b97902",
+    "bytes": 1822
+  },
+  {
+    "repo": "joonspk-research/generative_agents",
+    "commit": "fe05a71d3e4ed7d10bf68aa4eda6dd995ec070f4",
+    "path": "environment/frontend_server/storage/base_the_ville_n25/personas/Hailey Johnson/bootstrap_memory/scratch.json",
+    "local": "smallville/data/seeds/Hailey Johnson.json",
+    "sha256": "98048d520fbe95250385aa30b6a998f3bef3b49ca5753b9587f76c5516dd2ef8",
+    "bytes": 1694
+  },
+  {
+    "repo": "joonspk-research/generative_agents",
+    "commit": "fe05a71d3e4ed7d10bf68aa4eda6dd995ec070f4",
+    "path": "environment/frontend_server/storage/base_the_ville_n25/personas/Isabella Rodriguez/bootstrap_memory/scratch.json",
+    "local": "smallville/data/seeds/Isabella Rodriguez.json",
+    "sha256": "02e212e1a646a0cb964f35fad009da72783f2918e0a640bf7d4a0c63589452e6",
+    "bytes": 1969
+  },
+  {
+    "repo": "joonspk-research/generative_agents",
+    "commit": "fe05a71d3e4ed7d10bf68aa4eda6dd995ec070f4",
+    "path": "environment/frontend_server/storage/base_the_ville_n25/personas/Jane Moreno/bootstrap_memory/scratch.json",
+    "local": "smallville/data/seeds/Jane Moreno.json",
+    "sha256": "2838ab8a199972f7277b6c333b4d448d3b9f78f57110cf531efe34c9d1895e70",
+    "bytes": 1652
+  },
+  {
+    "repo": "joonspk-research/generative_agents",
+    "commit": "fe05a71d3e4ed7d10bf68aa4eda6dd995ec070f4",
+    "path": "environment/frontend_server/storage/base_the_ville_n25/personas/Jennifer Moore/bootstrap_memory/scratch.json",
+    "local": "smallville/data/seeds/Jennifer Moore.json",
+    "sha256": "18cbe5183ce4317da8147984c9bad66380b518929a9d4e8ad36ccdc3b79a1efa",
+    "bytes": 1712
+  },
+  {
+    "repo": "joonspk-research/generative_agents",
+    "commit": "fe05a71d3e4ed7d10bf68aa4eda6dd995ec070f4",
+    "path": "environment/frontend_server/storage/base_the_ville_n25/personas/John Lin/bootstrap_memory/scratch.json",
+    "local": "smallville/data/seeds/John Lin.json",
+    "sha256": "7b359154507c7f3eda780aa320c3d050910be6febb3e1983b035988934a1dfbe",
+    "bytes": 2087
+  },
+  {
+    "repo": "joonspk-research/generative_agents",
+    "commit": "fe05a71d3e4ed7d10bf68aa4eda6dd995ec070f4",
+    "path": "environment/frontend_server/storage/base_the_ville_n25/personas/Klaus Mueller/bootstrap_memory/scratch.json",
+    "local": "smallville/data/seeds/Klaus Mueller.json",
+    "sha256": "8be1e8f08a3ad622b3dd771699154d4a1ec8f5d4d50606c7a5ae1180c6800633",
+    "bytes": 1771
+  },
+  {
+    "repo": "joonspk-research/generative_agents",
+    "commit": "fe05a71d3e4ed7d10bf68aa4eda6dd995ec070f4",
+    "path": "environment/frontend_server/storage/base_the_ville_n25/personas/Latoya Williams/bootstrap_memory/scratch.json",
+    "local": "smallville/data/seeds/Latoya Williams.json",
+    "sha256": "45cd608e97700ccc2b0d3eb6030338471a64ac011e19a977474e30d18bb34450",
+    "bytes": 1825
+  },
+  {
+    "repo": "joonspk-research/generative_agents",
+    "commit": "fe05a71d3e4ed7d10bf68aa4eda6dd995ec070f4",
+    "path": "environment/frontend_server/storage/base_the_ville_n25/personas/Maria Lopez/bootstrap_memory/scratch.json",
+    "local": "smallville/data/seeds/Maria Lopez.json",
+    "sha256": "35b10d9ea45a57df6879a7d9df2fc372e2ecc75b2e9bf64647f948bbc498e67d",
+    "bytes": 1789
+  },
+  {
+    "repo": "joonspk-research/generative_agents",
+    "commit": "fe05a71d3e4ed7d10bf68aa4eda6dd995ec070f4",
+    "path": "environment/frontend_server/storage/base_the_ville_n25/personas/Mei Lin/bootstrap_memory/scratch.json",
+    "local": "smallville/data/seeds/Mei Lin.json",
+    "sha256": "70f5ab73bbba3bdad1b6ec9025d9e6e8a0bf4c563aa4cdc57e683467e822363a",
+    "bytes": 1818
+  },
+  {
+    "repo": "joonspk-research/generative_agents",
+    "commit": "fe05a71d3e4ed7d10bf68aa4eda6dd995ec070f4",
+    "path": "environment/frontend_server/storage/base_the_ville_n25/personas/Rajiv Patel/bootstrap_memory/scratch.json",
+    "local": "smallville/data/seeds/Rajiv Patel.json",
+    "sha256": "ced08cb54f9e667aa58afef1aaaaec1311d9a15982f46b33d46ebd031589381c",
+    "bytes": 1626
+  },
+  {
+    "repo": "joonspk-research/generative_agents",
+    "commit": "fe05a71d3e4ed7d10bf68aa4eda6dd995ec070f4",
+    "path": "environment/frontend_server/storage/base_the_ville_n25/personas/Ryan Park/bootstrap_memory/scratch.json",
+    "local": "smallville/data/seeds/Ryan Park.json",
+    "sha256": "abe40d76ad4274a7e1f2e66d4737051b33826623e640e60325e6a5f91df9680f",
+    "bytes": 1627
+  },
+  {
+    "repo": "joonspk-research/generative_agents",
+    "commit": "fe05a71d3e4ed7d10bf68aa4eda6dd995ec070f4",
+    "path": "environment/frontend_server/storage/base_the_ville_n25/personas/Sam Moore/bootstrap_memory/scratch.json",
+    "local": "smallville/data/seeds/Sam Moore.json",
+    "sha256": "371766e7fc6078bea0d6f8a0a9677190bec15c7c4c77a5ce81293cb97796dee0",
+    "bytes": 1821
+  },
+  {
+    "repo": "joonspk-research/generative_agents",
+    "commit": "fe05a71d3e4ed7d10bf68aa4eda6dd995ec070f4",
+    "path": "environment/frontend_server/storage/base_the_ville_n25/personas/Tamara Taylor/bootstrap_memory/scratch.json",
+    "local": "smallville/data/seeds/Tamara Taylor.json",
+    "sha256": "787b2f36a6cf582d03110edd10e958d11e8c8df1bae9c17bc15d28db949b2512",
+    "bytes": 1738
+  },
+  {
+    "repo": "joonspk-research/generative_agents",
+    "commit": "fe05a71d3e4ed7d10bf68aa4eda6dd995ec070f4",
+    "path": "environment/frontend_server/storage/base_the_ville_n25/personas/Tom Moreno/bootstrap_memory/scratch.json",
+    "local": "smallville/data/seeds/Tom Moreno.json",
+    "sha256": "8df7e22dd1918e25c27e50601e04fe6777ee05f2b9c58b59b489c3bf4dc6aa60",
+    "bytes": 1975
+  },
+  {
+    "repo": "joonspk-research/generative_agents",
+    "commit": "fe05a71d3e4ed7d10bf68aa4eda6dd995ec070f4",
+    "path": "environment/frontend_server/storage/base_the_ville_n25/personas/Wolfgang Schulz/bootstrap_memory/scratch.json",
+    "local": "smallville/data/seeds/Wolfgang Schulz.json",
+    "sha256": "015240ae8024a92482f2cfe30400a7b95462e1e90b434f233cb7f3fa20b3b8c8",
+    "bytes": 1821
+  },
+  {
+    "repo": "joonspk-research/generative_agents",
+    "commit": "fe05a71d3e4ed7d10bf68aa4eda6dd995ec070f4",
+    "path": "environment/frontend_server/storage/base_the_ville_n25/personas/Yuriko Yamamoto/bootstrap_memory/scratch.json",
+    "local": "smallville/data/seeds/Yuriko Yamamoto.json",
+    "sha256": "80276d742ff8666bfc1666979a9e46da6d4d07a656a348c5f63c42dc401dc402",
+    "bytes": 1790
+  }
+]

@@ -6,3 +6,16 @@
 - No paid calls before user approval. The configured environment currently has no model credentials. Implement and test the LiteLLM boundary offline first.
 - Use the available Python 3.12 runtime while requiring Python 3.11 or newer.
 - Keep specification, progress, rationale, provenance and acceptance evidence in the repository.
+
+## Step 2 — Sources and research claims
+- Keep upstream seed/map files unmodified; implement the adapter and behavior
+  code independently. Preserve exact provenance and license notices.
+- Use original collision tiles for routes and a schematic viewer; do not fetch
+  externally referenced sprite art.
+- Treat MockLLM as a deterministic engineering fixture, not evidence of emergent
+  social behavior. Paper comparisons must include this caveat and denominators.
+- Use a single ordered event writer with SQLite WAL. Atomically persist event
+  plus state changes, then mirror JSONL; recover a missing/truncated mirror tail
+  from SQLite on reopening. Reject conflicting prefixes.
+- Represent time as integer minutes from 2023-02-13 UTC. Action completion
+  events precede decision events at the same minute. No wall-clock sleeps.
