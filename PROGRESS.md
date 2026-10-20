@@ -24,6 +24,18 @@
 - Installed local test tools and the LiteLLM library. This adds no paid service.
 - No network download was blocked.
 
+## Step 3 — World and event engine
+- Added typed world entities, SQLite WAL projections, hash-chained append-only
+  events, a JSONL mirror with interrupted-write recovery, and replay.
+- Added deterministic simulated clock, ordered heap scheduler, condition triggers
+  and asynchronous event subscriptions.
+- Added a swappable map contract and a tile-derived Smallville graph with
+  addresses, hours, capacities and walkable travel routes.
+- Validation: 5 engine/world tests pass with network sockets disabled; Ruff passes.
+- Found and fixed an upstream-map integration issue: centroid tiles can fall in
+  isolated rooms, and the largest walkable component is exterior decoration.
+  Representatives now use the component connecting the most named sectors.
+
 ## Open issues / acceptance
 - (a) Offline tests: pending.
 - (b) Two MockLLM days / 25 agents: pending.

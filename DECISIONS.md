@@ -19,3 +19,12 @@
   from SQLite on reopening. Reject conflicting prefixes.
 - Represent time as integer minutes from 2023-02-13 UTC. Action completion
   events precede decision events at the same minute. No wall-clock sleeps.
+
+## Step 3 — World implementation
+- Use the map component connecting the most named sectors for accessible location
+  representatives. This preserves all source collisions and connects all 19 places.
+- Keep immutable events authoritative and projections transactional; replay
+  reconstructs state without inference. SQLite append-only triggers plus a hash
+  chain detect accidental mutation, not adversarial filesystem rewriting.
+- Reserve all future schema slots (objects, inventories, accounts and jobs), but
+  do not add wages, rent, market simulation or finance apps in Phase 1.
