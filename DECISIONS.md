@@ -28,3 +28,17 @@
   chain detect accidental mutation, not adversarial filesystem rewriting.
 - Reserve all future schema slots (objects, inventories, accounts and jobs), but
   do not add wages, rent, market simulation or finance apps in Phase 1.
+
+## Step 4 — Bounded inference
+- Require explicit conservative USD/token ceilings for each selected live model.
+  Reserve UTF-8 prompt bytes plus framing and the entire output-token limit before
+  dispatch. Unknown prices fail closed; no retries or hidden fallbacks.
+- Retain the full reservation on timeout/cancellation/failure because a provider
+  may have accepted and billed a request. Provider exception bodies are never logged.
+- Report token-based accounting separately from provider invoices. The bound
+  assumes configured tariffs cover all billed text/reasoning tokens and the
+  provider honors output limits; tools, images and external retrieval are unsupported.
+- Cache exact responses, not just seeds: live APIs are not guaranteed deterministic.
+  Offline replay requires a cache hit or uses the immutable event history.
+- Keep mock-specific benchmark behavior entirely inside MockLLM; the engine and
+  GM still validate every intent and apply every outcome.

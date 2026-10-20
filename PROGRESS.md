@@ -42,3 +42,14 @@
 - (c) Valentine's benchmark: pending.
 - (d) One paid API day under cap: pending explicit approval and configured models/credentials.
 - Later phases are deliberately out of scope.
+
+## Step 4 — Model gateway and offline backend
+- Added env-only live model configuration, individual model overrides, a lazy
+  LiteLLM adapter and a deterministic MockLLM fixture.
+- Added persistent response caching by model, request/prompt hash and seed;
+  sampling parameters are included in the hash.
+- Added durable per-call model/token/USD accounting, preflight reservations,
+  a hard stop before unaffordable requests, and conservative charging for failures.
+- Paid requests require explicit opt-in, a positive cap and configured pricing.
+- Validation: 10 tests pass offline, including concurrent budget checks, cache
+  replay, retained failed-call reservations and sanitized provider errors.
