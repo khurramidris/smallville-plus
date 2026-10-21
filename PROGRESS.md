@@ -1,6 +1,15 @@
 # Smallville+ progress
 
-## Current status — Stopped at user request
+## Current status — Phase 3 resumed
+- The latest request resumes Phase 3. Implement bounded inference concurrency,
+  latency accounting, smaller contexts and safe continuation of chosen routines;
+  then rerun offline checks and the three-day real-model experiment.
+- The phrase "number thing" is ambiguous; an optional clarification is pending.
+  Work proceeds on the explicitly authorized Phase 3. No later phase is assumed.
+- Preserve the interrupted run and its reports. Use fresh directories, the same
+  authorized free route and the existing zero-dollar cap; add no paid service.
+
+## Previous stop — preserved results
 - Phase 3 implementation is complete. Both three-day MockLLM scenarios (25 and
   100 residents) passed their audits and exact event replays; 76 tests pass offline.
 - The user stopped the live 25-resident run at minute 1,260 (day 1, 21:00), short

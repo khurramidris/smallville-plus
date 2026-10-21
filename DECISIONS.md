@@ -1,5 +1,17 @@
 # Decisions
 
+## Phase 3 resumption — Performance and planning
+- Resume only the clearly authorized Phase 3 while clarifying the ambiguous
+  numbered item. Preserve prior incomplete experiments rather than rewriting them.
+- Batch independent decisions at the same simulated minute against a fixed world
+  view, then apply intents in scheduler order through the GM. Never advance time
+  or publish another person's decision while these decisions are in flight.
+- Bound provider concurrency and reserve budget atomically before dispatch.
+  Keep timing outside deterministic event payloads; report measured latency
+  separately from synthetic fixtures and total wall time.
+- Reuse only a person's previously chosen routine for a bounded interval, with
+  interruptions for new information, needs, appointments and world rules.
+
 ## User-requested stop — Phase 3
 - The explicit stop overrides the outstanding three-day live objective. Cancel
   inference, stop the local viewer, preserve partial artifacts and report the
