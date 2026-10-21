@@ -16,6 +16,10 @@
   MiniMax attempt: its catalog declares mandatory reasoning with a `max` default.
   Include the reasoning parameter in cache identity. Preserve the initial failed
   run rather than silently retrying it or claiming full-day completion.
+- Real API validation revealed an ambiguous action contract. Clarify the prompt
+  (`target=null` except for movement), rather than relaxing GM checks or silently
+  rewriting model intentions. Supply readable date/time alongside minute indices
+  to avoid morning/evening confusion. Preserve the interrupted attempt as evidence.
 
 ## Phase 2 — Authorization and research boundaries
 - The user's new instruction advances development to Phase 2 only. Keep the

@@ -27,6 +27,19 @@
   identity). A fresh attempt will use supported `low` effort and a 180-second
   timeout. The failed run is preserved; there are no internal retries.
 - All 14 focused gateway/preflight checks pass after adding these controls.
+- Updated full regression: **45 offline tests pass in 107.23 seconds**. Exact
+  replay of a real low-reasoning API answer is byte-identical, with no provider
+  invocation; a changed question correctly causes an offline cache miss.
+- The low-effort attempt authenticated and made 38 successful town calls. Real
+  outputs exposed an ambiguous action prompt: all 19 proposed non-move actions
+  included a location target, which the strict GM rejected. Paused the attempt at
+  minute 375 (one cancelled request retained as uncertain, $0) to fix the prompt.
+- Clarified that only movement has a target, added an explicit meal example and
+  a readable date/time/day in private context. The GM's physical rules remain
+  authoritative. A fresh run will verify this correction.
+- Corrected live run: the first two breakfast intentions use `target=null` and
+  pass GM checks. Five real requests completed in 42.81 seconds, $0. The day is
+  still running; no full-day result is claimed yet.
 
 ## Current work — Phase 2
 - **Completed and stopped at Phase 2.** Final evidence is in
@@ -111,9 +124,9 @@
 - No paid service has been added or called.
 
 ## Next
-1. Stop at Phase 2; its deliverables and offline validation are complete.
-2. A live day remains blocked on model configuration, API credentials and
-   explicit spending approval. No paid service was added or called.
+1. Finish the authorized zero-dollar live-day validation and report its actual
+   completion or stop reason. Phase 2 offline deliverables remain complete.
+2. Keep later phases deferred. Paid model spending is not authorized.
 
 ## Step 2 — Reference inspection and provenance
 - Read all six current-phase repository licenses before copying any material.

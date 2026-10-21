@@ -141,6 +141,18 @@ async def test_mind_plan_reflection_and_ambiguous_gm(setup_world, town):
     world, config, gateway = setup_world
     agent = world.agent("isabella_rodriguez")
     mind = Mind(world, town, gateway, config)
+    assert mind.context(agent, 500, "action")["time"] == {
+        "date": "2023-02-13",
+        "clock": "08:20",
+        "day": 0,
+        "minutes_since_midnight": 500,
+    }
+    assert mind.context(agent, 1500, "action")["time"] == {
+        "date": "2023-02-14",
+        "clock": "01:00",
+        "day": 1,
+        "minutes_since_midnight": 60,
+    }
     prefix = mind.stable_prompt(agent)
     assert prefix.startswith("My name is Isabella")
     assert "assistant" not in prefix.lower() and "simulated" not in prefix.lower()

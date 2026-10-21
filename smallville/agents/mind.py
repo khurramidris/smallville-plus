@@ -5,6 +5,7 @@ from pydantic import ValidationError
 from smallville.agents.memory import remember, retrieve
 from smallville.agents.perception import perceive
 from smallville.config import Config
+from smallville.engine.clock import SimClock
 from smallville.engine.events import canonical
 from smallville.llm.gateway import Gateway
 from smallville.llm.mock import routine
@@ -24,9 +25,14 @@ My notebook format is JSON only, without markdown.
 For task plan: {"day": integer, "blocks": [{"start": minute_of_day, "end": minute_of_day,
 "activity": "sleep|eat|work|leisure", "location": known_location_id}]}. Blocks are
 ordered, contiguous and cover 0 through 1440.
+The day field counts whole days since Monday 13 February 2023; the first day is 0.
 For task action: {"kind": "move|sleep|eat|work|leisure|wait|message|calendar|attend|attempt",
 "text": "I want to ...", "target": location_id_or_null, "duration": minutes_1_to_480,
-"arguments": {}}. message arguments are {"to": known_contact_id, "body": text}.
+"arguments": {}}. Only move has a location target. For every other action, target
+is null, including sleep, eat and work at my current location. To act somewhere
+else I must move there first. For example, eating at home is
+{"kind":"eat","text":"I want breakfast.","target":null,"duration":30,"arguments":{}}.
+message arguments are {"to": known_contact_id, "body": text}.
 calendar arguments are {"title": text, "start": absolute_minute, "end": absolute_minute,
 "location": known_location_id}. I use only my own calendar. Meals require a meal
 in my inventory and being at home. Work requires my workplace. Sleep requires home.
@@ -88,6 +94,12 @@ class Mind:
         return {
             "task": task,
             "minute": minute,
+            "time": {
+                "date": SimClock(minute).now.date().isoformat(),
+                "clock": f"{minute % 1440 // 60:02d}:{minute % 60:02d}",
+                "day": minute // 1440,
+                "minutes_since_midnight": minute % 1440,
+            },
             "self": {
                 "id": agent.id,
                 "home": agent.persona.home,
