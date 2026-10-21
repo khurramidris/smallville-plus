@@ -18,6 +18,21 @@
   interrupted request, $0. The viewer and all simulation processes are stopped.
 - See `reports/PHASE3_REPORT.md`. No Phase 4 work or further inference is scheduled.
 
+### Resumption step 1 — Bounded inference and routine execution
+- Implemented `--optimized` (four same-time independent decisions, compact
+  context and chosen routine continuation), with separate environment controls.
+  The GM applies results in scheduler order and rechecks scarce resources.
+- Removed network waiting from the budget lock, bounded concurrency and deduplicated
+  concurrent identical prompts. In-flight reservations count toward the hard cap.
+- Added separate provider/queue timing storage. No timing enters deterministic
+  event payloads. Context limits phone history and spells out known reachable
+  venues/work minutes; recent refusals include their rejected intentions.
+- New tests exercise overlap, budget races, cancellation, cache rerun, event
+  replay, routine interruptions and ordered capacity reservation. Six initial
+  cases passed; the seventh had a test-only home-ID literal error, now fixed and
+  passing. The full suite and optimized three-day offline run are in progress.
+- No API calls yet during this resumption; no paid service or later-phase code.
+
 ## Phase 3 authorization and scope
 - Authorized on 2026-10-21: implement the next phase, then run three simulated
   days. Scope and acceptance are in `PHASE3.md`; original `SPEC.md` is unchanged.

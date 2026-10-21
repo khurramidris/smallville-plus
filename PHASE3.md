@@ -32,9 +32,21 @@ reports; private balances, ballots and notebooks remain owner-scoped.
   `openrouter/minimax/minimax-m3.1-flash:free` route for live inference, if used,
   with `SIM_MAX_USD=0`, no paid fallbacks/retries and env-only credentials.
 - Default live population is the original 25, matching the previous API run;
-  an optional population preference is pending. No new paid service is authorized.
+  the optional population question received no reply. No new paid service is authorized.
 - Record completed days, costs per resident/day, economic conservation, food
   pressure, rent, wages, votes, news and party coordination. Preserve failed or
   partial runs honestly; a blocked API will not be bypassed.
 - Stop after Phase 3 and the requested run. Graphiti, 30-day drift, 1,000-agent
   scaling and social media remain deferred.
+
+## Authorized resumption
+
+The user resumed Phase 3 after the interrupted 21-hour live run. Add bounded
+same-time inference concurrency, safe reuse of chosen routine blocks, bounded
+context, explicit known planning constraints and per-call latency measurements.
+Keep provider waiting outside the budget lock, reserve in-flight costs before
+dispatch and settle all tasks on cancellation. Decision completion order cannot
+publish tentative outcomes or change the GM's ordered resource reservations.
+Use fresh run directories and preserve earlier experiments. Finish the three-day
+live experiment if the authorized endpoint permits it; do not bypass any block.
+No Phase 4/5/6 work is authorized by the ambiguous "number thing" without clarification.

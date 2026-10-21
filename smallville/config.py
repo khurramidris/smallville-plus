@@ -36,6 +36,9 @@ class Config(Model):
     )
     allow_paid: bool = False
     replay_only: bool = False
+    decision_concurrency: int = Field(default=1, ge=1, le=16)
+    routine_actions: bool = False
+    compact_context: bool = False
 
     @model_validator(mode="after")
     def live_ready(self):
@@ -73,7 +76,14 @@ class Config(Model):
     @classmethod
     def from_env(cls, backend="mock", seed=42, allow_paid=False, replay_only=False):
         if backend == "mock":
-            return cls(seed=seed, max_usd=os.getenv("SIM_MAX_USD", "0"), replay_only=replay_only)
+            return cls(
+                seed=seed,
+                max_usd=os.getenv("SIM_MAX_USD", "0"),
+                replay_only=replay_only,
+                decision_concurrency=int(os.getenv("SIM_DECISION_CONCURRENCY", "1")),
+                routine_actions=os.getenv("SIM_ROUTINE_ACTIONS", "0") == "1",
+                compact_context=os.getenv("SIM_COMPACT_CONTEXT", "0") == "1",
+            )
         return cls(
             backend=backend,
             seed=seed,
@@ -89,6 +99,9 @@ class Config(Model):
             max_tokens=int(os.getenv("SIM_MAX_TOKENS", "1200")),
             timeout_seconds=float(os.getenv("SIM_TIMEOUT_SECONDS", "45")),
             reasoning_effort=os.getenv("SIM_REASONING_EFFORT") or None,
+            decision_concurrency=int(os.getenv("SIM_DECISION_CONCURRENCY", "1")),
+            routine_actions=os.getenv("SIM_ROUTINE_ACTIONS", "0") == "1",
+            compact_context=os.getenv("SIM_COMPACT_CONTEXT", "0") == "1",
         )
 
     def model_for(self, identifier: str, tier: str) -> str:

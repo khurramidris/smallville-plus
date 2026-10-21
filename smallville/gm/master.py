@@ -141,14 +141,14 @@ class GameMaster:
                 raise RuleViolation("this place will close before I finish")
         return duration
 
-    def reject(self, actor: Agent, minute: int, reason: str):
+    def reject(self, actor: Agent, minute: int, reason: str, intent: Intent | None = None):
         remember(actor, minute, reason, "gm_rejection", 0.7)
         actor.surprise = True
         return self.world.log.append(
             minute,
             "action_rejected",
             actor.id,
-            {"reason": reason},
+            {"reason": reason, **({"intent": intent.model_dump()} if intent else {})},
             [change("agents", actor.id, actor)],
             {actor.id: reason},
         )
@@ -162,7 +162,7 @@ class GameMaster:
             # Application errors contain only our validation text, never model
             # credentials. Pydantic errors may echo arguments, so keep them terse.
             reason = str(exc) if isinstance(exc, RuleViolation) else "My phone request is invalid."
-            return self.reject(actor, minute, reason)
+            return self.reject(actor, minute, reason, intent)
         if intent.kind == "attempt":
             raw = await self.gateway.complete(
                 model=self.config.model_gm,

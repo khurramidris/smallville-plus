@@ -4,8 +4,10 @@ import asyncio
 import fcntl
 import hashlib
 import logging
+import math
 import os
 import sqlite3
+import time
 from dataclasses import dataclass
 from decimal import Decimal
 from pathlib import Path
@@ -123,6 +125,8 @@ class Gateway:
             raise ValueError("this run already has a model gateway writer") from None
         self.config, self.backend, self.on_call = config, backend, on_call
         self.lock = asyncio.Lock()
+        self.slots = asyncio.Semaphore(config.decision_concurrency)
+        self.request_locks = [asyncio.Lock() for _ in range(64)]
         self.ledger = sqlite3.connect(directory / "calls.sqlite3")
         self.ledger.row_factory = sqlite3.Row
         self.ledger.execute("PRAGMA journal_mode=WAL")
@@ -132,6 +136,11 @@ class Gateway:
                 seed INTEGER NOT NULL, status TEXT NOT NULL, cached INTEGER NOT NULL,
                 input_tokens INTEGER NOT NULL, output_tokens INTEGER NOT NULL,
                 usd TEXT NOT NULL, reservation TEXT NOT NULL)
+        """)
+        self.ledger.execute("""
+            CREATE TABLE IF NOT EXISTS call_timings(
+                call_id INTEGER PRIMARY KEY, queue_ms REAL NOT NULL,
+                provider_ms REAL NOT NULL, total_ms REAL NOT NULL)
         """)
         self.ledger.execute(
             "CREATE TABLE IF NOT EXISTS run_budget(id INTEGER PRIMARY KEY CHECK(id=1), cap TEXT NOT NULL)"
@@ -202,6 +211,22 @@ class Gateway:
         if self.on_call:
             self.on_call(row)
 
+    def timing_summary(self) -> dict:
+        rows = list(self.ledger.execute("SELECT * FROM call_timings ORDER BY call_id"))
+        provider = sorted(row[2] for row in rows if row[2] > 0)
+        return {
+            "timed_calls": len(rows),
+            "provider_calls": len(provider),
+            "provider_seconds_sum": round(sum(provider) / 1000, 3),
+            "provider_ms_mean": round(sum(provider) / len(provider), 3) if provider else None,
+            "provider_ms_p50": round(provider[(len(provider) - 1) // 2], 3) if provider else None,
+            "provider_ms_p95": round(provider[math.ceil(len(provider) * 0.95) - 1], 3)
+            if provider
+            else None,
+            "queue_ms_sum": round(sum(row[1] for row in rows), 3),
+            "note": "Provider duration includes network and generation; concurrent durations overlap.",
+        }
+
     async def complete(
         self,
         *,
@@ -222,6 +247,16 @@ class Gateway:
         if self.config.reasoning_effort is not None:
             envelope["reasoning_effort"] = self.config.reasoning_effort
         digest = hashlib.sha256(canonical(envelope).encode()).hexdigest()
+        started = time.perf_counter()
+        # Serialize duplicate prompts, not unrelated requests. Recheck the cache
+        # after waiting; a peer may have populated it while this task queued.
+        request_lock = self.request_locks[int(digest[:8], 16) % len(self.request_locks)]
+        async with request_lock, self.slots:
+            return await self._dispatch(model, prompt, digest, seed, temperature, started)
+
+    async def _dispatch(self, model, prompt, digest, seed, temperature, started):
+        provider_started = None
+        identifier = None
         async with self.lock:
             cached = self.cache.execute(
                 "SELECT content FROM responses WHERE model=? AND prompt_hash=? AND seed=?",
@@ -255,7 +290,9 @@ class Gateway:
                 self._finish(identifier, "budget_blocked", 0, 0, Decimal(0))
                 raise BudgetExceeded("next call reservation exceeds SIM_MAX_USD")
             identifier = self._insert(model, digest, seed, "reserved", 0, reservation)
+        try:
             try:
+                provider_started = time.perf_counter()
                 response = await self.backend.complete(
                     model=model,
                     prompt=prompt,
@@ -304,6 +341,19 @@ class Gateway:
                     ),
                 )
             return response.content
+        finally:
+            ended = time.perf_counter()
+            if identifier is not None:
+                with self.ledger:
+                    self.ledger.execute(
+                        "INSERT OR REPLACE INTO call_timings VALUES(?,?,?,?)",
+                        (
+                            identifier,
+                            (provider_started - started) * 1000 if provider_started else 0,
+                            (ended - provider_started) * 1000 if provider_started else 0,
+                            (ended - started) * 1000,
+                        ),
+                    )
 
     def close(self):
         self.ledger.close()

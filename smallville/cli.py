@@ -68,6 +68,11 @@ async def run_command(args):
         | {
             "phase": args.phase or (2 if population else 1),
             "supply_delay_day": args.supply_delay_day,
+            **(
+                {"decision_concurrency": 4, "routine_actions": True, "compact_context": True}
+                if args.optimized
+                else {}
+            ),
         }
     )
     start = time.perf_counter()
@@ -76,6 +81,7 @@ async def run_command(args):
         result = await sim.run(args.days)
         report = evaluate(sim.world)
         report["wall_seconds"] = round(time.perf_counter() - start, 3)
+        report["inference_timing"] = sim.gateway.timing_summary()
         write_report(args.out, report)
         print(
             json.dumps(
@@ -271,6 +277,11 @@ def parser():
         command.add_argument("--cache", type=Path)
         command.add_argument("--replay-only", action="store_true")
         command.add_argument("--allow-paid", action="store_true")
+        command.add_argument(
+            "--optimized",
+            action="store_true",
+            help="Bounded parallel decisions, compact context and chosen routines",
+        )
     command = sub.add_parser("replay")
     command.add_argument("--source", type=Path, required=True)
     command.add_argument("--out", type=Path, required=True)

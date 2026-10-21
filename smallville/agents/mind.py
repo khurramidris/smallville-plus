@@ -14,7 +14,7 @@ from smallville.engine.events import canonical
 from smallville.llm.gateway import Gateway
 from smallville.llm.mock import routine
 from smallville.world.maps import MapProvider
-from smallville.world.models import Agent, DailyPlan, Intent
+from smallville.world.models import Agent, DailyPlan, Intent, change
 from smallville.world.store import WorldState
 
 RULES = """I live an ordinary life. I have only my own recollections, what I can
@@ -77,6 +77,16 @@ class Mind:
 
     def stable_prompt(self, agent: Agent) -> str:
         p = agent.persona
+        addresses = [self.town.locations[i].model_dump() for i in p.known_locations]
+        if self.config.compact_context:
+            addresses = [
+                {
+                    k: v
+                    for k, v in place.items()
+                    if k in ("id", "name", "address", "capacity", "opens", "closes", "private")
+                }
+                for place in addresses
+            ]
         biography = (
             (
                 f"My life story: {p.life_history.narrative}\n"
@@ -93,14 +103,101 @@ class Mind:
             f"My speech is {p.speech_style}.\n"
             f"My home is {p.home}; my workplace is {p.workplace}.\n"
             + biography
-            + f"My public address book: {canonical([self.town.locations[i].model_dump() for i in p.known_locations])}\n"
+            + f"My public address book: {canonical(addresses)}\n"
             + RULES
             + (
                 "\n" + ECONOMIC_RULES
                 if self.config.phase == 3
                 else "\nMy prepared meals are at home. My available actions are listed in my context."
             )
+            + (
+                "\nWhen I choose sleep, work or leisure in my planned block, I may keep "
+                "following that choice for up to two hours, checking my phone and needs "
+                "at least hourly. New information or an appointment can interrupt it."
+                if self.config.routine_actions
+                else ""
+            )
+            + (
+                "\nI check reachable_now before choosing a destination and "
+                "work_minutes_available before choosing paid work. I use recent_rejections "
+                "to avoid repeating a failed choice while its cause is unchanged. "
+                "These are my own known constraints, not knowledge of remote stock or people."
+                if self.config.compact_context
+                else ""
+            )
         )
+
+    def routine_change(self, agent: Agent, intent: Intent, minute: int):
+        block = (
+            next((b for b in agent.plan.blocks if b.start <= minute % 1440 < b.end), None)
+            if agent.plan
+            else None
+        )
+        until = minute
+        if (
+            block
+            and intent.kind in ("sleep", "work", "leisure")
+            and block.activity == intent.kind
+            and block.location == agent.location
+        ):
+            until = min(minute + 120, minute // 1440 * 1440 + block.end)
+        return change(
+            "metadata",
+            f"routine:{agent.id}",
+            {
+                "id": f"routine:{agent.id}",
+                "until": until,
+                "location": agent.location,
+                "intent": intent.model_dump(),
+            },
+        )
+
+    def continue_routine(self, agent: Agent, minute: int) -> Intent | None:
+        if (
+            not self.config.routine_actions
+            or agent.surprise
+            or not agent.plan
+            or agent.plan.day != minute // 1440
+        ):
+            return None
+        try:
+            note = self.world.get("metadata", f"routine:{agent.id}")
+        except KeyError:
+            return None
+        if not note or note["until"] <= minute or note["location"] != agent.location:
+            return None
+        if min(agent.needs.fullness, agent.needs.energy) < 30 or agent.needs.health < 30:
+            return None
+        if NoticeBoard(self.world).unread(agent, minute):
+            return None
+        intent = Intent.model_validate(note["intent"])
+        block = next(b for b in agent.plan.blocks if b.start <= minute % 1440 < b.end)
+        if block.activity != intent.kind or block.location != agent.location:
+            return None
+        end = min(note["until"], minute + 60, minute // 1440 * 1440 + block.end)
+        for event in self.world.calendar(agent.id):
+            travel = self.town.travel_minutes(agent.location, event.location)
+            if event.end > minute and event.start - travel < end:
+                end = min(end, event.start - travel)
+        for event in Gatherings(self.world).visible(agent):
+            travel = self.town.travel_minutes(agent.location, event["location"])
+            if event["end"] > minute and event["start"] - travel < end:
+                end = min(end, event["start"] - travel)
+        if intent.kind == "work" and self.config.phase == 3:
+            job = Economy(self.world, self.config).job(agent)
+            end = min(
+                end,
+                minute // 1440 * 1440 + job.shift_end,
+                minute + job.max_daily_minutes - job.worked_minutes.get(str(minute // 1440), 0),
+            )
+        # Avoid letting a routine carry a person through predictable distress.
+        end = min(end, minute + int((agent.needs.fullness - 25) / 3.8 * 60))
+        if intent.kind != "sleep":
+            end = min(end, minute + int((agent.needs.energy - 25) / 4.1 * 60))
+        duration = end - minute
+        if duration < 5 or not self.world.location(agent.location).open_throughout(minute, end):
+            return None
+        return intent.model_copy(update={"duration": duration})
 
     def context(self, agent: Agent, minute: int, task: str) -> dict:
         memories = retrieve(
@@ -196,6 +293,39 @@ class Mind:
                     )
                 ],
             )
+        if self.config.compact_context:
+            context["sent"] = context["sent"][-8:]
+            context["calendar"] = [e for e in context["calendar"] if e["end"] >= minute][:12]
+            # Make arithmetic explicit using the person's known hours/routes;
+            # this never exposes remote occupancy or unobserved shop stock.
+            context["reachable_now"] = [
+                key
+                for key, travel in context["travel_minutes"].items()
+                if key != agent.location
+                and (not self.town.locations[key].private or key == agent.persona.home)
+                and self.town.locations[key].is_open(minute + travel)
+            ]
+            context["recent_rejections"] = [
+                {"minute": row[0], **json.loads(row[1])}
+                for row in self.world.db.execute(
+                    "SELECT minute,json_extract(record,'$.data') FROM events "
+                    "WHERE actor=? AND kind='action_rejected' ORDER BY seq DESC LIMIT 3",
+                    (agent.id,),
+                )
+            ]
+            if self.config.phase == 3:
+                job = Economy(self.world, self.config).job(agent)
+                context["work_minutes_available"] = (
+                    max(
+                        0,
+                        min(
+                            job.shift_end - minute % 1440,
+                            job.max_daily_minutes - job.worked_minutes.get(str(minute // 1440), 0),
+                        ),
+                    )
+                    if minute % 1440 >= job.shift_start
+                    else 0
+                )
         return context
 
     async def ask(self, agent: Agent, context: dict) -> str:

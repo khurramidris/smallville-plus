@@ -11,6 +11,12 @@
   separately from synthetic fixtures and total wall time.
 - Reuse only a person's previously chosen routine for a bounded interval, with
   interruptions for new information, needs, appointments and world rules.
+- Keep the optimization explicit (`--optimized` or environment flags), preserving
+  previous defaults. Routine choices expire after two hours and check in hourly;
+  buying, messaging, voting and attendance always remain fresh model decisions.
+- Buffer model-call events during parallel inference and publish them in decision
+  order after settling the group. Live ledgers retain every in-flight request even
+  when a sibling fails; failed groups apply no tentative intentions.
 
 ## User-requested stop — Phase 3
 - The explicit stop overrides the outstanding three-day live objective. Cancel

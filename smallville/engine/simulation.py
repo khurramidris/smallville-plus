@@ -2,6 +2,7 @@ from __future__ import annotations
 
 import asyncio
 import math
+from contextvars import ContextVar
 from pathlib import Path
 
 from smallville.agents.drives import advance_drives
@@ -122,6 +123,7 @@ class Simulation:
         self.world = WorldState(directory)
         self.clock, self.scheduler, self.bus = SimClock(), Scheduler(), EventBus()
         self.active_agent = None
+        self.call_buffer: ContextVar[list | None] = ContextVar("call_buffer", default=None)
         self.wakes: set[tuple[str, int]] = set()
         try:
             bootstrap(self.world, self.town, config, population)
@@ -151,7 +153,11 @@ class Simulation:
             )
 
     def _record_call(self, record: dict):
-        self.world.log.append(self.clock.minute, "llm_call", self.active_agent, record)
+        buffer = self.call_buffer.get()
+        if buffer is not None:
+            buffer.append(record)
+        else:
+            self.world.log.append(self.clock.minute, "llm_call", self.active_agent, record)
 
     def wake(self, identifier: str, minute: int):
         key = identifier, minute
@@ -162,6 +168,81 @@ class Simulation:
     async def _publish(self, event):
         await self.bus.publish(event)
         self.scheduler.check_conditions(self.clock.minute, actor=event.actor)
+
+    async def _wake_batch(self, items, horizon):
+        """Read one scene, infer independently, and commit in scheduler order."""
+        minute, prepared = items[0].minute, []
+        for item in items:
+            self.wakes.discard((item.agent, minute))
+            if minute >= horizon:
+                continue
+            actor = self.world.agent(item.agent)
+            if actor.busy_until > minute:
+                self.wake(actor.id, actor.busy_until)
+                continue
+            advance_drives(actor, minute)
+            changes = self.gm.messaging.read_changes(actor, minute)
+            if self.config.phase == 3:
+                changes.extend(self.economy.perception_changes(actor, minute))
+            changes.append(change("agents", actor.id, actor))
+            await self._publish(
+                self.world.log.append(
+                    minute,
+                    "perceived",
+                    actor.id,
+                    changes=changes,
+                    observations={actor.id: "I notice my surroundings and check my phone."},
+                )
+            )
+            prepared.append((actor, []))
+
+        async def think(actor, buffer):
+            token = self.call_buffer.set(buffer)
+            try:
+                if minute % 1440 >= 1260 and actor.last_reflection_day != minute // 1440:
+                    await self.mind.reflect(actor, minute)
+                intent = self.mind.continue_routine(actor, minute)
+                if intent is not None:
+                    return intent, "routine"
+                return await self.mind.decide(actor, minute), "model"
+            finally:
+                self.call_buffer.reset(token)
+
+        tasks = [asyncio.create_task(think(actor, buffer)) for actor, buffer in prepared]
+        try:
+            results = await asyncio.gather(*tasks)
+        except BaseException:
+            for task in tasks:
+                task.cancel()
+            await asyncio.gather(*tasks, return_exceptions=True)
+            raise
+        finally:
+            # Do not expose completion order or another person's tentative plan.
+            # In-flight calls are all settled before recording an interruption.
+            for actor, buffer in prepared:
+                for record in buffer:
+                    self.world.log.append(minute, "llm_call", actor.id, record)
+        for (actor, _), (intent, source) in zip(prepared, results):
+            self.active_agent = actor.id
+            changes = [change("agents", actor.id, actor)]
+            if source == "model" and self.config.routine_actions:
+                changes.append(self.mind.routine_change(actor, intent, minute))
+            await self._publish(
+                self.world.log.append(
+                    minute,
+                    "intention",
+                    actor.id,
+                    {"intent": intent.model_dump(), "source": source},
+                    changes,
+                )
+            )
+            event = await self.gm.resolve(actor.id, intent, minute)
+            await self._publish(event)
+            actor = self.world.agent(actor.id)
+            if event.kind == "action_started":
+                self.scheduler.schedule(actor.busy_until, "complete", actor.id, priority=0)
+            else:
+                self.wake(actor.id, minute + 15)
 
     async def run(self, days: float = 2) -> dict:
         minutes = days * 1440
@@ -235,49 +316,13 @@ class Simulation:
                     )
                     self.wake(actor.id, max(item.minute, actor.busy_until))
                 elif item.kind == "wake":
-                    self.wakes.discard((item.agent, item.minute))
-                    if item.minute >= horizon:
-                        continue
-                    actor = self.world.agent(item.agent)
-                    if actor.busy_until > item.minute:
-                        self.wake(actor.id, actor.busy_until)
-                        continue
-                    advance_drives(actor, item.minute)
-                    changes = self.gm.messaging.read_changes(actor, item.minute)
-                    if self.config.phase == 3:
-                        changes.extend(self.economy.perception_changes(actor, item.minute))
-                    changes.append(change("agents", actor.id, actor))
-                    await self._publish(
-                        self.world.log.append(
-                            item.minute,
-                            "perceived",
-                            actor.id,
-                            changes=changes,
-                            observations={actor.id: "I notice my surroundings and check my phone."},
-                        )
-                    )
-                    if (
-                        item.minute % 1440 >= 1260
-                        and actor.last_reflection_day != item.minute // 1440
-                    ):
-                        await self.mind.reflect(actor, item.minute)
-                    intent = await self.mind.decide(actor, item.minute)
-                    await self._publish(
-                        self.world.log.append(
-                            item.minute,
-                            "intention",
-                            actor.id,
-                            {"intent": intent.model_dump()},
-                            [change("agents", actor.id, actor)],
-                        )
-                    )
-                    event = await self.gm.resolve(actor.id, intent, item.minute)
-                    await self._publish(event)
-                    actor = self.world.agent(actor.id)
-                    if event.kind == "action_started":
-                        self.scheduler.schedule(actor.busy_until, "complete", actor.id, priority=0)
-                    else:
-                        self.wake(actor.id, item.minute + 15)
+                    items = [item]
+                    while len(items) < self.config.decision_concurrency and self.scheduler.queue:
+                        next_item = self.scheduler.queue[0]
+                        if next_item.kind != "wake" or next_item.minute != item.minute:
+                            break
+                        items.append(self.scheduler.pop())
+                    await self._wake_batch(items, horizon)
                 await asyncio.sleep(0)  # Cooperative scheduling, never wall-time simulation.
         except asyncio.CancelledError:
             status, problem = "interrupted", "operator cancelled the simulation"

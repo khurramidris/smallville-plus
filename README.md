@@ -131,6 +131,27 @@ social media remain deferred.
 
 ## Phase 3: economy and town government
 
+Use `--optimized` for up to four independent decisions at the same simulated
+minute, bounded continuation of a person's chosen routine and shorter phone
+history/address context. Outcomes still commit in scheduler order through the GM.
+
+```bash
+python -m smallville run --phase 3 --optimized --days 3 --supply-delay-day 1 --out runs/phase3-fast
+```
+
+The equivalent environment settings are `SIM_DECISION_CONCURRENCY=4`,
+`SIM_ROUTINE_ACTIONS=1` and `SIM_COMPACT_CONTEXT=1`. The default remains the earlier
+single-decision mode. Concurrency is limited to 1–16; it does not bypass budgets
+or provider limits. Routines stop for new messages, needs, appointments or changed
+rules, expire after two simulated hours and check in at least hourly. They reuse
+chosen work/sleep/leisure; social decisions remain model decisions.
+
+Per-provider timings are stored separately in `calls.sqlite3.call_timings` and
+reported under `inference_timing`. They include network/generation and may overlap
+under concurrency. Timing is excluded from deterministic events and cache keys.
+Cache-hit token counters remain zero; previous measured usage is retained in the
+original call ledger. This is an optimization mode, not a realism score.
+
 ```bash
 python -m smallville run --phase 3 --days 3 --out runs/phase3
 # Use an existing validated Phase 2 population for all 100 residents:
