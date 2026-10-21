@@ -52,6 +52,13 @@ The council fixture passed its proposal in both towns. The 25-person vote was
 Each policy spent 30,000 town cents on 100 actual remaining wholesale meals.
 The policy adds stock while retail prices remain unchanged.
 
+![Recorded retail food stock](phase3/food-stock.png)
+
+Retail stocks emptied before the second-day delivery delay. The regular
+third-day replenishment and council purchase added actual stock. The expanded
+fixture exhausted its retail supply again. [Vector figure](phase3/food-stock.svg)
+and [transaction-derived data](phase3/food-stock.csv) are available for inspection.
+
 Party counts are distinct guests over February 14, 17:00–19:00, with host/time
 confirmation. They are not simultaneous occupancy. Receiving full shared-event
 details is the invitation metric. A host-owned event is seeded from the original

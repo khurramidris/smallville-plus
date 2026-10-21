@@ -65,6 +65,10 @@
 - Use read-only SQLite inspection for completed large-run verification, avoiding
   a writer constructor and its JSONL recovery pass on the source. Replay writes
   only to a fresh destination and is checked by streaming SHA-256 plus state.
+- Plot retail stock from committed purchases/replenishment/policy transfers and
+  reconcile the endpoint, rather than inferring stock from agent descriptions.
+  Label closed-shop stock and scripted-fixture provenance; global remaining food
+  alone does not establish that a hungry resident could access or afford it.
 
 ## Live API follow-up — Exact free route and zero spending
 - The user's latest instruction authorizes OpenRouter calls using the supplied

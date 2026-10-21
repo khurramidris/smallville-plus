@@ -135,6 +135,15 @@
   real requests, no provider failures so far and $0 cost. Keep observing the
   frozen experiment; do not advance to Phase 4.
 
+### Phase 3 step 10 — Recorded stock timeline
+- Generated standalone PNG/SVG figures and CSV from 207 recorded stock-changing
+  transactions in the completed fixtures. Verified each reconstructed retail
+  total against final shop projections. No inference or world writes.
+- The figure distinguishes the configured delivery delay, regular replenishment
+  and funded council stock purchase. It is labelled as scripted MockLLM evidence.
+- The final API experiment continues with the frozen production behavior and
+  zero-dollar cap. No provider failures have occurred so far.
+
 ## Current follow-up — Authorized live inference
 - **Completed.** The 25-resident real-API day passes; evidence and problems are
   in `reports/LIVE_API_REPORT.md`. Development remains stopped at Phase 2.
