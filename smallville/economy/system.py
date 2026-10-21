@@ -280,13 +280,44 @@ class Economy:
                 shop = self.world.get("shops", actor.location)
             except KeyError:
                 pass
+        observations = {
+            o["location"]: o for o in self.world.all("shop_observations") if o["owner"] == actor.id
+        }
         return {
             "job": self.world.get("jobs", actor.id),
             "lease": self.world.get("leases", actor.id),
             "local_shop": shop,
             "known_shops": [
-                {"location": s["id"], "price_cents": s["price_cents"]}
+                {
+                    "location": s["id"],
+                    "price_cents": s["price_cents"],
+                    "observed_stock": observations.get(s["id"], {}).get("stock"),
+                    "observed_at": observations.get(s["id"], {}).get("minute"),
+                }
                 for s in self.world.all("shops")
                 if s["id"] in actor.persona.known_locations
             ],
         }
+
+    def perception_changes(self, actor: Agent, minute: int):
+        if actor.location is None:
+            return []
+        try:
+            shop = self.world.get("shops", actor.location)
+        except KeyError:
+            return []
+        key = f"{actor.id}:{actor.location}"
+        return [
+            change(
+                "shop_observations",
+                key,
+                {
+                    "id": key,
+                    "owner": actor.id,
+                    "location": actor.location,
+                    "stock": shop["stock"],
+                    "minute": minute,
+                    "source": "seen_here",
+                },
+            )
+        ]

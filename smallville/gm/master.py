@@ -292,6 +292,8 @@ class GameMaster:
             changes.extend(updates)
             data["notices"] = [n["id"] for n in notices]
             observation = f"I read {len(notices)} town notices."
+            if notices:
+                actor.surprise = True
         elif intent.kind == "post_notice":
             changes.extend(
                 self.board.post_changes(actor, Notice.model_validate(intent.arguments), minute)

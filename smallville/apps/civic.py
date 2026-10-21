@@ -64,6 +64,7 @@ class NoticeBoard:
         *,
         sources: list[int],
         proposal_id: str | None = None,
+        shop_reports: dict[str, int] | None = None,
     ):
         Notice(title=title, body=body)
         if not sources:
@@ -89,6 +90,7 @@ class NoticeBoard:
             "body": body,
             "sources": sources,
             "proposal_id": proposal_id,
+            "shop_reports": shop_reports or {},
         }
         return self.world.log.append(
             minute,
@@ -110,18 +112,40 @@ class NoticeBoard:
             proposals.update(self.world.get("news_reads", actor.id)["proposals"])
         except KeyError:
             pass
+        observations = {}
         for row in selected:
             label = "Public resident opinion" if row["category"] == "opinion" else "Town bulletin"
             remember(actor, minute, f"{label}: {row['title']}. {row['body']}", row["id"], 0.65)
             if row["proposal_id"]:
                 proposals.add(row["proposal_id"])
+            for location, stock in row.get("shop_reports", {}).items():
+                if location in actor.persona.known_locations:
+                    key = f"{actor.id}:{location}"
+                    try:
+                        old = self.world.get("shop_observations", key)
+                    except KeyError:
+                        old = {"minute": -1}
+                    latest = observations.get(key, old)
+                    if latest["minute"] < row["minute"]:
+                        observations[key] = {
+                            "id": key,
+                            "owner": actor.id,
+                            "location": location,
+                            "stock": stock,
+                            "minute": row["minute"],
+                            "source": row["id"],
+                        }
         last = selected[-1]["minute"] if selected else minute
         return [
             change(
                 "news_reads",
                 actor.id,
                 {"id": actor.id, "last_minute": last, "proposals": sorted(proposals)},
-            )
+            ),
+            *[
+                change("shop_observations", key, value)
+                for key, value in sorted(observations.items())
+            ],
         ], selected
 
     def post_changes(self, actor: Agent, request: Notice, minute: int):
@@ -288,4 +312,7 @@ class Council:
             f"Proposal {'passed' if passed else 'failed'}. Additional meals delivered: {units}.",
             sources=sources,
             proposal_id=identifier,
+            shop_reports={proposal["market"]: self.world.get("shops", proposal["market"])["stock"]}
+            if units
+            else {},
         )

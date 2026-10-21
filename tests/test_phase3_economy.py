@@ -1,3 +1,4 @@
+import asyncio
 from decimal import Decimal
 
 import httpx
@@ -279,6 +280,72 @@ async def test_phase3_viewer_historical_finances_and_public_town_state(economic_
         assert resident["finances"]["lease"]["daily_cents"] > 0
         assert resident["finances"]["transactions"] == []
         assert (await client.get("/api/economy?minute=-1")).status_code == 422
+
+
+def test_shop_observations_persist_but_do_not_reveal_remote_changes(economic_world):
+    world, config, _, _ = economic_world
+    economy = Economy(world, config)
+    actor = world.agent("john_lin")
+    actor.location = "the_willows_market_and_pharmacy"
+    stock = world.get("shops", actor.location)
+    world.log.append(0, "test_visit", changes=economy.perception_changes(actor, 0))
+    actor.location = actor.persona.home
+    stock["stock"] = 0
+    world.log.append(5, "test_remote_sale", changes=[change("shops", stock["id"], stock)])
+    context = economy.context(actor)
+    observed = next(s for s in context["known_shops"] if s["location"] == stock["id"])
+    assert observed["observed_stock"] == 25 and observed["observed_at"] == 0
+    assert context["local_shop"] is None
+    peer = economy.context(world.agent("sam_moore"))
+    assert all(s["observed_stock"] is None for s in peer["known_shops"])
+
+
+def test_only_read_bulletins_update_stock_and_preserve_newer_visits(economic_world):
+    world, config, _, _ = economic_world
+    economy, board = Economy(world, config), NoticeBoard(world)
+    event = economy.restock(360)
+    board.publish(
+        360,
+        "Food supply",
+        "Reported morning meal stocks",
+        sources=[event.seq],
+        shop_reports=event.data["stock"],
+    )
+    actor, peer = world.agent("john_lin"), world.agent("sam_moore")
+    assert all(s["observed_stock"] is None for s in economy.context(peer)["known_shops"])
+    actor.location = "the_willows_market_and_pharmacy"
+    shop = world.get("shops", actor.location)
+    shop["stock"] = 2
+    world.log.append(400, "test_sale", changes=[change("shops", shop["id"], shop)])
+    world.log.append(400, "test_visit", changes=economy.perception_changes(actor, 400))
+    for person in (actor, peer):
+        changes, _ = board.read_changes(person, 410)
+        world.log.append(410, "test_read", changes=changes)
+    own = next(s for s in economy.context(actor)["known_shops"] if s["location"] == shop["id"])
+    remote = next(s for s in economy.context(peer)["known_shops"] if s["location"] == shop["id"])
+    assert own["observed_stock"] == 2 and own["observed_at"] == 400
+    assert remote["observed_stock"] == 25 and remote["observed_at"] == 360
+
+
+async def test_cancelled_simulation_records_an_incomplete_run(tmp_path):
+    class CancelledBackend:
+        async def complete(self, **kwargs):
+            raise asyncio.CancelledError()
+
+    sim = Simulation(tmp_path / "cancelled", Config(phase=3))
+    sim.gateway.backend = CancelledBackend()
+    try:
+        result = await sim.run(3)
+        assert result["status"] == "interrupted"
+        assert 0 < result["completed_minutes"] < result["requested_minutes"] == 4320
+        assert result["cost"]["uncertain_calls"] == 1
+        assert sim.world.get("metadata", "run")["status"] == "interrupted"
+        assert all(
+            sum(a.activity_minutes.values()) == result["completed_minutes"]
+            for a in sim.world.agents()
+        )
+    finally:
+        sim.close()
 
 
 async def test_received_shared_event_rejects_wrong_day(economic_world):

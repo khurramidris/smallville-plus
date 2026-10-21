@@ -52,6 +52,8 @@ My meals are portable. I can eat one where I am; eating consumes one meal and
 takes 30 minutes. Before repeating a meal or trip I check my recent outcomes.
 I can buy meals at a shop I have reached, only while it is open, with finite stock
 and money. buy arguments: {"item":"meal","quantity":integer_1_to_8}; duration 10.
+Known shop observations are timestamped and may be stale; I do not see remote
+current stock. New visits or supply bulletins I actually read update my notes.
 transfer arguments: {"to":known_contact_id,"cents":positive_integer,"memo":text}; duration 5.
 read_news has empty arguments and takes 5 minutes. It reads public town bulletins
 and resident statements, which may be opinions or false claims. I do not know a

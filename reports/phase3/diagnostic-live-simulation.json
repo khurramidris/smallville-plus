@@ -1,0 +1,377 @@
+{
+  "run": {
+    "benchmark": "valentine",
+    "completed_minutes": 410,
+    "epoch": "2023-02-13T00:00:00+00:00",
+    "phase": 3,
+    "problem": "Operator stopped diagnostic to retain stock observations before final validation.",
+    "requested_minutes": 4320,
+    "status": "interrupted"
+  },
+  "backend": "litellm",
+  "agents": 25,
+  "interpretation": "Exploratory Phase 3 run. No matched experimental design or human believability judgment.",
+  "paper_reference": {
+    "source": "https://arxiv.org/html/2304.03442v2#S7.SS1",
+    "agents": 25,
+    "days": 2,
+    "sam_awareness": 8,
+    "party_awareness": 13,
+    "party_invited_guests": 12,
+    "party_attending_guests": 5,
+    "network_density_initial": 0.167,
+    "network_density_final": 0.74
+  },
+  "diffusion": {
+    "sam": {
+      "initial": 2,
+      "retained_final": 1,
+      "paper_final": 8
+    },
+    "party": {
+      "initial": 2,
+      "retained_final": 1,
+      "paper_final": 13
+    },
+    "method": "Retained memory evidence, not omniscient delivery or unverified interview assertions."
+  },
+  "relationships": {
+    "initial_density": 0.22857142857142856,
+    "final_density": 0.23333333333333334,
+    "growth": 0.004761904761904773,
+    "definition": "Undirected edge only when both residents have relationship records; negative ties count."
+  },
+  "party": {
+    "invited_guests": 0,
+    "read_invitation_guests": 0,
+    "attending_guests": 0,
+    "guest_ids": [],
+    "invited_attending_guests": 0,
+    "attendance_rate": null,
+    "paper_attendance_rate": 0.4166666666666667,
+    "window": {
+      "location": "hobbs_cafe",
+      "start": 2460,
+      "end": 2580
+    },
+    "method": "Completed attend actions overlapping the party window; host excluded."
+  },
+  "anti_homogeneity": {
+    "seeded_opinion_variance": 0.32864544,
+    "observed_daily_behavior_variance": {
+      "sleep_hours": 1.6044392623438422,
+      "work_hours": 0.0,
+      "leisure_hours": 0.6737164640095183,
+      "travel_hours": 0.018947350386674604,
+      "other_hours": 1.1809199286139205
+    },
+    "note": "Opinion values are synthetic heterogeneous priors; survey fidelity is not measured."
+  },
+  "daily_life": {
+    "average_hours": {
+      "sleep_hours": 22.68878048780488,
+      "work_hours": 0.0,
+      "leisure_hours": 0.3699512195121952,
+      "travel_hours": 0.02809756097560976,
+      "other_hours": 0.9131707317073172
+    },
+    "per_agent": {
+      "abigail_chen": {
+        "sleep_hours": 24.0,
+        "work_hours": 0.0,
+        "leisure_hours": 0.0,
+        "travel_hours": 0.0,
+        "other_hours": 0.0
+      },
+      "adam_smith": {
+        "sleep_hours": 22.82926829268293,
+        "work_hours": 0.0,
+        "leisure_hours": 0.0,
+        "travel_hours": 0.0,
+        "other_hours": 1.1707317073170733
+      },
+      "arthur_burton": {
+        "sleep_hours": 22.82926829268293,
+        "work_hours": 0.0,
+        "leisure_hours": 0.0,
+        "travel_hours": 0.0,
+        "other_hours": 1.1707317073170733
+      },
+      "ayesha_khan": {
+        "sleep_hours": 21.073170731707318,
+        "work_hours": 0.0,
+        "leisure_hours": 0.0,
+        "travel_hours": 0.0,
+        "other_hours": 2.9268292682926833
+      },
+      "carlos_gomez": {
+        "sleep_hours": 24.0,
+        "work_hours": 0.0,
+        "leisure_hours": 0.0,
+        "travel_hours": 0.0,
+        "other_hours": 0.0
+      },
+      "carmen_ortiz": {
+        "sleep_hours": 21.073170731707318,
+        "work_hours": 0.0,
+        "leisure_hours": 1.1707317073170733,
+        "travel_hours": 0.0,
+        "other_hours": 1.75609756097561
+      },
+      "eddy_lin": {
+        "sleep_hours": 21.073170731707318,
+        "work_hours": 0.0,
+        "leisure_hours": 0.0,
+        "travel_hours": 0.0,
+        "other_hours": 2.9268292682926833
+      },
+      "francisco_lopez": {
+        "sleep_hours": 23.121951219512198,
+        "work_hours": 0.0,
+        "leisure_hours": 0.0,
+        "travel_hours": 0.0,
+        "other_hours": 0.878048780487805
+      },
+      "giorgio_rossi": {
+        "sleep_hours": 24.0,
+        "work_hours": 0.0,
+        "leisure_hours": 0.0,
+        "travel_hours": 0.0,
+        "other_hours": 0.0
+      },
+      "hailey_johnson": {
+        "sleep_hours": 24.0,
+        "work_hours": 0.0,
+        "leisure_hours": 0.0,
+        "travel_hours": 0.0,
+        "other_hours": 0.0
+      },
+      "isabella_rodriguez": {
+        "sleep_hours": 24.0,
+        "work_hours": 0.0,
+        "leisure_hours": 0.0,
+        "travel_hours": 0.0,
+        "other_hours": 0.0
+      },
+      "jane_moreno": {
+        "sleep_hours": 24.0,
+        "work_hours": 0.0,
+        "leisure_hours": 0.0,
+        "travel_hours": 0.0,
+        "other_hours": 0.0
+      },
+      "jennifer_moore": {
+        "sleep_hours": 24.0,
+        "work_hours": 0.0,
+        "leisure_hours": 0.0,
+        "travel_hours": 0.0,
+        "other_hours": 0.0
+      },
+      "john_lin": {
+        "sleep_hours": 21.073170731707318,
+        "work_hours": 0.0,
+        "leisure_hours": 0.0,
+        "travel_hours": 0.0,
+        "other_hours": 2.9268292682926833
+      },
+      "klaus_mueller": {
+        "sleep_hours": 21.365853658536587,
+        "work_hours": 0.0,
+        "leisure_hours": 0.0,
+        "travel_hours": 0.0,
+        "other_hours": 2.6341463414634148
+      },
+      "latoya_williams": {
+        "sleep_hours": 21.073170731707318,
+        "work_hours": 0.0,
+        "leisure_hours": 0.878048780487805,
+        "travel_hours": 0.0,
+        "other_hours": 2.048780487804878
+      },
+      "maria_lopez": {
+        "sleep_hours": 24.0,
+        "work_hours": 0.0,
+        "leisure_hours": 0.0,
+        "travel_hours": 0.0,
+        "other_hours": 0.0
+      },
+      "mei_lin": {
+        "sleep_hours": 22.82926829268293,
+        "work_hours": 0.0,
+        "leisure_hours": 0.0,
+        "travel_hours": 0.0,
+        "other_hours": 1.1707317073170733
+      },
+      "rajiv_patel": {
+        "sleep_hours": 21.073170731707318,
+        "work_hours": 0.0,
+        "leisure_hours": 2.9268292682926833,
+        "travel_hours": 0.0,
+        "other_hours": 0.0
+      },
+      "ryan_park": {
+        "sleep_hours": 21.073170731707318,
+        "work_hours": 0.0,
+        "leisure_hours": 2.9268292682926833,
+        "travel_hours": 0.0,
+        "other_hours": 0.0
+      },
+      "sam_moore": {
+        "sleep_hours": 24.0,
+        "work_hours": 0.0,
+        "leisure_hours": 0.0,
+        "travel_hours": 0.0,
+        "other_hours": 0.0
+      },
+      "tamara_taylor": {
+        "sleep_hours": 21.073170731707318,
+        "work_hours": 0.0,
+        "leisure_hours": 0.878048780487805,
+        "travel_hours": 0.0,
+        "other_hours": 2.048780487804878
+      },
+      "tom_moreno": {
+        "sleep_hours": 22.82926829268293,
+        "work_hours": 0.0,
+        "leisure_hours": 0.0,
+        "travel_hours": 0.0,
+        "other_hours": 1.1707317073170733
+      },
+      "wolfgang_schulz": {
+        "sleep_hours": 22.82926829268293,
+        "work_hours": 0.0,
+        "leisure_hours": 0.4682926829268293,
+        "travel_hours": 0.702439024390244,
+        "other_hours": 0.0
+      },
+      "yuriko_yamamoto": {
+        "sleep_hours": 24.0,
+        "work_hours": 0.0,
+        "leisure_hours": 0.0,
+        "travel_hours": 0.0,
+        "other_hours": 0.0
+      }
+    },
+    "atus_reference": {
+      "source": "https://www.bls.gov/news.release/archives/atus_06262025.htm",
+      "year": 2024,
+      "population": "US civilian population age 15+, all days",
+      "sleep_hours": 9.04,
+      "work_hours": 3.13,
+      "leisure_hours": 5.07
+    },
+    "difference_hours": {
+      "sleep_hours": 13.648780487804881,
+      "work_hours": -3.13,
+      "leisure_hours": -4.700048780487805
+    },
+    "note": "Shape diagnostic only. Smallville occupations/age mix and two weekdays differ from ATUS. Study is grouped with work; leisure includes messages; travel is separate. No calibration claim."
+  },
+  "cost": {
+    "calls": 52,
+    "cache_hits": 0,
+    "input_tokens": 143933,
+    "output_tokens": 16414,
+    "usd": "0",
+    "uncertain_calls": 1,
+    "usd_per_agent_per_simulated_day": "0E+15",
+    "max_usd": "0",
+    "accounting": "Usage at configured conservative token rates, not a provider invoice."
+  },
+  "messages": 0,
+  "historical_messages": 0,
+  "economy": {
+    "enabled": true,
+    "units": "fictional town cents and meal units, separate from API USD",
+    "assumptions": {
+      "initial_cents": 5169371,
+      "initial_meals": 243,
+      "last_restock_day": 0,
+      "rates": "fictional authored scenario",
+      "rent": "daily prorated household total $36, shared equally"
+    },
+    "audit": {
+      "initial_cents": 5169371,
+      "final_cents": 5169371,
+      "money_conserved": true,
+      "ledger_matches_accounts": true,
+      "mismatched_accounts": [],
+      "nonnegative_accounts": true,
+      "initial_meals": 243,
+      "remaining_meals": 236,
+      "consumed_meals": 7,
+      "food_conserved": true,
+      "work_limits_respected": true
+    },
+    "transfers": 7,
+    "flows_cents": {
+      "pension/support": 26000
+    },
+    "rent_arrears_cents": 0,
+    "residents_in_arrears": 0,
+    "unpaid_wages_cents": 0,
+    "shops": [
+      {
+        "account": "business:hobbs_cafe",
+        "daily_target": 12,
+        "id": "hobbs_cafe",
+        "price_cents": 800,
+        "product": "meal",
+        "stock": 12,
+        "wholesale_cents": 300
+      },
+      {
+        "account": "business:the_rose_and_crown_pub",
+        "daily_target": 6,
+        "id": "the_rose_and_crown_pub",
+        "price_cents": 1000,
+        "product": "meal",
+        "stock": 6,
+        "wholesale_cents": 300
+      },
+      {
+        "account": "business:the_willows_market_and_pharmacy",
+        "daily_target": 25,
+        "id": "the_willows_market_and_pharmacy",
+        "price_cents": 600,
+        "product": "meal",
+        "stock": 25,
+        "wholesale_cents": 300
+      }
+    ],
+    "resource_pressure": {
+      "residents_without_meals": 3,
+      "hungry_without_meals": 0,
+      "failed_purchases": 0,
+      "delayed_delivery_days": []
+    },
+    "council": [
+      {
+        "body": "Spend up to $300 of town funds buying meals from the finite wholesaler for the town market. Retail prices stay unchanged. Funds and supply must exist.",
+        "budget_cents": 30000,
+        "closes": 3600,
+        "id": "community_food",
+        "market": "the_willows_market_and_pharmacy",
+        "opens": 480,
+        "quorum": 13,
+        "status": "pending",
+        "title": "Fund additional affordable meal stock"
+      }
+    ],
+    "ballots": 0,
+    "news": {
+      "published": 1,
+      "residents_reading": 5
+    },
+    "note": "Scenario rates, support transfers and freelance demand are authored assumptions; this is not a calibrated economy or a validated model of political behavior."
+  },
+  "rejected_actions": {
+    "this work period is outside my agreed hours": 1,
+    "the destination will be closed when I arrive": 6
+  },
+  "interviews": {
+    "responses": 0,
+    "human_believability_score": null,
+    "note": "Run the interview command and collect blinded human ratings; no automatic score is fabricated."
+  }
+}

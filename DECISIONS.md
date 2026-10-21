@@ -32,6 +32,14 @@
 - Explicitly configure a second-day delivery delay for the pressure scenario.
   Existing stock remains available, supply stays finite, and the council's
   policy can spend only actual treasury funds on remaining wholesale goods.
+- Preserve last-observed shop stock with its observation time and source. A
+  remote sale does not alter an absent resident's knowledge; reading an older
+  bulletin cannot replace a newer personal observation. New supply information
+  enters through ordinary perception or the owner's phone, never omniscience.
+- Retain the interrupted early runs as diagnostics and use fresh directories
+  after the stock-knowledge fix. Their calls/costs stay separate from the final
+  three-day measurement. Record cancellation as incomplete, not initialized or
+  successfully completed, while retaining uncertain call reservations.
 
 ## Live API follow-up — Exact free route and zero spending
 - The user's latest instruction authorizes OpenRouter calls using the supplied

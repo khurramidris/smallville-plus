@@ -21,6 +21,8 @@ def economic_action(context: dict, intend):
                 continue
             if context["account"]["cents"] < shop["price_cents"]:
                 continue
+            if shop["observed_stock"] == 0 and minute - shop["observed_at"] < 360:
+                continue
             if location == here and economy["local_shop"]["stock"] == 0:
                 continue
             shops.append((shop["price_cents"], travel, location))
@@ -47,5 +49,11 @@ def economic_action(context: dict, intend):
             )
     if context["needs"]["fullness"] < 38 and not inventory["meals"]:
         # Scarcity is not repaired by a fixture granting free inventory.
+        if here != context["self"]["home"]:
+            return intend(
+                "move",
+                target=context["self"]["home"],
+                text="I need to reconsider food options at home.",
+            )
         return intend("wait", duration=30, text="I have no food and need to reconsider my options.")
     return None

@@ -199,6 +199,7 @@ class Simulation:
                             "Local food supply bulletin",
                             body,
                             sources=[stock_event.seq],
+                            shop_reports=stock_event.data["stock"],
                         )
                     )
                 elif item.kind == "economic_rent":
@@ -243,6 +244,8 @@ class Simulation:
                         continue
                     advance_drives(actor, item.minute)
                     changes = self.gm.messaging.read_changes(actor, item.minute)
+                    if self.config.phase == 3:
+                        changes.extend(self.economy.perception_changes(actor, item.minute))
                     changes.append(change("agents", actor.id, actor))
                     await self._publish(
                         self.world.log.append(
@@ -276,6 +279,8 @@ class Simulation:
                     else:
                         self.wake(actor.id, item.minute + 15)
                 await asyncio.sleep(0)  # Cooperative scheduling, never wall-time simulation.
+        except asyncio.CancelledError:
+            status, problem = "interrupted", "operator cancelled the simulation"
         except BudgetExceeded:
             status, problem = (
                 "budget_stopped",

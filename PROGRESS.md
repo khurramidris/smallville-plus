@@ -39,6 +39,23 @@
   The live process received the existing authorized key through hidden input;
   no key file or paid fallback was added. Results remain pending.
 
+### Phase 3 step 3 — Observed stock and interruption fixes
+- The expanded diagnostic exposed repeated trips between empty shops: local
+  stock observations were lost after leaving. Added owner-scoped, timestamped
+  shop observations. Only a visit or a read, evidence-backed supply bulletin
+  updates them; remote changes and newer private observations remain private.
+- Mock shoppers now use dated observations instead of repeatedly treating empty
+  shops as unknown. Scarcity is still allowed to persist; no free goods are added.
+- Retained interrupted diagnostics: 100-resident mock reached minute 840 with
+  3,038 synthetic calls; live reached minute 410 with 52 attempts (51 known
+  responses, one interrupted/uncertain), all $0. Original histories are retained
+  in `runs/*-diagnostic` with explicit interruption events and compact reports.
+- Added graceful cancellation to record elapsed activity and incomplete status.
+  Reading new notices can trigger replanning. Phase 3 tests: **20 passed offline
+  in 13.80 seconds**; the preceding full suite passed 62 cases in 153.44 seconds.
+- Next: freeze the corrected implementation, repeat final regression and run
+  fresh three-day scenarios. No blocked request was bypassed or paid route used.
+
 ## Current follow-up — Authorized live inference
 - **Completed.** The 25-resident real-API day passes; evidence and problems are
   in `reports/LIVE_API_REPORT.md`. Development remains stopped at Phase 2.

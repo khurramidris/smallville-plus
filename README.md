@@ -159,6 +159,9 @@ travel to an open shop and spend ten minutes purchasing finite stock. Meals are
 portable and eating consumes one. Shops replenish at 06:00, paying $3/meal to a
 finite wholesaler. `--supply-delay-day 1` explicitly delays the second day's
 delivery; it does not destroy goods or manufacture a shortage outcome.
+Residents retain dated stock observations from their own visits and from supply
+bulletins they read. These are last-known values, not live remote inventory.
+An older bulletin cannot overwrite a more recent visit.
 
 Residents can read/post on the town notice board and vote once in a secret
 council poll from February 13 08:00 until February 15 12:00. The food-stock
@@ -179,6 +182,8 @@ agent perception: personal bank statements and ballots never enter other minds.
 The report audits every account against initial balances and transfers, verifies
 money/meal conservation and reports arrears, scarcity and policy execution.
 Town money is fictional and always separate from real API USD.
+Cancelling a run records its elapsed time and `interrupted` status; an in-flight
+model request retains its uncertain reservation. Replay does not resume it.
 
 These systems are deliberately small and uncalibrated: no product variety,
 labor market, market-clearing prices, credit, Graphiti or social-media platform.
