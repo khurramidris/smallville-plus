@@ -48,6 +48,15 @@
   preserving the earlier interrupted run and every cost record. Production
   behavior is frozen at `8e2b410`; no later phase or paid fallback is included.
 
+### Resumption step 3 — Exact optimized replay and live inference
+- All 14,679 optimized original-cohort events reproduce identical state and JSONL
+  bytes. Every resident accounts for all 4,320 minutes; all conservation audits pass.
+- The fresh authorized API experiment has begun with real overlapping requests,
+  zero recorded USD and no provider failures so far. Timings now distinguish
+  provider duration from time waiting for a concurrency slot.
+- The expanded optimized 100-person offline scenario is also running. Preserve
+  production behavior and retain all earlier diagnostic/interrupted artifacts.
+
 ## Phase 3 authorization and scope
 - Authorized on 2026-10-21: implement the next phase, then run three simulated
   days. Scope and acceptance are in `PHASE3.md`; original `SPEC.md` is unchanged.

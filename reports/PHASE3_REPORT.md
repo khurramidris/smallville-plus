@@ -1,9 +1,39 @@
 # Phase 3 — Economy, council and three-day experiments
 
-**Implementation and both three-day offline scenarios are complete. The live API
-experiment was stopped at the user's request after 21 simulated hours; the
-three-day live run is incomplete.** All simulation and viewer processes are
-stopped. No Phase 4 work was started and no paid service was added.
+**Phase 3 has resumed with a performance and planning pass. The optimized
+25-person three-day offline scenario and all 83 tests pass. A fresh three-day
+API experiment and expanded offline run are in progress.** The previous live
+experiment remains preserved as interrupted at 21 hours. No Phase 4 work was
+started and no paid service was added.
+
+## Resumption — performance and planning
+
+`--optimized` enables bounded same-time decisions (four for this experiment),
+atomic in-flight budget reservations, duplicate-request caching, bounded phone
+context, explicit known movement/work constraints and recent rejection feedback.
+Only a person's chosen work/sleep/leisure can continue without another model
+decision, for at most two hours with hourly checks. New information, needs,
+appointments and GM rules interrupt it. Social decisions still use the model.
+
+Decisions read a fixed scene and apply in scheduler order. Per-call provider and
+queue timings are separate from deterministic events. All tasks settle before a
+cancelled run finishes. Production behavior is frozen at `8e2b410`.
+
+- **83 tests pass offline in 142.49 seconds**, including overlap, in-flight caps,
+  cancellation, privacy/ordered capacity checks and cached/event replay.
+- Optimized 25-person fixture: **2,870 requests**, versus 3,317 previously
+  (13.5% fewer); **332.999 wall seconds**, versus 389.783. Competing work differed,
+  so this is not an isolated timing benchmark. Both runs cover three days.
+- All **14,679** optimized events replay to byte-identical JSONL and identical
+  state. All money, food, ledger, work-limit and elapsed-activity audits pass.
+- A fixed-100ms synthetic provider probe measured **4.07x** gateway throughput
+  with four concurrent requests. This is not an API or full-engine speed claim.
+- Fresh live inference and expanded optimized-run results are pending. They use
+  separate directories/reports; none overwrite the prior experiments below.
+
+Evidence: [optimized fixture](phase3/optimized-mock-25-simulation.json),
+[replay](phase3/optimized-mock-25-verification.json),
+[synthetic concurrency probe](phase3/concurrency-probe.json).
 
 ## Built
 
@@ -82,7 +112,7 @@ CLI validation and derived initial-awareness counting; reports were recomputed
 from unchanged event histories. Final production behavior is frozen at
 `87778b4` for the API experiment.
 
-## Live API experiment — interrupted by user
+## Original live API experiment — interrupted by user
 
 The original 25 residents were scheduled for three days on the authorized
 `openrouter/minimax/minimax-m3.1-flash:free` route through LiteLLM. Published
@@ -142,8 +172,8 @@ No blinded human ratings, matched paper replication, live 100-resident cohort,
 paid-price validation or 1,000-agent load test was performed. These results do not
 establish that Smallville+ exceeds the original paper's realism.
 
-The requested three-day live experiment remains unfinished. Development and
-inference are stopped; no further work is scheduled after the user's stop.
+That experiment's three-day objective was unfinished at the user's stop. A fresh
+experiment is now authorized by the user's resumption; its results are pending.
 
 Evidence: [offline checks](phase3/offline-checks.json),
 [25-person report](phase3/mock-25-simulation.json),

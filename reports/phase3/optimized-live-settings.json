@@ -1,0 +1,26 @@
+{
+  "phase": 3,
+  "supply_delay_day": 1,
+  "backend": "litellm",
+  "seed": 42,
+  "max_usd": "0",
+  "model_deep": "openrouter/minimax/minimax-m3.1-flash:free",
+  "model_fast": "openrouter/minimax/minimax-m3.1-flash:free",
+  "model_gm": "openrouter/minimax/minimax-m3.1-flash:free",
+  "embed_model": "local/lexical",
+  "model_overrides": {},
+  "prices": {
+    "openrouter/minimax/minimax-m3.1-flash:free": {
+      "input": "0",
+      "output": "0"
+    }
+  },
+  "max_tokens": 4096,
+  "timeout_seconds": 180.0,
+  "reasoning_effort": "low",
+  "allow_paid": true,
+  "replay_only": false,
+  "decision_concurrency": 4,
+  "routine_actions": true,
+  "compact_context": true
+}
