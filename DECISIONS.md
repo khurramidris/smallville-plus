@@ -31,6 +31,9 @@
   Aggregate known prior/new usage once; disclose unknown usage and the missing
   exact shutdown duration. This recovery is restricted to the authorized zero-
   price route and $0 cap; it does not reset a paid run's budget.
+- Describe the inspected plan as recorded rather than always "today's": replay
+  can end at midnight before any next-day planning. This is a display correction,
+  with no new model calls or changes to the frozen experiment.
 
 ## User-requested stop — Phase 3
 - The explicit stop overrides the outstanding three-day live objective. Cancel

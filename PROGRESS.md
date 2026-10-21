@@ -125,6 +125,16 @@
   the two unknown interrupted requests visible. The new attempt's cache hits do
   not represent new provider calls. Both attempts retain the $0 cap.
 
+### Resumption step 10 — Live council outcome and viewer wording
+- The real-model council vote closed on day 3 at noon: 21 yes, 3 no, no explicit
+  abstentions; 24 of 25 eligible residents voted. The passed policy spent 30,000
+  town cents moving 100 existing wholesale meals to the market. Cash stays conserved.
+- The party window completed with three confirmed guests (Maria, Ryan, Tamara),
+  with Isabella hosting. The final evening and end-of-run audits remain pending.
+- Changed the viewer label to "Recorded plan", so an end-of-window midnight
+  snapshot does not imply that a new day has already been planned. Presentation
+  only; simulation behavior remains unchanged at `8e2b410`.
+
 ## Phase 3 authorization and scope
 - Authorized on 2026-10-21: implement the next phase, then run three simulated
   days. Scope and acceptance are in `PHASE3.md`; original `SPEC.md` is unchanged.
