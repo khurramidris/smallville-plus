@@ -31,6 +31,22 @@
 - Key values are absent from project files and logs. No paid route, 100-resident
   live day, real Twin/GSS fidelity evaluation or Phase 3 work was performed.
 
+### Live-day behavior review — 2026-10-21
+- Read the completed messages, calendars and action events through read-only
+  SQLite to answer the user's request for a narrative summary. No new API calls.
+- Corrected the report: Isabella sent two complete party invitations, both
+  accepted. The machine count of zero misses the written `5:00 to 7:00 p.m.`
+  time format; original metric artifacts are retained unchanged.
+- Found a date/coordination defect: Carlos booked and attended his own party
+  entry on February 13, while the host's event is February 14. The GM accepted
+  his calendar without checking a matching host event. Actual party attendance
+  remains outside the run's horizon.
+- Recorded coffee, literature, performance and election storylines, while
+  separating plans/co-location from confirmed communication and outcomes.
+- Open issues for later authorized development: time parsing, shared-event/date
+  validation, repeated meals/trips and stale plans. Development remains stopped
+  at Phase 2; this review changes documentation only.
+
 ## Current work — Phase 2
 - **Completed and stopped at Phase 2.** Final evidence is in
   `reports/PHASE2_REPORT.md`; 39 offline tests and the 100-resident day pass.

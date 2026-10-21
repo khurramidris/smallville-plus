@@ -112,11 +112,44 @@ path is documented.
 
 The residents sent **44 messages**. Retained Sam campaign awareness stayed at
 1/25; party awareness grew from 1/25 to 3/25. Mutual-knowledge density grew from
-0.2333 to 0.2467. The current full-schedule invitation detector counted zero
-invitations. These indicate weak information diffusion and coordination in this
-one-day configuration. The Valentine's attendance window starts at minute 2,460,
-outside this run; attendance was not observed. The paper's two-day results are
-not a matched comparison.
+0.2333 to 0.2467. **Manual message review found two complete invitations from
+Isabella, to Maria and Carlos; both accepted.** The full-schedule detector's
+reported zero is a parsing bug: it recognizes `5pm` and `17:00` but misses
+`5:00 to 7:00 p.m.`. Retain the original machine output as evidence, rather
+than interpreting it as zero actual invitations. Campaign diffusion was absent
+and party reach was limited in this one-day configuration. The real Valentine's
+attendance window starts at minute 2,460, outside this run; attendance at that
+party was not observed. The paper's two-day results are not a matched comparison.
+
+### Manual behavior review
+
+- Isabella worked at Hobbs Cafe, exchanged seasonal drink ideas with Arthur,
+  and invited Maria and Carlos to the next day's party. Carlos accepted the
+  request to bring a poem. Drink production and a poetry performance were not
+  recorded as separate outcomes.
+- Carlos put the party in his own calendar at minutes 1,020–1,140: **February
+  13, 17:00–19:00, a day early**. Maria and Isabella used the correct minutes
+  2,460–2,580. Carlos travelled to the cafe and completed two `attend` actions
+  that evening. The GM accepted his own calendar entry without a matching host
+  event. This is a date/coordination validation defect, not evidence that the
+  actual Valentine's party took place.
+- Maria and Klaus arranged coffee and had overlapping cafe leisure time in
+  the morning. Later actions kept returning to the same coffee goal. Ayesha
+  and Wolfgang arranged a Shakespeare discussion, but their messages and
+  waiting continued beyond the agreed time. Co-location and action descriptions
+  alone do not establish a completed conversation.
+- Francisco and Hailey tried to arrange a performance collaboration. They
+  overlapped at the cafe before closing; Hailey later proposed the pub, while
+  Francisco went home for dinner. No completed performance plan was recorded.
+- Adam, Yuriko, Carmen, Arthur and Jane exchanged election questions. Jane
+  declined to speculate without reliable candidate information. Sam did not
+  send a campaign message, and nobody propagated his candidacy.
+
+Repeated meals, repeated cafe/park trips and stale meeting goals also occurred.
+These point to action-state and plan-reconciliation problems; they should not
+be presented as demonstrated humanlike forgetfulness. Fixing the time parser
+and shared-event/date validation remains future work. No additional inference
+or simulation was run for this review.
 
 Mean daily hours were 8.441 sleeping, 6.645 working/studying, 3.601 leisure,
 0.707 travelling and 4.605 other activity. Needs, scheduling and the broad

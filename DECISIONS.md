@@ -34,6 +34,17 @@
   free model. It does not validate paid prices, real-model Twin/GSS fidelity or
   the expanded population on API inference. Stop before Phase 3.
 
+### Live-day narrative review
+- Base the resident summary on read-only messages, calendar dates and completed
+  action events. An intention or overlapping locations does not establish that
+  a conversation or performance happened.
+- Preserve original machine metrics and explicitly annotate the invitation
+  parser false negative: two actual host invitations use a time format the
+  scorer does not recognize. Do not equate a zero detector count with no invites.
+- Report Carlos's day-early attendance as a scheduling/GM consistency defect,
+  not as successful party coordination or evidence of realistic forgetfulness.
+  Document the fix as future work; the user requested a summary, not a new run.
+
 ## Phase 2 — Authorization and research boundaries
 - The user's new instruction advances development to Phase 2 only. Keep the
   original specification and Phase 1 evidence intact, and add `PHASE2.md` for
