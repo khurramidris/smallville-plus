@@ -1,0 +1,29 @@
+{
+  "minute": 1262,
+  "cost": {
+    "calls": 752,
+    "cache_hits": 0,
+    "input_tokens": 2611453,
+    "output_tokens": 169548,
+    "usd": "0",
+    "max_usd": "0",
+    "uncertain_calls": 1,
+    "accounting": "conservative configured token prices; not a provider invoice"
+  },
+  "requests_by_status": {
+    "ok": 751,
+    "reserved": 1
+  },
+  "timing": {
+    "timed_calls": 751,
+    "provider_calls": 751,
+    "provider_seconds_sum": 3284.195,
+    "provider_ms_mean": 4373.096,
+    "provider_ms_p50": 3418.25,
+    "provider_ms_p95": 10440.751,
+    "queue_ms_sum": 41322.24,
+    "note": "Provider duration includes network and generation; concurrent durations overlap."
+  },
+  "wall_seconds": 2202.262,
+  "interpretation": "Progress sample during the first evening, not a completed-horizon timing test. Reserved requests are in flight, not confirmed failures. Different responses and attention cadence prevent a controlled speed comparison."
+}

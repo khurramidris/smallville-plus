@@ -1,0 +1,29 @@
+{
+  "status": "passed",
+  "residents": 100,
+  "minutes": 4320,
+  "audits": {
+    "money_conserved": true,
+    "food_conserved": true,
+    "nonnegative_accounts": true,
+    "ledger_matches_accounts": true,
+    "work_limits_respected": true
+  },
+  "state_equal": true,
+  "jsonl_byte_identical": true,
+  "event_log_sha256": "6876bec5e21a8ed2671a6e5ce50aeb4cbfc950dc30e263af37d77ef9a03a455c",
+  "events": 59359,
+  "all_activity_minutes_match": true,
+  "inference_during_verification": 0,
+  "runtime_cost": {
+    "calls": 12141,
+    "cache_hits": 0,
+    "input_tokens": 51851835,
+    "output_tokens": 621026,
+    "usd": "0",
+    "uncertain_calls": 0,
+    "usd_per_agent_per_simulated_day": "0E+1",
+    "max_usd": "0",
+    "accounting": "MockLLM has no billable tokens or USD; token counts are synthetic."
+  }
+}

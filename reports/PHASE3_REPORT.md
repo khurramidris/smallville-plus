@@ -2,7 +2,8 @@
 
 **Phase 3 has resumed with a performance and planning pass. The optimized
 25- and 100-person three-day offline scenarios and all 83 tests pass. A fresh
-three-day API experiment and expanded event replay are in progress.** The previous live
+three-day API experiment is in progress; both expanded and original-cohort
+optimized event replays pass.** The previous live
 experiment remains preserved as interrupted at 21 hours. No Phase 4 work was
 started and no paid service was added.
 
@@ -35,11 +36,16 @@ cancelled run finishes. Production behavior is frozen at `8e2b410`.
   23,081 town cents; eleven are hungry without meals. Party: 29/49 guests.
 - These modes change attention/history limits and action timing, so their
   behavior is not guaranteed identical. Social fixture results remain scripted.
-- Fresh live inference and expanded event replay results are pending. They use
+- All **59,359** optimized expanded events reproduce identical state and JSONL
+  bytes; every resident accounts for every minute. No inference during replay.
+- Fresh live inference results are pending. They use
   separate directories/reports; none overwrite the prior experiments below.
 
 Evidence: [optimized fixture](phase3/optimized-mock-25-simulation.json),
 [replay](phase3/optimized-mock-25-verification.json),
+[expanded fixture](phase3/optimized-mock-100-simulation.json),
+[expanded replay](phase3/optimized-mock-100-verification.json),
+[offline checks](phase3/optimized-offline-checks.json),
 [synthetic concurrency probe](phase3/concurrency-probe.json).
 
 ## Built

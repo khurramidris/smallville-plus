@@ -70,6 +70,17 @@
 - Full expanded event replay is in progress. The live API run continues through
   day one's evening with no provider failures so far and recorded cost $0.
 
+### Resumption step 5 — Expanded replay accepted
+- All 59,359 expanded-run events reproduce byte-identical JSONL and identical
+  state. All 100 residents account for 4,320 minutes; conservation, account,
+  ledger and work-limit audits pass. No inference during verification.
+- Retained all reports and hashes. The live first evening reached 21:00 after
+  approximately 36 minutes, compared with 84 for the previous interrupted run.
+  Different responses, attention cadence and in-flight work prevent a controlled
+  speed claim; `optimized-live-first-evening.json` preserves the actual sample.
+- Remaining: finish the live three-day horizon, verify complete cached/event
+  replay, capture the final viewer and publish final timing/cost/behavior results.
+
 ## Phase 3 authorization and scope
 - Authorized on 2026-10-21: implement the next phase, then run three simulated
   days. Scope and acceptance are in `PHASE3.md`; original `SPEC.md` is unchanged.

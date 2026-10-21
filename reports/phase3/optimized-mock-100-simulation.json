@@ -1,0 +1,960 @@
+{
+  "run": {
+    "benchmark": "valentine",
+    "completed_minutes": 4320,
+    "epoch": "2023-02-13T00:00:00+00:00",
+    "phase": 3,
+    "problem": null,
+    "requested_minutes": 4320,
+    "status": "completed"
+  },
+  "backend": "mock",
+  "agents": 100,
+  "interpretation": "Deterministic scripted MockLLM fixture: engineering evidence only, not realism or emergence.",
+  "paper_reference": {
+    "source": "https://arxiv.org/html/2304.03442v2#S7.SS1",
+    "agents": 25,
+    "days": 2,
+    "sam_awareness": 8,
+    "party_awareness": 13,
+    "party_invited_guests": 12,
+    "party_attending_guests": 5,
+    "network_density_initial": 0.167,
+    "network_density_final": 0.74
+  },
+  "diffusion": {
+    "sam": {
+      "initial": 1,
+      "retained_final": 59,
+      "paper_final": 8
+    },
+    "party": {
+      "initial": 1,
+      "retained_final": 49,
+      "paper_final": 13
+    },
+    "method": "Retained memory evidence, not omniscient delivery or unverified interview assertions."
+  },
+  "relationships": {
+    "initial_density": 0.03373737373737374,
+    "final_density": 0.1191919191919192,
+    "growth": 0.08545454545454545,
+    "definition": "Undirected edge only when both residents have relationship records; negative ties count."
+  },
+  "party": {
+    "invited_guests": 49,
+    "read_invitation_guests": 49,
+    "attending_guests": 29,
+    "guest_ids": [
+      "aaron_peterson_f1d1dd",
+      "abigail_chen",
+      "ana_rodriguez_e1bfa0",
+      "angela_johnson_817c12",
+      "angela_perez_9c3251",
+      "angela_rossi_1a9fcb",
+      "anita_kumar_5d8c37",
+      "anthony_bennett_e7e14d",
+      "anthony_monaco_636b66",
+      "arthur_burton",
+      "ayesha_khan",
+      "brian_fuller_96f031",
+      "carmen_ortiz",
+      "claudia_schultz_27d5d0",
+      "david_garcia_5adb62",
+      "francisco_lopez",
+      "giorgio_rossi",
+      "hailey_johnson",
+      "james_anderson_d8a479",
+      "jennifer_taylor_d116bc",
+      "linda_mitchell_b11047",
+      "linda_zimmer_f20797",
+      "madyson_oconnor_b10cb4",
+      "maria_martinez_5c472c",
+      "rajiv_patel",
+      "ryan_park",
+      "timothy_collins_650e1f",
+      "tyrone_jackson_2b7925",
+      "virginia_wilcox_bc1fa8"
+    ],
+    "invited_attending_guests": 29,
+    "attendance_rate": 0.5918367346938775,
+    "paper_attendance_rate": 0.4166666666666667,
+    "window": {
+      "location": "hobbs_cafe",
+      "start": 2460,
+      "end": 2580
+    },
+    "method": "Completed attend actions overlapping the party window; host excluded."
+  },
+  "anti_homogeneity": {
+    "seeded_opinion_variance": 0.31114571,
+    "observed_daily_behavior_variance": {
+      "sleep_hours": 0.1809402345679012,
+      "work_hours": 8.112521654320988,
+      "leisure_hours": 11.565784231481482,
+      "travel_hours": 0.05031875,
+      "other_hours": 3.515548074074074
+    },
+    "note": "Opinion values are synthetic heterogeneous priors; survey fidelity is not measured."
+  },
+  "daily_life": {
+    "average_hours": {
+      "sleep_hours": 8.442111111111112,
+      "work_hours": 3.537333333333333,
+      "leisure_hours": 8.844277777777778,
+      "travel_hours": 0.5391666666666667,
+      "other_hours": 2.637111111111111
+    },
+    "per_agent": {
+      "aaron_peterson_f1d1dd": {
+        "sleep_hours": 8.933333333333334,
+        "work_hours": 6.3277777777777775,
+        "leisure_hours": 6.55,
+        "travel_hours": 0.38333333333333336,
+        "other_hours": 1.8055555555555556
+      },
+      "abigail_chen": {
+        "sleep_hours": 8.916666666666666,
+        "work_hours": 4.366666666666666,
+        "leisure_hours": 4.511111111111111,
+        "travel_hours": 0.7888888888888889,
+        "other_hours": 5.416666666666667
+      },
+      "adam_smith": {
+        "sleep_hours": 8.5,
+        "work_hours": 6.333333333333333,
+        "leisure_hours": 6.466666666666667,
+        "travel_hours": 0.8666666666666667,
+        "other_hours": 1.8333333333333333
+      },
+      "alan_kowalski_990a58": {
+        "sleep_hours": 7.933333333333334,
+        "work_hours": 0.0,
+        "leisure_hours": 13.644444444444444,
+        "travel_hours": 0.4777777777777778,
+        "other_hours": 1.9444444444444444
+      },
+      "alejandra_garcia_4e1127": {
+        "sleep_hours": 8.827777777777778,
+        "work_hours": 2.0722222222222224,
+        "leisure_hours": 2.1166666666666667,
+        "travel_hours": 0.5444444444444444,
+        "other_hours": 10.438888888888888
+      },
+      "ana_rodriguez_e1bfa0": {
+        "sleep_hours": 7.883333333333334,
+        "work_hours": 6.5055555555555555,
+        "leisure_hours": 7.644444444444445,
+        "travel_hours": 0.4111111111111111,
+        "other_hours": 1.5555555555555556
+      },
+      "angela_johnson_817c12": {
+        "sleep_hours": 7.9,
+        "work_hours": 6.6722222222222225,
+        "leisure_hours": 7.05,
+        "travel_hours": 0.5166666666666667,
+        "other_hours": 1.8611111111111112
+      },
+      "angela_martinez_72f9b8": {
+        "sleep_hours": 8.433333333333334,
+        "work_hours": 0.0,
+        "leisure_hours": 13.922222222222222,
+        "travel_hours": 0.3111111111111111,
+        "other_hours": 1.3333333333333333
+      },
+      "angela_perez_9c3251": {
+        "sleep_hours": 8.9,
+        "work_hours": 4.0,
+        "leisure_hours": 8.988888888888889,
+        "travel_hours": 0.4444444444444444,
+        "other_hours": 1.6666666666666667
+      },
+      "angela_rossi_1a9fcb": {
+        "sleep_hours": 8.5,
+        "work_hours": 4.0,
+        "leisure_hours": 8.972222222222221,
+        "travel_hours": 0.4444444444444444,
+        "other_hours": 2.0833333333333335
+      },
+      "anita_kumar_5d8c37": {
+        "sleep_hours": 8.3,
+        "work_hours": 4.333333333333333,
+        "leisure_hours": 4.477777777777778,
+        "travel_hours": 0.6555555555555556,
+        "other_hours": 6.233333333333333
+      },
+      "anne_finley_ab6f04": {
+        "sleep_hours": 9.0,
+        "work_hours": 0.0,
+        "leisure_hours": 13.03888888888889,
+        "travel_hours": 0.43333333333333335,
+        "other_hours": 1.5277777777777777
+      },
+      "anthony_bennett_2a1b92": {
+        "sleep_hours": 8.0,
+        "work_hours": 6.533333333333333,
+        "leisure_hours": 7.588888888888889,
+        "travel_hours": 0.43333333333333335,
+        "other_hours": 1.4444444444444444
+      },
+      "anthony_bennett_e7e14d": {
+        "sleep_hours": 8.9,
+        "work_hours": 6.055555555555555,
+        "leisure_hours": 6.105555555555555,
+        "travel_hours": 0.7444444444444445,
+        "other_hours": 2.1944444444444446
+      },
+      "anthony_monaco_636b66": {
+        "sleep_hours": 9.0,
+        "work_hours": 5.6722222222222225,
+        "leisure_hours": 5.761111111111111,
+        "travel_hours": 0.45555555555555555,
+        "other_hours": 3.111111111111111
+      },
+      "anthony_williams_fdaa94": {
+        "sleep_hours": 8.0,
+        "work_hours": 4.0,
+        "leisure_hours": 9.944444444444445,
+        "travel_hours": 0.3055555555555556,
+        "other_hours": 1.75
+      },
+      "arthur_burton": {
+        "sleep_hours": 8.466666666666667,
+        "work_hours": 4.027777777777778,
+        "leisure_hours": 6.666666666666667,
+        "travel_hours": 0.7833333333333333,
+        "other_hours": 4.055555555555555
+      },
+      "ayesha_khan": {
+        "sleep_hours": 7.955555555555556,
+        "work_hours": 4.211111111111111,
+        "leisure_hours": 4.866666666666666,
+        "travel_hours": 0.8888888888888888,
+        "other_hours": 6.0777777777777775
+      },
+      "brian_fuller_96f031": {
+        "sleep_hours": 8.5,
+        "work_hours": 6.5777777777777775,
+        "leisure_hours": 7.233333333333333,
+        "travel_hours": 0.3277777777777778,
+        "other_hours": 1.3611111111111112
+      },
+      "carlos_gomez": {
+        "sleep_hours": 8.983333333333333,
+        "work_hours": 4.461111111111111,
+        "leisure_hours": 4.7444444444444445,
+        "travel_hours": 0.4777777777777778,
+        "other_hours": 5.333333333333333
+      },
+      "carlos_lopez_2d3965": {
+        "sleep_hours": 8.0,
+        "work_hours": 6.366666666666666,
+        "leisure_hours": 7.061111111111111,
+        "travel_hours": 0.6277777777777778,
+        "other_hours": 1.9444444444444444
+      },
+      "carmen_ortiz": {
+        "sleep_hours": 8.0,
+        "work_hours": 6.211111111111111,
+        "leisure_hours": 6.533333333333333,
+        "travel_hours": 0.8944444444444445,
+        "other_hours": 2.361111111111111
+      },
+      "charles_hildebrand_0b317a": {
+        "sleep_hours": 8.4,
+        "work_hours": 6.611111111111111,
+        "leisure_hours": 6.766666666666667,
+        "travel_hours": 0.4722222222222222,
+        "other_hours": 1.75
+      },
+      "christopher_johnson_b2723f": {
+        "sleep_hours": 8.433333333333334,
+        "work_hours": 6.488888888888889,
+        "leisure_hours": 7.138888888888889,
+        "travel_hours": 0.5777777777777777,
+        "other_hours": 1.3611111111111112
+      },
+      "christopher_romero_373476": {
+        "sleep_hours": 9.0,
+        "work_hours": 6.622222222222222,
+        "leisure_hours": 6.511111111111111,
+        "travel_hours": 0.2,
+        "other_hours": 1.6666666666666667
+      },
+      "claudia_schultz_27d5d0": {
+        "sleep_hours": 8.0,
+        "work_hours": 4.0,
+        "leisure_hours": 10.45,
+        "travel_hours": 0.1388888888888889,
+        "other_hours": 1.4111111111111112
+      },
+      "david_garcia_5adb62": {
+        "sleep_hours": 8.933333333333334,
+        "work_hours": 6.261111111111111,
+        "leisure_hours": 6.266666666666667,
+        "travel_hours": 0.7111111111111111,
+        "other_hours": 1.8277777777777777
+      },
+      "deborah_rogers_360010": {
+        "sleep_hours": 8.433333333333334,
+        "work_hours": 4.0,
+        "leisure_hours": 9.8,
+        "travel_hours": 0.40555555555555556,
+        "other_hours": 1.3611111111111112
+      },
+      "deborah_whitaker_c0e3b1": {
+        "sleep_hours": 9.0,
+        "work_hours": 4.45,
+        "leisure_hours": 6.222222222222222,
+        "travel_hours": 0.6333333333333333,
+        "other_hours": 3.6944444444444446
+      },
+      "eddy_lin": {
+        "sleep_hours": 7.833333333333333,
+        "work_hours": 5.938888888888889,
+        "leisure_hours": 6.694444444444445,
+        "travel_hours": 0.8944444444444445,
+        "other_hours": 2.638888888888889
+      },
+      "elaine_duryea_7000b5": {
+        "sleep_hours": 8.0,
+        "work_hours": 0.0,
+        "leisure_hours": 14.594444444444445,
+        "travel_hours": 0.07222222222222222,
+        "other_hours": 1.3333333333333333
+      },
+      "elena_martinez_a1a6ee": {
+        "sleep_hours": 7.966666666666667,
+        "work_hours": 0.0,
+        "leisure_hours": 14.3,
+        "travel_hours": 0.28888888888888886,
+        "other_hours": 1.4444444444444444
+      },
+      "emily_johnson_867658": {
+        "sleep_hours": 8.466666666666667,
+        "work_hours": 6.344444444444444,
+        "leisure_hours": 6.333333333333333,
+        "travel_hours": 0.5777777777777777,
+        "other_hours": 2.2777777777777777
+      },
+      "eric_johnson_5d30ad": {
+        "sleep_hours": 7.9,
+        "work_hours": 6.666666666666667,
+        "leisure_hours": 7.483333333333333,
+        "travel_hours": 0.45,
+        "other_hours": 1.5
+      },
+      "francisco_garcia_02ed9e": {
+        "sleep_hours": 9.0,
+        "work_hours": 6.311111111111111,
+        "leisure_hours": 6.4222222222222225,
+        "travel_hours": 0.6,
+        "other_hours": 1.6666666666666667
+      },
+      "francisco_lopez": {
+        "sleep_hours": 8.0,
+        "work_hours": 5.8,
+        "leisure_hours": 6.322222222222222,
+        "travel_hours": 1.0722222222222222,
+        "other_hours": 2.8055555555555554
+      },
+      "giorgio_rossi": {
+        "sleep_hours": 9.0,
+        "work_hours": 6.338888888888889,
+        "leisure_hours": 6.316666666666666,
+        "travel_hours": 0.7333333333333333,
+        "other_hours": 1.6111111111111112
+      },
+      "gregory_harris_07e7f3": {
+        "sleep_hours": 8.433333333333334,
+        "work_hours": 0.0,
+        "leisure_hours": 13.527777777777779,
+        "travel_hours": 0.45555555555555555,
+        "other_hours": 1.5833333333333333
+      },
+      "hailey_johnson": {
+        "sleep_hours": 8.833333333333334,
+        "work_hours": 6.094444444444444,
+        "leisure_hours": 5.955555555555556,
+        "travel_hours": 0.8944444444444445,
+        "other_hours": 2.2222222222222223
+      },
+      "heather_johnson_c982f1": {
+        "sleep_hours": 8.383333333333333,
+        "work_hours": 4.0,
+        "leisure_hours": 8.533333333333333,
+        "travel_hours": 0.5833333333333334,
+        "other_hours": 2.5
+      },
+      "helen_anderson_708f55": {
+        "sleep_hours": 7.966666666666667,
+        "work_hours": 0.0,
+        "leisure_hours": 14.3,
+        "travel_hours": 0.28888888888888886,
+        "other_hours": 1.4444444444444444
+      },
+      "henry_armstrong_2b4bd9": {
+        "sleep_hours": 8.0,
+        "work_hours": 0.0,
+        "leisure_hours": 13.63888888888889,
+        "travel_hours": 0.3333333333333333,
+        "other_hours": 2.0277777777777777
+      },
+      "isabel_rodriguez_cfb260": {
+        "sleep_hours": 8.5,
+        "work_hours": 0.0,
+        "leisure_hours": 13.238888888888889,
+        "travel_hours": 0.28888888888888886,
+        "other_hours": 1.9722222222222223
+      },
+      "isabella_rodriguez": {
+        "sleep_hours": 9.0,
+        "work_hours": 8.0,
+        "leisure_hours": 4.822222222222222,
+        "travel_hours": 0.2611111111111111,
+        "other_hours": 1.9166666666666667
+      },
+      "jaden_williams_6d67a0": {
+        "sleep_hours": 8.883333333333333,
+        "work_hours": 0.0,
+        "leisure_hours": 12.844444444444445,
+        "travel_hours": 0.5777777777777777,
+        "other_hours": 1.6944444444444444
+      },
+      "james_anderson_d8a479": {
+        "sleep_hours": 7.933333333333334,
+        "work_hours": 0.0,
+        "leisure_hours": 13.605555555555556,
+        "travel_hours": 0.5444444444444444,
+        "other_hours": 1.9166666666666667
+      },
+      "jane_moreno": {
+        "sleep_hours": 8.866666666666667,
+        "work_hours": 0.0,
+        "leisure_hours": 12.4,
+        "travel_hours": 0.5944444444444444,
+        "other_hours": 2.138888888888889
+      },
+      "jennifer_moore": {
+        "sleep_hours": 9.0,
+        "work_hours": 5.711111111111111,
+        "leisure_hours": 6.161111111111111,
+        "travel_hours": 0.9611111111111111,
+        "other_hours": 2.1666666666666665
+      },
+      "jennifer_taylor_d116bc": {
+        "sleep_hours": 8.5,
+        "work_hours": 0.0,
+        "leisure_hours": 14.016666666666667,
+        "travel_hours": 0.20555555555555555,
+        "other_hours": 1.2777777777777777
+      },
+      "jessica_robertson_ccba11": {
+        "sleep_hours": 9.0,
+        "work_hours": 6.1722222222222225,
+        "leisure_hours": 6.388888888888889,
+        "travel_hours": 0.8277777777777777,
+        "other_hours": 1.6111111111111112
+      },
+      "john_lin": {
+        "sleep_hours": 7.833333333333333,
+        "work_hours": 6.177777777777778,
+        "leisure_hours": 7.138888888888889,
+        "travel_hours": 0.8222222222222222,
+        "other_hours": 2.0277777777777777
+      },
+      "juan_guzman_1aff47": {
+        "sleep_hours": 9.0,
+        "work_hours": 0.0,
+        "leisure_hours": 13.3,
+        "travel_hours": 0.3111111111111111,
+        "other_hours": 1.3888888888888888
+      },
+      "karina_castro_0e8069": {
+        "sleep_hours": 8.933333333333334,
+        "work_hours": 6.316666666666666,
+        "leisure_hours": 6.211111111111111,
+        "travel_hours": 0.6222222222222222,
+        "other_hours": 1.9166666666666667
+      },
+      "kathleen_brown_3168e3": {
+        "sleep_hours": 7.883333333333334,
+        "work_hours": 0.0,
+        "leisure_hours": 13.394444444444444,
+        "travel_hours": 0.5833333333333334,
+        "other_hours": 2.138888888888889
+      },
+      "kathryn_hathaway_1d5334": {
+        "sleep_hours": 7.966666666666667,
+        "work_hours": 0.0,
+        "leisure_hours": 14.3,
+        "travel_hours": 0.28888888888888886,
+        "other_hours": 1.4444444444444444
+      },
+      "kathryn_o_brien_34ceca": {
+        "sleep_hours": 8.777777777777779,
+        "work_hours": 0.0,
+        "leisure_hours": 9.155555555555555,
+        "travel_hours": 0.4,
+        "other_hours": 5.666666666666667
+      },
+      "klaus_mueller": {
+        "sleep_hours": 8.0,
+        "work_hours": 5.866666666666666,
+        "leisure_hours": 6.783333333333333,
+        "travel_hours": 0.9611111111111111,
+        "other_hours": 2.388888888888889
+      },
+      "latoya_williams": {
+        "sleep_hours": 8.0,
+        "work_hours": 6.05,
+        "leisure_hours": 6.988888888888889,
+        "travel_hours": 0.7944444444444444,
+        "other_hours": 2.1666666666666665
+      },
+      "laura_edwards_e942e0": {
+        "sleep_hours": 8.244444444444444,
+        "work_hours": 0.0,
+        "leisure_hours": 8.927777777777777,
+        "travel_hours": 0.6055555555555555,
+        "other_hours": 6.222222222222222
+      },
+      "linda_mitchell_b11047": {
+        "sleep_hours": 7.966666666666667,
+        "work_hours": 6.588888888888889,
+        "leisure_hours": 7.533333333333333,
+        "travel_hours": 0.35555555555555557,
+        "other_hours": 1.5555555555555556
+      },
+      "linda_reynolds_34f4c2": {
+        "sleep_hours": 8.5,
+        "work_hours": 0.0,
+        "leisure_hours": 13.494444444444444,
+        "travel_hours": 0.5333333333333333,
+        "other_hours": 1.4722222222222223
+      },
+      "linda_zimmer_f20797": {
+        "sleep_hours": 9.0,
+        "work_hours": 0.0,
+        "leisure_hours": 10.75,
+        "travel_hours": 0.6111111111111112,
+        "other_hours": 3.638888888888889
+      },
+      "lydia_bennett_97799c": {
+        "sleep_hours": 8.0,
+        "work_hours": 6.2555555555555555,
+        "leisure_hours": 6.766666666666667,
+        "travel_hours": 0.5333333333333333,
+        "other_hours": 2.4444444444444446
+      },
+      "madyson_oconnor_b10cb4": {
+        "sleep_hours": 8.4,
+        "work_hours": 6.6722222222222225,
+        "leisure_hours": 7.05,
+        "travel_hours": 0.5166666666666667,
+        "other_hours": 1.3611111111111112
+      },
+      "maria_gonzalez_2c90eb": {
+        "sleep_hours": 8.5,
+        "work_hours": 0.0,
+        "leisure_hours": 13.494444444444444,
+        "travel_hours": 0.5333333333333333,
+        "other_hours": 1.4722222222222223
+      },
+      "maria_gonzalez_b39965": {
+        "sleep_hours": 8.5,
+        "work_hours": 0.0,
+        "leisure_hours": 14.305555555555555,
+        "travel_hours": 0.1111111111111111,
+        "other_hours": 1.0833333333333333
+      },
+      "maria_lopez": {
+        "sleep_hours": 9.0,
+        "work_hours": 6.511111111111111,
+        "leisure_hours": 6.555555555555555,
+        "travel_hours": 0.43333333333333335,
+        "other_hours": 1.5
+      },
+      "maria_martinez_5c472c": {
+        "sleep_hours": 9.0,
+        "work_hours": 0.0,
+        "leisure_hours": 11.838888888888889,
+        "travel_hours": 0.4666666666666667,
+        "other_hours": 2.6944444444444446
+      },
+      "mei_lin": {
+        "sleep_hours": 8.233333333333333,
+        "work_hours": 4.844444444444444,
+        "leisure_hours": 3.977777777777778,
+        "travel_hours": 1.1277777777777778,
+        "other_hours": 5.816666666666666
+      },
+      "melvin_edwards_0f688e": {
+        "sleep_hours": 8.466666666666667,
+        "work_hours": 6.238888888888889,
+        "leisure_hours": 6.588888888888889,
+        "travel_hours": 0.7055555555555556,
+        "other_hours": 2.0
+      },
+      "miguel_santos_118ba3": {
+        "sleep_hours": 8.0,
+        "work_hours": 6.661111111111111,
+        "leisure_hours": 7.561111111111111,
+        "travel_hours": 0.2777777777777778,
+        "other_hours": 1.5
+      },
+      "nancy_thompson_baab89": {
+        "sleep_hours": 9.0,
+        "work_hours": 0.0,
+        "leisure_hours": 10.583333333333334,
+        "travel_hours": 0.5555555555555556,
+        "other_hours": 3.861111111111111
+      },
+      "natalia_chen_2fde45": {
+        "sleep_hours": 7.8,
+        "work_hours": 4.477777777777778,
+        "leisure_hours": 5.438888888888889,
+        "travel_hours": 0.36666666666666664,
+        "other_hours": 5.916666666666667
+      },
+      "olivia_hernandez_d9fdcf": {
+        "sleep_hours": 7.933333333333334,
+        "work_hours": 0.0,
+        "leisure_hours": 14.394444444444444,
+        "travel_hours": 0.25555555555555554,
+        "other_hours": 1.4166666666666667
+      },
+      "pablo_rivas_f4e211": {
+        "sleep_hours": 7.938888888888889,
+        "work_hours": 4.044444444444444,
+        "leisure_hours": 4.222222222222222,
+        "travel_hours": 0.6,
+        "other_hours": 7.194444444444445
+      },
+      "patricia_schultz_52b8f2": {
+        "sleep_hours": 8.5,
+        "work_hours": 0.0,
+        "leisure_hours": 14.166666666666666,
+        "travel_hours": 0.16666666666666666,
+        "other_hours": 1.1666666666666667
+      },
+      "patricia_smith_ed24d2": {
+        "sleep_hours": 8.966666666666667,
+        "work_hours": 0.0,
+        "leisure_hours": 12.033333333333333,
+        "travel_hours": 0.3333333333333333,
+        "other_hours": 2.6666666666666665
+      },
+      "phyllis_morris_a6e1f8": {
+        "sleep_hours": 9.0,
+        "work_hours": 0.0,
+        "leisure_hours": 13.594444444444445,
+        "travel_hours": 0.07222222222222222,
+        "other_hours": 1.3333333333333333
+      },
+      "phyllis_vitale_8ce24e": {
+        "sleep_hours": 8.433333333333334,
+        "work_hours": 0.0,
+        "leisure_hours": 13.416666666666666,
+        "travel_hours": 0.5111111111111111,
+        "other_hours": 1.6388888888888888
+      },
+      "rajiv_patel": {
+        "sleep_hours": 7.916666666666667,
+        "work_hours": 6.4944444444444445,
+        "leisure_hours": 7.5055555555555555,
+        "travel_hours": 0.4722222222222222,
+        "other_hours": 1.6111111111111112
+      },
+      "raymond_lopez_15cdc7": {
+        "sleep_hours": 9.0,
+        "work_hours": 0.0,
+        "leisure_hours": 12.916666666666666,
+        "travel_hours": 0.3888888888888889,
+        "other_hours": 1.6944444444444444
+      },
+      "ryan_hunter_d2bc6f": {
+        "sleep_hours": 8.466666666666667,
+        "work_hours": 6.261111111111111,
+        "leisure_hours": 6.361111111111111,
+        "travel_hours": 0.5777777777777777,
+        "other_hours": 2.3333333333333335
+      },
+      "ryan_park": {
+        "sleep_hours": 7.883333333333334,
+        "work_hours": 5.605555555555555,
+        "leisure_hours": 6.388888888888889,
+        "travel_hours": 0.6222222222222222,
+        "other_hours": 3.5
+      },
+      "sam_moore": {
+        "sleep_hours": 9.0,
+        "work_hours": 0.0,
+        "leisure_hours": 12.677777777777777,
+        "travel_hours": 0.7111111111111111,
+        "other_hours": 1.6111111111111112
+      },
+      "sunhee_kim_302887": {
+        "sleep_hours": 8.466666666666667,
+        "work_hours": 6.311111111111111,
+        "leisure_hours": 6.316666666666666,
+        "travel_hours": 0.6,
+        "other_hours": 2.3055555555555554
+      },
+      "susan_bell_aea282": {
+        "sleep_hours": 8.933333333333334,
+        "work_hours": 6.5,
+        "leisure_hours": 6.566666666666666,
+        "travel_hours": 0.37777777777777777,
+        "other_hours": 1.6222222222222222
+      },
+      "susan_bernhard_6ccfff": {
+        "sleep_hours": 8.433333333333334,
+        "work_hours": 0.0,
+        "leisure_hours": 12.566666666666666,
+        "travel_hours": 0.5555555555555556,
+        "other_hours": 2.4444444444444446
+      },
+      "susan_johnson_a1da0d": {
+        "sleep_hours": 8.383333333333333,
+        "work_hours": 0.0,
+        "leisure_hours": 13.372222222222222,
+        "travel_hours": 0.6055555555555555,
+        "other_hours": 1.6388888888888888
+      },
+      "tamara_johnson_cae249": {
+        "sleep_hours": 8.933333333333334,
+        "work_hours": 6.461111111111111,
+        "leisure_hours": 6.4222222222222225,
+        "travel_hours": 0.35,
+        "other_hours": 1.8333333333333333
+      },
+      "tamara_taylor": {
+        "sleep_hours": 7.916666666666667,
+        "work_hours": 5.4944444444444445,
+        "leisure_hours": 5.65,
+        "travel_hours": 0.8,
+        "other_hours": 4.138888888888889
+      },
+      "thomas_o_brien_2034d8": {
+        "sleep_hours": 7.883333333333334,
+        "work_hours": 6.377777777777778,
+        "leisure_hours": 7.572222222222222,
+        "travel_hours": 0.5277777777777778,
+        "other_hours": 1.6388888888888888
+      },
+      "timothy_collins_650e1f": {
+        "sleep_hours": 7.9,
+        "work_hours": 5.622222222222222,
+        "leisure_hours": 6.644444444444445,
+        "travel_hours": 0.7555555555555555,
+        "other_hours": 3.077777777777778
+      },
+      "tom_moreno": {
+        "sleep_hours": 8.294444444444444,
+        "work_hours": 2.066666666666667,
+        "leisure_hours": 2.2777777777777777,
+        "travel_hours": 0.9444444444444444,
+        "other_hours": 10.416666666666666
+      },
+      "tyrone_jackson_2b7925": {
+        "sleep_hours": 8.9,
+        "work_hours": 4.0,
+        "leisure_hours": 9.0,
+        "travel_hours": 0.40555555555555556,
+        "other_hours": 1.6944444444444444
+      },
+      "victor_gonzalez_444341": {
+        "sleep_hours": 8.433333333333334,
+        "work_hours": 0.0,
+        "leisure_hours": 12.983333333333333,
+        "travel_hours": 0.5555555555555556,
+        "other_hours": 2.0277777777777777
+      },
+      "virginia_wilcox_bc1fa8": {
+        "sleep_hours": 8.383333333333333,
+        "work_hours": 0.0,
+        "leisure_hours": 12.583333333333334,
+        "travel_hours": 0.5888888888888889,
+        "other_hours": 2.4444444444444446
+      },
+      "william_meyer_dbc673": {
+        "sleep_hours": 8.966666666666667,
+        "work_hours": 2.716666666666667,
+        "leisure_hours": 7.55,
+        "travel_hours": 0.6555555555555556,
+        "other_hours": 4.111111111111111
+      },
+      "william_roberts_bdeeb6": {
+        "sleep_hours": 7.777777777777778,
+        "work_hours": 0.0,
+        "leisure_hours": 9.916666666666666,
+        "travel_hours": 0.3888888888888889,
+        "other_hours": 5.916666666666667
+      },
+      "wolfgang_schulz": {
+        "sleep_hours": 8.277777777777779,
+        "work_hours": 2.0277777777777777,
+        "leisure_hours": 3.7944444444444443,
+        "travel_hours": 1.038888888888889,
+        "other_hours": 8.86111111111111
+      },
+      "yuriko_yamamoto": {
+        "sleep_hours": 8.783333333333333,
+        "work_hours": 6.55,
+        "leisure_hours": 6.45,
+        "travel_hours": 0.6777777777777778,
+        "other_hours": 1.538888888888889
+      }
+    },
+    "atus_reference": {
+      "source": "https://www.bls.gov/news.release/archives/atus_06262025.htm",
+      "year": 2024,
+      "population": "US civilian population age 15+, all days",
+      "sleep_hours": 9.04,
+      "work_hours": 3.13,
+      "leisure_hours": 5.07
+    },
+    "difference_hours": {
+      "sleep_hours": -0.5978888888888871,
+      "work_hours": 0.4073333333333333,
+      "leisure_hours": 3.774277777777778
+    },
+    "note": "Shape diagnostic only. Smallville occupations/age mix and two weekdays differ from ATUS. Study is grouped with work; leisure includes messages; travel is separate. No calibration claim."
+  },
+  "cost": {
+    "calls": 12141,
+    "cache_hits": 0,
+    "input_tokens": 51851835,
+    "output_tokens": 621026,
+    "usd": "0",
+    "uncertain_calls": 0,
+    "usd_per_agent_per_simulated_day": "0E+1",
+    "max_usd": "0",
+    "accounting": "MockLLM has no billable tokens or USD; token counts are synthetic."
+  },
+  "messages": 848,
+  "historical_messages": 4200,
+  "economy": {
+    "enabled": true,
+    "units": "fictional town cents and meal units, separate from API USD",
+    "assumptions": {
+      "initial_cents": 19873747,
+      "initial_meals": 974,
+      "last_restock_day": 2,
+      "rates": "fictional authored scenario",
+      "rent": "daily prorated household total $36, shared equally"
+    },
+    "audit": {
+      "initial_cents": 19873747,
+      "final_cents": 19873747,
+      "money_conserved": true,
+      "ledger_matches_accounts": true,
+      "mismatched_accounts": [],
+      "nonnegative_accounts": true,
+      "initial_meals": 974,
+      "remaining_meals": 506,
+      "consumed_meals": 468,
+      "food_conserved": true,
+      "work_limits_respected": true
+    },
+    "transfers": 1841,
+    "flows_cents": {
+      "pension/support": 423000,
+      "council-approved meal replenishment": 30000,
+      "meal purchase": 310000,
+      "prorated rent": 927319,
+      "wholesale replenishment": 52500,
+      "wages": 1820392
+    },
+    "rent_arrears_cents": 23081,
+    "residents_in_arrears": 11,
+    "unpaid_wages_cents": 0,
+    "shops": [
+      {
+        "account": "business:hobbs_cafe",
+        "daily_target": 50,
+        "id": "hobbs_cafe",
+        "price_cents": 800,
+        "product": "meal",
+        "stock": 0,
+        "wholesale_cents": 300
+      },
+      {
+        "account": "business:the_rose_and_crown_pub",
+        "daily_target": 25,
+        "id": "the_rose_and_crown_pub",
+        "price_cents": 1000,
+        "product": "meal",
+        "stock": 0,
+        "wholesale_cents": 300
+      },
+      {
+        "account": "business:the_willows_market_and_pharmacy",
+        "daily_target": 100,
+        "id": "the_willows_market_and_pharmacy",
+        "price_cents": 600,
+        "product": "meal",
+        "stock": 0,
+        "wholesale_cents": 300
+      }
+    ],
+    "resource_pressure": {
+      "residents_without_meals": 11,
+      "hungry_without_meals": 11,
+      "failed_purchases": 183,
+      "delayed_delivery_days": [
+        1
+      ]
+    },
+    "council": [
+      {
+        "body": "Spend up to $300 of town funds buying meals from the finite wholesaler for the town market. Retail prices stay unchanged. Funds and supply must exist.",
+        "budget_cents": 30000,
+        "closes": 3600,
+        "delivered_meals": 100,
+        "executed": true,
+        "id": "community_food",
+        "market": "the_willows_market_and_pharmacy",
+        "opens": 480,
+        "quorum": 50,
+        "result": {
+          "abstain": 11,
+          "no": 22,
+          "yes": 67
+        },
+        "status": "passed",
+        "title": "Fund additional affordable meal stock",
+        "turnout": 100
+      }
+    ],
+    "ballots": 100,
+    "news": {
+      "published": 5,
+      "residents_reading": 100
+    },
+    "note": "Scenario rates, support transfers and freelance demand are authored assumptions; this is not a calibrated economy or a validated model of political behavior."
+  },
+  "rejected_actions": {
+    "the destination has no space available": 558,
+    "not enough food": 48,
+    "the shared event or its host is not here at this time": 31,
+    "this place will close before I finish": 4
+  },
+  "interviews": {
+    "responses": 0,
+    "human_believability_score": null,
+    "note": "Run the interview command and collect blinded human ratings; no automatic score is fabricated."
+  },
+  "inference_timing": {
+    "timed_calls": 12141,
+    "provider_calls": 12141,
+    "provider_seconds_sum": 50.254,
+    "provider_ms_mean": 4.139,
+    "provider_ms_p50": 2.328,
+    "provider_ms_p95": 6.171,
+    "queue_ms_sum": 128958.68,
+    "note": "Provider duration includes network and generation; concurrent durations overlap."
+  },
+  "wall_seconds": 1686.868
+}
