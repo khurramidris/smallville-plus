@@ -1,0 +1,10 @@
+{
+  "command": "python -m pytest",
+  "passed": 45,
+  "failed": 0,
+  "seconds": 106.21,
+  "internet_sockets_disabled": true,
+  "ruff_check": "passed",
+  "ruff_format_check": "49 files passed",
+  "implementation_commit": "50875f8"
+}

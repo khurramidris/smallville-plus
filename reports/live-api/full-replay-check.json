@@ -1,0 +1,24 @@
+{
+  "event_replay": {
+    "status": "passed",
+    "snapshot_identical": true,
+    "event_log_byte_identical": true,
+    "provider_requests": 0
+  },
+  "cached_simulation": {
+    "status": "completed",
+    "completed_minutes": 1440,
+    "snapshot_identical_except_replay_flag": true,
+    "provider_requests": 0,
+    "cost": {
+      "calls": 908,
+      "cache_hits": 908,
+      "input_tokens": 0,
+      "output_tokens": 0,
+      "usd": "0",
+      "max_usd": "0",
+      "uncertain_calls": 0,
+      "accounting": "conservative configured token prices; not a provider invoice"
+    }
+  }
+}

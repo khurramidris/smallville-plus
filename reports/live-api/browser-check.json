@@ -1,0 +1,13 @@
+{
+  "status": "passed",
+  "backend": "litellm",
+  "run_status": "completed",
+  "residents": 25,
+  "minute": 1440,
+  "calls_displayed": "908 / 0",
+  "needs_displayed": 5,
+  "plan_visible": true,
+  "page_errors": [],
+  "external_requests": [],
+  "screenshot": "reports/live-api/viewer.png"
+}

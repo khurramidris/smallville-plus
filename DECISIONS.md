@@ -20,6 +20,19 @@
   (`target=null` except for movement), rather than relaxing GM checks or silently
   rewriting model intentions. Supply readable date/time alongside minute indices
   to avoid morning/evening confusion. Preserve the interrupted attempt as evidence.
+- Monitor a running town with the existing read-only viewer/SQLite interface.
+  `WorldState` is a writer constructor that runs export recovery; reopening it
+  while another process appends is not a supported observation path. Verify the
+  finished SQLite/JSONL history and cached replay before claiming acceptance.
+- Record the completed 908-request day separately from 42 debugging/probe
+  attempts. Both cost $0, but uncertain diagnostic usage must not be described
+  as measured tokens. Report published-rate accounting separately from invoices.
+- Verify exact event replay and a whole-day response-cache rerun with the provider
+  backend disabled. Both pass. Preserve poor diffusion/coordination and model
+  validation failures as research findings; do not script successful benchmarks.
+- This fulfills the earlier real-API day criterion using the user's specified
+  free model. It does not validate paid prices, real-model Twin/GSS fidelity or
+  the expanded population on API inference. Stop before Phase 3.
 
 ## Phase 2 — Authorization and research boundaries
 - The user's new instruction advances development to Phase 2 only. Keep the

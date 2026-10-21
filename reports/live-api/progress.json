@@ -1,0 +1,23 @@
+{
+  "minute": 1440,
+  "actor": null,
+  "request": 908,
+  "status": "completed",
+  "cost": {
+    "calls": 908,
+    "cache_hits": 0,
+    "input_tokens": 1924730,
+    "output_tokens": 163254,
+    "usd": "0",
+    "max_usd": "0",
+    "uncertain_calls": 0,
+    "accounting": "conservative configured token prices; not a provider invoice"
+  },
+  "wall_seconds": 3201.746,
+  "last_request": {
+    "minute": 1400,
+    "actor": "eddy_lin",
+    "status": "ok"
+  },
+  "completed_minutes": 1440
+}

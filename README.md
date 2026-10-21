@@ -41,6 +41,9 @@ events commit together; JSONL is mirrored after commit. Reopening recovers missi
 or torn JSONL tails from SQLite and rejects a conflicting complete prefix.
 There is one authoritative writer per run. Full agent snapshots favor transparent
 replay over storage efficiency in Phase 1; this is not yet a 1,000-agent load test.
+Inspect an active run through the read-only viewer or a read-only SQLite
+connection. `WorldState` opens a writer and performs JSONL recovery; do not use
+another instance as a live monitoring reader.
 Reopening a run preserves its original spending cap; a larger environment value
 cannot silently increase that run's allowance. Tested direct dependency versions
 are recorded in `requirements-tested.txt`.
@@ -92,6 +95,10 @@ The cap assumes rates cover all billed tokens and the provider respects requeste
 limits; only text completions are supported. Ledger USD uses conservative configured
 rates, not an invoice. A budget stop is reported as **incomplete**, never as a
 successful one-day acceptance run. No paid API day has yet been validated.
+The requested MiniMax free-route day **has** completed: 25 residents, 908 real
+requests, $0 within a $0 cap, and a complete cached rerun with no provider calls.
+See the [live API report](reports/LIVE_API_REPORT.md) for measured usage,
+validation failures and remaining research limits.
 
 Explicit OpenRouter `:free` models can run with a hard **$0** cap after API use
 is authorized. Verify the exact route's published rates first, then configure:
@@ -182,3 +189,5 @@ The [Phase 2 report](reports/PHASE2_REPORT.md) contains the 100-resident run,
 consistency/cache checks, fidelity measurements and known limitations.
 The saved [Phase 1 report](reports/PHASE1_REPORT.md) contains acceptance evidence,
 mock benchmark measurements, browser verification and the remaining API blocker.
+That historical API blocker is now resolved for the requested free route in the
+[live API follow-up](reports/LIVE_API_REPORT.md); the original report is preserved.

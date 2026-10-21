@@ -1,0 +1,184 @@
+{
+  "status": "passed",
+  "implementation_commit": "50875f8",
+  "run": {
+    "benchmark": "valentine",
+    "completed_minutes": 1440,
+    "epoch": "2023-02-13T00:00:00+00:00",
+    "phase": 1,
+    "problem": null,
+    "requested_minutes": 1440,
+    "status": "completed"
+  },
+  "model": "openrouter/minimax/minimax-m3.1-flash:free",
+  "agents": 25,
+  "all_agents_made_api_calls": true,
+  "all_agent_activity_minutes": 1440,
+  "cost": {
+    "calls": 908,
+    "cache_hits": 0,
+    "input_tokens": 1924730,
+    "output_tokens": 163254,
+    "usd": "0",
+    "uncertain_calls": 0,
+    "usd_per_agent_per_simulated_day": "0E+1",
+    "max_usd": "0",
+    "accounting": "Usage at configured conservative token rates, not a provider invoice."
+  },
+  "wall_seconds": 3201.746,
+  "calls_by_agent": {
+    "abigail_chen": 28,
+    "adam_smith": 43,
+    "arthur_burton": 41,
+    "ayesha_khan": 46,
+    "carlos_gomez": 29,
+    "carmen_ortiz": 33,
+    "eddy_lin": 35,
+    "francisco_lopez": 51,
+    "giorgio_rossi": 30,
+    "hailey_johnson": 38,
+    "isabella_rodriguez": 33,
+    "jane_moreno": 27,
+    "jennifer_moore": 23,
+    "john_lin": 24,
+    "klaus_mueller": 53,
+    "latoya_williams": 31,
+    "maria_lopez": 54,
+    "mei_lin": 46,
+    "rajiv_patel": 23,
+    "ryan_park": 29,
+    "sam_moore": 40,
+    "tamara_taylor": 29,
+    "tom_moreno": 32,
+    "wolfgang_schulz": 49,
+    "yuriko_yamamoto": 41
+  },
+  "event_counts": {
+    "action_completed": 779,
+    "action_rejected": 30,
+    "action_started": 758,
+    "initialized": 1,
+    "intention": 788,
+    "llm_call": 908,
+    "perceived": 788,
+    "run_finished": 1
+  },
+  "fallback_memories_ever_created": {
+    "invalid_intent": 1,
+    "invalid_plan": 9,
+    "reflection_failed": 2
+  },
+  "sqlite_jsonl_identical": true,
+  "event_head_hash": "d1126dee1e123743497a48624b01a8f59d336ba5bdc8b591a340a43e6eb72c7f",
+  "event_log_sha256": "7a915afb9cd7050c4dc26f0b414a2a839812e64bdcf1b69f141cb4e521da4598",
+  "all_live_stages": [
+    {
+      "stage": "live-probe",
+      "provider_attempts": 1,
+      "statuses": {
+        "ok": 1
+      },
+      "known_input_tokens": 271,
+      "known_output_tokens": 136,
+      "usd": "0"
+    },
+    {
+      "stage": "live-day",
+      "provider_attempts": 1,
+      "statuses": {
+        "uncertain": 1
+      },
+      "known_input_tokens": 0,
+      "known_output_tokens": 0,
+      "usd": "0"
+    },
+    {
+      "stage": "live-probe-low",
+      "provider_attempts": 1,
+      "statuses": {
+        "ok": 1
+      },
+      "known_input_tokens": 271,
+      "known_output_tokens": 65,
+      "usd": "0"
+    },
+    {
+      "stage": "live-day-low",
+      "provider_attempts": 39,
+      "statuses": {
+        "ok": 38,
+        "uncertain": 1
+      },
+      "known_input_tokens": 71377,
+      "known_output_tokens": 13087,
+      "usd": "0"
+    },
+    {
+      "stage": "live-day-corrected",
+      "provider_attempts": 908,
+      "statuses": {
+        "ok": 908
+      },
+      "known_input_tokens": 1924730,
+      "known_output_tokens": 163254,
+      "usd": "0"
+    }
+  ],
+  "total_provider_attempts": 950,
+  "paid_calls_made": 0,
+  "total_usd": "0",
+  "phase3_started": false,
+  "offline_checks": {
+    "command": "python -m pytest",
+    "passed": 45,
+    "failed": 0,
+    "seconds": 106.21,
+    "internet_sockets_disabled": true,
+    "ruff_check": "passed",
+    "ruff_format_check": "49 files passed",
+    "implementation_commit": "50875f8"
+  },
+  "replay_checks": {
+    "event_replay": {
+      "status": "passed",
+      "snapshot_identical": true,
+      "event_log_byte_identical": true,
+      "provider_requests": 0
+    },
+    "cached_simulation": {
+      "status": "completed",
+      "completed_minutes": 1440,
+      "snapshot_identical_except_replay_flag": true,
+      "provider_requests": 0,
+      "cost": {
+        "calls": 908,
+        "cache_hits": 908,
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "usd": "0",
+        "max_usd": "0",
+        "uncertain_calls": 0,
+        "accounting": "conservative configured token prices; not a provider invoice"
+      }
+    }
+  },
+  "browser": {
+    "status": "passed",
+    "backend": "litellm",
+    "run_status": "completed",
+    "residents": 25,
+    "minute": 1440,
+    "calls_displayed": "908 / 0",
+    "needs_displayed": 5,
+    "plan_visible": true,
+    "page_errors": [],
+    "external_requests": [],
+    "screenshot": "reports/live-api/viewer.png"
+  },
+  "credential_scan": {
+    "status": "passed",
+    "checked_files": 305,
+    "files_with_raw_openrouter_keys": [],
+    "secret_values_printed": false
+  }
+}

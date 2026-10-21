@@ -1,45 +1,35 @@
 # Smallville+ progress
 
 ## Current follow-up — Authorized live inference
-- The user supplied an OpenRouter key and the exact model
-  `minimax/minimax-m3.1-flash:free`, and requested real API calls. This authorizes
-  the specified free route; no paid model, fallback or later phase is authorized.
-- Rechecked cloud/network readiness. OpenRouter's public model catalog lists the
-  exact route with zero prompt/completion prices. No network request was blocked.
-- The existing gateway required positive prices/budgets even for free routes.
-  Added explicit zero-price support for OpenRouter `:free` models, a zero-dollar
-  cap, and provider-side zero-price/no-fallback constraints. Authentication and
-  quota diagnosis exposes only HTTP status codes, never remote error bodies.
-- The key will be supplied only through a hidden terminal input into the process
-  environment. It is not saved to source, configuration, reports or logs.
-- Next: verify the adapter offline, authenticate through LiteLLM, and attempt a
-  one-day town run. Keep all previous offline evidence unchanged.
-- Adapter verification: 12 focused tests pass offline, including four new
-  zero-cap/free-route/error-redaction cases. Ruff and formatting checks pass.
-- Authentication succeeded (HTTP 200). The key was supplied through hidden stdin;
-  the first LiteLLM completion and full offline regression are now running.
-- First real completion passed JSON validation: 271 input / 136 output tokens,
-  $0, 28.93 seconds. The first town request failed after 50.294 seconds under the
-  default 45-second timeout; the run stopped at minute 360 and is incomplete.
-- Full regression passes: **43 offline tests in 66.78 seconds**.
-- The public catalog declares mandatory reasoning, defaulting to maximum effort.
-  Added environment-configured timeout/reasoning effort (included in cache
-  identity). A fresh attempt will use supported `low` effort and a 180-second
-  timeout. The failed run is preserved; there are no internal retries.
-- All 14 focused gateway/preflight checks pass after adding these controls.
-- Updated full regression: **45 offline tests pass in 107.23 seconds**. Exact
-  replay of a real low-reasoning API answer is byte-identical, with no provider
-  invocation; a changed question correctly causes an offline cache miss.
-- The low-effort attempt authenticated and made 38 successful town calls. Real
-  outputs exposed an ambiguous action prompt: all 19 proposed non-move actions
-  included a location target, which the strict GM rejected. Paused the attempt at
-  minute 375 (one cancelled request retained as uncertain, $0) to fix the prompt.
-- Clarified that only movement has a target, added an explicit meal example and
-  a readable date/time/day in private context. The GM's physical rules remain
-  authoritative. A fresh run will verify this correction.
-- Corrected live run: the first two breakfast intentions use `target=null` and
-  pass GM checks. Five real requests completed in 42.81 seconds, $0. The day is
-  still running; no full-day result is claimed yet.
+- **Completed.** The 25-resident real-API day passes; evidence and problems are
+  in `reports/LIVE_API_REPORT.md`. Development remains stopped at Phase 2.
+- The user authorized the exact OpenRouter route
+  `minimax/minimax-m3.1-flash:free`. Verified published zero prices, used a hard
+  `SIM_MAX_USD=0`, disabled paid/provider fallbacks and retries, and kept the key
+  only in the active process environment after hidden terminal input.
+- Added zero-price/free-route support, timeout/reasoning environment controls,
+  cache identity for reasoning settings and sanitized provider HTTP diagnostics.
+- The first town request failed under the 45-second timeout. A low-effort
+  diagnostic exposed ambiguous location targets on non-move actions. Preserved
+  both attempts, clarified the prompt and added readable date/time context.
+- Final live day: **25/25 residents, 1,440 minutes each, 908 successful API calls,
+  1,924,730 input / 163,254 output tokens, no API failures, $0 total and $0 per
+  resident/day.** Wall time: 3,201.746 seconds. All live/debug stages total 950
+  provider attempts and $0; two diagnostic requests retain uncertain usage.
+- Full regression: **45 tests pass offline in 106.21 seconds**. Ruff/formatting
+  pass. Complete cached rerun: 908/908 hits, no provider calls, identical world
+  state except the replay flag. Event import replay and all 4,053 SQLite/JSONL
+  records match exactly.
+- Chromium verified the completed day: 25 residents, five needs, a real plan and
+  the 908-request zero-dollar dashboard; no page errors or external requests.
+- Observed 9 routine-plan fallbacks, 1 invalid intention, 2 rejected reflections,
+  30 GM refusals and 44 messages. Sam awareness stayed 1/25; party awareness
+  reached 3/25. Coordination and uncalibrated time use remain research problems;
+  the party attendance window lies beyond this one-day run.
+- Monitoring uses the read-only viewer/SQLite interface. A debug writer/recovery
+  reader race required no repair; the complete final event mirror is intact.
+- Key values are absent from project files and logs. No paid route, 100-resident
+  live day, real Twin/GSS fidelity evaluation or Phase 3 work was performed.
 
 ## Current work — Phase 2
 - **Completed and stopped at Phase 2.** Final evidence is in
@@ -124,9 +114,9 @@
 - No paid service has been added or called.
 
 ## Next
-1. Finish the authorized zero-dollar live-day validation and report its actual
-   completion or stop reason. Phase 2 offline deliverables remain complete.
-2. Keep later phases deferred. Paid model spending is not authorized.
+1. Stop at Phase 2 plus the requested live-API validation; both are complete.
+2. Keep later phases deferred. Paid spending, 100-resident live validation and
+   human/model fidelity studies remain outside the completed follow-up.
 
 ## Step 2 — Reference inspection and provenance
 - Read all six current-phase repository licenses before copying any material.
@@ -156,7 +146,9 @@
 - (a) Offline tests: **25 passed**, final run 102.71 seconds; internet sockets disabled.
 - (b) Two MockLLM days / 25 agents: **passed**, completed all 2,880 simulated minutes.
 - (c) Valentine's benchmark: **passed**, runnable CLI and saved measurements.
-- (d) One paid API day under cap: pending explicit approval and configured models/credentials.
+- (d) One real-API day under cap: **passed** on the subsequently authorized
+  MiniMax free route: 25 residents, 908 calls, $0 within a $0 cap. See
+  `reports/LIVE_API_REPORT.md`. Paid-model pricing remains unvalidated.
 - This section records Phase 1 acceptance; Phase 2 is now authorized above.
 - Mock behavior and synthetic token counts do not demonstrate realism gains.
 - No blinded human ratings or 1,000-resident load test have been conducted.

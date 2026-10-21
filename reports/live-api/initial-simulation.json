@@ -1,0 +1,290 @@
+{
+  "run": {
+    "benchmark": "valentine",
+    "completed_minutes": 360,
+    "epoch": "2023-02-13T00:00:00+00:00",
+    "phase": 1,
+    "problem": "model request failed or exact cache entry was missing",
+    "requested_minutes": 1440,
+    "status": "model_stopped"
+  },
+  "backend": "litellm",
+  "agents": 25,
+  "interpretation": "Exploratory Phase 1 run. No matched experimental design or human believability judgment.",
+  "paper_reference": {
+    "source": "https://arxiv.org/html/2304.03442v2#S7.SS1",
+    "agents": 25,
+    "days": 2,
+    "sam_awareness": 8,
+    "party_awareness": 13,
+    "party_invited_guests": 12,
+    "party_attending_guests": 5,
+    "network_density_initial": 0.167,
+    "network_density_final": 0.74
+  },
+  "diffusion": {
+    "sam": {
+      "initial": 1,
+      "retained_final": 1,
+      "paper_final": 8
+    },
+    "party": {
+      "initial": 1,
+      "retained_final": 1,
+      "paper_final": 13
+    },
+    "method": "Retained memory evidence, not omniscient delivery or unverified interview assertions."
+  },
+  "relationships": {
+    "initial_density": 0.23333333333333334,
+    "final_density": 0.23333333333333334,
+    "growth": 0.0,
+    "definition": "Undirected edge only when both residents have relationship records; negative ties count."
+  },
+  "party": {
+    "invited_guests": 0,
+    "read_invitation_guests": 0,
+    "attending_guests": 0,
+    "guest_ids": [],
+    "invited_attending_guests": 0,
+    "attendance_rate": null,
+    "paper_attendance_rate": 0.4166666666666667,
+    "window": {
+      "location": "hobbs_cafe",
+      "start": 2460,
+      "end": 2580
+    },
+    "method": "Completed attend actions overlapping the party window; host excluded."
+  },
+  "anti_homogeneity": {
+    "seeded_opinion_variance": 0.32864544,
+    "observed_daily_behavior_variance": {
+      "sleep_hours": 0.0,
+      "work_hours": 0.0,
+      "leisure_hours": 0.0,
+      "travel_hours": 0.0,
+      "other_hours": 0.0
+    },
+    "note": "Opinion values are synthetic heterogeneous priors; survey fidelity is not measured."
+  },
+  "daily_life": {
+    "average_hours": {
+      "sleep_hours": 24.0,
+      "work_hours": 0.0,
+      "leisure_hours": 0.0,
+      "travel_hours": 0.0,
+      "other_hours": 0.0
+    },
+    "per_agent": {
+      "abigail_chen": {
+        "sleep_hours": 24.0,
+        "work_hours": 0.0,
+        "leisure_hours": 0.0,
+        "travel_hours": 0.0,
+        "other_hours": 0.0
+      },
+      "adam_smith": {
+        "sleep_hours": 24.0,
+        "work_hours": 0.0,
+        "leisure_hours": 0.0,
+        "travel_hours": 0.0,
+        "other_hours": 0.0
+      },
+      "arthur_burton": {
+        "sleep_hours": 24.0,
+        "work_hours": 0.0,
+        "leisure_hours": 0.0,
+        "travel_hours": 0.0,
+        "other_hours": 0.0
+      },
+      "ayesha_khan": {
+        "sleep_hours": 24.0,
+        "work_hours": 0.0,
+        "leisure_hours": 0.0,
+        "travel_hours": 0.0,
+        "other_hours": 0.0
+      },
+      "carlos_gomez": {
+        "sleep_hours": 24.0,
+        "work_hours": 0.0,
+        "leisure_hours": 0.0,
+        "travel_hours": 0.0,
+        "other_hours": 0.0
+      },
+      "carmen_ortiz": {
+        "sleep_hours": 24.0,
+        "work_hours": 0.0,
+        "leisure_hours": 0.0,
+        "travel_hours": 0.0,
+        "other_hours": 0.0
+      },
+      "eddy_lin": {
+        "sleep_hours": 24.0,
+        "work_hours": 0.0,
+        "leisure_hours": 0.0,
+        "travel_hours": 0.0,
+        "other_hours": 0.0
+      },
+      "francisco_lopez": {
+        "sleep_hours": 24.0,
+        "work_hours": 0.0,
+        "leisure_hours": 0.0,
+        "travel_hours": 0.0,
+        "other_hours": 0.0
+      },
+      "giorgio_rossi": {
+        "sleep_hours": 24.0,
+        "work_hours": 0.0,
+        "leisure_hours": 0.0,
+        "travel_hours": 0.0,
+        "other_hours": 0.0
+      },
+      "hailey_johnson": {
+        "sleep_hours": 24.0,
+        "work_hours": 0.0,
+        "leisure_hours": 0.0,
+        "travel_hours": 0.0,
+        "other_hours": 0.0
+      },
+      "isabella_rodriguez": {
+        "sleep_hours": 24.0,
+        "work_hours": 0.0,
+        "leisure_hours": 0.0,
+        "travel_hours": 0.0,
+        "other_hours": 0.0
+      },
+      "jane_moreno": {
+        "sleep_hours": 24.0,
+        "work_hours": 0.0,
+        "leisure_hours": 0.0,
+        "travel_hours": 0.0,
+        "other_hours": 0.0
+      },
+      "jennifer_moore": {
+        "sleep_hours": 24.0,
+        "work_hours": 0.0,
+        "leisure_hours": 0.0,
+        "travel_hours": 0.0,
+        "other_hours": 0.0
+      },
+      "john_lin": {
+        "sleep_hours": 24.0,
+        "work_hours": 0.0,
+        "leisure_hours": 0.0,
+        "travel_hours": 0.0,
+        "other_hours": 0.0
+      },
+      "klaus_mueller": {
+        "sleep_hours": 24.0,
+        "work_hours": 0.0,
+        "leisure_hours": 0.0,
+        "travel_hours": 0.0,
+        "other_hours": 0.0
+      },
+      "latoya_williams": {
+        "sleep_hours": 24.0,
+        "work_hours": 0.0,
+        "leisure_hours": 0.0,
+        "travel_hours": 0.0,
+        "other_hours": 0.0
+      },
+      "maria_lopez": {
+        "sleep_hours": 24.0,
+        "work_hours": 0.0,
+        "leisure_hours": 0.0,
+        "travel_hours": 0.0,
+        "other_hours": 0.0
+      },
+      "mei_lin": {
+        "sleep_hours": 24.0,
+        "work_hours": 0.0,
+        "leisure_hours": 0.0,
+        "travel_hours": 0.0,
+        "other_hours": 0.0
+      },
+      "rajiv_patel": {
+        "sleep_hours": 24.0,
+        "work_hours": 0.0,
+        "leisure_hours": 0.0,
+        "travel_hours": 0.0,
+        "other_hours": 0.0
+      },
+      "ryan_park": {
+        "sleep_hours": 24.0,
+        "work_hours": 0.0,
+        "leisure_hours": 0.0,
+        "travel_hours": 0.0,
+        "other_hours": 0.0
+      },
+      "sam_moore": {
+        "sleep_hours": 24.0,
+        "work_hours": 0.0,
+        "leisure_hours": 0.0,
+        "travel_hours": 0.0,
+        "other_hours": 0.0
+      },
+      "tamara_taylor": {
+        "sleep_hours": 24.0,
+        "work_hours": 0.0,
+        "leisure_hours": 0.0,
+        "travel_hours": 0.0,
+        "other_hours": 0.0
+      },
+      "tom_moreno": {
+        "sleep_hours": 24.0,
+        "work_hours": 0.0,
+        "leisure_hours": 0.0,
+        "travel_hours": 0.0,
+        "other_hours": 0.0
+      },
+      "wolfgang_schulz": {
+        "sleep_hours": 24.0,
+        "work_hours": 0.0,
+        "leisure_hours": 0.0,
+        "travel_hours": 0.0,
+        "other_hours": 0.0
+      },
+      "yuriko_yamamoto": {
+        "sleep_hours": 24.0,
+        "work_hours": 0.0,
+        "leisure_hours": 0.0,
+        "travel_hours": 0.0,
+        "other_hours": 0.0
+      }
+    },
+    "atus_reference": {
+      "source": "https://www.bls.gov/news.release/archives/atus_06262025.htm",
+      "year": 2024,
+      "population": "US civilian population age 15+, all days",
+      "sleep_hours": 9.04,
+      "work_hours": 3.13,
+      "leisure_hours": 5.07
+    },
+    "difference_hours": {
+      "sleep_hours": 14.96,
+      "work_hours": -3.13,
+      "leisure_hours": -5.07
+    },
+    "note": "Shape diagnostic only. Smallville occupations/age mix and two weekdays differ from ATUS. Study is grouped with work; leisure includes messages; travel is separate. No calibration claim."
+  },
+  "cost": {
+    "calls": 1,
+    "cache_hits": 0,
+    "input_tokens": 0,
+    "output_tokens": 0,
+    "usd": "0",
+    "uncertain_calls": 1,
+    "usd_per_agent_per_simulated_day": "0E+2",
+    "max_usd": "0",
+    "accounting": "Usage at configured conservative token rates, not a provider invoice."
+  },
+  "messages": 0,
+  "historical_messages": 0,
+  "rejected_actions": {},
+  "interviews": {
+    "responses": 0,
+    "human_believability_score": null,
+    "note": "Run the interview command and collect blinded human ratings; no automatic score is fabricated."
+  },
+  "wall_seconds": 50.294
+}

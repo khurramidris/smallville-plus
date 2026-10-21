@@ -1,0 +1,17 @@
+{
+  "status": "completed",
+  "model": "openrouter/minimax/minimax-m3.1-flash:free",
+  "response": "{\"answer\":\"Today, what matters to me is caring for my friends and creating moments that bring people together.\"}",
+  "valid_json_answer": true,
+  "cost": {
+    "calls": 1,
+    "cache_hits": 0,
+    "input_tokens": 271,
+    "output_tokens": 65,
+    "usd": "0",
+    "max_usd": "0",
+    "uncertain_calls": 0,
+    "accounting": "conservative configured token prices; not a provider invoice"
+  },
+  "wall_seconds": 13.723
+}
