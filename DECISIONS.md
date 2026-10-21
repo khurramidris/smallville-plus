@@ -20,6 +20,9 @@
 - Label the viewer's data source according to its recorded backend. Correcting
   the footer during the experiment changes presentation only; inference and
   world rules remain frozen at `8e2b410` for reproducible live measurements.
+- Populate history beyond its limits in the compact-context regression and add
+  an unrelated private inbox. Empty histories alone would not verify truncation
+  or confidentiality. This strengthens tests without changing the running engine.
 
 ## User-requested stop — Phase 3
 - The explicit stop overrides the outstanding three-day live objective. Cancel

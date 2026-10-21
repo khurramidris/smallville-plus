@@ -11,7 +11,7 @@ from smallville.engine.scheduler import Scheduled
 from smallville.engine.simulation import Simulation
 from smallville.llm.gateway import BudgetExceeded, Completion, Gateway
 from smallville.llm.mock import MockLLM
-from smallville.world.models import DailyPlan, Intent, change
+from smallville.world.models import CalendarEntry, DailyPlan, Intent, Message, change
 from smallville.world.store import replay
 from tests.test_llm import call, paid_config
 from tests.test_phase3_economy import economic_world as economic_world
@@ -224,8 +224,68 @@ def test_compact_context_limits_history_without_remote_stock(economic_world, tow
     world, base, gm, gateway = economic_world
     mind = Mind(world, town, gateway, base.model_copy(update={"compact_context": True}))
     actor = world.agent("john_lin")
+    updates = [
+        change(
+            "messages",
+            f"own:{i}",
+            Message(
+                id=f"own:{i}",
+                sender=actor.id,
+                to="mei_lin",
+                body=f"own message {i}",
+                sent_at=i - 12,
+            ),
+        )
+        for i in range(12)
+    ]
+    updates.append(
+        change(
+            "messages",
+            "private:other",
+            Message(
+                id="private:other",
+                sender="mei_lin",
+                to="klaus_mueller",
+                body="PRIVATE_OTHER_INBOX_MARKER",
+                sent_at=0,
+            ),
+        )
+    )
+    updates.extend(
+        change(
+            "calendar",
+            f"future:{i}",
+            CalendarEntry(
+                id=f"future:{i}",
+                owner=actor.id,
+                title=f"Future {i}",
+                start=600 + i * 15,
+                end=605 + i * 15,
+                location=actor.persona.home,
+            ),
+        )
+        for i in range(20)
+    )
+    updates.append(
+        change(
+            "calendar",
+            "past",
+            CalendarEntry(
+                id="past",
+                owner=actor.id,
+                title="Past",
+                start=-60,
+                end=-30,
+                location=actor.persona.home,
+            ),
+        )
+    )
+    world.log.append(0, "context_history", changes=updates)
     context = mind.context(actor, 600, "action")
-    assert len(context["sent"]) <= 8 and len(context["calendar"]) <= 12
+    assert [m["body"] for m in context["sent"]] == [f"own message {i}" for i in range(4, 12)]
+    assert len(context["calendar"]) == 12
+    assert all(e["end"] >= 600 for e in context["calendar"])
+    assert "PRIVATE_OTHER_INBOX_MARKER" not in json.dumps(context)
     assert "work_minutes_available" in context
     assert all(
         town.locations[i].is_open(600 + town.travel_minutes(actor.location, i))

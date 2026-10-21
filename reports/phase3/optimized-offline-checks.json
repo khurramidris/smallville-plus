@@ -13,5 +13,15 @@
     "pytest-socket": "0.8.1",
     "litellm": "1.106.0"
   },
-  "note": "Final suite follows correction of a test-only home-ID literal; no provider called by tests."
+  "note": "Final suite follows correction of a test-only home-ID literal; no provider called by tests.",
+  "additional_checks": [
+    {
+      "case": "populated compact history and private inbox isolation",
+      "status": "passed",
+      "tests": 1,
+      "wall_seconds": 0.79,
+      "network": "disabled",
+      "simulation_code_changed": false
+    }
+  ]
 }

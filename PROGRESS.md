@@ -91,6 +91,15 @@
 - The live experiment has entered its second day, with $0 recorded cost and no
   provider failures so far. No additional paid service or later-phase work.
 
+### Resumption step 7 — Populated history/privacy regression
+- Strengthened the compact-context case with twelve own sent messages, twenty
+  future appointments, a past appointment and another person's private inbox.
+  It verifies the exact retained messages, appointment limit and inbox isolation.
+- The targeted offline check passes in 0.79 seconds; the complete preceding
+  83-case suite remains recorded. No simulation or inference code changed.
+- The live run has reached the Valentine's party window on day two. Attendance
+  will use completed, confirmed actions rather than intentions or co-location.
+
 ## Phase 3 authorization and scope
 - Authorized on 2026-10-21: implement the next phase, then run three simulated
   days. Scope and acceptance are in `PHASE3.md`; original `SPEC.md` is unchanged.
