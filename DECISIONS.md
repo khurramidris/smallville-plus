@@ -1,5 +1,15 @@
 # Decisions
 
+## User-requested stop — Phase 3
+- The explicit stop overrides the outstanding three-day live objective. Cancel
+  inference, stop the local viewer, preserve partial artifacts and report the
+  actual horizon without starting further development, interviews or replay jobs.
+- Keep the completed three-day MockLLM runs distinct from the interrupted API
+  run. Record its 946 known responses plus one uncertain call; exclude unknown
+  usage from measured tokens and keep the zero-dollar published-rate caveat.
+- Leave the incomplete live experiment and remaining research limitations visible.
+  Phase 4 is not started and no work is scheduled after the stop.
+
 ## Phase 3 — Authorized scope and design
 - The latest request authorizes Phase 3 and a three-day simulation. Preserve
   earlier reports and run modes; do not begin Phase 4 or add a paid service.

@@ -1,0 +1,17 @@
+{
+  "minute": 1260,
+  "actor": "isabella_rodriguez",
+  "request": 947,
+  "status": "uncertain",
+  "cost": {
+    "calls": 947,
+    "cache_hits": 0,
+    "input_tokens": 3261849,
+    "output_tokens": 252265,
+    "usd": "0",
+    "max_usd": "0",
+    "uncertain_calls": 1,
+    "accounting": "conservative configured token prices; not a provider invoice"
+  },
+  "wall_seconds": 5040.949
+}

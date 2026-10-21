@@ -1,6 +1,15 @@
 # Smallville+ progress
 
-## Current work — Phase 3
+## Current status — Stopped at user request
+- Phase 3 implementation is complete. Both three-day MockLLM scenarios (25 and
+  100 residents) passed their audits and exact event replays; 76 tests pass offline.
+- The user stopped the live 25-resident run at minute 1,260 (day 1, 21:00), short
+  of the requested 4,320 minutes. Status is `interrupted`, never completed.
+- Final live accounting: 947 attempts, 946 successful responses, one uncertain
+  interrupted request, $0. The viewer and all simulation processes are stopped.
+- See `reports/PHASE3_REPORT.md`. No Phase 4 work or further inference is scheduled.
+
+## Phase 3 authorization and scope
 - Authorized on 2026-10-21: implement the next phase, then run three simulated
   days. Scope and acceptance are in `PHASE3.md`; original `SPEC.md` is unchanged.
 - Inspected the existing engine, GM, apps, prompts, metrics and tests. The cloud
@@ -8,8 +17,8 @@
 - Plan: financial/world foundations; GM/apps/scheduled events; minds/viewer and
   scoring fixes; offline validation; three-day runs and measured report.
 - Preserve earlier phase modes. No new paid service or Phase 4 work is included.
-- Population preference for the API run is pending; default to the original 25
-  and verify the expanded 100-resident population offline.
+- Used the original 25 for live inference and verified the expanded 100-resident
+  population offline; the optional population question received no reply.
 
 ### Phase 3 step 1 — Financial and civic foundations
 - Added conserved integer-cent ledger batches, work contracts with fractional
@@ -144,7 +153,23 @@
 - The final API experiment continues with the frozen production behavior and
   zero-dollar cap. No provider failures have occurred so far.
 
-## Current follow-up — Authorized live inference
+### Phase 3 step 11 — User-requested stop and final accounting
+- Cancelled the API run immediately on the user's stop. Graceful cleanup records
+  1,260 of 4,320 minutes, an explicit operator interruption and final observations.
+  Stopped the local viewer too; no simulation, verification or viewer process remains.
+- Final API ledger: 946 successful responses and one interrupted/uncertain call;
+  3,261,849 known input / 252,265 known output tokens; $0 under the $0 cap.
+  With prior diagnostics: 1,030 attempts, 1,027 known responses, three uncertain.
+- At interruption, all financial/resource/work-limit audits pass. Eighteen
+  ballots and 25 messages are recorded. The council remains open and the party
+  lies beyond the observed period; no live three-day or party result is claimed.
+- Saved the interrupted report and final progress record, updated the phase
+  report, and preserved complete offline experiments and immutable partial history.
+- Open work: the requested three-day live run is unfinished, partial live replay
+  is unverified, and realism/planning/storage limits remain documented. Do not
+  resume development or inference without a subsequent user request.
+
+## Historical follow-up — Phase 2 live inference
 - **Completed.** The 25-resident real-API day passes; evidence and problems are
   in `reports/LIVE_API_REPORT.md`. Development remains stopped at Phase 2.
 - The user authorized the exact OpenRouter route
@@ -274,9 +299,9 @@
 - No paid service has been added or called.
 
 ## Next
-1. Complete Phase 3 and the requested three-day validation in `PHASE3.md`.
-2. Retain the zero-dollar live cap and stop before Phase 4. Human/model fidelity
-   ratings and paid spending remain outside this phase.
+- None scheduled: the user requested a stop. Phase 3 implementation and offline
+  validation are complete; the live three-day experiment remains incomplete.
+- Phase 4, human/model fidelity ratings and paid spending remain outside this work.
 
 ## Step 2 — Reference inspection and provenance
 - Read all six current-phase repository licenses before copying any material.

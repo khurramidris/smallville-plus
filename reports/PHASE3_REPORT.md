@@ -1,8 +1,9 @@
 # Phase 3 — Economy, council and three-day experiments
 
-**Implementation and both offline scenarios are complete. The final live API
-experiment is running; its final results are pending.** No Phase 4 work was
-started and no paid service was added.
+**Implementation and both three-day offline scenarios are complete. The live API
+experiment was stopped at the user's request after 21 simulated hours; the
+three-day live run is incomplete.** All simulation and viewer processes are
+stopped. No Phase 4 work was started and no paid service was added.
 
 ## Built
 
@@ -81,22 +82,48 @@ CLI validation and derived initial-awareness counting; reports were recomputed
 from unchanged event histories. Final production behavior is frozen at
 `87778b4` for the API experiment.
 
-## Live API experiment — pending
+## Live API experiment — interrupted by user
 
-The original 25 residents are running for three days on the authorized
+The original 25 residents were scheduled for three days on the authorized
 `openrouter/minimax/minimax-m3.1-flash:free` route through LiteLLM. Published
 prompt/output rates were zero; the gateway cap and provider price ceiling remain
 zero, with no retries or paid fallbacks. Keys enter only the process environment
 through hidden input. [Settings](phase3/live-settings.json) contain no key.
+
+The user requested a stop at **minute 1,260 / February 13, 21:00**, before the
+requested 4,320-minute horizon. Graceful cancellation recorded `interrupted`,
+preserved all committed outcomes and finalized cost accounting. There were
+**947 attempts: 946 successful responses and one interrupted request with unknown
+usage**, 3,261,849 known input tokens and 252,265 known output tokens. Recorded
+published-rate cost is **$0**, or **$0 per resident per simulated day elapsed**;
+this is not a completed three-day API measurement. Wall time was 5,041.746 seconds.
+
+Residents completed paid work, shopping and the first rent collection. Wages
+totaled 253,480 town cents, purchases 19,200 and rent 46,800. All town money and
+food reconcile, accounts remain nonnegative and work limits pass. Eighteen
+residents cast ballots, 25 messages were sent and four guests read full party
+invitations. The council deadline and Valentine's party were still in the future;
+neither a final vote result nor live party attendance was observed. Maria and
+Klaus exchanged study-meeting messages; Maria's completed actions place her at
+Hobbs Cafe after her later arrival message. A substantive study conversation is
+not established by those records.
+
+The GM rejected 38 closed-destination attempts, six out-of-shift work periods,
+two daily-work-limit violations, five activities crossing closing time and five
+attendance attempts without a matching event. One phone request was invalid.
+These are remaining planning/coordination problems, not successful outcomes.
 
 Two early API diagnostics were interrupted while correcting offline-discovered
 stock and contract issues: **83 attempts, 81 known responses and two uncertain
 interrupted requests, $0**. These remain separate from the final runtime. Unknown
 usage for interrupted requests is not reported as measured tokens.
 
-Current progress is in the local `reports/phase3/live-progress.json`. Final
-duration, real token usage, behavior, failure status and replay checks will be
-recorded after the run ends. Published-rate accounting is not a provider invoice.
+Including diagnostics, Phase 3 used **1,030 attempts, 1,027 known responses and
+three uncertain interrupted requests, $0**. Unknown usage is excluded from known
+token totals. [Final interrupted report](phase3/live-simulation.json) and
+[last progress record](phase3/live-progress.json) are preserved. Full replay of
+this partial live run was not performed. Published-rate accounting is not a
+provider invoice; partial-day time-use figures are normalized diagnostics.
 
 ## Problems found and limits
 
@@ -114,6 +141,9 @@ are expensive: the expanded three-day JSONL is about 954 MiB.
 No blinded human ratings, matched paper replication, live 100-resident cohort,
 paid-price validation or 1,000-agent load test was performed. These results do not
 establish that Smallville+ exceeds the original paper's realism.
+
+The requested three-day live experiment remains unfinished. Development and
+inference are stopped; no further work is scheduled after the user's stop.
 
 Evidence: [offline checks](phase3/offline-checks.json),
 [25-person report](phase3/mock-25-simulation.json),
