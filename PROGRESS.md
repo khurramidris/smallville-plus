@@ -125,6 +125,16 @@
   behavior is frozen at `87778b4`; cap remains $0 and no paid fallback is enabled.
 - Final API cost/behavior and full replay evidence remain pending. No Phase 4.
 
+### Phase 3 step 9 — Expanded replay and report
+- All **59,768** expanded-run events import to identical state and byte-identical
+  JSONL. All 100 agents account for 4,320 minutes, and all resource/ledger audits
+  pass without further inference. The full log is about 954 MiB.
+- Added `reports/PHASE3_REPORT.md` with complete offline measurements, methods,
+  fixed defects and limits. Its API section is explicitly pending.
+- The final API run is progressing through its first morning with successful
+  real requests, no provider failures so far and $0 cost. Keep observing the
+  frozen experiment; do not advance to Phase 4.
+
 ## Current follow-up — Authorized live inference
 - **Completed.** The 25-resident real-API day passes; evidence and problems are
   in `reports/LIVE_API_REPORT.md`. Development remains stopped at Phase 2.
