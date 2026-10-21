@@ -109,6 +109,22 @@
   The 100-resident run is on its third afternoon. Final API inference starts only
   after that completed offline scenario passes its audits.
 
+### Phase 3 step 8 — Expanded scenario completed; final live run started
+- **100 residents completed 3 days / 4,320 minutes each**, with 14,076 synthetic
+  requests, $0 and 2,260.967 seconds wall time under concurrent validation.
+- Audits pass: all 19,873,747 town cents conserved; 974 initial meals equal
+  461 eaten plus 513 remaining; ledger matches every account; no overdrafts or
+  work-limit violations. Eleven residents owe 27,081 cents of prorated rent.
+- Council: 67 yes, 22 no, 11 abstentions; funded 100 additional meals with
+  30,000 town cents. Shared-party attendance: 31 of 46 guests receiving details
+  across the two-hour window (distinct guests, not simultaneous occupancy).
+- Recomputed the derived report with corrected initial-awareness counting.
+  Full 100-resident event import is in progress using a read-only source reader.
+- Started the final original-25 live run after the completed offline audit,
+  using the existing authorized key only in the process environment. Production
+  behavior is frozen at `87778b4`; cap remains $0 and no paid fallback is enabled.
+- Final API cost/behavior and full replay evidence remain pending. No Phase 4.
+
 ## Current follow-up — Authorized live inference
 - **Completed.** The 25-resident real-API day passes; evidence and problems are
   in `reports/LIVE_API_REPORT.md`. Development remains stopped at Phase 2.
