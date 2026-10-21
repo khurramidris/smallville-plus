@@ -22,6 +22,16 @@
   item claimed by someone else produces a failed outcome with no partial debit.
 - Carry fractional wage cents between work periods, cap daily work minutes and
   record unpaid earnings separately when an employer has insufficient cash.
+- Keep bank memo text separate from the authoritative transaction purpose, so
+  a resident cannot label a personal payment as earned wages in the metrics.
+- Report the town's fictional cents separately from real API USD in all views.
+  Resource audits reconcile initial goods with both remaining and eaten meals.
+- Use the original 25 for live inference, matching the previous experiment, and
+  the existing validated 100-resident artifact for the offline three-day test.
+  The optional population question received no reply before this default was used.
+- Explicitly configure a second-day delivery delay for the pressure scenario.
+  Existing stock remains available, supply stays finite, and the council's
+  policy can spend only actual treasury funds on remaining wholesale goods.
 
 ## Live API follow-up — Exact free route and zero spending
 - The user's latest instruction authorizes OpenRouter calls using the supplied

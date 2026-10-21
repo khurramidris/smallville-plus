@@ -70,3 +70,13 @@ subject selection, and explicit unsupported-item exclusions. No endorsement is i
 Exact Phase 2 URLs, revisions and original-file SHA-256 hashes are recorded in
 `references/phase2/sources.json`. Full response CSVs are not vendored; they remain
 local preparation inputs in `scratch/phase2/`. No Phase 3–6 sources were added.
+
+## Phase 3 additions (authorized 2026-10-21)
+
+The ledger, contracts, shops, council, news and shared-event code are original
+implementations. Resource pressure and local self-governance extend the previously
+studied Emergence World ideas; no additional upstream code, prompts, profiles or
+datasets were copied. Its inspected CC BY-NC notice remains applicable to that
+conceptual research reference. Economic amounts, initial capital, supply-delay
+scenario and council proposal are Smallville+ fictional modeling assumptions.
+No Phase 4–6 source or dependency was added.

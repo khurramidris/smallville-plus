@@ -1,7 +1,8 @@
 # Smallville+
 
 Research town simulation with the original 25 residents and Smallville map,
-plus a Phase 2 pipeline for 100 residents, digital histories and survey evaluation.
+plus a Phase 2 pipeline for 100 residents, digital histories and survey evaluation,
+and a Phase 3 economy, town council and local news.
 Python 3.11+, asyncio, Pydantic, SQLite WAL and LiteLLM.
 This is working research infrastructure, **not evidence that realism exceeds
 Park et al.** MockLLM is a deterministic, partly scenario-specific test fixture.
@@ -125,9 +126,63 @@ timeouts or route availability can still stop a free run. A partial run does not
 meet full-day acceptance. No other model is selected automatically.
 
 The embedding model variable is reserved and validated for live configuration;
-retrieval uses local lexical relevance. Wages/rent/shops, councils, graph memory,
-1,000-agent batching and social media remain deferred. Initial food and
-account balances exercise resource guards, but no financial economy is simulated.
+retrieval uses local lexical relevance. Graph memory, 1,000-agent batching and
+social media remain deferred.
+
+## Phase 3: economy and town government
+
+```bash
+python -m smallville run --phase 3 --days 3 --out runs/phase3
+# Use an existing validated Phase 2 population for all 100 residents:
+python -m smallville run --phase 3 --days 3 \
+  --population runs/population/population.json --out runs/phase3-100
+# Optional authored supply-pressure scenario (day 0 is February 13):
+python -m smallville run --phase 3 --days 3 --supply-delay-day 1 --out runs/phase3-delay
+python -m smallville serve --run runs/phase3
+```
+
+Add `--backend litellm --allow-paid` with the authorized model/environment settings
+above to use real inference. The same budget and credential rules apply.
+Omitting `--phase 3` preserves the earlier phase workflows.
+
+Phase 3 uses integer cents and explicit account transfers. Paid work accrues only
+for completed minutes within a personal contract's shift and daily limit;
+fractional cents carry forward. Study and household activity may be unpaid.
+Pensions/support, freelance demand, initial cash and employer capital are authored
+scenario assumptions, not inferred real survey finances. Employer or town funds
+can run out; unpaid earnings and rent remain obligations rather than overdrafts.
+Each household owes $36/day of prorated rent, split among its residents and
+charged at 21:00. There is no eviction or debt-interest model in this phase.
+
+Meals cost $6 at the market, $8 at the cafe or $10 at the pub. A resident must
+travel to an open shop and spend ten minutes purchasing finite stock. Meals are
+portable and eating consumes one. Shops replenish at 06:00, paying $3/meal to a
+finite wholesaler. `--supply-delay-day 1` explicitly delays the second day's
+delivery; it does not destroy goods or manufacture a shortage outcome.
+
+Residents can read/post on the town notice board and vote once in a secret
+council poll from February 13 08:00 until February 15 12:00. The food-stock
+proposal requires half the adult electorate for quorum and more yes than no
+votes. If passed, it spends up to $300 of available treasury funds on additional
+wholesale meals; actual spending is limited by available stock. Institutional
+news cites recorded public events. Resident posts are labelled opinions and
+cannot change funds, votes or physical outcomes by assertion.
+
+The host's Valentine event has a shared identity. Read invitations expose its
+actual date/venue to their recipients; private calendar entries cannot create a
+party. Confirmed attendance requires a linked event, correct time and host
+presence. Complete written AM/PM invitation ranges are recognized by the scorer.
+
+The viewer adds historical balances, transactions, contracts, rent, shop stock,
+council results and public notices. Researcher inspection remains separate from
+agent perception: personal bank statements and ballots never enter other minds.
+The report audits every account against initial balances and transfers, verifies
+money/meal conservation and reports arrears, scarcity and policy execution.
+Town money is fictional and always separate from real API USD.
+
+These systems are deliberately small and uncalibrated: no product variety,
+labor market, market-clearing prices, credit, Graphiti or social-media platform.
+Phase 4 remains deferred.
 
 Phase 2 adds an explicit preparation step. It uses 75 licensed public GSS
 demographic seeds alongside the original 25. New biographies and messages are

@@ -32,5 +32,5 @@ class Bank:
     def transfer_changes(self, actor: Agent, request: BankTransfer, minute: int):
         self.validate(actor, request)
         batch = LedgerBatch(self.world, minute, f"bank:{actor.id}")
-        batch.transfer(actor.id, request.to, request.cents, request.memo)
+        batch.transfer(actor.id, request.to, request.cents, "personal transfer", memo=request.memo)
         return batch.changes()

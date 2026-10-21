@@ -1,8 +1,10 @@
 from decimal import Decimal
 
+import httpx
 import pytest
 from pydantic import ValidationError
 
+from smallville.agents.mind import Mind
 from smallville.apps.bank import Bank
 from smallville.apps.civic import CastVote, Council, Notice, NoticeBoard
 from smallville.apps.phone import Calendar, CreateEvent
@@ -15,6 +17,7 @@ from smallville.eval.metrics import evaluate
 from smallville.gm.master import GameMaster
 from smallville.llm.gateway import Gateway
 from smallville.llm.mock import MockLLM
+from smallville.viewer.app import create_app
 from smallville.world.models import Intent, change
 from smallville.world.store import WorldState, replay
 
@@ -122,9 +125,10 @@ def test_bank_authority_and_private_statements(economic_world):
         BankTransfer.model_validate({"to": "mei_lin", "cents": 10, "owner": "sam_moore"})
     with pytest.raises(ValueError):
         bank.validate(actor, BankTransfer(to="town:treasury", cents=10))
-    changes = bank.transfer_changes(actor, BankTransfer(to="mei_lin", cents=10), 0)
+    changes = bank.transfer_changes(actor, BankTransfer(to="mei_lin", cents=10, memo="wages"), 0)
     world.log.append(0, "bank_test", changes=changes)
     assert len(bank.statement(actor)["transactions"]) == 1
+    assert bank.statement(actor)["transactions"][0]["purpose"] == "personal transfer"
     assert not bank.statement(world.agent("sam_moore"))["transactions"]
 
 
@@ -215,6 +219,66 @@ def test_news_evidence_and_resident_opinion_authority(economic_world):
     assert "Public resident opinion" in actor.memories[-1].text
     world.log.append(5, "test_read", changes=changes)
     assert not board.unread(actor, 5)
+
+
+def test_council_without_quorum_cannot_spend(economic_world):
+    world, _, _, _ = economic_world
+    council = Council(world)
+    before = total_cash(world)
+    supply = world.get("objects", "wholesale_meals")
+    council.open(480)
+    council.close(3600)
+    proposal = world.get("proposals", "community_food")
+    assert proposal["status"] == "failed" and not proposal["executed"]
+    assert total_cash(world) == before
+    assert world.get("objects", "wholesale_meals") == supply
+
+
+def test_other_residents_finances_and_ballots_do_not_enter_context(economic_world, town):
+    world, config, _, gateway = economic_world
+    actor = world.agent("john_lin")
+    mind = Mind(world, town, gateway, config)
+    before = mind.context(actor, 540, "action")
+    peer = world.get("accounts", "sam_moore")
+    peer["cents"] += 123456
+    world.log.append(
+        0,
+        "test_private_state",
+        changes=[
+            change("accounts", peer["id"], peer),
+            change(
+                "ballots",
+                "community_food:sam_moore",
+                {
+                    "id": "community_food:sam_moore",
+                    "owner": "sam_moore",
+                    "proposal_id": "community_food",
+                    "choice": "yes",
+                    "minute": 0,
+                },
+            ),
+        ],
+    )
+    assert mind.context(actor, 540, "action") == before
+
+
+async def test_phase3_viewer_historical_finances_and_public_town_state(economic_world):
+    world, _, _, _ = economic_world
+    Council(world).open(480)
+    app = create_app(world.directory)
+    async with httpx.AsyncClient(
+        transport=httpx.ASGITransport(app=app), base_url="http://town"
+    ) as client:
+        initial = (await client.get("/api/economy?minute=0")).json()
+        assert initial["enabled"] and initial["news"] == []
+        assert initial["proposals"][0]["status"] == "pending"
+        current = (await client.get("/api/economy")).json()
+        assert current["proposals"][0]["status"] == "open"
+        assert "electorate" not in current["proposals"][0]
+        resident = (await client.get("/api/agents/john_lin?minute=0")).json()
+        assert resident["finances"]["lease"]["daily_cents"] > 0
+        assert resident["finances"]["transactions"] == []
+        assert (await client.get("/api/economy?minute=-1")).status_code == 422
 
 
 async def test_received_shared_event_rejects_wrong_day(economic_world):

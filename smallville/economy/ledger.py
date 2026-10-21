@@ -22,7 +22,9 @@ class LedgerBatch:
             )
         return self.accounts[identifier]
 
-    def transfer(self, source: str, destination: str, cents: int, purpose: str) -> Transfer:
+    def transfer(
+        self, source: str, destination: str, cents: int, purpose: str, *, memo: str = ""
+    ) -> Transfer:
         if type(cents) is not int or cents <= 0 or source == destination:
             raise ValueError("invalid bank transfer")
         debit, credit = self.account(source), self.account(destination)
@@ -35,6 +37,7 @@ class LedgerBatch:
             destination=destination,
             cents=cents,
             purpose=purpose,
+            memo=memo,
         )
         debit.cents -= cents
         credit.cents += cents

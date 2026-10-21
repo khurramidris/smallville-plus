@@ -101,6 +101,38 @@ def create_app(directory: str | Path) -> FastAPI:
                 m for m in state["messages"].values() if identifier in (m["to"], m["sender"])
             ],
             "calendar": [e for e in state["calendar"].values() if e["owner"] == identifier],
+            "finances": {
+                "account": state["accounts"].get(identifier),
+                "inventory": state["inventories"].get(identifier),
+                "job": state["jobs"].get(identifier),
+                "lease": state["leases"].get(identifier),
+                "transactions": sorted(
+                    [
+                        t
+                        for t in state["transfers"].values()
+                        if identifier in (t["source"], t["destination"])
+                    ],
+                    key=lambda t: (t["minute"], t["id"]),
+                )[-8:],
+            },
+        }
+
+    @app.get("/api/economy")
+    def economy(minute: int | None = Query(default=None, ge=0)):
+        minute, state = snapshot(minute)
+        enabled = state["metadata"]["run"].get("phase") == 3
+        return {
+            "minute": minute,
+            "enabled": enabled,
+            "treasury_cents": state["accounts"].get("town:treasury", {}).get("cents", 0),
+            "arrears_cents": sum(lease["arrears_cents"] for lease in state["leases"].values()),
+            "shops": list(state["shops"].values()),
+            "proposals": [
+                {k: v for k, v in p.items() if k != "electorate"}
+                for p in state["proposals"].values()
+            ],
+            "news": sorted(state["news"].values(), key=lambda n: (n["minute"], n["id"])),
+            "note": "Researcher view. Town money is fictional and separate from API costs.",
         }
 
     @app.get("/api/events")

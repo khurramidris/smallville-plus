@@ -44,6 +44,19 @@ def write_report(directory: Path, report: dict):
         "Human believability scores remain uncollected.\n"
     )
     (directory / "report.md").write_text(text)
+    if report.get("economy", {}).get("enabled"):
+        economy = report["economy"]
+        audit = economy["audit"]
+        with (directory / "report.md").open("a") as file:
+            file.write(
+                "\n## Town economy and council\n\n"
+                f"Money conserved: {audit['money_conserved']}; ledger matches accounts: "
+                f"{audit['ledger_matches_accounts']}; food conserved: {audit['food_conserved']}.\n\n"
+                f"{economy['transfers']} transfers; rent arrears "
+                f"${economy['rent_arrears_cents'] / 100:.2f}; "
+                f"{economy['ballots']} ballots; {economy['news']['published']} public notices. "
+                "All town amounts are fictional and separate from API USD.\n"
+            )
 
 
 async def run_command(args):

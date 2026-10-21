@@ -91,8 +91,14 @@ def evaluate(world: WorldState) -> dict:
         return any(campaign_evidence(agent.id, m.text) for m in agent.memories)
 
     messages = world.all("messages")
+    attached_invites = {
+        i["message_id"] for i in world.all("invitations") if i["event_id"] == "valentine_2023"
+    }
     invitations = [
-        m for m in messages if m["sent_at"] < 2460 and party_schedule_evidence(m["body"])
+        m
+        for m in messages
+        if m["sent_at"] < 2460
+        and (party_schedule_evidence(m["body"]) or m["id"] in attached_invites)
     ]
     invited = {m["to"] for m in invitations} - {"isabella_rodriguez"}
     read_invites = {m["to"] for m in invitations if m["read_at"] is not None} - {

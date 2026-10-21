@@ -50,6 +50,10 @@
     </section>
     <aside class="panel"><div class="bar"><h2>Resident notebook</h2><span class="badge">Researcher view</span></div><div id="inspector"><p class="empty">Select a resident on the map or below it to inspect their life at this point in time.</p></div></aside>
   </div>
+  <section class="panel" id="townEconomy" hidden style="margin-top:20px">
+    <div class="bar"><h2>Town life · economy and council</h2><span class="badge">Fictional town money</span></div>
+    <div id="economyContent" style="padding:0 18px 15px"></div>
+  </section>
   <footer id="note">This is a schematic of the original tile map. The researcher view includes private notebooks; residents only perceive their own surroundings and phone. Mock behavior is a deterministic test fixture, not evidence of human realism.</footer>
 </main>
 <script>
@@ -59,6 +63,7 @@ const escapeHTML=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>'
 const label=id=>locationById[id]?.name||id.replaceAll('_',' ');
 const readable=text=>{let value=String(text);for(const [id,loc] of Object.entries(locationById))value=value.replaceAll(id,loc.name);return escapeHTML(value)};
 const timeLabel=m=>new Date(Date.UTC(2023,1,13)+m*60000).toLocaleString('en-GB',{timeZone:'UTC',month:'short',day:'2-digit',hour:'2-digit',minute:'2-digit'});
+const money=c=>`$${(Number(c)/100).toFixed(2)}`;
 async function get(path){const r=await fetch(path);if(!r.ok)throw Error(`Cannot load replay (${r.status})`);return r.json()}
 function draw(){
   const sx=canvas.width/meta.map.width,sy=canvas.height/meta.map.height;
@@ -102,18 +107,21 @@ async function inspect(version){
   ${Object.entries(a.needs).map(([k,v])=>`<div class="need"><span>${escapeHTML(k)}</span><progress max="100" value="${v}"></progress><span>${Math.round(v)}</span></div>`).join('')}
   <h3>Today's plan</h3>${a.plan?a.plan.blocks.map(b=>entry(`${b.activity} · ${label(b.location)}`,`${Math.floor(b.start/60)}:${String(b.start%60).padStart(2,'0')}–${Math.floor(b.end/60)}:${String(b.end%60).padStart(2,'0')}`)).join(''):'<p class="empty">Still asleep; no plan written yet.</p>'}
   <h3>Calendar</h3>${data.calendar.map(e=>entry(`${e.title} · ${label(e.location)}`,timeLabel(e.start))).join('')||'<p class="empty">Nothing scheduled.</p>'}
+  ${data.finances?.job?`<h3>Money and work</h3><p>${money(data.finances.account.cents)} balance · ${data.finances.inventory.meals} meals</p><p class="subtle">${escapeHTML(data.finances.job.kind)} · ${money(data.finances.job.hourly_cents)}/hour · ${money(data.finances.lease.daily_cents)}/day rent · ${money(data.finances.lease.arrears_cents)} owed</p>${data.finances.transactions.slice(-5).reverse().map(t=>entry(`${money(t.cents)} · ${t.purpose}`,`${label(t.source)} → ${label(t.destination)} · ${timeLabel(t.minute)}`)).join('')}`:''}
   <h3>Recent memories</h3>${a.memories.slice(-10).reverse().map(m=>entry(m.text,`${timeLabel(m.minute)} · ${m.kind}`)).join('')}
   <h3>Messages</h3>${data.messages.slice(-10).reverse().map(m=>entry(m.body,`${label(m.sender)} → ${label(m.to)} · ${timeLabel(m.sent_at)}`)).join('')||'<p class="empty">No messages yet.</p>'}`;
 }
 async function update(){
   const version=++request,minute=Number($('#time').value);
   try{
-    const [next,cost]=await Promise.all([get(`/api/state?minute=${minute}`),get(`/api/cost?minute=${minute}`)]);
+    const [next,cost,economy]=await Promise.all([get(`/api/state?minute=${minute}`),get(`/api/cost?minute=${minute}`),get(`/api/economy?minute=${minute}`)]);
     if(version!==request)return;state=next;
     $('#clock').textContent=timeLabel(minute);$('#timeLabel').textContent=`Day ${Math.floor(minute/1440)+1}`;
     $('#residentCount').textContent=state.agents.length;$('#tagline').textContent=`One town. ${state.agents.length} lives. A record of what happened.`;$('#calls').textContent=`${cost.calls} / ${cost.cache_hits}`;
     $('#cost').textContent=`$${Number(cost.usd).toFixed(4)} / $${Number(cost.max_usd).toFixed(2)}`;
     $('#perDay').textContent=cost.usd_per_agent_day===null?'—':`$${Number(cost.usd_per_agent_day).toFixed(5)}`;
+    $('#townEconomy').hidden=!economy.enabled;
+    if(economy.enabled)$('#economyContent').innerHTML=`<p>Town treasury ${money(economy.treasury_cents)} · Housing arrears ${money(economy.arrears_cents)}</p><h3>Shops</h3>${economy.shops.map(s=>entry(`${label(s.id)} · ${s.stock} meals · ${money(s.price_cents)} each`)).join('')}<h3>Council</h3>${economy.proposals.map(p=>entry(`${p.title} · ${p.status}${p.result?` · yes ${p.result.yes}, no ${p.result.no}, abstain ${p.result.abstain}`:''}`,`Poll closes ${timeLabel(p.closes)}${p.delivered_meals!==undefined?` · ${p.delivered_meals} additional meals delivered`:''}`)).join('')}<h3>Local notices</h3>${economy.news.slice(-5).reverse().map(n=>entry(`${n.title}: ${n.body}`,`${n.category==='opinion'?'Resident opinion':'Town bulletin'} · ${timeLabel(n.minute)}`)).join('')}`;
     $('#people').innerHTML=state.agents.map(a=>`<button type="button" data-agent="${escapeHTML(a.id)}" class="${a.id===selected?'active':''}">${escapeHTML(a.persona.name)}</button>`).join('');
     draw();await inspect(version);
   }catch(e){$('#note').textContent=e.message;$('#note').className='error'}

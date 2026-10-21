@@ -20,6 +20,7 @@ class Transfer(Model):
     destination: str
     cents: Amount
     purpose: str
+    memo: str = Field(default="", max_length=200)
 
 
 class Job(Model):

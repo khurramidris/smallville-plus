@@ -25,6 +25,20 @@
 - Validation: 13 new component cases pass offline; lint and compile checks pass.
   Integration/regression, viewer support and final scenario measurements follow.
 
+### Phase 3 step 2 — Research tools and validation
+- Added economic conservation/ledger/work-limit audits, financial/resource
+  metrics, ballots/news statistics and confirmed shared-event party scoring.
+- Viewer now replays personal finances and public shop/council/news state at
+  the selected time. Town amounts are clearly separate from real API USD.
+- Expanded app authority/privacy and historical viewer tests. The initial full
+  regression passed: **59 tests offline in 159.69 seconds**. All 16 current
+  Phase 3 component cases also pass; final full-suite verification follows.
+- Verified the exact requested free route still has zero published prices.
+  Started the 100-resident three-day MockLLM scenario and the original 25-resident
+  three-day live experiment, both with an explicit second-day delivery delay.
+  The live process received the existing authorized key through hidden input;
+  no key file or paid fallback was added. Results remain pending.
+
 ## Current follow-up — Authorized live inference
 - **Completed.** The 25-resident real-API day passes; evidence and problems are
   in `reports/LIVE_API_REPORT.md`. Development remains stopped at Phase 2.

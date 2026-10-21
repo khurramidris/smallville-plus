@@ -32,6 +32,6 @@ def party_schedule_evidence(text: str) -> bool:
     return (
         "valentine" in lower
         and "hobbs" in lower
-        and ("february 14" in lower or "february 14th" in lower)
+        and bool(re.search(r"\b(?:feb(?:ruary)?\.?\s+14(?:th)?|2023-02-14)\b", lower))
         and clock_time_evidence(text, 17)
     )
