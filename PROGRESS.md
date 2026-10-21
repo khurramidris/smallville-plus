@@ -57,6 +57,19 @@
 - The expanded optimized 100-person offline scenario is also running. Preserve
   production behavior and retain all earlier diagnostic/interrupted artifacts.
 
+### Resumption step 4 — Expanded optimized scenario completed
+- All 100 residents completed 4,320 minutes. The run used 12,141 mock calls
+  versus 14,076 previously (13.7% fewer), and 51,851,835 synthetic input tokens
+  versus 88,642,393 (41.5% fewer). Wall time was 1,686.868 seconds versus
+  2,260.967 under different competing work; timing is descriptive.
+- All 19,873,747 town cents remain conserved. The 974 meals reconcile as 468
+  consumed and 506 remaining; account/ledger/work-limit audits pass.
+- Eleven residents owe 23,081 cents of rent; eleven are hungry without meals.
+  Confirmed party attendance: 29 of 49 guests receiving details. These are
+  scripted fixtures and attention/timing changes can change their behavior.
+- Full expanded event replay is in progress. The live API run continues through
+  day one's evening with no provider failures so far and recorded cost $0.
+
 ## Phase 3 authorization and scope
 - Authorized on 2026-10-21: implement the next phase, then run three simulated
   days. Scope and acceptance are in `PHASE3.md`; original `SPEC.md` is unchanged.

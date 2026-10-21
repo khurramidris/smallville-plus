@@ -1,8 +1,8 @@
 # Phase 3 — Economy, council and three-day experiments
 
 **Phase 3 has resumed with a performance and planning pass. The optimized
-25-person three-day offline scenario and all 83 tests pass. A fresh three-day
-API experiment and expanded offline run are in progress.** The previous live
+25- and 100-person three-day offline scenarios and all 83 tests pass. A fresh
+three-day API experiment and expanded event replay are in progress.** The previous live
 experiment remains preserved as interrupted at 21 hours. No Phase 4 work was
 started and no paid service was added.
 
@@ -28,7 +28,14 @@ cancelled run finishes. Production behavior is frozen at `8e2b410`.
   state. All money, food, ledger, work-limit and elapsed-activity audits pass.
 - A fixed-100ms synthetic provider probe measured **4.07x** gateway throughput
   with four concurrent requests. This is not an API or full-engine speed claim.
-- Fresh live inference and expanded optimized-run results are pending. They use
+- Optimized 100-person fixture: **12,141 requests**, versus 14,076 previously
+  (13.7% fewer). Synthetic input tokens fell from 88,642,393 to 51,851,835
+  (41.5% fewer); wall time was 1,686.868 seconds, versus 2,260.967 under different
+  competing work. All financial/resource audits pass. Eleven residents owe
+  23,081 town cents; eleven are hungry without meals. Party: 29/49 guests.
+- These modes change attention/history limits and action timing, so their
+  behavior is not guaranteed identical. Social fixture results remain scripted.
+- Fresh live inference and expanded event replay results are pending. They use
   separate directories/reports; none overwrite the prior experiments below.
 
 Evidence: [optimized fixture](phase3/optimized-mock-25-simulation.json),

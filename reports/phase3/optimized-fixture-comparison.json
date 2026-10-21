@@ -1,0 +1,39 @@
+{
+  "interpretation": "Descriptive engineering fixtures; attention limits and timing change behavior. Different competing work prevents a controlled wall-time speed claim. Mock token counts are synthetic.",
+  "cohorts": {
+    "25": {
+      "days": 3,
+      "before": {
+        "calls": 3317,
+        "input_tokens": 10866922,
+        "output_tokens": 152251
+      },
+      "after": {
+        "calls": 2870,
+        "input_tokens": 9565607,
+        "output_tokens": 142174
+      },
+      "call_reduction_percent": 13.476,
+      "input_token_reduction_percent": 11.975,
+      "wall_seconds_before": 389.783,
+      "wall_seconds_after": 332.999
+    },
+    "100": {
+      "days": 3,
+      "before": {
+        "calls": 14076,
+        "input_tokens": 88642393,
+        "output_tokens": 678793
+      },
+      "after": {
+        "calls": 12141,
+        "input_tokens": 51851835,
+        "output_tokens": 621026
+      },
+      "call_reduction_percent": 13.747,
+      "input_token_reduction_percent": 41.504,
+      "wall_seconds_before": 2260.967,
+      "wall_seconds_after": 1686.868
+    }
+  }
+}
