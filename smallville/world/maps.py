@@ -34,7 +34,7 @@ class SmallvilleMap:
     addresses and hours are authored assumptions. No texture files are required.
     """
 
-    def __init__(self, root: Path | None = None):
+    def __init__(self, root: Path | None = None, extra_locations: list[Location] | None = None):
         root = root or DATA / "the_ville"
         tiled = ET.parse(root / "visuals/the_ville.tmx").getroot()
         self.width, self.height = int(tiled.attrib["width"]), int(tiled.attrib["height"])
@@ -111,6 +111,16 @@ class SmallvilleMap:
                 opens=opens,
                 closes=closes,
             )
+        for location in extra_locations or []:
+            i = location.y * self.width + location.x
+            if (
+                location.id in self.locations
+                or not 0 <= location.x < self.width
+                or not 0 <= location.y < self.height
+                or i not in accessible
+            ):
+                raise ValueError("invalid or inaccessible map overlay location")
+            self.locations[location.id] = location
         self._paths: dict[tuple[str, str], list[tuple[int, int]]] = {}
 
     def route(self, start: str, end: str) -> list[tuple[int, int]]:

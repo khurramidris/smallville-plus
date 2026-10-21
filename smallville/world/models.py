@@ -44,6 +44,19 @@ class Emotion(Model):
     label: str = "neutral"
 
 
+class LifeEvent(Model):
+    age: int = Field(ge=0, le=120)
+    description: str = Field(min_length=10, max_length=600)
+
+
+class LifeHistory(Model):
+    narrative: str = Field(min_length=120, max_length=6000)
+    events: list[LifeEvent] = Field(min_length=6, max_length=12)
+    interests: list[str] = Field(min_length=2, max_length=8)
+    values: list[str] = Field(min_length=2, max_length=8)
+    goals: list[str] = Field(min_length=2, max_length=8)
+
+
 class Persona(Model):
     name: str
     age: int = Field(ge=0, le=120)
@@ -58,16 +71,37 @@ class Persona(Model):
     sociability: float = Field(default=0.5, ge=0, le=1)
     opinion: float = Field(default=0, ge=-1, le=1)
     known_locations: list[str] = Field(default_factory=list)
+    facts: dict[str, str | int | float] = Field(default_factory=dict)
+    life_history: LifeHistory | None = None
+    provenance: dict[str, str] = Field(default_factory=dict)
+
+    @model_validator(mode="after")
+    def coherent_history(self):
+        if self.life_history and any(e.age > self.age for e in self.life_history.events):
+            raise ValueError("life history contains an event after the person's current age")
+        if self.life_history and [e.age for e in self.life_history.events] != sorted(
+            e.age for e in self.life_history.events
+        ):
+            raise ValueError("life history must be in chronological order")
+        for key, value in (
+            ("name", self.name),
+            ("age", self.age),
+            ("home", self.home),
+            ("workplace", self.workplace),
+        ):
+            if key in self.facts and self.facts[key] != value:
+                raise ValueError(f"persona fact disagrees with {key}")
+        return self
 
 
 class Memory(Model):
     id: str
-    minute: int = Field(ge=0)
+    minute: int
     text: str
     importance: float = Field(default=0.5, ge=0, le=1)
     kind: Literal["episode", "reflection", "seed"] = "episode"
     source: str
-    last_access: int = Field(default=0, ge=0)
+    last_access: int = 0
 
 
 class PlanBlock(Model):
@@ -136,18 +170,25 @@ class Message(Model):
     sender: str
     to: str
     body: str = Field(min_length=1, max_length=2000)
-    sent_at: int = Field(ge=0)
+    sent_at: int
     read_at: int | None = None
     verbosity: Literal["quiet", "normal", "urgent"] = "normal"
+
+    @model_validator(mode="after")
+    def read_follows_send(self):
+        if self.read_at is not None and self.read_at < self.sent_at:
+            raise ValueError("message cannot be read before it was sent")
+        return self
 
 
 class CalendarEntry(Model):
     id: str
     owner: str
     title: str = Field(min_length=1, max_length=200)
-    start: int = Field(ge=0)
-    end: int = Field(gt=0)
+    start: int
+    end: int
     location: str
+    attendees: list[str] = Field(default_factory=list)
 
     @model_validator(mode="after")
     def positive_duration(self):

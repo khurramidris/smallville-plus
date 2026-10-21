@@ -43,7 +43,10 @@ def routine(context: dict) -> dict:
             (1200, 1320, "leisure", home),
             (1320, 1440, "sleep", home),
         ]
-    if p["id"] == "sam_moore":
+    if p["id"] == "sam_moore" or any(
+        word in p.get("work_status", "").lower()
+        for word in ("retired", "unemployed", "keeping house")
+    ):
         blocks = [(s, e, "leisure" if a == "work" else a, loc) for s, e, a, loc in blocks]
     return {
         "day": day,
@@ -179,6 +182,18 @@ class MockLLM:
                 else "I don't remember enough to answer.",
                 "opinion": context["self"]["opinion"],
             }
+        elif task == "persona":
+            from smallville.personas.generation import mock_life_history
+
+            result = mock_life_history(context, seed)
+        elif task == "history_templates":
+            from smallville.personas.histories import mock_history
+
+            result = mock_history(context)
+        elif task == "survey":
+            from smallville.eval.surveys import mock_survey
+
+            result = mock_survey(context, seed)
         else:
             raise ValueError("unsupported mock task")
         content = canonical(result)

@@ -41,12 +41,23 @@ class Mind:
 
     def stable_prompt(self, agent: Agent) -> str:
         p = agent.persona
+        biography = (
+            (
+                f"My life story: {p.life_history.narrative}\n"
+                f"My interests: {p.life_history.interests}. My values: {p.life_history.values}.\n"
+                f"My current goals: {p.life_history.goals}.\n"
+                f"My own background facts: {canonical(p.facts)}\n"
+            )
+            if p.life_history
+            else ""
+        )
         return (
             f"My name is {p.name}. I am {p.age} years old.\n"
             f"{p.description}\nMy traits: {p.traits}.\nMy habits: {p.lifestyle}\n"
             f"My speech is {p.speech_style}.\n"
             f"My home is {p.home}; my workplace is {p.workplace}.\n"
-            f"My public address book: {canonical([self.town.locations[i].model_dump() for i in p.known_locations])}\n"
+            + biography
+            + f"My public address book: {canonical([self.town.locations[i].model_dump() for i in p.known_locations])}\n"
             + RULES
         )
 
@@ -84,6 +95,7 @@ class Mind:
                 "sociability": agent.persona.sociability,
                 "opinion": agent.persona.opinion,
                 "contacts": agent.contacts,
+                "work_status": agent.persona.facts.get("work_status", ""),
             },
             "needs": agent.needs.model_dump(),
             "emotion": agent.emotion.model_dump(),

@@ -12,16 +12,23 @@ from smallville.engine.scheduler import EventBus, Scheduler
 from smallville.gm.master import GameMaster
 from smallville.llm.gateway import BudgetExceeded, Gateway, LiteLLMBackend, ModelFailure
 from smallville.llm.mock import MockLLM, routine
+from smallville.personas.population import Population
 from smallville.personas.seeds import load_agents
 from smallville.world.maps import MapProvider, SmallvilleMap
 from smallville.world.models import Intent, change
 from smallville.world.store import WorldState
 
 
-def bootstrap(world: WorldState, town: MapProvider, config: Config):
+def bootstrap(
+    world: WorldState, town: MapProvider, config: Config, population: Population | None = None
+):
     if world.log.read(limit=1):
         raise ValueError("run directory already contains a simulation; choose a fresh directory")
-    agents = load_agents(town, config.seed)
+    if population:
+        population.validate_map(town)
+        agents = [a.model_copy(deep=True) for a in population.agents]
+    else:
+        agents = load_agents(town, config.seed)
     changes = [change("locations", loc.id, loc) for loc in town.locations.values()]
     for agent in agents:
         # Begin at midnight in bed; no inference during this known sleep period.
@@ -33,6 +40,7 @@ def bootstrap(world: WorldState, town: MapProvider, config: Config):
                     "workplace": agent.persona.workplace,
                 },
                 "minute": 0,
+                "work_status": agent.persona.facts.get("work_status", ""),
             }
         )
         wake = plan["blocks"][0]["end"]
@@ -62,10 +70,29 @@ def bootstrap(world: WorldState, town: MapProvider, config: Config):
                     "requested_minutes": 0,
                     "epoch": "2023-02-13T00:00:00+00:00",
                     "benchmark": "valentine",
+                    "phase": 2 if population else 1,
                 },
             ),
         ]
     )
+    if population:
+        changes.extend(change("messages", m.id, m) for m in population.messages)
+        changes.extend(change("calendar", e.id, e) for e in population.calendar)
+        changes.append(
+            change(
+                "metadata",
+                "population",
+                {
+                    "digest": population.digest or population.fingerprint(),
+                    "history_days": population.history_days,
+                    "residents": len(population.agents),
+                    "historical_messages": len(population.messages),
+                    "historical_calendar_entries": len(population.calendar),
+                    "consistency_attempts": len(population.consistency),
+                    "sources": population.sources,
+                },
+            )
+        )
     return world.log.append(0, "initialized", changes=changes)
 
 
@@ -77,14 +104,20 @@ class Simulation:
         *,
         town: MapProvider | None = None,
         cache_path: Path | None = None,
+        population: Population | None = None,
     ):
-        self.config, self.town = config, town or SmallvilleMap()
+        self.config, self.town = (
+            config,
+            town or SmallvilleMap(extra_locations=population.locations if population else None),
+        )
+        if population and population.seed != config.seed:
+            raise ValueError("population seed differs from run seed; use its recorded seed")
         self.world = WorldState(directory)
         self.clock, self.scheduler, self.bus = SimClock(), Scheduler(), EventBus()
         self.active_agent = None
         self.wakes: set[tuple[str, int]] = set()
         try:
-            bootstrap(self.world, self.town, config)
+            bootstrap(self.world, self.town, config, population)
         except Exception:
             self.world.close()
             raise

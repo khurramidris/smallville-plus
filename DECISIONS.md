@@ -30,6 +30,22 @@
 - Read lightweight event fields for metrics instead of retaining every full
   agent snapshot in memory when evaluating the expanded population.
 
+### Phase 2 step 2 — Repair and scoring semantics
+- Add the consistency-attempt revision to the survey request. Reusing an old
+  failed answer after regenerating an identical biography would defeat repair;
+  versioning the request fixes that without sacrificing reproducible caching.
+- Validate the immutable source facts and original seed memories again at launch,
+  independently of the artifact digest and recorded survey pass flags.
+- Preserve human missingness and unsupported catalog encodings. Score only cells
+  with a valid human target, but count missing/invalid model answers as failures.
+  Report valid-only numerical MAE alongside penalized normalized error.
+- Keep human targets and prior repeated answers outside SurveyRunner inputs.
+  A regression test changes those values and proves model requests/predictions
+  remain identical through response-cache hits.
+- Use a separate masked-profile cohort for fidelity evaluation. Giving town
+  residents all their source facts is appropriate for consistency checks, but
+  would not be a valid held-out prediction benchmark.
+
 ## Step 1 — Scope and operating boundaries
 - Build only Phase 1. Full life histories, survey-based regeneration, digital histories, financial simulation and external long-term memory remain deferred.
 - Use an ordinary local Python package and FastAPI replay viewer; no hosted service is needed.

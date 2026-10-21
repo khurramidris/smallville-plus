@@ -27,6 +27,26 @@
 - Existing component tests still pass: 19 tests. New module tests, CLI workflows,
   full integration and final measurements are next.
 
+### Phase 2 step 2 — Profiles, histories, surveys and integration
+- Added the population compiler and locked source-fact validation, six dated life
+  events per profile, biography anchors, finite repair attempts and atomic
+  population publication. The original 25 identities and seed goals are retained.
+- Added 75 apartment units at three accessible entrances, signed pre-epoch phone
+  records, owner-scoped historical messages and mutually consistent appointments.
+- Connected population artifacts to simulation bootstrap, map overlays, replay,
+  planning and the viewer. The default 25-resident path remains available.
+- Added populate/validate/import/fidelity CLI commands and expanded viewer labels,
+  apartment grouping and life-story inspection.
+- Added held-out scoring with prediction coverage, categorical accuracy,
+  normalized numerical error, and scorer-only human test–retest baselines.
+- Found and fixed a repair-cache bug: a repeated biography could reuse the same
+  contradictory survey. Every t=0 attempt now has a distinct request revision;
+  reruns of the whole attempt sequence still replay exactly from cache.
+- Validation: all 14 new tests pass (50.59 seconds), including contradiction
+  repair, unresolved-profile rejection, locked facts, history privacy/chronology,
+  100 residents through nine simulated hours, replay, cache identity and held-out
+  answer isolation. Full regression and final CLI acceptance are next.
+
 ## Step 1 — Specification and environment
 - Saved the complete user request in `SPEC.md` before implementation.
 - Workspace was empty; Python 3.12 is available. Pydantic, FastAPI, Uvicorn and HTTPX are installed.
