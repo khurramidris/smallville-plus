@@ -154,5 +154,7 @@ been validated. Human gold data is kept outside persona repair feedback.
 `SPEC.md` is the complete original request. `PROGRESS.md` records completion and
 open issues, and `DECISIONS.md` records the rationale. `PHASE2.md` records the
 authorized extension. Development stops at Phase 2.
+The [Phase 2 report](reports/PHASE2_REPORT.md) contains the 100-resident run,
+consistency/cache checks, fidelity measurements and known limitations.
 The saved [Phase 1 report](reports/PHASE1_REPORT.md) contains acceptance evidence,
 mock benchmark measurements, browser verification and the remaining API blocker.

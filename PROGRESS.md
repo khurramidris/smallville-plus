@@ -1,6 +1,8 @@
 # Smallville+ progress
 
 ## Current work — Phase 2
+- **Completed and stopped at Phase 2.** Final evidence is in
+  `reports/PHASE2_REPORT.md`; 39 offline tests and the 100-resident day pass.
 - User authorized the next phase on 2026-10-21. Scope is recorded in `PHASE2.md`;
   the complete original `SPEC.md` is preserved.
 - Read the cloud runtime/network instructions and inspected the existing code.
@@ -8,9 +10,8 @@
 - Reviewed the public genagents GSS bank documentation and Twin-2K-500 dataset
   card/metadata. Licenses are MIT and CC BY 4.0 respectively; dataset licensing
   and exact source revisions will be retained before importing data.
-- Next: acquire a bounded source subset, add structured profiles and surveys,
-  compile histories and population validation, integrate 100 residents, run
-  offline acceptance and record limitations. No later phase will be built.
+- The implementation steps and measurements are recorded below. No later phase
+  was built, and no paid model calls were made.
 
 ### Phase 2 step 1 — Licensed sources and pipeline prototype
 - Retrieved all 75 GSS demographic records and both official Twin response CSVs
@@ -70,7 +71,10 @@
   external browser requests occurred. Human-readable place labels are used in
   the life-story display; structured artifact IDs remain unchanged.
 - Rechecked all 76 retained Phase 2 source/derived-file hashes.
-- Next: save compact reports and final documentation, commit, and stop at Phase 2.
+- Saved compact reports, sample personas, browser evidence and a screenshot under
+  `reports/phase2/`. Full local run files remain under ignored `runs/`.
+- Phase 2 is complete within the offline scope. Real-model quality, human ratings
+  and paid API validation remain unperformed. No Phase 3 work was started.
 
 ## Step 1 — Specification and environment
 - Saved the complete user request in `SPEC.md` before implementation.
@@ -79,7 +83,7 @@
 - No paid service has been added or called.
 
 ## Next
-1. Complete the Phase 2 deliverables and validation in `PHASE2.md`.
+1. Stop at Phase 2; its deliverables and offline validation are complete.
 2. A live day remains blocked on model configuration, API credentials and
    explicit spending approval. No paid service was added or called.
 

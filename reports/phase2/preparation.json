@@ -1,0 +1,22 @@
+{
+  "status": "validated",
+  "residents": 100,
+  "history_days": 21,
+  "messages": 4200,
+  "calendar_entries": 300,
+  "map_units_added": 75,
+  "consistency_attempts": 100,
+  "regenerations": 0,
+  "digest": "50cee46bfaa2168ab74dc3d5b2f4302a3c7efec8840edbfde75a3e0c74664912",
+  "cost": {
+    "calls": 300,
+    "cache_hits": 0,
+    "input_tokens": 195348,
+    "output_tokens": 67192,
+    "usd": "0",
+    "max_usd": "0",
+    "uncertain_calls": 0,
+    "accounting": "conservative configured token prices; not a provider invoice"
+  },
+  "wall_seconds": 4.763
+}

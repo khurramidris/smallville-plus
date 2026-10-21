@@ -1,0 +1,16 @@
+{
+  "browser": "Chromium via Playwright",
+  "residents_rendered": 100,
+  "phase": 2,
+  "map_locations": 94,
+  "inspected_resident": "Anthony Williams",
+  "resident_id": "anthony_williams_fdaa94",
+  "life_events": 6,
+  "t0_private_history": true,
+  "needs_bars": 5,
+  "play_pause": true,
+  "page_errors": [],
+  "external_requests": [],
+  "screenshot": "viewer.png",
+  "readable_life_story_locations": true
+}

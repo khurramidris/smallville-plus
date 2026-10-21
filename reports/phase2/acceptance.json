@@ -1,0 +1,67 @@
+{
+  "phase": 2,
+  "implementation_commit": "89f7431d0edb9e0c9c12dc5574a516008e823ccb",
+  "offline_tests": {
+    "command": "python -m pytest",
+    "passed": 39,
+    "failed": 0,
+    "seconds": 97.54,
+    "internet_sockets_disabled": true
+  },
+  "population": {
+    "residents": 100,
+    "original_residents": 25,
+    "new_gss_residents": 75,
+    "history_days": 21,
+    "messages": 4200,
+    "calendar_entries": 300,
+    "life_events_per_resident": 6,
+    "passed_t0": 100,
+    "digest": "50cee46bfaa2168ab74dc3d5b2f4302a3c7efec8840edbfde75a3e0c74664912"
+  },
+  "cached_rebuild": {
+    "cache_hits": 300,
+    "requests": 300,
+    "byte_identical_population": true
+  },
+  "run": {
+    "residents": 100,
+    "completed_minutes": 1440,
+    "status": "completed",
+    "mock_requests": 2739,
+    "usd": "0",
+    "usd_per_resident_day": "0",
+    "wall_seconds": 261.278
+  },
+  "fidelity": {
+    "completed": true,
+    "requests": 395,
+    "usd": "0",
+    "targets_never_used_for_inference": true,
+    "mock_scores_do_not_measure_human_fidelity": true
+  },
+  "browser": {
+    "completed": true,
+    "residents": 100,
+    "page_errors": 0,
+    "external_requests": 0,
+    "readable_location_labels": true
+  },
+  "paid_calls_made": 0,
+  "remaining": [
+    "Real API compatibility and cost remain unvalidated; paid spending is not approved and credentials/models are absent.",
+    "Narrative quality and human fidelity require real-model and human evaluation."
+  ],
+  "phase3_started": false,
+  "run_settings": {
+    "seed": 42,
+    "backend": "mock",
+    "model_deep": "mock-deep",
+    "model_fast": "mock-fast",
+    "model_gm": "mock-gm",
+    "embed_model": "mock-lexical",
+    "max_tokens": 1200,
+    "fidelity_batch_size": 8,
+    "fidelity_temperature": 0.5
+  }
+}
