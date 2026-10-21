@@ -1,0 +1,17 @@
+{
+  "status": "passed",
+  "tests": 83,
+  "wall_seconds": 142.49,
+  "command": "python -m pytest",
+  "network": "internet sockets disabled by pytest-socket; Unix sockets allowed",
+  "production_revision": "8e2b410",
+  "lint": "ruff check smallville tests: passed",
+  "python": "3.12.14",
+  "packages": {
+    "pydantic": "2.13.4",
+    "pytest": "9.1.1",
+    "pytest-socket": "0.8.1",
+    "litellm": "1.106.0"
+  },
+  "note": "Final suite follows correction of a test-only home-ID literal; no provider called by tests."
+}
