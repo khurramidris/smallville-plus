@@ -131,7 +131,8 @@ The fidelity harness uses separate masked profiles. The bundled Twin sample has
 catalog. It excludes all wave-4 QuestionIDs from the 32-field wave 1–3 profiles.
 Prior responses to held-out items are scorer-only human test–retest baselines.
 The GSS harness holds out age, political views, party identification and religion
-from 75 public demographic-bank profiles. Targets never enter request context.
+from 75 public demographic-bank profiles. The model receives questions and valid
+scales; answer keys and prior target responses stay in the scorer.
 Coverage and source missingness are explicit; invalid/missing predictions count
 as errors. Numerical reports include valid-only MAE and penalized normalized MAE.
 Mock scores exercise the adapters and scorer and do not measure human fidelity.

@@ -47,6 +47,31 @@
   100 residents through nine simulated hours, replay, cache identity and held-out
   answer isolation. Full regression and final CLI acceptance are next.
 
+### Phase 2 step 3 — Final verification
+- Full regression suite: **39 tests pass offline in 97.54 seconds**. Existing
+  Phase 1 acceptance and the 14 new tests all pass. Ruff and formatting checks pass.
+- Fresh preparation: 100 residents, 75 new housing units, 4,200 messages,
+  300 calendar entries, six dated life events each, and 100 passed t=0 surveys.
+  No resident required repair in the normal fixture; fault-injection tests verify
+  repair and refusal to publish unresolved profiles. Cost: 300 mock requests, $0.
+- Exact cached rebuild: 300/300 cache hits; population JSON is byte-identical,
+  including digest `50cee46bfaa2168ab74dc3d5b2f4302a3c7efec8840edbfde75a3e0c74664912`.
+- 100 residents completed all 1,440 minutes of one simulated day with 2,739 mock
+  requests, 300 runtime messages and **$0 per resident per simulated day**.
+  Eight intents crossed closing time and were rejected. Wall time: 261.278 seconds
+  while the regression/fidelity jobs also ran.
+- Both fidelity harnesses completed: 395 mock requests, $0. Twin: 20 subjects,
+  122 items, 1,888 eligible targets, categorical accuracy 0.3811 and penalized
+  normalized numerical MAE 0.22425. Human test–retest: 0.6996 / 0.19054.
+  GSS: 75 subjects, four masked fields, categorical accuracy 0.1378 and normalized
+  numerical MAE 0.22693. Mock scores validate plumbing, not human fidelity.
+- Chromium verified all 100 residents, 94 locations, six-event life stories,
+  owner-scoped prior phone history, needs, playback and costs. No page errors or
+  external browser requests occurred. Human-readable place labels are used in
+  the life-story display; structured artifact IDs remain unchanged.
+- Rechecked all 76 retained Phase 2 source/derived-file hashes.
+- Next: save compact reports and final documentation, commit, and stop at Phase 2.
+
 ## Step 1 — Specification and environment
 - Saved the complete user request in `SPEC.md` before implementation.
 - Workspace was empty; Python 3.12 is available. Pydantic, FastAPI, Uvicorn and HTTPX are installed.

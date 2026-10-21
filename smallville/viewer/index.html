@@ -56,7 +56,8 @@
 const $=s=>document.querySelector(s),canvas=$('#map'),ctx=canvas.getContext('2d');
 let meta,state,selected=null,playing=null,points=[],request=0,locationById={};
 const escapeHTML=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
-const label=id=>id.replaceAll('_',' ');
+const label=id=>locationById[id]?.name||id.replaceAll('_',' ');
+const readable=text=>{let value=String(text);for(const [id,loc] of Object.entries(locationById))value=value.replaceAll(id,loc.name);return escapeHTML(value)};
 const timeLabel=m=>new Date(Date.UTC(2023,1,13)+m*60000).toLocaleString('en-GB',{timeZone:'UTC',month:'short',day:'2-digit',hour:'2-digit',minute:'2-digit'});
 async function get(path){const r=await fetch(path);if(!r.ok)throw Error(`Cannot load replay (${r.status})`);return r.json()}
 function draw(){
@@ -89,7 +90,7 @@ function draw(){
     if(a.id===selected){ctx.font='bold 12px system-ui';ctx.fillStyle='#172d33';ctx.fillText(a.persona.name,x,y-16)}
   });
 }
-function entry(text,small=''){return `<div class="entry"><small>${escapeHTML(small)}</small>${escapeHTML(text)}</div>`}
+function entry(text,small=''){return `<div class="entry"><small>${escapeHTML(small)}</small>${readable(text)}</div>`}
 async function inspect(version){
   if(!selected)return;
   const data=await get(`/api/agents/${encodeURIComponent(selected)}?minute=${state.minute}`);
@@ -97,7 +98,7 @@ async function inspect(version){
   const a=data.agent;
   $('#inspector').innerHTML=`<h2>${escapeHTML(a.persona.name)}</h2><div class="subtle">${escapeHTML(a.persona.tier)} tier · ${escapeHTML(a.emotion.label)} · ${escapeHTML(a.activity)}</div>
   <p>${escapeHTML(a.persona.description)}</p>
-  ${a.persona.life_history?`<details><summary>Life story · fictional expansion</summary><p>${escapeHTML(a.persona.life_history.narrative)}</p>${a.persona.life_history.events.map(e=>entry(e.description,`Age ${e.age}`)).join('')}<p class="subtle">${escapeHTML(a.persona.provenance.source||'')} · ${escapeHTML(a.persona.provenance.biography||'')}</p></details>`:''}<h3>Needs</h3>
+  ${a.persona.life_history?`<details><summary>Life story · fictional expansion</summary><p>${readable(a.persona.life_history.narrative)}</p>${a.persona.life_history.events.map(e=>entry(e.description,`Age ${e.age}`)).join('')}<p class="subtle">${escapeHTML(a.persona.provenance.source||'')} · ${escapeHTML(a.persona.provenance.biography||'')}</p></details>`:''}<h3>Needs</h3>
   ${Object.entries(a.needs).map(([k,v])=>`<div class="need"><span>${escapeHTML(k)}</span><progress max="100" value="${v}"></progress><span>${Math.round(v)}</span></div>`).join('')}
   <h3>Today's plan</h3>${a.plan?a.plan.blocks.map(b=>entry(`${b.activity} · ${label(b.location)}`,`${Math.floor(b.start/60)}:${String(b.start%60).padStart(2,'0')}–${Math.floor(b.end/60)}:${String(b.end%60).padStart(2,'0')}`)).join(''):'<p class="empty">Still asleep; no plan written yet.</p>'}
   <h3>Calendar</h3>${data.calendar.map(e=>entry(`${e.title} · ${label(e.location)}`,timeLabel(e.start))).join('')||'<p class="empty">Nothing scheduled.</p>'}

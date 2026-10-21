@@ -46,6 +46,19 @@
   residents all their source facts is appropriate for consistency checks, but
   would not be a valid held-out prediction benchmark.
 
+### Phase 2 step 3 — Interpretation and stop boundary
+- Report preparation, simulation and fidelity as separate ledgers rather than
+  mixing setup inference into per-day runtime costs. All measured USD is mock $0.
+- The real source subset supports infrastructure validation; MockLLM's hashed
+  categorical choices and numerical midpoints are deliberately not a fidelity
+  claim. Human test–retest and missingness are reported alongside those fixtures.
+- Keep the entire population and large SQLite/JSONL files local under ignored
+  `runs/`; retain compact evidence, a sample biography and a viewer screenshot.
+- Display readable location names in life stories while preserving canonical IDs
+  in artifacts and app requests for exact replay.
+- Stop at Phase 2. Paid API compatibility/cost and semantic life-history quality
+  remain unvalidated, and the earlier Phase 1 paid-day acceptance remains pending.
+
 ## Step 1 — Scope and operating boundaries
 - Build only Phase 1. Full life histories, survey-based regeneration, digital histories, financial simulation and external long-term memory remain deferred.
 - Use an ordinary local Python package and FastAPI replay viewer; no hosted service is needed.
