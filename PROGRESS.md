@@ -33,6 +33,21 @@
   passing. The full suite and optimized three-day offline run are in progress.
 - No API calls yet during this resumption; no paid service or later-phase code.
 
+### Resumption step 2 — Offline acceptance and fresh live experiment
+- Final suite: **83 tests passed offline in 142.49 seconds**. The preceding
+  run had 82 passes and the already-fixed test-only location literal mismatch;
+  no production failure was found. Ruff passes.
+- Optimized 25-resident fixture completed 4,320 minutes with 2,870 mock calls,
+  versus 3,317 previously (13.5% fewer). Wall time 332.999 seconds versus 389.783;
+  runs had different competing work, so this is not an isolated speed benchmark.
+  All economy audits pass. Full event import is underway.
+- A synthetic fixed-100ms provider probe measured peak concurrency four and
+  4.07x gateway throughput; this is not a full-engine or API speed claim.
+- Verified the exact authorized endpoint still lists zero prompt/output prices.
+  Start a fresh three-day original-25 API experiment after offline acceptance,
+  preserving the earlier interrupted run and every cost record. Production
+  behavior is frozen at `8e2b410`; no later phase or paid fallback is included.
+
 ## Phase 3 authorization and scope
 - Authorized on 2026-10-21: implement the next phase, then run three simulated
   days. Scope and acceptance are in `PHASE3.md`; original `SPEC.md` is unchanged.

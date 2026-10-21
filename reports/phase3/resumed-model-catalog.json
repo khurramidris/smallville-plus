@@ -1,0 +1,19 @@
+{
+  "id": "minimax/minimax-m3.1-flash:free",
+  "pricing": {
+    "prompt": "0",
+    "completion": "0"
+  },
+  "context_length": 1000000,
+  "supported_parameters": [
+    "include_reasoning",
+    "max_tokens",
+    "reasoning",
+    "reasoning_effort",
+    "response_format",
+    "temperature",
+    "tool_choice",
+    "tools",
+    "top_p"
+  ]
+}

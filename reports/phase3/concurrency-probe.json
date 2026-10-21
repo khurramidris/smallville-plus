@@ -1,0 +1,36 @@
+{
+  "interpretation": "Synthetic provider, fixed 100ms delay; not an API or full-engine speed measurement.",
+  "serial": {
+    "concurrency": 1,
+    "requests": 12,
+    "peak_inflight": 1,
+    "wall_seconds": 1.2384,
+    "timing": {
+      "timed_calls": 12,
+      "provider_calls": 12,
+      "provider_seconds_sum": 1.232,
+      "provider_ms_mean": 102.656,
+      "provider_ms_p50": 101.279,
+      "provider_ms_p95": 115.645,
+      "queue_ms_sum": 6821.513,
+      "note": "Provider duration includes network and generation; concurrent durations overlap."
+    }
+  },
+  "parallel": {
+    "concurrency": 4,
+    "requests": 12,
+    "peak_inflight": 4,
+    "wall_seconds": 0.3045,
+    "timing": {
+      "timed_calls": 12,
+      "provider_calls": 12,
+      "provider_seconds_sum": 1.212,
+      "provider_ms_mean": 101.026,
+      "provider_ms_p50": 101.001,
+      "provider_ms_p95": 101.225,
+      "queue_ms_sum": 1214.56,
+      "note": "Provider duration includes network and generation; concurrent durations overlap."
+    }
+  },
+  "speedup": 4.067
+}
