@@ -93,6 +93,30 @@ limits; only text completions are supported. Ledger USD uses conservative config
 rates, not an invoice. A budget stop is reported as **incomplete**, never as a
 successful one-day acceptance run. No paid API day has yet been validated.
 
+Explicit OpenRouter `:free` models can run with a hard **$0** cap after API use
+is authorized. Verify the exact route's published rates first, then configure:
+
+```bash
+export SIM_MODEL_DEEP=openrouter/minimax/minimax-m3.1-flash:free
+export SIM_MODEL_FAST="$SIM_MODEL_DEEP"
+export SIM_MODEL_GM="$SIM_MODEL_DEEP"
+export SIM_EMBED_MODEL=local/lexical
+export SIM_MAX_USD=0
+export SIM_TIMEOUT_SECONDS=180
+export SIM_REASONING_EFFORT=low
+export SIM_MODEL_PRICES='{"openrouter/minimax/minimax-m3.1-flash:free":{"input":"0","output":"0"}}'
+python -m smallville preflight
+python -m smallville run --backend litellm --allow-paid --days 1 --out runs/free-live-day
+```
+
+Inject `OPENROUTER_API_KEY` into the process environment through your secret
+manager or hidden terminal input; do not put a key in source or a command line.
+The existing `--allow-paid` flag opts into live calls; the zero cap and explicit
+free route keep this example at $0. The adapter also disallows provider fallbacks
+and requires zero provider prompt/completion prices. Authentication, quotas,
+timeouts or route availability can still stop a free run. A partial run does not
+meet full-day acceptance. No other model is selected automatically.
+
 The embedding model variable is reserved and validated for live configuration;
 retrieval uses local lexical relevance. Wages/rent/shops, councils, graph memory,
 1,000-agent batching and social media remain deferred. Initial food and

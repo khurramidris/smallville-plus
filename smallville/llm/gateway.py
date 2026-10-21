@@ -20,7 +20,9 @@ class BudgetExceeded(RuntimeError):
 
 
 class ModelFailure(RuntimeError):
-    pass
+    def __init__(self, message: str, *, status_code: int | None = None):
+        super().__init__(message)
+        self.status_code = status_code
 
 
 class CacheMiss(ModelFailure):
@@ -47,8 +49,9 @@ class LiteLLMBackend:
     MockLLM path. Keys are read by LiteLLM from the process environment.
     """
 
-    def __init__(self, timeout: float):
+    def __init__(self, timeout: float, reasoning_effort: str | None = None):
         self.timeout = timeout
+        self.reasoning_effort = reasoning_effort
 
     async def complete(self, *, model, prompt, seed, temperature, max_tokens):
         os.environ["LITELLM_LOCAL_MODEL_COST_MAP"] = "True"
@@ -61,17 +64,38 @@ class LiteLLMBackend:
         # Never print provider exception bodies, prompts or credentials.
         for name in ("LiteLLM", "litellm", "httpx", "httpcore", "openai"):
             logging.getLogger(name).setLevel(logging.CRITICAL)
-        result = await litellm.acompletion(
-            model=model,
-            messages=[{"role": "user", "content": prompt}],
-            temperature=temperature,
-            seed=seed,
-            max_tokens=max_tokens,
-            timeout=self.timeout,
-            num_retries=0,
-            max_retries=0,
-            stream=False,
-        )
+        options = {}
+        if self.reasoning_effort is not None:
+            options["reasoning_effort"] = self.reasoning_effort
+        if model.startswith("openrouter/") and model.endswith(":free"):
+            # The user selected this free route, never a paid fallback. Enforce
+            # zero provider pricing as well as the gateway's zero-dollar cap.
+            options["extra_body"] = {
+                "provider": {
+                    "allow_fallbacks": False,
+                    "max_price": {"prompt": 0, "completion": 0},
+                }
+            }
+        try:
+            result = await litellm.acompletion(
+                model=model,
+                messages=[{"role": "user", "content": prompt}],
+                temperature=temperature,
+                seed=seed,
+                max_tokens=max_tokens,
+                timeout=self.timeout,
+                num_retries=0,
+                max_retries=0,
+                stream=False,
+                **options,
+            )
+        except Exception as exc:
+            # Status codes are useful for diagnosing auth/quota/network errors.
+            # Provider exception strings and response bodies may contain secrets.
+            status = getattr(exc, "status_code", None)
+            status = status if type(status) is int and 100 <= status <= 599 else None
+            suffix = f" (HTTP {status})" if status is not None else ""
+            raise ModelFailure("provider request failed" + suffix, status_code=status) from None
         usage = result.usage
         if usage is None or usage.prompt_tokens is None or usage.completion_tokens is None:
             raise ModelFailure("provider did not return billable usage")
@@ -189,16 +213,15 @@ class Gateway:
     ) -> str:
         prompt = stable + "\n\nCURRENT CONTEXT:\n" + canonical(dynamic)
         # Sampling parameters are part of the prompt hash's request envelope.
-        digest = hashlib.sha256(
-            canonical(
-                {
-                    "prompt": prompt,
-                    "temperature": temperature,
-                    "max_tokens": self.config.max_tokens,
-                    "schema_version": 1,
-                }
-            ).encode()
-        ).hexdigest()
+        envelope = {
+            "prompt": prompt,
+            "temperature": temperature,
+            "max_tokens": self.config.max_tokens,
+            "schema_version": 1,
+        }
+        if self.config.reasoning_effort is not None:
+            envelope["reasoning_effort"] = self.config.reasoning_effort
+        digest = hashlib.sha256(canonical(envelope).encode()).hexdigest()
         async with self.lock:
             cached = self.cache.execute(
                 "SELECT content FROM responses WHERE model=? AND prompt_hash=? AND seed=?",
@@ -261,8 +284,11 @@ class Gateway:
                 self._finish(identifier, "uncertain", 0, 0, reservation)
                 if isinstance(exc, (KeyboardInterrupt, SystemExit, asyncio.CancelledError)):
                     raise
+                status = exc.status_code if isinstance(exc, ModelFailure) else None
+                suffix = f" (HTTP {status})" if status is not None else ""
                 raise ModelFailure(
-                    "model request failed; reservation retained; see call ledger"
+                    "model request failed" + suffix + "; reservation retained; see call ledger",
+                    status_code=status,
                 ) from None
             self._finish(identifier, "ok", response.input_tokens, response.output_tokens, usd)
             with self.cache:

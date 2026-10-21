@@ -111,10 +111,14 @@ async def test_deterministic_mock_and_exact_cached_rerun(tmp_path):
 
 def test_cli_preflight_never_prints_keys(monkeypatch, capsys):
     monkeypatch.setenv("OPENAI_API_KEY", "private-test-value")
+    monkeypatch.setenv("OPENROUTER_API_KEY", "private-router-value")
     assert main(["preflight"]) == 0
     output = capsys.readouterr().out
     assert "private-test-value" not in output
-    assert json.loads(output)["paid_calls"] == 0
+    assert "private-router-value" not in output
+    result = json.loads(output)
+    assert result["paid_calls"] == 0
+    assert result["credential_presence_only"]["OPENROUTER_API_KEY"] is True
 
 
 async def test_invalid_plan_and_response_fail_safely(setup_world, town):

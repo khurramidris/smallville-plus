@@ -13,8 +13,8 @@ from smallville.world.models import Model
 class Price(Model):
     """USD per token. Set conservative ceilings covering all billable tokens."""
 
-    input: Decimal = Field(gt=0, allow_inf_nan=False)
-    output: Decimal = Field(gt=0, allow_inf_nan=False)
+    input: Decimal = Field(ge=0, allow_inf_nan=False)
+    output: Decimal = Field(ge=0, allow_inf_nan=False)
 
 
 class Config(Model):
@@ -29,6 +29,9 @@ class Config(Model):
     prices: dict[str, Price] = Field(default_factory=dict)
     max_tokens: int = Field(default=1200, ge=128, le=8192)
     timeout_seconds: float = Field(default=45, gt=0, le=300)
+    reasoning_effort: Literal["none", "minimal", "low", "medium", "high", "xhigh", "max"] | None = (
+        None
+    )
     allow_paid: bool = False
     replay_only: bool = False
 
@@ -37,8 +40,6 @@ class Config(Model):
         if self.backend == "litellm":
             if not self.allow_paid:
                 raise ValueError("paid calls require explicit approval and --allow-paid")
-            if self.max_usd <= 0:
-                raise ValueError("set a positive SIM_MAX_USD")
             models = {
                 self.model_deep,
                 self.model_fast,
@@ -55,6 +56,16 @@ class Config(Model):
                 raise ValueError(
                     "SIM_MODEL_PRICES must give conservative per-token prices for all models"
                 )
+            for model in models:
+                price = self.prices[model]
+                if price.input == price.output == 0 and not (
+                    model.startswith("openrouter/") and model.endswith(":free")
+                ):
+                    raise ValueError("zero prices require an explicit OpenRouter :free model")
+            if self.max_usd == 0 and any(
+                self.prices[model].input or self.prices[model].output for model in models
+            ):
+                raise ValueError("set a positive SIM_MAX_USD for priced models")
         return self
 
     @classmethod
@@ -74,6 +85,8 @@ class Config(Model):
             model_overrides=json.loads(os.getenv("SIM_MODEL_OVERRIDES", "{}")),
             prices=json.loads(os.getenv("SIM_MODEL_PRICES", "{}")),
             max_tokens=int(os.getenv("SIM_MAX_TOKENS", "1200")),
+            timeout_seconds=float(os.getenv("SIM_TIMEOUT_SECONDS", "45")),
+            reasoning_effort=os.getenv("SIM_REASONING_EFFORT") or None,
         )
 
     def model_for(self, identifier: str, tier: str) -> str:

@@ -1,5 +1,22 @@
 # Decisions
 
+## Live API follow-up — Exact free route and zero spending
+- The user's latest instruction authorizes OpenRouter calls using the supplied
+  model. Keep development at Phase 2 and preserve the earlier mock measurements.
+- Use LiteLLM's `openrouter/` provider prefix, with the exact requested `:free`
+  model; use `SIM_MAX_USD=0` and catalog-verified zero prices. No paid fallback or
+  automatic retries. Also send provider maximum prices of zero.
+- Permit zero prices only for explicit OpenRouter `:free` routes. Priced models
+  still require a positive cap and conservative token ceilings.
+- Read the key through hidden terminal input and inject it into
+  `OPENROUTER_API_KEY` only in the active process. Do not save a key file.
+- Preserve sanitized HTTP status codes for actionable auth/quota failures;
+  provider error strings remain excluded from logs and reports.
+- Configure `SIM_REASONING_EFFORT=low` and a 180-second timeout for the fresh
+  MiniMax attempt: its catalog declares mandatory reasoning with a `max` default.
+  Include the reasoning parameter in cache identity. Preserve the initial failed
+  run rather than silently retrying it or claiming full-day completion.
+
 ## Phase 2 — Authorization and research boundaries
 - The user's new instruction advances development to Phase 2 only. Keep the
   original specification and Phase 1 evidence intact, and add `PHASE2.md` for

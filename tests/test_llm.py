@@ -158,3 +158,140 @@ def test_only_one_gateway_can_write_a_run(tmp_path):
             Gateway(tmp_path, Config(), FakeProvider())
     finally:
         gateway.close()
+
+
+def free_config():
+    model = "openrouter/minimax/minimax-m3.1-flash:free"
+    return Config(
+        backend="litellm",
+        allow_paid=True,
+        max_usd="0",
+        model_deep=model,
+        model_fast=model,
+        model_gm=model,
+        embed_model="local/lexical",
+        prices={model: Price(input="0", output="0")},
+    )
+
+
+async def test_free_route_runs_and_replays_under_zero_cap(tmp_path):
+    config = free_config()
+    backend = FakeProvider()
+    gateway = Gateway(tmp_path, config, backend)
+    try:
+        request = dict(
+            model=config.model_fast, stable="I am Pat.", dynamic={"task": "test"}, seed=7
+        )
+        assert await gateway.complete(**request) == '{"ok":true}'
+        assert await gateway.complete(**request) == '{"ok":true}'
+        assert backend.calls == 1
+        assert gateway.spent == 0
+        assert gateway.summary()["cache_hits"] == 1
+        assert gateway.summary()["max_usd"] == "0"
+    finally:
+        gateway.close()
+
+
+def test_zero_prices_cannot_disguise_paid_models():
+    config = free_config().model_dump()
+    model = config["model_fast"].removesuffix(":free")
+    config.update(model_deep=model, model_fast=model, model_gm=model)
+    config["prices"] = {model: {"input": "0", "output": "0"}}
+    with pytest.raises(ValueError, match="explicit OpenRouter :free"):
+        Config(**config)
+    config["prices"][model]["output"] = "0.000001"
+    with pytest.raises(ValueError, match="positive SIM_MAX_USD"):
+        Config(**config)
+    with pytest.raises(ValueError):
+        Price(input="-1", output="0")
+
+
+async def test_free_adapter_prevents_paid_fallbacks(monkeypatch):
+    captured = {}
+
+    async def acompletion(**kwargs):
+        captured.update(kwargs)
+        return SimpleNamespace(
+            usage=SimpleNamespace(prompt_tokens=12, completion_tokens=4),
+            choices=[SimpleNamespace(message=SimpleNamespace(content="{}"))],
+        )
+
+    monkeypatch.setitem(sys.modules, "litellm", SimpleNamespace(acompletion=acompletion))
+    await LiteLLMBackend(10, "low").complete(
+        model=free_config().model_fast,
+        prompt="I am Pat.",
+        seed=2,
+        temperature=0.4,
+        max_tokens=128,
+    )
+    assert captured["extra_body"]["provider"] == {
+        "allow_fallbacks": False,
+        "max_price": {"prompt": 0, "completion": 0},
+    }
+    assert captured["num_retries"] == captured["max_retries"] == 0
+    assert captured["reasoning_effort"] == "low"
+
+
+async def test_provider_status_survives_without_secret_error_body(tmp_path, monkeypatch):
+    class ProviderError(Exception):
+        status_code = 429
+
+    async def acompletion(**kwargs):
+        raise ProviderError("secret-api-key-must-not-appear")
+
+    monkeypatch.setitem(sys.modules, "litellm", SimpleNamespace(acompletion=acompletion))
+    gateway = Gateway(tmp_path, free_config(), LiteLLMBackend(10))
+    try:
+        with pytest.raises(ModelFailure) as error:
+            await gateway.complete(
+                model=free_config().model_fast,
+                stable="I am Pat.",
+                dynamic={"task": "test"},
+                seed=7,
+            )
+        assert error.value.status_code == 429
+        assert "HTTP 429" in str(error.value)
+        assert "secret" not in str(error.value)
+        assert gateway.summary()["uncertain_calls"] == 1
+        assert gateway.spent == 0
+        assert "secret-api" not in json.dumps(
+            [dict(r) for r in gateway.ledger.execute("SELECT * FROM calls")]
+        )
+    finally:
+        gateway.close()
+
+
+async def test_reasoning_effort_changes_cache_identity(tmp_path):
+    config = paid_config("1")
+    backend = FakeProvider()
+    gateway = Gateway(tmp_path, config, backend)
+    try:
+        await call(gateway)
+        config.reasoning_effort = "low"
+        await call(gateway)
+        await call(gateway)
+        config.reasoning_effort = "high"
+        await call(gateway)
+        assert backend.calls == 3
+        assert gateway.summary()["cache_hits"] == 1
+    finally:
+        gateway.close()
+
+
+def test_live_timeout_and_reasoning_environment(monkeypatch):
+    config = free_config()
+    for name in ("DEEP", "FAST", "GM"):
+        monkeypatch.setenv("SIM_MODEL_" + name, config.model_fast)
+    monkeypatch.setenv("SIM_EMBED_MODEL", "local/lexical")
+    monkeypatch.setenv(
+        "SIM_MODEL_PRICES", json.dumps({config.model_fast: {"input": 0, "output": 0}})
+    )
+    monkeypatch.setenv("SIM_MAX_USD", "0")
+    monkeypatch.setenv("SIM_TIMEOUT_SECONDS", "180")
+    monkeypatch.setenv("SIM_REASONING_EFFORT", "low")
+    live = Config.from_env("litellm", allow_paid=True)
+    assert live.reasoning_effort == "low" and live.timeout_seconds == 180
+    assert Config.from_env().reasoning_effort is None
+    monkeypatch.setenv("SIM_TIMEOUT_SECONDS", "301")
+    with pytest.raises(ValueError):
+        Config.from_env("litellm", allow_paid=True)

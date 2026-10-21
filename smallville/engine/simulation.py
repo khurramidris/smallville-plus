@@ -121,7 +121,11 @@ class Simulation:
         except Exception:
             self.world.close()
             raise
-        backend = MockLLM() if config.backend == "mock" else LiteLLMBackend(config.timeout_seconds)
+        backend = (
+            MockLLM()
+            if config.backend == "mock"
+            else LiteLLMBackend(config.timeout_seconds, config.reasoning_effort)
+        )
         self.gateway = Gateway(directory, config, backend, cache_path, self._record_call)
         self.mind = Mind(self.world, self.town, self.gateway, config)
         self.gm = GameMaster(self.world, self.town, self.gateway, config)
@@ -232,10 +236,11 @@ class Simulation:
                 "budget_stopped",
                 "next model call exceeded remaining reservation budget",
             )
-        except ModelFailure:
+        except ModelFailure as error:
+            suffix = f" (HTTP {error.status_code})" if error.status_code is not None else ""
             status, problem = (
                 "model_stopped",
-                "model request failed or exact cache entry was missing",
+                "model request failed or exact cache entry was missing" + suffix,
             )
         if status == "completed":
             self.clock.advance(horizon)

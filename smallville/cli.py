@@ -75,7 +75,11 @@ async def interview_command(args):
     seed = args.seed if args.seed is not None else world.get("metadata", "config")["seed"]
     config = Config.from_env(args.backend, seed, args.allow_paid)
     active = {"id": None}
-    backend = MockLLM() if args.backend == "mock" else LiteLLMBackend(config.timeout_seconds)
+    backend = (
+        MockLLM()
+        if args.backend == "mock"
+        else LiteLLMBackend(config.timeout_seconds, config.reasoning_effort)
+    )
     gateway = Gateway(
         args.run,
         config,
@@ -119,7 +123,11 @@ async def populate_command(args):
     config = Config.from_env(args.backend, args.seed, args.allow_paid, args.replay_only)
     if (args.out / "population.json").exists():
         raise ValueError("population already exists; use a fresh output directory")
-    backend = MockLLM() if args.backend == "mock" else LiteLLMBackend(config.timeout_seconds)
+    backend = (
+        MockLLM()
+        if args.backend == "mock"
+        else LiteLLMBackend(config.timeout_seconds, config.reasoning_effort)
+    )
     gateway = Gateway(args.out, config, backend, args.cache)
     pipeline = PersonaPipeline(SmallvilleMap(), gateway, config, args.max_attempts)
     start = time.perf_counter()
@@ -160,7 +168,11 @@ async def populate_command(args):
 
 async def fidelity_command(args):
     config = Config.from_env(args.backend, args.seed, args.allow_paid)
-    backend = MockLLM() if args.backend == "mock" else LiteLLMBackend(config.timeout_seconds)
+    backend = (
+        MockLLM()
+        if args.backend == "mock"
+        else LiteLLMBackend(config.timeout_seconds, config.reasoning_effort)
+    )
     gateway = Gateway(args.out, config, backend)
     reports = []
     try:
@@ -362,6 +374,7 @@ def main(argv=None):
                         "ANTHROPIC_API_KEY",
                         "GEMINI_API_KEY",
                         "AZURE_API_KEY",
+                        "OPENROUTER_API_KEY",
                     )
                 },
                 "network_calls": 0,

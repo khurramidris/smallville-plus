@@ -1,5 +1,33 @@
 # Smallville+ progress
 
+## Current follow-up — Authorized live inference
+- The user supplied an OpenRouter key and the exact model
+  `minimax/minimax-m3.1-flash:free`, and requested real API calls. This authorizes
+  the specified free route; no paid model, fallback or later phase is authorized.
+- Rechecked cloud/network readiness. OpenRouter's public model catalog lists the
+  exact route with zero prompt/completion prices. No network request was blocked.
+- The existing gateway required positive prices/budgets even for free routes.
+  Added explicit zero-price support for OpenRouter `:free` models, a zero-dollar
+  cap, and provider-side zero-price/no-fallback constraints. Authentication and
+  quota diagnosis exposes only HTTP status codes, never remote error bodies.
+- The key will be supplied only through a hidden terminal input into the process
+  environment. It is not saved to source, configuration, reports or logs.
+- Next: verify the adapter offline, authenticate through LiteLLM, and attempt a
+  one-day town run. Keep all previous offline evidence unchanged.
+- Adapter verification: 12 focused tests pass offline, including four new
+  zero-cap/free-route/error-redaction cases. Ruff and formatting checks pass.
+- Authentication succeeded (HTTP 200). The key was supplied through hidden stdin;
+  the first LiteLLM completion and full offline regression are now running.
+- First real completion passed JSON validation: 271 input / 136 output tokens,
+  $0, 28.93 seconds. The first town request failed after 50.294 seconds under the
+  default 45-second timeout; the run stopped at minute 360 and is incomplete.
+- Full regression passes: **43 offline tests in 66.78 seconds**.
+- The public catalog declares mandatory reasoning, defaulting to maximum effort.
+  Added environment-configured timeout/reasoning effort (included in cache
+  identity). A fresh attempt will use supported `low` effort and a 180-second
+  timeout. The failed run is preserved; there are no internal retries.
+- All 14 focused gateway/preflight checks pass after adding these controls.
+
 ## Current work — Phase 2
 - **Completed and stopped at Phase 2.** Final evidence is in
   `reports/PHASE2_REPORT.md`; 39 offline tests and the 100-resident day pass.
