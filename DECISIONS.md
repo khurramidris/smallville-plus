@@ -42,3 +42,29 @@
   Offline replay requires a cache hit or uses the immutable event history.
 - Keep mock-specific benchmark behavior entirely inside MockLLM; the engine and
   GM still validate every intent and apply every outcome.
+
+## Step 5 — Minds and apps
+- Keep persona generation, weeks of digital history and survey consistency
+  regeneration in Phase 2. Phase 1 loads the original seeds with explicit
+  synthetic speech/sampling/needs parameters.
+- Agent perception exposes only co-located public activity and the owner's phone.
+  The researcher viewer can inspect private notebooks; agents cannot use it.
+- Resource guards and finite initial food/balances support Phase 1 rule checks;
+  wages, rent, shops and a financial economy remain deferred.
+- Calendar entries represent intentions. Attendance still requires choosing an
+  action, travelling and passing GM checks at the right time.
+
+## Step 6 — Evaluation and final validation
+- Count specific campaign evidence rather than mere election-topic mentions.
+  Sharing a complete party schedule requires having received its place and time.
+- Retain the actual initial relationship density instead of adjusting it to the
+  paper's 0.167 baseline; report that experimental mismatch explicitly.
+- Compare coarse time-use shape with ATUS 2024, with differences in population
+  and activity taxonomy disclosed. Human believability ratings remain uncollected.
+- Check agent-specific condition predicates after that agent changes state,
+  avoiding expensive town-wide state reads after every event.
+- Persist the original run spending cap in the call ledger, so reopening a run
+  with a larger environment cap cannot silently increase its budget. Enforce
+  one model-gateway writer per run with an OS file lock.
+- Replay restores recorded state, not a resumable scheduler. Full event snapshots
+  favor inspection in Phase 1; storage and viewer scaling need later load tests.

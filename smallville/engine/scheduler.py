@@ -25,18 +25,28 @@ class Scheduler:
         self.sequence = 0
         self.conditions: dict[str, tuple[Callable[[], bool], str, str | None]] = {}
 
-    def schedule(self, minute: int, kind: str, agent: str | None = None,
-                 data: dict | None = None, priority: int = 10) -> None:
+    def schedule(
+        self,
+        minute: int,
+        kind: str,
+        agent: str | None = None,
+        data: dict | None = None,
+        priority: int = 10,
+    ) -> None:
         if minute < 0:
             raise ValueError("negative event time")
         self.sequence += 1
-        heapq.heappush(self.queue, Scheduled(minute, priority, self.sequence, kind, agent, data or {}))
+        heapq.heappush(
+            self.queue, Scheduled(minute, priority, self.sequence, kind, agent, data or {})
+        )
 
     def when(self, key: str, predicate: Callable[[], bool], kind: str, agent: str | None = None):
         self.conditions[key] = (predicate, kind, agent)
 
-    def check_conditions(self, minute: int):
+    def check_conditions(self, minute: int, actor: str | None = None):
         for key, (predicate, kind, agent) in list(self.conditions.items()):
+            if actor is not None and agent is not None and agent != actor:
+                continue
             if predicate():
                 self.schedule(minute, kind, agent)
                 del self.conditions[key]

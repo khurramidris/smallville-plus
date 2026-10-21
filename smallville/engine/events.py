@@ -13,7 +13,9 @@ from smallville.world.models import TABLES, Change
 
 
 def canonical(value: Any) -> str:
-    return json.dumps(value, sort_keys=True, separators=(",", ":"), ensure_ascii=False, allow_nan=False)
+    return json.dumps(
+        value, sort_keys=True, separators=(",", ":"), ensure_ascii=False, allow_nan=False
+    )
 
 
 class Event(BaseModel):
@@ -69,7 +71,7 @@ class EventLog:
                     raise ValueError("invalid JSONL framing")
                 break
             complete.append(line.decode().rstrip("\n"))
-        if complete != records[:len(complete)] or len(complete) > len(records):
+        if complete != records[: len(complete)] or len(complete) > len(records):
             raise ValueError("JSONL diverges from authoritative event history")
         if len(complete) != len(records) or (raw and not raw.endswith(b"\n")):
             temporary = self.path.with_suffix(".repair")
@@ -79,16 +81,26 @@ class EventLog:
             self.path.touch()
 
     def append(
-        self, minute: int, kind: str, actor: str | None = None,
-        data: dict | None = None, changes: list[Change] | None = None,
+        self,
+        minute: int,
+        kind: str,
+        actor: str | None = None,
+        data: dict | None = None,
+        changes: list[Change] | None = None,
         observations: dict[str, str] | None = None,
     ) -> Event:
-        last = self.db.execute("SELECT seq, minute, hash FROM events ORDER BY seq DESC LIMIT 1").fetchone()
+        last = self.db.execute(
+            "SELECT seq, minute, hash FROM events ORDER BY seq DESC LIMIT 1"
+        ).fetchone()
         if last and minute < last[1]:
             raise ValueError("event time cannot move backwards")
         body = dict(
-            seq=last[0] + 1 if last else 1, minute=minute, kind=kind, actor=actor,
-            data=data or {}, observations=observations or {},
+            seq=last[0] + 1 if last else 1,
+            minute=minute,
+            kind=kind,
+            actor=actor,
+            data=data or {},
+            observations=observations or {},
             changes=[c.model_dump(mode="json") for c in changes or []],
             previous_hash=last[2] if last else "0" * 64,
         )
@@ -98,7 +110,9 @@ class EventLog:
 
     def import_event(self, event: Event) -> None:
         event.verify()
-        last = self.db.execute("SELECT seq, minute, hash FROM events ORDER BY seq DESC LIMIT 1").fetchone()
+        last = self.db.execute(
+            "SELECT seq, minute, hash FROM events ORDER BY seq DESC LIMIT 1"
+        ).fetchone()
         if event.seq != (last[0] + 1 if last else 1):
             raise ValueError("non-contiguous event sequence")
         if event.previous_hash != (last[2] if last else "0" * 64):

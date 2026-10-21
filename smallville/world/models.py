@@ -157,15 +157,29 @@ class CalendarEntry(Model):
 
 
 TABLES = (
-    "agents", "locations", "objects", "inventories", "accounts",
-    "jobs", "messages", "calendar", "metadata",
+    "agents",
+    "locations",
+    "objects",
+    "inventories",
+    "accounts",
+    "jobs",
+    "messages",
+    "calendar",
+    "metadata",
 )
 
 
 class Change(Model):
     table: Literal[
-        "agents", "locations", "objects", "inventories", "accounts",
-        "jobs", "messages", "calendar", "metadata"
+        "agents",
+        "locations",
+        "objects",
+        "inventories",
+        "accounts",
+        "jobs",
+        "messages",
+        "calendar",
+        "metadata",
     ]
     id: str
     value: dict[str, Any]
@@ -173,6 +187,7 @@ class Change(Model):
 
 def change(table: str, identifier: str, value: BaseModel | dict) -> Change:
     return Change(
-        table=table, id=identifier,
+        table=table,
+        id=identifier,
         value=value.model_dump(mode="json") if isinstance(value, BaseModel) else value,
     )

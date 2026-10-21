@@ -78,7 +78,8 @@ class SmallvilleMap:
             names = {int(row[0]): row[2].strip() for row in csv.reader(file)}
         for code, name in names.items():
             cells = [
-                (i % self.width, i // self.width) for i, value in enumerate(sectors)
+                (i % self.width, i // self.width)
+                for i, value in enumerate(sectors)
                 if value == code and i in accessible
             ]
             if not cells:
@@ -86,7 +87,9 @@ class SmallvilleMap:
             cx = sum(x for x, _ in cells) / len(cells)
             cy = sum(y for _, y in cells) / len(cells)
             x, y = min(cells, key=lambda xy: (abs(xy[0] - cx) + abs(xy[1] - cy), xy))
-            private = any(word in name.lower() for word in ("house", "apartment", "co-living", "dorm"))
+            private = any(
+                word in name.lower() for word in ("house", "apartment", "co-living", "dorm")
+            )
             opens, closes = 0, 1440
             if "Cafe" in name:
                 opens, closes = 480, 1200
@@ -98,9 +101,15 @@ class SmallvilleMap:
                 opens, closes = 420, 1320
             identifier = slug(name)
             self.locations[identifier] = Location(
-                id=identifier, name=name, address=f"{len(self.locations) + 1} Smallville Lane",
-                x=x, y=y, private=private, capacity=8 if private else 40,
-                opens=opens, closes=closes,
+                id=identifier,
+                name=name,
+                address=f"{len(self.locations) + 1} Smallville Lane",
+                x=x,
+                y=y,
+                private=private,
+                capacity=8 if private else 40,
+                opens=opens,
+                closes=closes,
             )
         self._paths: dict[tuple[str, str], list[tuple[int, int]]] = {}
 
@@ -119,8 +128,12 @@ class SmallvilleMap:
             x, y = cell
             for nxt in ((x - 1, y), (x + 1, y), (x, y - 1), (x, y + 1)):
                 nx, ny = nxt
-                if (0 <= nx < self.width and 0 <= ny < self.height and
-                        not self.collisions[ny * self.width + nx] and nxt not in parents):
+                if (
+                    0 <= nx < self.width
+                    and 0 <= ny < self.height
+                    and not self.collisions[ny * self.width + nx]
+                    and nxt not in parents
+                ):
                     parents[nxt] = cell
                     queue.append(nxt)
         if goal not in parents:
@@ -140,7 +153,8 @@ class SmallvilleMap:
 
     def view(self) -> dict:
         return {
-            "width": self.width, "height": self.height,
+            "width": self.width,
+            "height": self.height,
             "blocked": [i for i, value in enumerate(self.collisions) if value],
             "locations": [loc.model_dump(mode="json") for loc in self.locations.values()],
         }

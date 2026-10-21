@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import asyncio
+import fcntl
 import hashlib
 import logging
 import os
@@ -61,9 +62,14 @@ class LiteLLMBackend:
         for name in ("LiteLLM", "litellm", "httpx", "httpcore", "openai"):
             logging.getLogger(name).setLevel(logging.CRITICAL)
         result = await litellm.acompletion(
-            model=model, messages=[{"role": "user", "content": prompt}],
-            temperature=temperature, seed=seed, max_tokens=max_tokens,
-            timeout=self.timeout, num_retries=0, max_retries=0,
+            model=model,
+            messages=[{"role": "user", "content": prompt}],
+            temperature=temperature,
+            seed=seed,
+            max_tokens=max_tokens,
+            timeout=self.timeout,
+            num_retries=0,
+            max_retries=0,
             stream=False,
         )
         usage = result.usage
@@ -77,10 +83,20 @@ class LiteLLMBackend:
 
 class Gateway:
     def __init__(
-        self, directory: Path, config: Config, backend: Backend,
-        cache_path: Path | None = None, on_call: Callable[[dict], None] | None = None,
+        self,
+        directory: Path,
+        config: Config,
+        backend: Backend,
+        cache_path: Path | None = None,
+        on_call: Callable[[dict], None] | None = None,
     ):
         directory.mkdir(parents=True, exist_ok=True)
+        self._lock_file = (directory / ".calls.lock").open("a")
+        try:
+            fcntl.flock(self._lock_file, fcntl.LOCK_EX | fcntl.LOCK_NB)
+        except BlockingIOError:
+            self._lock_file.close()
+            raise ValueError("this run already has a model gateway writer") from None
         self.config, self.backend, self.on_call = config, backend, on_call
         self.lock = asyncio.Lock()
         self.ledger = sqlite3.connect(directory / "calls.sqlite3")
@@ -93,6 +109,18 @@ class Gateway:
                 input_tokens INTEGER NOT NULL, output_tokens INTEGER NOT NULL,
                 usd TEXT NOT NULL, reservation TEXT NOT NULL)
         """)
+        self.ledger.execute(
+            "CREATE TABLE IF NOT EXISTS run_budget(id INTEGER PRIMARY KEY CHECK(id=1), cap TEXT NOT NULL)"
+        )
+        self.ledger.execute(
+            "INSERT OR IGNORE INTO run_budget(id,cap) VALUES(1,?)", (str(config.max_usd),)
+        )
+        # Reopening a run (for example to interview residents) must not silently
+        # raise the original spending limit through changed environment values.
+        recorded_cap = Decimal(
+            self.ledger.execute("SELECT cap FROM run_budget WHERE id=1").fetchone()[0]
+        )
+        self.max_usd = min(config.max_usd, recorded_cap)
         self.ledger.commit()
         cache_path = cache_path or directory / "cache.sqlite3"
         cache_path.parent.mkdir(parents=True, exist_ok=True)
@@ -109,18 +137,24 @@ class Gateway:
     @property
     def spent(self) -> Decimal:
         return sum(
-            (Decimal(r[0]) for r in self.ledger.execute(
-                "SELECT CASE WHEN status='reserved' THEN reservation ELSE usd END FROM calls"
-            )), Decimal(0),
+            (
+                Decimal(r[0])
+                for r in self.ledger.execute(
+                    "SELECT CASE WHEN status='reserved' THEN reservation ELSE usd END FROM calls"
+                )
+            ),
+            Decimal(0),
         )
 
     def summary(self) -> dict:
         rows = list(self.ledger.execute("SELECT * FROM calls ORDER BY id"))
         return {
-            "calls": len(rows), "cache_hits": sum(r["cached"] for r in rows),
+            "calls": len(rows),
+            "cache_hits": sum(r["cached"] for r in rows),
             "input_tokens": sum(r["input_tokens"] for r in rows),
             "output_tokens": sum(r["output_tokens"] for r in rows),
-            "usd": str(self.spent), "max_usd": str(self.config.max_usd),
+            "usd": str(self.spent),
+            "max_usd": str(self.max_usd),
             "uncertain_calls": sum(r["status"] in ("reserved", "uncertain") for r in rows),
             "accounting": "conservative configured token prices; not a provider invoice",
         }
@@ -145,15 +179,26 @@ class Gateway:
             self.on_call(row)
 
     async def complete(
-        self, *, model: str, stable: str, dynamic: dict, seed: int,
+        self,
+        *,
+        model: str,
+        stable: str,
+        dynamic: dict,
+        seed: int,
         temperature: float = 0.7,
     ) -> str:
         prompt = stable + "\n\nCURRENT CONTEXT:\n" + canonical(dynamic)
         # Sampling parameters are part of the prompt hash's request envelope.
-        digest = hashlib.sha256(canonical({
-            "prompt": prompt, "temperature": temperature,
-            "max_tokens": self.config.max_tokens, "schema_version": 1,
-        }).encode()).hexdigest()
+        digest = hashlib.sha256(
+            canonical(
+                {
+                    "prompt": prompt,
+                    "temperature": temperature,
+                    "max_tokens": self.config.max_tokens,
+                    "schema_version": 1,
+                }
+            ).encode()
+        ).hexdigest()
         async with self.lock:
             cached = self.cache.execute(
                 "SELECT content FROM responses WHERE model=? AND prompt_hash=? AND seed=?",
@@ -173,47 +218,69 @@ class Gateway:
             input_bound = len(prompt.encode("utf-8")) + 1024
             price = self.config.prices.get(model)
             reservation = (
-                Decimal(input_bound) * price.input +
-                Decimal(self.config.max_tokens) * price.output
-            ) if self.config.backend == "litellm" and price else Decimal(0)
+                (
+                    Decimal(input_bound) * price.input
+                    + Decimal(self.config.max_tokens) * price.output
+                )
+                if self.config.backend == "litellm" and price
+                else Decimal(0)
+            )
             if self.config.backend == "litellm" and price is None:
                 raise ModelFailure("missing model price: refusing unbounded paid call")
-            if self.spent + reservation > self.config.max_usd:
+            if self.spent + reservation > self.max_usd:
                 identifier = self._insert(model, digest, seed, "budget_blocked", 0, Decimal(0))
                 self._finish(identifier, "budget_blocked", 0, 0, Decimal(0))
                 raise BudgetExceeded("next call reservation exceeds SIM_MAX_USD")
             identifier = self._insert(model, digest, seed, "reserved", 0, reservation)
             try:
                 response = await self.backend.complete(
-                    model=model, prompt=prompt, seed=seed,
-                    temperature=temperature, max_tokens=self.config.max_tokens,
+                    model=model,
+                    prompt=prompt,
+                    seed=seed,
+                    temperature=temperature,
+                    max_tokens=self.config.max_tokens,
                 )
                 if response.input_tokens < 0 or response.output_tokens < 0:
                     raise ModelFailure("invalid provider usage")
                 if self.config.backend == "litellm" and (
-                    response.input_tokens > input_bound or
-                    response.output_tokens > self.config.max_tokens
+                    response.input_tokens > input_bound
+                    or response.output_tokens > self.config.max_tokens
                 ):
                     raise ModelFailure("provider exceeded reserved token bound; reconcile billing")
                 usd = (
-                    Decimal(response.input_tokens) * price.input +
-                    Decimal(response.output_tokens) * price.output
-                ) if self.config.backend == "litellm" else Decimal(0)
+                    (
+                        Decimal(response.input_tokens) * price.input
+                        + Decimal(response.output_tokens) * price.output
+                    )
+                    if self.config.backend == "litellm"
+                    else Decimal(0)
+                )
             except BaseException as exc:
                 # An interrupted/failed request may still be billable. Keep its
                 # full reservation charged, and stop the run without retries.
                 self._finish(identifier, "uncertain", 0, 0, reservation)
                 if isinstance(exc, (KeyboardInterrupt, SystemExit, asyncio.CancelledError)):
                     raise
-                raise ModelFailure("model request failed; reservation retained; see call ledger") from None
+                raise ModelFailure(
+                    "model request failed; reservation retained; see call ledger"
+                ) from None
             self._finish(identifier, "ok", response.input_tokens, response.output_tokens, usd)
             with self.cache:
                 self.cache.execute(
-                    "INSERT INTO responses VALUES(?,?,?,?,?,?)",
-                    (model, digest, seed, response.content, response.input_tokens, response.output_tokens),
+                    "INSERT OR IGNORE INTO responses VALUES(?,?,?,?,?,?)",
+                    (
+                        model,
+                        digest,
+                        seed,
+                        response.content,
+                        response.input_tokens,
+                        response.output_tokens,
+                    ),
                 )
             return response.content
 
     def close(self):
         self.ledger.close()
         self.cache.close()
+        fcntl.flock(self._lock_file, fcntl.LOCK_UN)
+        self._lock_file.close()

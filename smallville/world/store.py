@@ -18,7 +18,9 @@ class WorldState:
         self.db.execute("PRAGMA synchronous=FULL")
         self.db.execute("PRAGMA foreign_keys=ON")
         for table in TABLES:
-            self.db.execute(f"CREATE TABLE IF NOT EXISTS {table}(id TEXT PRIMARY KEY, data TEXT NOT NULL)")
+            self.db.execute(
+                f"CREATE TABLE IF NOT EXISTS {table}(id TEXT PRIMARY KEY, data TEXT NOT NULL)"
+            )
         self.db.executescript("""
             CREATE INDEX IF NOT EXISTS agents_location ON agents(json_extract(data, '$.location'));
             CREATE INDEX IF NOT EXISTS messages_recipient ON messages(json_extract(data, '$.to'));
@@ -73,7 +75,8 @@ class WorldState:
             CalendarEntry.model_validate_json(r[0])
             for r in self.db.execute(
                 "SELECT data FROM calendar WHERE json_extract(data, '$.owner')=? "
-                "ORDER BY json_extract(data,'$.start'), id", (owner,),
+                "ORDER BY json_extract(data,'$.start'), id",
+                (owner,),
             )
         ]
 

@@ -39,11 +39,22 @@ class Config(Model):
                 raise ValueError("paid calls require explicit approval and --allow-paid")
             if self.max_usd <= 0:
                 raise ValueError("set a positive SIM_MAX_USD")
-            models = {self.model_deep, self.model_fast, self.model_gm, *self.model_overrides.values()}
-            if any(m.startswith("mock") or not m for m in models) or self.embed_model.startswith("mock"):
-                raise ValueError("configure SIM_MODEL_DEEP, SIM_MODEL_FAST, SIM_MODEL_GM, SIM_EMBED_MODEL")
+            models = {
+                self.model_deep,
+                self.model_fast,
+                self.model_gm,
+                *self.model_overrides.values(),
+            }
+            if any(m.startswith("mock") or not m for m in models) or self.embed_model.startswith(
+                "mock"
+            ):
+                raise ValueError(
+                    "configure SIM_MODEL_DEEP, SIM_MODEL_FAST, SIM_MODEL_GM, SIM_EMBED_MODEL"
+                )
             if models - self.prices.keys():
-                raise ValueError("SIM_MODEL_PRICES must give conservative per-token prices for all models")
+                raise ValueError(
+                    "SIM_MODEL_PRICES must give conservative per-token prices for all models"
+                )
         return self
 
     @classmethod
@@ -51,7 +62,10 @@ class Config(Model):
         if backend == "mock":
             return cls(seed=seed, max_usd=os.getenv("SIM_MAX_USD", "0"), replay_only=replay_only)
         return cls(
-            backend=backend, seed=seed, allow_paid=allow_paid, replay_only=replay_only,
+            backend=backend,
+            seed=seed,
+            allow_paid=allow_paid,
+            replay_only=replay_only,
             max_usd=os.getenv("SIM_MAX_USD", "0"),
             model_deep=os.getenv("SIM_MODEL_DEEP", ""),
             model_fast=os.getenv("SIM_MODEL_FAST", ""),

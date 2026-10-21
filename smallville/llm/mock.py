@@ -3,6 +3,7 @@
 import hashlib
 import json
 
+from smallville.agents.knowledge import campaign_evidence, party_schedule_evidence
 from smallville.engine.events import canonical
 from smallville.llm.gateway import Completion
 
@@ -13,30 +14,43 @@ def routine(context: dict) -> dict:
     wake = 360 + (int(hashlib.sha256(p["id"].encode()).hexdigest()[:4], 16) % 3) * 30
     leisure = context.get("leisure_location", home)
     blocks = [
-        (0, wake, "sleep", home), (wake, 480, "eat", home),
-        (480, 540, "leisure", home), (540, 720, "work", work),
-        (720, 780, "eat", home), (780, 1020, "work", work),
-        (1020, 1320, "leisure", leisure), (1320, 1440, "sleep", home),
+        (0, wake, "sleep", home),
+        (wake, 480, "eat", home),
+        (480, 540, "leisure", home),
+        (540, 720, "work", work),
+        (720, 780, "eat", home),
+        (780, 1020, "work", work),
+        (1020, 1320, "leisure", leisure),
+        (1320, 1440, "sleep", home),
     ]
     if p["id"] == "arthur_burton":
         blocks = [
-            (0, wake, "sleep", home), (wake, 480, "eat", home),
-            (480, 720, "leisure", home), (720, 780, "eat", home),
-            (780, 1020, "leisure", leisure), (1020, 1320, "work", work),
+            (0, wake, "sleep", home),
+            (wake, 480, "eat", home),
+            (480, 720, "leisure", home),
+            (720, 780, "eat", home),
+            (780, 1020, "leisure", leisure),
+            (1020, 1320, "work", work),
             (1320, 1440, "sleep", home),
         ]
     elif p["id"] == "isabella_rodriguez":
         blocks = [
-            (0, wake, "sleep", home), (wake, 480, "eat", home),
-            (480, 720, "work", work), (720, 780, "eat", home),
-            (780, 1200, "work", work), (1200, 1320, "leisure", home),
+            (0, wake, "sleep", home),
+            (wake, 480, "eat", home),
+            (480, 720, "work", work),
+            (720, 780, "eat", home),
+            (780, 1200, "work", work),
+            (1200, 1320, "leisure", home),
             (1320, 1440, "sleep", home),
         ]
     if p["id"] == "sam_moore":
         blocks = [(s, e, "leisure" if a == "work" else a, loc) for s, e, a, loc in blocks]
-    return {"day": day, "blocks": [
-        {"start": s, "end": e, "activity": a, "location": loc} for s, e, a, loc in blocks
-    ]}
+    return {
+        "day": day,
+        "blocks": [
+            {"start": s, "end": e, "activity": a, "location": loc} for s, e, a, loc in blocks
+        ],
+    }
 
 
 def action(context: dict, seed: int) -> dict:
@@ -47,8 +61,13 @@ def action(context: dict, seed: int) -> dict:
     needs = context["needs"]
 
     def intend(kind, target=None, duration=60, arguments=None, text=None):
-        return {"kind": kind, "target": target, "duration": max(1, min(480, duration)),
-                "arguments": arguments or {}, "text": text or f"I want to {kind}."}
+        return {
+            "kind": kind,
+            "target": target,
+            "duration": max(1, min(480, duration)),
+            "arguments": arguments or {},
+            "text": text or f"I want to {kind}.",
+        }
 
     def go_or(kind, location, duration=60):
         if here != location:
@@ -68,19 +87,27 @@ def action(context: dict, seed: int) -> dict:
     if needs["energy"] < 15:
         return go_or("sleep", home, 120)
 
-    memories = " ".join(m["text"] for m in context["memories"])
-    knows_party = "valentine" in memories.lower()
-    knows_campaign = "mayor" in memories.lower() and (
-        "running" in memories.lower() or "candidacy" in memories.lower()
-    )
+    knows_campaign = any(campaign_evidence(p["id"], m["text"]) for m in context["memories"])
+    knows_schedule = any(party_schedule_evidence(m["text"]) for m in context["memories"])
     # Benchmark-specific behavior lives only in MockLLM. It never changes world
     # state; the same output must pass GM checks as an actual model response.
-    if (knows_party and minute < 2460 - 60 and
-            (p["sociability"] >= 0.35 or p["id"] == "isabella_rodriguez") and
-            not any("valentine" in e["title"].lower() for e in context["calendar"])):
-        return intend("calendar", duration=5, arguments={
-            "title": "Valentine's party", "start": 2460, "end": 2580, "location": "hobbs_cafe",
-        }, text="I want to put the Valentine's party on my calendar.")
+    if (
+        knows_schedule
+        and minute < 2460 - 60
+        and (p["sociability"] >= 0.35 or p["id"] == "isabella_rodriguez")
+        and not any("valentine" in e["title"].lower() for e in context["calendar"])
+    ):
+        return intend(
+            "calendar",
+            duration=5,
+            arguments={
+                "title": "Valentine's party",
+                "start": 2460,
+                "end": 2580,
+                "location": "hobbs_cafe",
+            },
+            text="I want to put the Valentine's party on my calendar.",
+        )
     sent = context["sent"]
     today = [m for m in sent if m["sent_at"] // 1440 == day]
     quota = 8 if p["id"] in ("isabella_rodriguez", "sam_moore") else 3
@@ -88,25 +115,41 @@ def action(context: dict, seed: int) -> dict:
         peers = [x["id"] for x in context["perception"]["nearby"]]
         contacts = sorted(set([*p["contacts"], *peers]) - {p["id"]})
         topics = []
-        if knows_party and minute < 2460:
-            topics.append(("Valentine", "Valentine's party at Hobbs Cafe on February 14, 17:00-19:00. Want to come?"))
+        if knows_schedule and minute < 2460:
+            topics.append(
+                (
+                    "Valentine",
+                    "Valentine's party at Hobbs Cafe on February 14, 17:00-19:00. Want to come?",
+                )
+            )
         if knows_campaign:
             topics.append(("mayor", "Sam Moore is running for mayor. I'm still making up my mind."))
         topics.append(("hello", "hello — how is your day going?"))
         for topic, body in topics:
-            available = [c for c in contacts if not any(
-                m["to"] == c and topic.lower() in m["body"].lower() for m in sent
-            )]
+            available = [
+                c
+                for c in contacts
+                if not any(m["to"] == c and topic.lower() in m["body"].lower() for m in sent)
+            ]
             if available:
                 recipient = available[seed % len(available)]
                 if topic == "Valentine" and p["sociability"] < 0.35:
                     body = "I can't make the Valentine's party; I have my own plans."
                 elif topic == "mayor" and p["opinion"] < 0:
                     body = "Sam Moore is running for mayor, but I disagree with him."
-                return intend("message", arguments={"to": recipient, "body": body},
-                              text=f"I want to message {recipient}.")
+                return intend(
+                    "message",
+                    arguments={"to": recipient, "body": body},
+                    text=f"I want to message {recipient}.",
+                )
     destination = block["location"]
     duration = min(60, block["end"] - hour)
+    hours = context["opening_hours"].get(destination, {"opens": 0, "closes": 1440})
+    arrival_hour = hour + context["travel_minutes"].get(destination, 0)
+    if not hours["opens"] <= arrival_hour < hours["closes"]:
+        return go_or("leisure", home, duration)
+    if here == destination:
+        duration = min(duration, hours["closes"] - hour)
     if block["activity"] == "eat" and needs["fullness"] >= 65:
         return intend("leisure", duration=duration)
     return go_or(block["activity"], destination, duration)
@@ -131,7 +174,8 @@ class MockLLM:
         elif task == "interview":
             recalled = context["memories"][:2]
             result = {
-                "answer": "I recall: " + " ".join(m["text"] for m in recalled) if recalled
+                "answer": "I recall: " + " ".join(m["text"] for m in recalled)
+                if recalled
                 else "I don't remember enough to answer.",
                 "opinion": context["self"]["opinion"],
             }
