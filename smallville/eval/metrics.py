@@ -1,6 +1,8 @@
+import json
 from collections import Counter
 from decimal import Decimal
 from statistics import mean, pvariance
+from types import SimpleNamespace
 
 from smallville.agents.knowledge import campaign_evidence
 from smallville.world.models import Agent
@@ -59,8 +61,15 @@ def evaluate(world: WorldState) -> dict:
     run = world.get("metadata", "run")
     config = world.get("metadata", "config")
     agents = world.agents()
-    events = list(all_events(world))
-    first = next(e for e in events if e.kind == "initialized")
+    # Read only lightweight fields for metrics; retaining every full snapshot
+    # would multiply memory use on expanded populations.
+    events = [
+        SimpleNamespace(seq=r[0], minute=r[1], kind=r[2], actor=r[3], data=json.loads(r[4]))
+        for r in world.db.execute(
+            "SELECT seq,minute,kind,actor,json_extract(record,'$.data') FROM events ORDER BY seq"
+        )
+    ]
+    first = world.log.read(limit=1)[0]
     initial = [Agent.model_validate(c.value) for c in first.changes if c.table == "agents"]
     days = run["completed_minutes"] / 1440
     denominator = len(agents) * days
@@ -177,7 +186,8 @@ def evaluate(world: WorldState) -> dict:
             "Study is grouped with work; leisure includes messages; travel is separate. No calibration claim.",
         },
         "cost": costs,
-        "messages": len(messages),
+        "messages": sum(m["sent_at"] >= 0 for m in messages),
+        "historical_messages": sum(m["sent_at"] < 0 for m in messages),
         "rejected_actions": dict(
             Counter(e.data["reason"] for e in events if e.kind == "action_rejected")
         ),

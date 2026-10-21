@@ -1,3 +1,3 @@
-"""Smallville+ Phase 1 research engine."""
+"""Smallville+ research engine and persona validation tools."""
 
-__version__ = "0.1.0"
+__version__ = "0.2.0"

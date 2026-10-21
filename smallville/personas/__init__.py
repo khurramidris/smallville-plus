@@ -1,1 +1,1 @@
-"""Original seed loading only; persona generation belongs to Phase 2."""
+"""Licensed seeds, life histories, digital histories and t=0 consistency repair."""

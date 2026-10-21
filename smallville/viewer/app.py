@@ -62,6 +62,7 @@ def create_app(directory: str | Path) -> FastAPI:
             "run": state["metadata"]["run"],
             "minute": minute,
             "backend": state["metadata"]["config"]["backend"],
+            "population": state["metadata"].get("population"),
         }
 
     @app.get("/api/state")

@@ -1,7 +1,8 @@
 # Smallville+
 
-Phase 1 of a research town simulation, with the original 25 residents and
-Smallville tile map. Python 3.11+, asyncio, Pydantic, SQLite WAL and LiteLLM.
+Research town simulation with the original 25 residents and Smallville map,
+plus a Phase 2 pipeline for 100 residents, digital histories and survey evaluation.
+Python 3.11+, asyncio, Pydantic, SQLite WAL and LiteLLM.
 This is working research infrastructure, **not evidence that realism exceeds
 Park et al.** MockLLM is a deterministic, partly scenario-specific test fixture.
 
@@ -93,12 +94,64 @@ rates, not an invoice. A budget stop is reported as **incomplete**, never as a
 successful one-day acceptance run. No paid API day has yet been validated.
 
 The embedding model variable is reserved and validated for live configuration;
-Phase 1 retrieval uses local lexical relevance. Full life histories, digital
-history generation, GSS/Twin-2K-500 validation, wages/rent/shops, councils, graph
-memory, 1,000-agent batching and social media remain deferred. Initial food and
+retrieval uses local lexical relevance. Wages/rent/shops, councils, graph memory,
+1,000-agent batching and social media remain deferred. Initial food and
 account balances exercise resource guards, but no financial economy is simulated.
 
+Phase 2 adds an explicit preparation step. It uses 75 licensed public GSS
+demographic seeds alongside the original 25. New biographies and messages are
+fictional. The public bank is distinct from Stanford's restricted interview agents.
+Duplicate full names remain distinct people with separate IDs and addresses.
+
+```bash
+python -m smallville populate --out runs/population100 --residents 100 --history-days 21
+python -m smallville validate-population --population runs/population100/population.json
+python -m smallville run --population runs/population100/population.json --out runs/town100 --days 1
+python -m smallville serve --run runs/town100
+python -m smallville fidelity --dataset all --out runs/fidelity
+```
+
+Preparation creates a versioned population artifact with source facts, six dated
+life events, interests, values, goals, 21 prior calendar days of reciprocal phone
+messages, contacts and past appointments. New homes are authored apartment-unit
+overlays at accessible entrances; source geometry is retained. Historical records
+use negative epoch minutes. Runtime app scheduling still starts at minute zero.
+Opening hours, capacity, calendar ownership and travel gaps are validated.
+
+Every resident answers a t=0 categorical/numerical survey about locked identity
+and demographic facts. A contradiction regenerates the biography and triggers a
+fresh survey, up to `--max-attempts` (default 3). A failed population is not
+published. Its preparation report and call ledger still record spent/reserved
+costs. Each repair attempt has its own request revision to prevent accidentally
+reusing a cached failed answer. Use `--cache PATH --replay-only` to reproduce an
+entire preparation sequence without new inference.
+
+The fidelity harness uses separate masked profiles. The bundled Twin sample has
+20 of 2,058 participants and 122 supported held-out items from the official wave 4
+catalog. It excludes all wave-4 QuestionIDs from the 32-field wave 1–3 profiles.
+Prior responses to held-out items are scorer-only human test–retest baselines.
+The GSS harness holds out age, political views, party identification and religion
+from 75 public demographic-bank profiles. Targets never enter request context.
+Coverage and source missingness are explicit; invalid/missing predictions count
+as errors. Numerical reports include valid-only MAE and penalized normalized MAE.
+Mock scores exercise the adapters and scorer and do not measure human fidelity.
+The bounded sample and supported encodings do not reproduce the complete paper
+protocol, and model-training contamination is unassessed.
+
+To normalize a larger locally supplied official Twin catalog/CSV set offline:
+
+```bash
+python -m smallville import-twin --catalog PATH_TO_CATALOG --train PATH_TO_WAVE1_3_CSV --test PATH_TO_WAVE4_CSV --revision SOURCE_COMMIT --subjects 100 --out runs/twin100.json
+python -m smallville fidelity --dataset twin --twin-data runs/twin100.json --out runs/fidelity100
+```
+
+Preparation, simulation and fidelity commands each maintain their own cost ledger
+and cap. All default to MockLLM. Paid use still requires explicit spending
+approval, environment configuration and `--allow-paid`; no paid Phase 2 run has
+been validated. Human gold data is kept outside persona repair feedback.
+
 `SPEC.md` is the complete original request. `PROGRESS.md` records completion and
-open issues, and `DECISIONS.md` records the rationale. Only Phase 1 is implemented.
+open issues, and `DECISIONS.md` records the rationale. `PHASE2.md` records the
+authorized extension. Development stops at Phase 2.
 The saved [Phase 1 report](reports/PHASE1_REPORT.md) contains acceptance evidence,
 mock benchmark measurements, browser verification and the remaining API blocker.

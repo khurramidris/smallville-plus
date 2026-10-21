@@ -31,7 +31,7 @@
 </head>
 <body>
 <header>
-  <div><div class="eyebrow">Research observatory · Phase 1</div><h1>Smallville<span>+</span></h1><div class="subtle">One town. Twenty-five lives. A record of what happened.</div></div>
+  <div><div class="eyebrow" id="phase">Research observatory</div><h1>Smallville<span>+</span></h1><div class="subtle" id="tagline">One town. A record of what happened.</div></div>
   <div><div class="badge" id="mode">Loading history</div><div id="clock">—</div><div class="subtle" style="text-align:right">Town time · UTC</div></div>
 </header>
 <main>
@@ -63,10 +63,13 @@ function draw(){
   const sx=canvas.width/meta.map.width,sy=canvas.height/meta.map.height;
   ctx.fillStyle='#d9e2ca';ctx.fillRect(0,0,canvas.width,canvas.height);
   ctx.fillStyle='#a7b9a0';for(const i of meta.map.blocked)ctx.fillRect((i%meta.map.width)*sx,Math.floor(i/meta.map.width)*sy,sx,sy);
-  for(const loc of meta.map.locations){
+  const groups=new Map();for(const loc of meta.map.locations){const key=`${loc.x},${loc.y}`;if(!groups.has(key))groups.set(key,[]);groups.get(key).push(loc)}
+  for(const group of groups.values()){
+    const loc=group[0];
     ctx.fillStyle=loc.private?'#738e78':'#417876';ctx.fillRect(loc.x*sx-4,loc.y*sy-4,8,8);
     ctx.fillStyle='#203a37';ctx.font='10px system-ui';ctx.textAlign='center';
-    ctx.fillText(loc.name,loc.x*sx,loc.y*sy-12);
+    const name=group.length>1?`${loc.name.replace(/ · Apt \d+$/,'')} · ${group.length} units`:loc.name;
+    ctx.fillText(name,loc.x*sx,loc.y*sy-12);
   }
   points=[];
   state.agents.forEach((a,i)=>{
@@ -77,7 +80,8 @@ function draw(){
       else{loc=locationById[a.pending.origin];x=loc?.x;y=loc?.y}
     }
     if(x===undefined)return;
-    x=x*sx+Math.cos(i*2.4)*9;y=y*sy+Math.sin(i*2.4)*9;
+    const spread=state.agents.length>25?9+(i%3)*7:9;
+    x=x*sx+Math.cos(i*2.4)*spread;y=y*sy+Math.sin(i*2.4)*spread;
     points.push({x,y,id:a.id});
     ctx.beginPath();ctx.arc(x,y,a.id===selected?8:5,0,Math.PI*2);
     ctx.fillStyle=a.persona.tier==='deep'?'#ec8b50':'#243d52';ctx.fill();
@@ -92,7 +96,8 @@ async function inspect(version){
   if(version!==request)return;
   const a=data.agent;
   $('#inspector').innerHTML=`<h2>${escapeHTML(a.persona.name)}</h2><div class="subtle">${escapeHTML(a.persona.tier)} tier · ${escapeHTML(a.emotion.label)} · ${escapeHTML(a.activity)}</div>
-  <p>${escapeHTML(a.persona.description)}</p><h3>Needs</h3>
+  <p>${escapeHTML(a.persona.description)}</p>
+  ${a.persona.life_history?`<details><summary>Life story · fictional expansion</summary><p>${escapeHTML(a.persona.life_history.narrative)}</p>${a.persona.life_history.events.map(e=>entry(e.description,`Age ${e.age}`)).join('')}<p class="subtle">${escapeHTML(a.persona.provenance.source||'')} · ${escapeHTML(a.persona.provenance.biography||'')}</p></details>`:''}<h3>Needs</h3>
   ${Object.entries(a.needs).map(([k,v])=>`<div class="need"><span>${escapeHTML(k)}</span><progress max="100" value="${v}"></progress><span>${Math.round(v)}</span></div>`).join('')}
   <h3>Today's plan</h3>${a.plan?a.plan.blocks.map(b=>entry(`${b.activity} · ${label(b.location)}`,`${Math.floor(b.start/60)}:${String(b.start%60).padStart(2,'0')}–${Math.floor(b.end/60)}:${String(b.end%60).padStart(2,'0')}`)).join(''):'<p class="empty">Still asleep; no plan written yet.</p>'}
   <h3>Calendar</h3>${data.calendar.map(e=>entry(`${e.title} · ${label(e.location)}`,timeLabel(e.start))).join('')||'<p class="empty">Nothing scheduled.</p>'}
@@ -105,7 +110,7 @@ async function update(){
     const [next,cost]=await Promise.all([get(`/api/state?minute=${minute}`),get(`/api/cost?minute=${minute}`)]);
     if(version!==request)return;state=next;
     $('#clock').textContent=timeLabel(minute);$('#timeLabel').textContent=`Day ${Math.floor(minute/1440)+1}`;
-    $('#residentCount').textContent=state.agents.length;$('#calls').textContent=`${cost.calls} / ${cost.cache_hits}`;
+    $('#residentCount').textContent=state.agents.length;$('#tagline').textContent=`One town. ${state.agents.length} lives. A record of what happened.`;$('#calls').textContent=`${cost.calls} / ${cost.cache_hits}`;
     $('#cost').textContent=`$${Number(cost.usd).toFixed(4)} / $${Number(cost.max_usd).toFixed(2)}`;
     $('#perDay').textContent=cost.usd_per_agent_day===null?'—':`$${Number(cost.usd_per_agent_day).toFixed(5)}`;
     $('#people').innerHTML=state.agents.map(a=>`<button type="button" data-agent="${escapeHTML(a.id)}" class="${a.id===selected?'active':''}">${escapeHTML(a.persona.name)}</button>`).join('');
@@ -128,7 +133,7 @@ $('#play').addEventListener('click',()=>{
   },900);
 });
 (async()=>{
-  try{meta=await get('/api/meta');locationById=Object.fromEntries(meta.map.locations.map(l=>[l.id,l]));$('#time').max=meta.minute;$('#time').value=meta.minute;$('#mode').textContent=`${meta.backend.toUpperCase()} · ${meta.run.status}`;await update()}
+  try{meta=await get('/api/meta');locationById=Object.fromEntries(meta.map.locations.map(l=>[l.id,l]));$('#phase').textContent=`Research observatory · Phase ${meta.run.phase||1}`;$('#time').max=meta.minute;$('#time').value=meta.minute;$('#mode').textContent=`${meta.backend.toUpperCase()} · ${meta.run.status}`;await update()}
   catch(e){$('#note').textContent=e.message;$('#note').className='error'}
 })();
 </script>
