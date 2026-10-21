@@ -17,6 +17,9 @@
 - Buffer model-call events during parallel inference and publish them in decision
   order after settling the group. Live ledgers retain every in-flight request even
   when a sibling fails; failed groups apply no tentative intentions.
+- Label the viewer's data source according to its recorded backend. Correcting
+  the footer during the experiment changes presentation only; inference and
+  world rules remain frozen at `8e2b410` for reproducible live measurements.
 
 ## User-requested stop — Phase 3
 - The explicit stop overrides the outstanding three-day live objective. Cancel

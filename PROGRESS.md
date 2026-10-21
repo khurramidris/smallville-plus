@@ -81,6 +81,16 @@
 - Remaining: finish the live three-day horizon, verify complete cached/event
   replay, capture the final viewer and publish final timing/cost/behavior results.
 
+### Resumption step 6 — Viewer source labels
+- Corrected the research viewer footer to distinguish recorded live-model
+  decisions from MockLLM fixtures. It still discloses unvalidated believability.
+  No inference, scheduler or world rule changed from `8e2b410`.
+- System Chromium verified 25 resident controls, live-source wording and the
+  inspector with no page errors or external requests. Final completion and
+  party-time screenshots will replace the interim capture after the run ends.
+- The live experiment has entered its second day, with $0 recorded cost and no
+  provider failures so far. No additional paid service or later-phase work.
+
 ## Phase 3 authorization and scope
 - Authorized on 2026-10-21: implement the next phase, then run three simulated
   days. Scope and acceptance are in `PHASE3.md`; original `SPEC.md` is unchanged.

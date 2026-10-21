@@ -54,7 +54,7 @@
     <div class="bar"><h2>Town life · economy and council</h2><span class="badge">Fictional town money</span></div>
     <div id="economyContent" style="padding:0 18px 15px"></div>
   </section>
-  <footer id="note">This is a schematic of the original tile map. The researcher view includes private notebooks; residents only perceive their own surroundings and phone. Mock behavior is a deterministic test fixture, not evidence of human realism.</footer>
+  <footer id="note">This is a schematic of the original tile map. The researcher view includes private notebooks; residents only perceive their own surroundings and phone.</footer>
 </main>
 <script>
 const $=s=>document.querySelector(s),canvas=$('#map'),ctx=canvas.getContext('2d');
@@ -142,7 +142,9 @@ $('#play').addEventListener('click',()=>{
   },900);
 });
 (async()=>{
-  try{meta=await get('/api/meta');locationById=Object.fromEntries(meta.map.locations.map(l=>[l.id,l]));$('#phase').textContent=`Research observatory · Phase ${meta.run.phase||1}`;$('#time').max=meta.minute;$('#time').value=meta.minute;$('#mode').textContent=`${meta.backend.toUpperCase()} · ${meta.run.status}`;await update()}
+  try{meta=await get('/api/meta');locationById=Object.fromEntries(meta.map.locations.map(l=>[l.id,l]));$('#phase').textContent=`Research observatory · Phase ${meta.run.phase||1}`;$('#time').max=meta.minute;$('#time').value=meta.minute;$('#mode').textContent=`${meta.backend.toUpperCase()} · ${meta.run.status}`;
+    $('#note').textContent+=' '+(meta.backend==='mock'?'Mock behavior is a deterministic test fixture, not evidence of human realism.':'This replays recorded model decisions. Human believability and improvement over the original Smallville have not been validated.');
+    await update()}
   catch(e){$('#note').textContent=e.message;$('#note').className='error'}
 })();
 </script>
