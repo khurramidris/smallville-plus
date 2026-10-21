@@ -9,6 +9,18 @@ started and no paid service was added.
 
 ## Resumption — performance and planning
 
+The environment restarted at minute **2,490 / February 14, 17:30**, stopping the
+first optimized live process. Its **1,500 known responses and two uncertain
+requests** are preserved. A fresh run reconstructed the 1,500 cached decisions
+and matched every world-state projection to the pre-restart checksum **before
+any new network request**. It is continuing in `runs/phase3-resumed-live-25/`.
+No completed API call was repeated during reconstruction. Prior/new usage will
+be counted once; exact shutdown duration and the two lost responses remain unknown.
+
+[Recovery manifest](phase3/environment-recovery-manifest.json),
+[checksum verification](phase3/resumed-checkpoint-verification.json),
+[interrupted optimized attempt](phase3/optimized-interrupted-live-simulation.json).
+
 `--optimized` enables bounded same-time decisions (four for this experiment),
 atomic in-flight budget reservations, duplicate-request caching, bounded phone
 context, explicit known movement/work constraints and recent rejection feedback.

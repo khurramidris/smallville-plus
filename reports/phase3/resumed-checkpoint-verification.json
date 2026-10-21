@@ -1,0 +1,10 @@
+{
+  "status": "passed",
+  "minute": 2490,
+  "cache_hits": 1500,
+  "expected_cache_hits": 1500,
+  "expected_state_sha256": "b001482b9390874fd7fb865260deef1c12e95b5bc77aa1868fb95a147b1c93f9",
+  "actual_state_sha256": "b001482b9390874fd7fb865260deef1c12e95b5bc77aa1868fb95a147b1c93f9",
+  "provider_calls_before_verification": 0,
+  "interpretation": "World projections compared before any new network request; event call flags differ during cache reconstruction."
+}

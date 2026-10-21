@@ -115,6 +115,16 @@
   locally, not repeat its completed API calls. Direct scheduler checkpoints
   remain a later architectural task.
 
+### Resumption step 9 — Cached recovery verified; live run continued
+- Reconstructed all 1,500 cached decisions with zero new provider dispatches.
+  At minute 2,490, every world projection matched the pre-interruption checksum
+  `b001482b9390874fd7fb865260deef1c12e95b5bc77aa1868fb95a147b1c93f9`.
+- The guard passed before forwarding the first new request. The same free model
+  is continuing in `runs/phase3-resumed-live-25/`; old journals/cache are retained.
+- Whole-experiment accounting will add prior and new actual usage once and keep
+  the two unknown interrupted requests visible. The new attempt's cache hits do
+  not represent new provider calls. Both attempts retain the $0 cap.
+
 ## Phase 3 authorization and scope
 - Authorized on 2026-10-21: implement the next phase, then run three simulated
   days. Scope and acceptance are in `PHASE3.md`; original `SPEC.md` is unchanged.
