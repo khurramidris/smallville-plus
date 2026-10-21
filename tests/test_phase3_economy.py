@@ -485,5 +485,20 @@ async def test_phase3_integration_audits_and_exact_replay(tmp_path):
             assert restored.log.path.read_bytes() == sim.world.log.path.read_bytes()
         finally:
             restored.close()
+        cached = Simulation(
+            tmp_path / "cached",
+            Config(phase=3, replay_only=True),
+            cache_path=tmp_path / "phase3" / "cache.sqlite3",
+        )
+        try:
+            rerun = await cached.run(0.5)
+            assert rerun["status"] == "completed"
+            assert rerun["cost"]["cache_hits"] == rerun["cost"]["calls"] > 0
+            expected, actual = sim.world.snapshot(), cached.world.snapshot()
+            for state in (expected, actual):
+                next(m for m in state["metadata"] if "replay_only" in m)["replay_only"] = False
+            assert actual == expected
+        finally:
+            cached.close()
     finally:
         sim.close()

@@ -95,6 +95,20 @@
   phase when reopening for interviews. All 31 Phase 3 tests pass offline in
   13.66 seconds. The final full regression and 100-resident run are in progress.
 
+### Phase 3 step 7 — Final offline suite and original-cohort replay
+- Final production code: **76 tests pass offline in 173.06 seconds**, Ruff and
+  formatting pass for 59 Python files. Evidence: `reports/phase3/offline-checks.json`.
+- Added a Phase 3 response-cache assertion to the integration test. The targeted
+  check passes in 15.40 seconds: 443/443 requests served from cache, no provider
+  calls and identical world state except the replay flag. A test-only metadata
+  selection typo was corrected; no production cache defect was found.
+- Full three-day/25-resident event import matches all state and all 14,528 JSONL
+  events byte for byte. Money, food, work limits, ledger balances and all 4,320
+  activity minutes per resident pass audit. No inference during verification.
+- Saved the completed viewer screenshot/browser checks and corrected run report.
+  The 100-resident run is on its third afternoon. Final API inference starts only
+  after that completed offline scenario passes its audits.
+
 ## Current follow-up — Authorized live inference
 - **Completed.** The 25-resident real-API day passes; evidence and problems are
   in `reports/LIVE_API_REPORT.md`. Development remains stopped at Phase 2.

@@ -1,0 +1,10 @@
+{
+  "population": 25,
+  "minute": 4320,
+  "finance_panel": true,
+  "council_result": true,
+  "stock_and_news": true,
+  "screenshot": "reports/phase3/viewer.png",
+  "page_errors": [],
+  "external_requests": []
+}

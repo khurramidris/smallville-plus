@@ -1,0 +1,27 @@
+{
+  "full_suite": {
+    "command": "pytest",
+    "passed": 76,
+    "wall_seconds": 173.06,
+    "network": "internet sockets disabled; only local Unix sockets allowed"
+  },
+  "phase3_cached_regression": {
+    "command": "pytest tests/test_phase3_economy.py::test_phase3_integration_audits_and_exact_replay",
+    "passed": true,
+    "wall_seconds": 15.4,
+    "calls": 443,
+    "cache_hits": 443,
+    "provider_calls": 0,
+    "state_equal_except_replay_flag": true
+  },
+  "lint": {
+    "ruff": true,
+    "formatted_python_files": 59
+  },
+  "versions": {
+    "python": "3.12.14",
+    "pydantic": "2.13.4",
+    "litellm": "1.106.0"
+  },
+  "production_revision": "87778b4"
+}

@@ -56,6 +56,9 @@
   the immutable history; do not rewrite the underlying events.
 - Validate scenario options through Config instead of unchecked model copies,
   and reopen research interviews using the recorded phase's rules and app context.
+- Verify both event import and a Phase 3 response-cache rerun. Event history must
+  reproduce bytes/state exactly; cached inference must reproduce the same world
+  apart from the explicit replay flag. Keep production code frozen for live data.
 
 ## Live API follow-up — Exact free route and zero spending
 - The user's latest instruction authorizes OpenRouter calls using the supplied
