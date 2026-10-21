@@ -56,6 +56,19 @@
 - Next: freeze the corrected implementation, repeat final regression and run
   fresh three-day scenarios. No blocked request was bypassed or paid route used.
 
+### Phase 3 step 4 — Contract classification audit
+- Corrected a professor/student substring error, unpaid household work,
+  `In school`/`Other` source statuses and four-hour part-time limits. Original
+  personas and Phase 2 artifacts remain unchanged; only authored contracts change.
+- The second corrected-stock diagnostic reached minute 785/100 residents with
+  2,204 mock calls; the live diagnostic reached minute 390 with 31 attempts
+  (30 known, one uncertain). Graceful interruption now records status correctly.
+- Total Phase 3 live diagnostics so far: 83 attempts, 81 known responses and two
+  uncertain interrupted requests, all $0. Their reports/histories are retained.
+- The preceding full suite passed **65 tests offline in 141.91 seconds**.
+  Contract-specific regression tests are added. Finish the complete offline
+  three-day scenario before starting the final live run to avoid further churn.
+
 ## Current follow-up — Authorized live inference
 - **Completed.** The 25-resident real-API day passes; evidence and problems are
   in `reports/LIVE_API_REPORT.md`. Development remains stopped at Phase 2.

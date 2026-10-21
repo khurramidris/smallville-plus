@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import hashlib
+import re
 from collections import Counter
 
 from smallville.agents.memory import remember
@@ -16,13 +17,18 @@ def contract(agent: Agent) -> Job:
     status = str(p.facts.get("work_status", "")).lower()
     text = (status + " " + p.description).lower()
     kind, allowance = "employment", 0
-    if "retired" in text or agent.id == "sam_moore":
+    if "retired" in (status or text) or agent.id == "sam_moore":
         kind, allowance = "none", 5000
-    elif any(word in status for word in ("unemployed", "keeping house")):
+    elif any(
+        word in (status or text)
+        for word in ("unemployed", "keeping house", "housewife", "homemaker")
+    ):
         kind, allowance = "none", 2000
-    elif "student" in text:
+    elif "school" in status or re.search(r"\bstudent\b", status or text):
         kind, allowance = "study", 3500
-    elif p.home == p.workplace:
+    elif status and (status == "other" or "not at work" in status):
+        kind, allowance = "none", 2000
+    elif not status and p.home == p.workplace:
         kind = "freelance"
     start, end = (1020, 1320) if agent.id == "arthur_burton" else (540, 1020)
     if agent.id == "isabella_rodriguez":
@@ -37,6 +43,7 @@ def contract(agent: Agent) -> Job:
         shift_start=start,
         shift_end=end,
         allowance_cents=allowance,
+        max_daily_minutes=240 if "part time" in status else 480,
     )
 
 

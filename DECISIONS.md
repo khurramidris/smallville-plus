@@ -40,6 +40,13 @@
   after the stock-knowledge fix. Their calls/costs stay separate from the final
   three-day measurement. Record cancellation as incomplete, not initialized or
   successfully completed, while retaining uncertain call reservations.
+- Prefer explicit source work status over descriptive prose. A professor's
+  mention of students does not make her a student; household work does not imply
+  freelance income. Treat part-time employment as a four-hour daily contract and
+  nonemployment/unknown statuses as disclosed support assumptions.
+- Complete the full corrected offline scenario before the final API experiment.
+  Keep diagnostic calls visible in the all-stage ledger instead of hiding them
+  inside a successful three-day runtime average.
 
 ## Live API follow-up — Exact free route and zero spending
 - The user's latest instruction authorizes OpenRouter calls using the supplied

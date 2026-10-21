@@ -12,12 +12,13 @@ from smallville.apps.phone import Calendar, CreateEvent
 from smallville.config import Config
 from smallville.economy.ledger import LedgerBatch
 from smallville.economy.models import BankTransfer, Purchase
-from smallville.economy.system import Economy
+from smallville.economy.system import Economy, contract
 from smallville.engine.simulation import Simulation, bootstrap
 from smallville.eval.metrics import evaluate
 from smallville.gm.master import GameMaster
 from smallville.llm.gateway import Gateway
 from smallville.llm.mock import MockLLM
+from smallville.personas.seeds import load_agents
 from smallville.viewer.app import create_app
 from smallville.world.models import Intent, change
 from smallville.world.store import WorldState, replay
@@ -39,6 +40,34 @@ def economic_world(tmp_path, town):
 
 def total_cash(world):
     return sum(a["cents"] for a in world.all("accounts"))
+
+
+def test_contract_distinguishes_professor_students_and_unpaid_household_work(town):
+    people = {a.id: a for a in load_agents(town)}
+    assert contract(people["mei_lin"]).hourly_cents == 2200
+    assert contract(people["mei_lin"]).kind == "employment"
+    assert contract(people["ayesha_khan"]).kind == "study"
+    assert contract(people["jane_moreno"]).hourly_cents == 0
+    assert contract(people["jane_moreno"]).kind == "none"
+
+
+@pytest.mark.parametrize(
+    "status,kind,limit",
+    [
+        ("In school", "study", 480),
+        ("Working part time", "employment", 240),
+        ("Working full time", "employment", 480),
+        ("Keeping house", "none", 480),
+        ("Retired", "none", 480),
+        ("Unemployed, laid off, looking for work", "none", 480),
+        ("Other", "none", 480),
+    ],
+)
+def test_source_work_status_controls_the_authored_contract(town, status, kind, limit):
+    agent = load_agents(town)[0]
+    agent.persona.facts["work_status"] = status
+    job = contract(agent)
+    assert job.kind == kind and job.max_daily_minutes == limit
 
 
 def test_ledger_atomicity_conservation_and_no_overdraft(economic_world):
