@@ -1,4 +1,16 @@
-# Phase 1 progress
+# Smallville+ progress
+
+## Current work — Phase 2
+- User authorized the next phase on 2026-10-21. Scope is recorded in `PHASE2.md`;
+  the complete original `SPEC.md` is preserved.
+- Read the cloud runtime/network instructions and inspected the existing code.
+  No new model variables, credentials or paid-run approval are configured.
+- Reviewed the public genagents GSS bank documentation and Twin-2K-500 dataset
+  card/metadata. Licenses are MIT and CC BY 4.0 respectively; dataset licensing
+  and exact source revisions will be retained before importing data.
+- Next: acquire a bounded source subset, add structured profiles and surveys,
+  compile histories and population validation, integrate 100 residents, run
+  offline acceptance and record limitations. No later phase will be built.
 
 ## Step 1 — Specification and environment
 - Saved the complete user request in `SPEC.md` before implementation.
@@ -7,7 +19,7 @@
 - No paid service has been added or called.
 
 ## Next
-1. Stop at Phase 1; implementation and offline verification are complete.
+1. Complete the Phase 2 deliverables and validation in `PHASE2.md`.
 2. A live day remains blocked on model configuration, API credentials and
    explicit spending approval. No paid service was added or called.
 
@@ -40,7 +52,7 @@
 - (b) Two MockLLM days / 25 agents: **passed**, completed all 2,880 simulated minutes.
 - (c) Valentine's benchmark: **passed**, runnable CLI and saved measurements.
 - (d) One paid API day under cap: pending explicit approval and configured models/credentials.
-- Later phases are deliberately out of scope.
+- This section records Phase 1 acceptance; Phase 2 is now authorized above.
 - Mock behavior and synthetic token counts do not demonstrate realism gains.
 - No blinded human ratings or 1,000-resident load test have been conducted.
 - Seed relationships start at density 0.233, differing from the paper's 0.167.

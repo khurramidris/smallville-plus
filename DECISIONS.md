@@ -1,5 +1,17 @@
 # Decisions
 
+## Phase 2 — Authorization and research boundaries
+- The user's new instruction advances development to Phase 2 only. Keep the
+  original specification and Phase 1 evidence intact, and add `PHASE2.md` for
+  the new work. Paid inference remains unapproved.
+- Use only the public demographic agent bank, not the restricted real-interview
+  bank. Label expanded life histories and digital messages as fictional.
+- Keep held-out human answers outside prompts, persona generation and repair
+  feedback. Report missing/invalid predictions and dataset coverage explicitly.
+- Preserve the default 25-resident workflow while accepting a versioned validated
+  population artifact for expanded runs. Extend the map with residential units
+  rather than overfilling the original homes.
+
 ## Step 1 — Scope and operating boundaries
 - Build only Phase 1. Full life histories, survey-based regeneration, digital histories, financial simulation and external long-term memory remain deferred.
 - Use an ordinary local Python package and FastAPI replay viewer; no hosted service is needed.
