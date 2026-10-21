@@ -13,6 +13,15 @@
   replayable state. Keep private ballots/balances out of other agents' contexts.
 - Correct the invitation parser and validate shared event dates against received
   invitations. Preserve the old live day as an unchanged research artifact.
+- Keep population artifact models unchanged: new financial, ballot and event
+  links live in separate projections so Phase 2 digests remain valid.
+- Seed a host-owned Valentine event from the original benchmark goal. Only its
+  host and people who read an invitation can inspect its details. Verify host
+  presence and distinguish private calendar time from confirmed shared attendance.
+- Recheck shopping funds/stock and ballot eligibility at completion. A scarce
+  item claimed by someone else produces a failed outcome with no partial debit.
+- Carry fractional wage cents between work periods, cap daily work minutes and
+  record unpaid earnings separately when an employer has insufficient cash.
 
 ## Live API follow-up — Exact free route and zero spending
 - The user's latest instruction authorizes OpenRouter calls using the supplied

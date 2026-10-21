@@ -77,6 +77,11 @@ def action(context: dict, seed: int) -> dict:
             return intend("move", location, text=f"I want to walk to {location}.")
         return intend(kind, duration=duration)
 
+    if context.get("phase") == 3 and block["activity"] != "sleep":
+        from smallville.llm.mock_economy import economic_action
+
+        if chosen := economic_action(context, intend):
+            return chosen
     # Calendar entries are private intentions. There is no global guest list
     # supplied to this fixture or automatic attendance in the engine.
     for event in context["calendar"]:
@@ -108,6 +113,12 @@ def action(context: dict, seed: int) -> dict:
                 "start": 2460,
                 "end": 2580,
                 "location": "hobbs_cafe",
+                **(
+                    {"event_id": "valentine_2023"}
+                    if context.get("phase") == 3
+                    and any(e["id"] == "valentine_2023" for e in context["shared_events"])
+                    else {}
+                ),
             },
             text="I want to put the Valentine's party on my calendar.",
         )
@@ -142,11 +153,32 @@ def action(context: dict, seed: int) -> dict:
                     body = "Sam Moore is running for mayor, but I disagree with him."
                 return intend(
                     "message",
-                    arguments={"to": recipient, "body": body},
+                    arguments={
+                        "to": recipient,
+                        "body": body,
+                        **(
+                            {"event_id": "valentine_2023"}
+                            if context.get("phase") == 3
+                            and topic == "Valentine"
+                            and any(e["id"] == "valentine_2023" for e in context["shared_events"])
+                            else {}
+                        ),
+                    },
                     text=f"I want to message {recipient}.",
                 )
     destination = block["location"]
     duration = min(60, block["end"] - hour)
+    if context.get("phase") == 3 and block["activity"] == "work":
+        job = context["economy"]["job"]
+        used = job["worked_minutes"].get(str(day), 0)
+        if (
+            job["kind"] == "none"
+            or hour < job["shift_start"]
+            or hour >= job["shift_end"]
+            or used >= job["max_daily_minutes"]
+        ):
+            return intend("leisure", duration=duration)
+        duration = min(duration, job["shift_end"] - hour, job["max_daily_minutes"] - used)
     hours = context["opening_hours"].get(destination, {"opens": 0, "closes": 1440})
     arrival_hour = hour + context["travel_minutes"].get(destination, 0)
     if not hours["opens"] <= arrival_hour < hours["closes"]:

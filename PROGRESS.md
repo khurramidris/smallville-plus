@@ -11,6 +11,20 @@
 - Population preference for the API run is pending; default to the original 25
   and verify the expanded 100-resident population offline.
 
+### Phase 3 step 1 — Financial and civic foundations
+- Added conserved integer-cent ledger batches, work contracts with fractional
+  cent carry, finite shop/wholesale stock, portable meals, prorated household
+  leases and arrears, funded allowances, replenishment and bank transfers.
+- Added public news with event evidence, owner-scoped reading state, secret
+  ballots, quorum/deadline checks and a funded meal-stock council proposal.
+- Added shared event attachments and calendar links. A received invitation's
+  host/date/venue controls confirmed attendance; private entries cannot create
+  a party. Corrected common written AM/PM invitation time formats.
+- Connected scheduled economic/civic events, GM validation, private app context
+  and MockLLM fixtures. Earlier phase defaults remain available.
+- Validation: 13 new component cases pass offline; lint and compile checks pass.
+  Integration/regression, viewer support and final scenario measurements follow.
+
 ## Current follow-up — Authorized live inference
 - **Completed.** The 25-resident real-API day passes; evidence and problems are
   in `reports/LIVE_API_REPORT.md`. Development remains stopped at Phase 2.

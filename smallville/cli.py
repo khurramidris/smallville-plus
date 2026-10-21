@@ -50,6 +50,12 @@ async def run_command(args):
     population = Population.load(args.population) if args.population else None
     seed = args.seed if args.seed is not None else population.seed if population else 42
     config = Config.from_env(args.backend, seed, args.allow_paid, args.replay_only)
+    config = config.model_copy(
+        update={
+            "phase": args.phase or (2 if population else 1),
+            "supply_delay_day": args.supply_delay_day,
+        }
+    )
     start = time.perf_counter()
     sim = Simulation(args.out, config, cache_path=args.cache, population=population)
     try:
@@ -239,6 +245,8 @@ def parser():
         if name == "benchmark":
             command.add_argument("name", choices=["valentine"])
         command.add_argument("--out", type=Path, required=True)
+        command.add_argument("--phase", type=int, choices=[1, 2, 3])
+        command.add_argument("--supply-delay-day", type=int, default=None)
         command.add_argument("--days", type=float, default=2)
         command.add_argument("--backend", choices=["mock", "litellm"], default="mock")
         command.add_argument("--seed", type=int)

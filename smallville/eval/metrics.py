@@ -4,7 +4,8 @@ from decimal import Decimal
 from statistics import mean, pvariance
 from types import SimpleNamespace
 
-from smallville.agents.knowledge import campaign_evidence
+from smallville.agents.knowledge import campaign_evidence, party_schedule_evidence
+from smallville.economy.metrics import evaluate_economy
 from smallville.world.models import Agent
 from smallville.world.store import WorldState
 
@@ -91,12 +92,7 @@ def evaluate(world: WorldState) -> dict:
 
     messages = world.all("messages")
     invitations = [
-        m
-        for m in messages
-        if m["sent_at"] < 2460
-        and "valentine" in m["body"].lower()
-        and "hobbs" in m["body"].lower()
-        and ("17:00" in m["body"] or "5pm" in m["body"].lower())
+        m for m in messages if m["sent_at"] < 2460 and party_schedule_evidence(m["body"])
     ]
     invited = {m["to"] for m in invitations} - {"isabella_rodriguez"}
     read_invites = {m["to"] for m in invitations if m["read_at"] is not None} - {
@@ -110,6 +106,10 @@ def evaluate(world: WorldState) -> dict:
         and e.data.get("location") == "hobbs_cafe"
         and e.data["start"] < 2580
         and e.minute > 2460
+        and (
+            run.get("phase", 1) < 3
+            or (e.data.get("event_id") == "valentine_2023" and e.data.get("attendance_confirmed"))
+        )
     } - {"isabella_rodriguez"}
     per_agent = {}
     for agent in agents:
@@ -137,7 +137,7 @@ def evaluate(world: WorldState) -> dict:
         "interpretation": (
             "Deterministic scripted MockLLM fixture: engineering evidence only, not realism or emergence."
             if config["backend"] == "mock"
-            else "Exploratory Phase 1 run. No matched experimental design or human believability judgment."
+            else f"Exploratory Phase {run.get('phase', 1)} run. No matched experimental design or human believability judgment."
         ),
         "paper_reference": PAPER,
         "diffusion": {
@@ -188,6 +188,7 @@ def evaluate(world: WorldState) -> dict:
         "cost": costs,
         "messages": sum(m["sent_at"] >= 0 for m in messages),
         "historical_messages": sum(m["sent_at"] < 0 for m in messages),
+        "economy": evaluate_economy(world, events) if run.get("phase") == 3 else {"enabled": False},
         "rejected_actions": dict(
             Counter(e.data["reason"] for e in events if e.kind == "action_rejected")
         ),

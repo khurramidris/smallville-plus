@@ -18,6 +18,8 @@ class Price(Model):
 
 
 class Config(Model):
+    phase: Literal[1, 2, 3] = 1
+    supply_delay_day: int | None = Field(default=None, ge=0)
     backend: Literal["mock", "litellm"] = "mock"
     seed: int = 42
     max_usd: Decimal = Field(default=Decimal("0"), ge=0, allow_inf_nan=False)

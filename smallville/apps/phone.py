@@ -4,6 +4,7 @@ from pydantic import Field
 
 from smallville.agents.drives import conversation_effect
 from smallville.agents.memory import remember
+from smallville.apps.gatherings import Gatherings
 from smallville.world.models import Agent, CalendarEntry, Change, Message, Model, change
 from smallville.world.store import WorldState
 
@@ -12,6 +13,7 @@ class SendMessage(Model):
     to: str
     body: str = Field(min_length=1, max_length=2000)
     verbosity: Literal["quiet", "normal", "urgent"] = "normal"
+    event_id: str | None = None
 
 
 class CreateEvent(Model):
@@ -19,6 +21,7 @@ class CreateEvent(Model):
     start: int = Field(ge=0)
     end: int = Field(gt=0)
     location: str
+    event_id: str | None = None
 
 
 class Messaging:
@@ -33,6 +36,8 @@ class Messaging:
             actor.location is None or actor.location != recipient.location
         ):
             raise ValueError("I do not have this person's contact")
+        if request.event_id:
+            Gatherings(self.world).attachment(actor, request.body, request.event_id)
 
     def delivery_changes(
         self, actor: Agent, request: SendMessage, minute: int
@@ -52,7 +57,12 @@ class Messaging:
         conversation_effect(actor, request.to, request.body)
         remember(actor, minute, f"I sent {request.to}: {request.body}", identifier, 0.65)
         actor.last_social_at = minute
-        return message, [change("messages", identifier, message)]
+        return message, [
+            change("messages", identifier, message),
+            *Gatherings(self.world).invitation_changes(
+                actor, request.body, request.event_id, identifier, request.to
+            ),
+        ]
 
     def inbox(self, owner: str) -> list[Message]:
         self.world.agent(owner)
@@ -100,6 +110,7 @@ class Calendar:
             raise ValueError("unknown calendar location")
         if not self.world.location(request.location).open_throughout(request.start, request.end):
             raise ValueError("location closed during calendar entry")
+        Gatherings(self.world).calendar_event(actor, request)
         for event in self.world.calendar(actor.id):
             if request.start < event.end and event.start < request.end:
                 raise ValueError("calendar conflict")
@@ -107,9 +118,23 @@ class Calendar:
     def create_changes(self, actor: Agent, request: CreateEvent, minute: int) -> list[Change]:
         self.validate(actor, request, minute)
         identifier = f"cal:{actor.id}:{minute}"
-        event = CalendarEntry(id=identifier, owner=actor.id, **request.model_dump())
+        event = CalendarEntry(
+            id=identifier, owner=actor.id, **request.model_dump(exclude={"event_id"})
+        )
         remember(actor, minute, f"I scheduled {event.title} at {event.location}.", identifier, 0.75)
-        return [change("calendar", identifier, event)]
+        shared = Gatherings(self.world).calendar_event(actor, request)
+        links = (
+            [
+                change(
+                    "event_rsvps",
+                    identifier,
+                    {"id": identifier, "owner": actor.id, "event_id": shared["id"]},
+                )
+            ]
+            if shared
+            else []
+        )
+        return [change("calendar", identifier, event), *links]
 
     def list_events(self, owner: str) -> list[CalendarEntry]:
         self.world.agent(owner)

@@ -153,7 +153,21 @@ class Agent(Model):
 
 
 ActionKind = Literal[
-    "move", "sleep", "eat", "work", "leisure", "wait", "message", "calendar", "attend", "attempt"
+    "move",
+    "sleep",
+    "eat",
+    "work",
+    "leisure",
+    "wait",
+    "message",
+    "calendar",
+    "attend",
+    "attempt",
+    "buy",
+    "transfer",
+    "read_news",
+    "post_notice",
+    "vote",
 ]
 
 
@@ -206,6 +220,16 @@ TABLES = (
     "jobs",
     "messages",
     "calendar",
+    "transfers",
+    "leases",
+    "shops",
+    "news",
+    "news_reads",
+    "proposals",
+    "ballots",
+    "gatherings",
+    "invitations",
+    "event_rsvps",
     "metadata",
 )
 
@@ -220,6 +244,16 @@ class Change(Model):
         "jobs",
         "messages",
         "calendar",
+        "transfers",
+        "leases",
+        "shops",
+        "news",
+        "news_reads",
+        "proposals",
+        "ballots",
+        "gatherings",
+        "invitations",
+        "event_rsvps",
         "metadata",
     ]
     id: str

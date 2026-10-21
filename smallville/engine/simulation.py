@@ -6,7 +6,10 @@ from pathlib import Path
 
 from smallville.agents.drives import advance_drives
 from smallville.agents.mind import Mind
+from smallville.apps.civic import Council, NoticeBoard, initial_council
+from smallville.apps.gatherings import initial_gathering
 from smallville.config import Config
+from smallville.economy.system import Economy, initial_economy
 from smallville.engine.clock import SimClock
 from smallville.engine.scheduler import EventBus, Scheduler
 from smallville.gm.master import GameMaster
@@ -70,7 +73,7 @@ def bootstrap(
                     "requested_minutes": 0,
                     "epoch": "2023-02-13T00:00:00+00:00",
                     "benchmark": "valentine",
-                    "phase": 2 if population else 1,
+                    "phase": max(config.phase, 2 if population else 1),
                 },
             ),
         ]
@@ -93,6 +96,10 @@ def bootstrap(
                 },
             )
         )
+    if config.phase == 3:
+        changes.extend(initial_economy(agents))
+        changes.extend(initial_council(agents))
+        changes.extend(initial_gathering(agents))
     return world.log.append(0, "initialized", changes=changes)
 
 
@@ -129,6 +136,11 @@ class Simulation:
         self.gateway = Gateway(directory, config, backend, cache_path, self._record_call)
         self.mind = Mind(self.world, self.town, self.gateway, config)
         self.gm = GameMaster(self.world, self.town, self.gateway, config)
+        self.economy, self.council, self.board = (
+            Economy(self.world, config),
+            Council(self.world),
+            NoticeBoard(self.world),
+        )
         for agent in self.world.agents():
             self.scheduler.schedule(agent.busy_until, "complete", agent.id, priority=0)
             self.scheduler.when(
@@ -156,13 +168,46 @@ class Simulation:
         if not math.isfinite(minutes) or minutes <= 0 or int(minutes) != minutes:
             raise ValueError("days must specify a positive integer number of minutes")
         horizon = int(minutes)
+        if self.config.phase == 3:
+            for day in range(math.ceil(days)):
+                for hour, kind in ((360, "economic_morning"), (1260, "economic_rent")):
+                    self.scheduler.schedule(day * 1440 + hour, kind, priority=-20)
+            self.scheduler.schedule(480, "council_open", priority=-10)
+            self.scheduler.schedule(3600, "council_close", priority=-10)
         status, problem = "completed", None
         try:
             while self.scheduler.queue and self.scheduler.queue[0].minute <= horizon:
                 item = self.scheduler.pop()
                 self.clock.advance(item.minute)
                 self.active_agent = item.agent
-                if item.kind == "complete":
+                if item.kind == "economic_morning":
+                    await self._publish(self.economy.allowances(item.minute))
+                    stock_event = self.economy.restock(item.minute)
+                    await self._publish(stock_event)
+                    body = (
+                        "Today's wholesale delivery is delayed. Existing shop stock is finite. "
+                        if stock_event.data["delivery_delayed"]
+                        else f"Shops received {stock_event.data['delivered_meals']} replenishment meals. "
+                    )
+                    body += "Reported morning meal stocks: " + ", ".join(
+                        f"{self.world.location(key).name}: {value}"
+                        for key, value in stock_event.data["stock"].items()
+                    )
+                    await self._publish(
+                        self.board.publish(
+                            item.minute,
+                            "Local food supply bulletin",
+                            body,
+                            sources=[stock_event.seq],
+                        )
+                    )
+                elif item.kind == "economic_rent":
+                    await self._publish(self.economy.rent(item.minute))
+                elif item.kind == "council_open":
+                    await self._publish(self.council.open(item.minute))
+                elif item.kind == "council_close":
+                    await self._publish(self.council.close(item.minute))
+                elif item.kind == "complete":
                     event = self.gm.complete(item.agent, item.minute)
                     await self._publish(event)
                     actor = self.world.agent(item.agent)

@@ -4,8 +4,13 @@ from pydantic import ValidationError
 
 from smallville.agents.drives import advance_drives, clamp
 from smallville.agents.memory import remember
+from smallville.apps.bank import Bank
+from smallville.apps.civic import CastVote, Council, Notice, NoticeBoard
+from smallville.apps.gatherings import Gatherings
 from smallville.apps.phone import Calendar, CreateEvent, Messaging, SendMessage
 from smallville.config import Config
+from smallville.economy.models import BankTransfer, Purchase
+from smallville.economy.system import Economy
 from smallville.llm.gateway import Gateway
 from smallville.world.maps import MapProvider
 from smallville.world.models import Agent, Intent, change
@@ -20,6 +25,12 @@ class GameMaster:
     def __init__(self, world: WorldState, town: MapProvider, gateway: Gateway, config: Config):
         self.world, self.town, self.gateway, self.config = world, town, gateway, config
         self.messaging, self.calendar = Messaging(world), Calendar(world)
+        self.bank, self.economy = Bank(world), Economy(world, config)
+        self.board, self.council, self.gatherings = (
+            NoticeBoard(world),
+            Council(world),
+            Gatherings(world),
+        )
 
     def resources(self, actor: Agent, cost_cents: int = 0, meals: int = 0):
         if cost_cents < 0 or meals < 0:
@@ -34,7 +45,18 @@ class GameMaster:
             raise RuleViolation("I am already busy")
         if actor.location is None:
             raise RuleViolation("I am still travelling")
-        if intent.kind not in ("message", "calendar") and intent.arguments:
+        if self.config.phase < 3 and intent.kind in (
+            "buy",
+            "transfer",
+            "read_news",
+            "post_notice",
+            "vote",
+        ):
+            raise RuleViolation("that app is not available")
+        if (
+            intent.kind not in ("message", "calendar", "buy", "transfer", "post_notice", "vote")
+            and intent.arguments
+        ):
             raise RuleViolation("unsupported action arguments")
         if intent.kind != "move" and intent.target is not None:
             raise RuleViolation("this action has no location target")
@@ -59,13 +81,39 @@ class GameMaster:
                 raise RuleViolation("I need to go home to bed")
             duration = intent.duration
         elif intent.kind == "eat":
-            if actor.location != actor.persona.home:
+            if self.config.phase < 3 and actor.location != actor.persona.home:
                 raise RuleViolation("my prepared meals are at home")
             self.resources(actor, meals=1)
             duration = 30
         elif intent.kind == "work":
             if actor.location != actor.persona.workplace:
                 raise RuleViolation("I am not at my workplace")
+            if self.config.phase == 3:
+                try:
+                    self.economy.work_check(actor, minute, duration)
+                except ValueError as exc:
+                    raise RuleViolation(str(exc)) from None
+        elif intent.kind == "buy":
+            try:
+                self.economy.purchase_check(actor, Purchase.model_validate(intent.arguments))
+            except (ValueError, KeyError):
+                raise RuleViolation(
+                    "I cannot afford that purchase or the shop has insufficient stock"
+                ) from None
+            duration = 10
+        elif intent.kind == "transfer":
+            self.bank.validate(actor, BankTransfer.model_validate(intent.arguments))
+            duration = 5
+        elif intent.kind == "read_news":
+            duration = 5
+        elif intent.kind == "post_notice":
+            Notice.model_validate(intent.arguments)
+            duration = 5
+        elif intent.kind == "vote":
+            request = CastVote.model_validate(intent.arguments)
+            self.council.validate(actor, request, minute)
+            self.council.validate(actor, request, minute + 5)
+            duration = 5
         elif intent.kind == "message":
             self.messaging.validate(actor, SendMessage.model_validate(intent.arguments))
             duration = 5
@@ -80,6 +128,11 @@ class GameMaster:
             ]
             if not matches:
                 raise RuleViolation("I have no event here at this time")
+            linked = {r["id"] for r in self.world.all("event_rsvps") if r["owner"] == actor.id}
+            if any(e.id in linked for e in matches) and not self.gatherings.attendance(
+                actor, minute
+            ):
+                raise RuleViolation("the shared event or its host is not here at this time")
             duration = min(duration, 60, max(e.end for e in matches) - minute)
         elif intent.kind == "attempt":
             duration = 15
@@ -138,6 +191,9 @@ class GameMaster:
         actor.activity = intent.kind
         actor.busy_until = minute + duration
         actor.pending = {"intent": intent.model_dump(), "origin": origin, "start": minute}
+        if intent.kind == "attend" and self.config.phase == 3:
+            shared = self.gatherings.attendance(actor, minute)
+            actor.pending["shared_event_id"] = shared["id"] if shared else None
         if intent.kind == "move":
             actor.pending["route"] = self.town.route(origin, intent.target)
         observation = f"I am {intent.kind} until minute {actor.busy_until}."
@@ -162,7 +218,7 @@ class GameMaster:
         advance_drives(actor, minute)
         pending = actor.pending
         intent = Intent.model_validate(pending["intent"])
-        changes, data = [], {"kind": intent.kind, "start": pending["start"]}
+        changes, data = [], {"kind": intent.kind, "start": pending["start"], "succeeded": True}
         observation = f"I finished {intent.kind}."
         if intent.kind == "move":
             destination = self.world.location(actor.destination)
@@ -199,6 +255,48 @@ class GameMaster:
             inventory["meals"] -= 1
             changes.append(change("inventories", actor.id, inventory))
             actor.needs.fullness = clamp(actor.needs.fullness + 55)
+            data["meals_consumed"] = 1
+        elif intent.kind == "work" and self.config.phase == 3:
+            updates, wage = self.economy.wage_changes(actor, pending["start"], minute)
+            changes.extend(updates)
+            data["wage"] = wage
+            observation = f"I finished working and received ${wage['paid_cents'] / 100:.2f}."
+        elif intent.kind in ("buy", "transfer", "vote"):
+            try:
+                if intent.kind == "buy":
+                    updates, receipt = self.economy.purchase_changes(
+                        actor, Purchase.model_validate(intent.arguments), minute
+                    )
+                    data["purchase"] = receipt
+                    observation = f"I bought {receipt['quantity']} meals for ${receipt['cost_cents'] / 100:.2f}."
+                elif intent.kind == "transfer":
+                    updates = self.bank.transfer_changes(
+                        actor, BankTransfer.model_validate(intent.arguments), minute
+                    )
+                    observation = "My bank transfer completed."
+                else:
+                    updates = self.council.vote_changes(
+                        actor, CastVote.model_validate(intent.arguments), minute
+                    )
+                    observation = "My secret council ballot was accepted."
+                    data["proposal_id"] = intent.arguments["proposal_id"]
+                changes.extend(updates)
+            except (ValueError, KeyError):
+                data["succeeded"] = False
+                observation = (
+                    "That transaction could not complete; funds, stock or eligibility changed."
+                )
+                actor.surprise = True
+        elif intent.kind == "read_news":
+            updates, notices = self.board.read_changes(actor, minute)
+            changes.extend(updates)
+            data["notices"] = [n["id"] for n in notices]
+            observation = f"I read {len(notices)} town notices."
+        elif intent.kind == "post_notice":
+            changes.extend(
+                self.board.post_changes(actor, Notice.model_validate(intent.arguments), minute)
+            )
+            observation = "I posted my statement on the public notice board."
         elif intent.kind == "message":
             # The contact was resolved at send start; it remains a known phone
             # recipient even if the person walks away while the message is typed.
@@ -222,6 +320,12 @@ class GameMaster:
         elif intent.kind == "attend":
             data["location"] = actor.location
             observation = f"I spent time at the event in {actor.location}."
+            if self.config.phase == 3:
+                shared = self.gatherings.attendance(actor, minute - 1)
+                confirmed = bool(shared and shared["id"] == pending.get("shared_event_id"))
+                data.update(event_id=pending.get("shared_event_id"), attendance_confirmed=confirmed)
+                if not confirmed:
+                    observation = "I spent time here for my calendar plan; no shared event attendance was confirmed."
         elif intent.kind == "attempt":
             observation = "I spent a little time trying that; I have no confirmed wider outcome."
         actor.pending = None
