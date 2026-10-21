@@ -1,0 +1,12 @@
+{
+  "source": "runs/phase3-optimized-live-25",
+  "last_committed_seq": 7653,
+  "minute": 2490,
+  "state_sha256": "b001482b9390874fd7fb865260deef1c12e95b5bc77aa1868fb95a147b1c93f9",
+  "cached_responses": 1500,
+  "requested_minutes": 4320,
+  "wall_seconds_lower_bound": 4528.67,
+  "reason": "execution environment restarted and no simulation process survived",
+  "engine_revision": "8e2b410",
+  "cost_model": "published zero-price route, not provider invoice"
+}

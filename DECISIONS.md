@@ -23,6 +23,14 @@
 - Populate history beyond its limits in the compact-context regression and add
   an unrelated private inbox. Empty histories alone would not verify truncation
   or confidentiality. This strengthens tests without changing the running engine.
+- Recover this environment interruption by reconstructing from recorded
+  responses in a fresh directory. Guard the first network request with the
+  original world-state checksum and exact cached-prefix length, avoiding a new
+  live replay of completed work. The frozen engine needs no rule changes.
+- Finalize orphaned reservations as uncertain and keep original request journals.
+  Aggregate known prior/new usage once; disclose unknown usage and the missing
+  exact shutdown duration. This recovery is restricted to the authorized zero-
+  price route and $0 cap; it does not reset a paid run's budget.
 
 ## User-requested stop — Phase 3
 - The explicit stop overrides the outstanding three-day live objective. Cancel

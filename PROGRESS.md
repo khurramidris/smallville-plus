@@ -100,6 +100,21 @@
 - The live run has reached the Valentine's party window on day two. Attendance
   will use completed, confirmed actions rather than intentions or co-location.
 
+### Resumption step 8 — Environment interruption and guarded recovery
+- The execution environment restarted and killed the live process at minute
+  2,490 (day 2, 17:30). Preserved 1,500 successful responses and two in-flight
+  requests with unknown usage, all at $0 published prices. Finalized that attempt
+  as interrupted; no completed outcome or token usage was invented.
+- Saved the committed world-state checksum before finalizing the interruption.
+  Inference/scheduler/GM code is still byte-identical to `8e2b410`.
+- Prepare a fresh run using a copied response cache. Before its first new API
+  request, require all 1,500 cached decisions, the same simulated minute and an
+  identical world-state checksum. Preserve the old journal and separately sum
+  prior/new actual requests; no paid budget is reset or new service added.
+- The environment is ready again. Recovery will re-execute the cached prefix
+  locally, not repeat its completed API calls. Direct scheduler checkpoints
+  remain a later architectural task.
+
 ## Phase 3 authorization and scope
 - Authorized on 2026-10-21: implement the next phase, then run three simulated
   days. Scope and acceptance are in `PHASE3.md`; original `SPEC.md` is unchanged.
