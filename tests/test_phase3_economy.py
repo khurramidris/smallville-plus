@@ -251,6 +251,35 @@ def test_news_evidence_and_resident_opinion_authority(economic_world):
     assert not board.unread(actor, 5)
 
 
+def test_news_posted_later_in_same_minute_is_not_lost(economic_world):
+    world, _, _, _ = economic_world
+    board = NoticeBoard(world)
+    reader, author = world.agent("john_lin"), world.agent("mei_lin")
+    updates, _ = board.read_changes(reader, 5)
+    world.log.append(5, "test_read", changes=updates)
+    updates = board.post_changes(
+        author, Notice(title="New post", body="Posted after John's phone check"), 5
+    )
+    world.log.append(5, "test_post", changes=updates)
+    assert len(board.unread(reader, 5)) == 1
+    updates, selected = board.read_changes(reader, 5)
+    world.log.append(5, "test_read", changes=updates)
+    assert len(selected) == 1 and not board.unread(reader, 5)
+
+
+def test_news_attention_limit_keeps_unread_same_minute_backlog(economic_world):
+    world, _, _, _ = economic_world
+    board, reader = NoticeBoard(world), world.agent("john_lin")
+    for author in reversed(world.agents()[:10]):
+        changes = board.post_changes(
+            author, Notice(title="Update", body="My own public statement"), 5
+        )
+        world.log.append(5, "test_post", changes=changes)
+    changes, first = board.read_changes(reader, 5)
+    world.log.append(5, "test_read", changes=changes)
+    assert len(first) == 8 and len(board.unread(reader, 5)) == 2
+
+
 def test_council_without_quorum_cannot_spend(economic_world):
     world, _, _, _ = economic_world
     council = Council(world)

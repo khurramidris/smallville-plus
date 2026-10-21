@@ -47,6 +47,9 @@
 - Complete the full corrected offline scenario before the final API experiment.
   Keep diagnostic calls visible in the all-stage ledger instead of hiding them
   inside a successful three-day runtime average.
+- Use event sequence cursors for unread public news, not timestamps alone:
+  multiple posts can commit within one simulated minute. Keep a finite eight-
+  notice read limit without dropping later or unselected posts at the same time.
 
 ## Live API follow-up — Exact free route and zero spending
 - The user's latest instruction authorizes OpenRouter calls using the supplied

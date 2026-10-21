@@ -69,6 +69,20 @@
   Contract-specific regression tests are added. Finish the complete offline
   three-day scenario before starting the final live run to avoid further churn.
 
+### Phase 3 step 5 — Complete original-cohort offline scenario
+- The corrected 25-resident MockLLM benchmark completed **3 days / 4,320 minutes
+  each**, with 3,317 synthetic calls and $0 cost, in 389.783 seconds while other
+  validation ran concurrently. Full economic/civic measurements are being audited.
+- Full regression passed **73 tests offline in 179.49 seconds**. Chromium verified
+  the finance panel, corrected professor contract, historical pending council
+  state and 25 resident buttons; no page errors or external requests.
+- Added two news sequence/backlog regression cases: posts later in the same
+  minute remain unread, and the eight-notice attention limit does not lose ties.
+  All **30 Phase 3 cases pass offline in 18.11 seconds**. Final full-suite check
+  includes these additions. The scenario run uses revision `4525c58`; the later
+  change affects notice cursors, not its scripted actions or financial rules.
+- The 100-resident three-day scenario is still running. No API run is active.
+
 ## Current follow-up — Authorized live inference
 - **Completed.** The 25-resident real-API day passes; evidence and problems are
   in `reports/LIVE_API_REPORT.md`. Development remains stopped at Phase 2.

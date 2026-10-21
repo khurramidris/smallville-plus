@@ -51,10 +51,22 @@ class NoticeBoard:
 
     def unread(self, actor: Agent, minute: int):
         try:
-            last = self.world.get("news_reads", actor.id)["last_minute"]
+            cursor = self.world.get("news_reads", actor.id)
         except KeyError:
-            last = -1
-        return [n for n in self.world.all("news") if last < n["minute"] <= minute]
+            cursor = {"last_minute": -1, "last_seq": 0}
+        return [
+            n
+            for n in self.world.all("news")
+            if n["minute"] <= minute
+            and (
+                n["published_seq"] > cursor.get("last_seq", 0)
+                if "published_seq" in n
+                else n["minute"] > cursor["last_minute"]
+            )
+        ]
+
+    def next_sequence(self):
+        return self.world.db.execute("SELECT COALESCE(MAX(seq),0)+1 FROM events").fetchone()[0]
 
     def publish(
         self,
@@ -91,6 +103,7 @@ class NoticeBoard:
             "sources": sources,
             "proposal_id": proposal_id,
             "shop_reports": shop_reports or {},
+            "published_seq": self.next_sequence(),
         }
         return self.world.log.append(
             minute,
@@ -100,13 +113,13 @@ class NoticeBoard:
         )
 
     def read_changes(self, actor: Agent, minute: int):
-        notices = sorted(self.unread(actor, minute), key=lambda n: (n["minute"], n["id"]))
-        # Advance only across notices actually read, so finite attention does not
-        # silently mark an arbitrarily large unseen backlog as knowledge.
+        notices = sorted(
+            self.unread(actor, minute),
+            key=lambda n: (n["minute"], n.get("published_seq", 0), n["id"]),
+        )
+        # A sequence cursor retains late posts at the same simulated minute.
+        # Advance only across notices actually read, preserving finite attention.
         selected = notices[:8]
-        # Read all notices sharing the boundary timestamp to avoid losing ties.
-        if selected:
-            selected = [n for n in notices if n["minute"] <= selected[-1]["minute"]]
         proposals = set()
         try:
             proposals.update(self.world.get("news_reads", actor.id)["proposals"])
@@ -136,11 +149,19 @@ class NoticeBoard:
                             "source": row["id"],
                         }
         last = selected[-1]["minute"] if selected else minute
+        last_seq = max(
+            (n.get("published_seq", 0) for n in selected), default=self.next_sequence() - 1
+        )
         return [
             change(
                 "news_reads",
                 actor.id,
-                {"id": actor.id, "last_minute": last, "proposals": sorted(proposals)},
+                {
+                    "id": actor.id,
+                    "last_minute": last,
+                    "last_seq": last_seq,
+                    "proposals": sorted(proposals),
+                },
             ),
             *[
                 change("shop_observations", key, value)
@@ -159,6 +180,7 @@ class NoticeBoard:
             "body": request.body,
             "sources": [],
             "proposal_id": None,
+            "published_seq": self.next_sequence(),
         }
         return [change("news", identifier, notice)]
 
