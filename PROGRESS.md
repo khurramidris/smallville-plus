@@ -1,5 +1,16 @@
 # Smallville+ progress
 
+## Current work — Phase 3
+- Authorized on 2026-10-21: implement the next phase, then run three simulated
+  days. Scope and acceptance are in `PHASE3.md`; original `SPEC.md` is unchanged.
+- Inspected the existing engine, GM, apps, prompts, metrics and tests. The cloud
+  environment is ready with unrestricted enforced HTTP policy and no bound keys.
+- Plan: financial/world foundations; GM/apps/scheduled events; minds/viewer and
+  scoring fixes; offline validation; three-day runs and measured report.
+- Preserve earlier phase modes. No new paid service or Phase 4 work is included.
+- Population preference for the API run is pending; default to the original 25
+  and verify the expanded 100-resident population offline.
+
 ## Current follow-up — Authorized live inference
 - **Completed.** The 25-resident real-API day passes; evidence and problems are
   in `reports/LIVE_API_REPORT.md`. Development remains stopped at Phase 2.
@@ -130,9 +141,9 @@
 - No paid service has been added or called.
 
 ## Next
-1. Stop at Phase 2 plus the requested live-API validation; both are complete.
-2. Keep later phases deferred. Paid spending, 100-resident live validation and
-   human/model fidelity studies remain outside the completed follow-up.
+1. Complete Phase 3 and the requested three-day validation in `PHASE3.md`.
+2. Retain the zero-dollar live cap and stop before Phase 4. Human/model fidelity
+   ratings and paid spending remain outside this phase.
 
 ## Step 2 — Reference inspection and provenance
 - Read all six current-phase repository licenses before copying any material.

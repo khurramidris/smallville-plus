@@ -1,5 +1,19 @@
 # Decisions
 
+## Phase 3 — Authorized scope and design
+- The latest request authorizes Phase 3 and a three-day simulation. Preserve
+  earlier reports and run modes; do not begin Phase 4 or add a paid service.
+- Use integer cents and explicit conserved account transfers for wages, rent,
+  bank transfers and shopping. Arrears are obligations, never negative balances.
+- Use fictional, documented economic rates and daily prorated household rent;
+  demographic survey data is not evidence of a person's actual finances.
+- Make shop supply finite and replenishment funded. Agents retain control over
+  work, purchases, voting and reading public news; do not script live success.
+- Record municipal proposals, ballots, policy execution and event evidence as
+  replayable state. Keep private ballots/balances out of other agents' contexts.
+- Correct the invitation parser and validate shared event dates against received
+  invitations. Preserve the old live day as an unchanged research artifact.
+
 ## Live API follow-up — Exact free route and zero spending
 - The user's latest instruction authorizes OpenRouter calls using the supplied
   model. Keep development at Phase 2 and preserve the earlier mock measurements.
