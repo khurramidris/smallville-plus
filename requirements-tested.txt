@@ -1,0 +1,11 @@
+# Direct dependency versions used for Phase 1 verification on Python 3.12.14.
+# Install once, then run all tests offline. Transitive dependencies are resolved by pip.
+pydantic==2.13.4
+fastapi==0.141.1
+uvicorn==0.52.1
+litellm==1.106.0
+pytest==9.1.1
+pytest-asyncio==1.4.0
+pytest-socket==0.8.1
+httpx==0.28.1
+ruff==0.17.1

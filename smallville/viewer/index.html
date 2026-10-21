@@ -1,0 +1,136 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Smallville+ · Town observatory</title>
+  <style>
+    :root{color-scheme:dark;--bg:#101a20;--panel:#18272e;--line:#2b4149;--muted:#9cb1b7;--text:#e8f1ed;--accent:#bce593;--blue:#81c7d1}
+    *{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--text);font:14px system-ui,sans-serif}
+    header{padding:26px 32px 20px;display:flex;justify-content:space-between;gap:20px;border-bottom:1px solid var(--line)}
+    h1{margin:0;font:32px Georgia,serif;letter-spacing:-1px}h1 span{color:var(--accent)}p{line-height:1.6}
+    .eyebrow{font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--accent);margin-bottom:7px}
+    .subtle{color:var(--muted);font-size:12px}#clock{font:22px ui-monospace,monospace;text-align:right;margin:4px 0}
+    .badge{display:inline-block;border:1px solid var(--line);border-radius:20px;padding:5px 10px;color:var(--accent);font-size:11px}
+    main{padding:22px 32px;max-width:1800px;margin:auto}.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:20px}
+    .stat{border:1px solid var(--line);padding:15px 18px;background:var(--panel);border-radius:8px}.stat strong{display:block;font:25px ui-monospace,monospace;margin-top:5px}
+    .layout{display:grid;grid-template-columns:minmax(400px,1fr) 360px;gap:20px}.panel{border:1px solid var(--line);border-radius:10px;background:var(--panel);overflow:hidden}
+    .bar{padding:15px 18px;border-bottom:1px solid var(--line);display:flex;justify-content:space-between;align-items:center;gap:10px}
+    h2{font-size:14px;margin:0;font-weight:600}canvas{display:block;width:100%;background:#d9e2ca;aspect-ratio:1.4;cursor:pointer}
+    .controls{display:flex;align-items:center;gap:14px;padding:15px 18px}input[type=range]{flex:1;accent-color:var(--accent);min-width:50px}
+    button,select{font:inherit;color:var(--text);background:#223941;border:1px solid #49636b;border-radius:5px;padding:7px 12px;cursor:pointer}button:hover{border-color:var(--accent)}
+    #people{display:flex;flex-wrap:wrap;gap:6px;padding:14px 18px;max-height:170px;overflow:auto;border-top:1px solid var(--line)}
+    #people button{font-size:11px;padding:5px 8px}#people button.active{background:#38523a;border-color:var(--accent)}
+    #inspector{padding:20px;max-height:880px;overflow:auto}#inspector h2{font:26px Georgia,serif;margin:0 0 8px}h3{font-size:11px;text-transform:uppercase;letter-spacing:1.3px;color:var(--accent);margin:24px 0 12px}
+    .need{display:grid;grid-template-columns:64px 1fr 30px;align-items:center;gap:10px;margin:8px 0;font-size:12px}
+    progress{width:100%;height:7px;accent-color:var(--accent)}.entry{font-size:12px;border-left:2px solid #48626a;margin:12px 0;padding:0 0 0 10px;line-height:1.5;overflow-wrap:anywhere}
+    .entry small{display:block;color:var(--muted);margin-bottom:3px}.empty{color:var(--muted);font-size:12px}.legend{font-size:11px;color:var(--muted)}
+    footer{color:var(--muted);font-size:11px;margin-top:18px;line-height:1.6}.error{color:#ffac95}
+    @media(max-width:1000px){.layout{grid-template-columns:1fr}.stats{grid-template-columns:repeat(2,1fr)}#inspector{max-height:none}main{padding:16px}header{padding:20px}}
+  </style>
+</head>
+<body>
+<header>
+  <div><div class="eyebrow">Research observatory · Phase 1</div><h1>Smallville<span>+</span></h1><div class="subtle">One town. Twenty-five lives. A record of what happened.</div></div>
+  <div><div class="badge" id="mode">Loading history</div><div id="clock">—</div><div class="subtle" style="text-align:right">Town time · UTC</div></div>
+</header>
+<main>
+  <div class="stats">
+    <div class="stat"><span class="subtle">Residents</span><strong id="residentCount">25</strong></div>
+    <div class="stat"><span class="subtle">Model requests / cache hits</span><strong id="calls">—</strong></div>
+    <div class="stat"><span class="subtle">Run cost / cap</span><strong id="cost">—</strong></div>
+    <div class="stat"><span class="subtle">USD / resident / day</span><strong id="perDay">—</strong></div>
+  </div>
+  <div class="layout">
+    <section class="panel">
+      <div class="bar"><h2>The town</h2><span class="legend">● Deep tier &nbsp; ● Standard tier &nbsp; · Click a resident</span></div>
+      <canvas id="map" width="1120" height="800" aria-label="Smallville map with resident positions"></canvas>
+      <div class="controls"><button id="play" type="button">▶ Play</button><input id="time" aria-label="Replay time" type="range" min="0" max="2880" step="5" value="0"><span class="subtle" id="timeLabel">Day 1</span></div>
+      <div id="people" aria-label="Select resident"></div>
+    </section>
+    <aside class="panel"><div class="bar"><h2>Resident notebook</h2><span class="badge">Researcher view</span></div><div id="inspector"><p class="empty">Select a resident on the map or below it to inspect their life at this point in time.</p></div></aside>
+  </div>
+  <footer id="note">This is a schematic of the original tile map. The researcher view includes private notebooks; residents only perceive their own surroundings and phone. Mock behavior is a deterministic test fixture, not evidence of human realism.</footer>
+</main>
+<script>
+const $=s=>document.querySelector(s),canvas=$('#map'),ctx=canvas.getContext('2d');
+let meta,state,selected=null,playing=null,points=[],request=0,locationById={};
+const escapeHTML=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const label=id=>id.replaceAll('_',' ');
+const timeLabel=m=>new Date(Date.UTC(2023,1,13)+m*60000).toLocaleString('en-GB',{timeZone:'UTC',month:'short',day:'2-digit',hour:'2-digit',minute:'2-digit'});
+async function get(path){const r=await fetch(path);if(!r.ok)throw Error(`Cannot load replay (${r.status})`);return r.json()}
+function draw(){
+  const sx=canvas.width/meta.map.width,sy=canvas.height/meta.map.height;
+  ctx.fillStyle='#d9e2ca';ctx.fillRect(0,0,canvas.width,canvas.height);
+  ctx.fillStyle='#a7b9a0';for(const i of meta.map.blocked)ctx.fillRect((i%meta.map.width)*sx,Math.floor(i/meta.map.width)*sy,sx,sy);
+  for(const loc of meta.map.locations){
+    ctx.fillStyle=loc.private?'#738e78':'#417876';ctx.fillRect(loc.x*sx-4,loc.y*sy-4,8,8);
+    ctx.fillStyle='#203a37';ctx.font='10px system-ui';ctx.textAlign='center';
+    ctx.fillText(loc.name,loc.x*sx,loc.y*sy-12);
+  }
+  points=[];
+  state.agents.forEach((a,i)=>{
+    let loc=locationById[a.location],x=loc?.x,y=loc?.y;
+    if(!loc&&a.pending){
+      const route=a.pending.route||[],ratio=Math.max(0,Math.min(1,(state.minute-a.pending.start)/(a.busy_until-a.pending.start)));
+      if(route.length){const n=Math.min(route.length-1,Math.floor(ratio*(route.length-1)));[x,y]=route[n]}
+      else{loc=locationById[a.pending.origin];x=loc?.x;y=loc?.y}
+    }
+    if(x===undefined)return;
+    x=x*sx+Math.cos(i*2.4)*9;y=y*sy+Math.sin(i*2.4)*9;
+    points.push({x,y,id:a.id});
+    ctx.beginPath();ctx.arc(x,y,a.id===selected?8:5,0,Math.PI*2);
+    ctx.fillStyle=a.persona.tier==='deep'?'#ec8b50':'#243d52';ctx.fill();
+    ctx.strokeStyle=a.id===selected?'#ffffff':'#eaf0dd';ctx.lineWidth=2;ctx.stroke();
+    if(a.id===selected){ctx.font='bold 12px system-ui';ctx.fillStyle='#172d33';ctx.fillText(a.persona.name,x,y-16)}
+  });
+}
+function entry(text,small=''){return `<div class="entry"><small>${escapeHTML(small)}</small>${escapeHTML(text)}</div>`}
+async function inspect(version){
+  if(!selected)return;
+  const data=await get(`/api/agents/${encodeURIComponent(selected)}?minute=${state.minute}`);
+  if(version!==request)return;
+  const a=data.agent;
+  $('#inspector').innerHTML=`<h2>${escapeHTML(a.persona.name)}</h2><div class="subtle">${escapeHTML(a.persona.tier)} tier · ${escapeHTML(a.emotion.label)} · ${escapeHTML(a.activity)}</div>
+  <p>${escapeHTML(a.persona.description)}</p><h3>Needs</h3>
+  ${Object.entries(a.needs).map(([k,v])=>`<div class="need"><span>${escapeHTML(k)}</span><progress max="100" value="${v}"></progress><span>${Math.round(v)}</span></div>`).join('')}
+  <h3>Today's plan</h3>${a.plan?a.plan.blocks.map(b=>entry(`${b.activity} · ${label(b.location)}`,`${Math.floor(b.start/60)}:${String(b.start%60).padStart(2,'0')}–${Math.floor(b.end/60)}:${String(b.end%60).padStart(2,'0')}`)).join(''):'<p class="empty">Still asleep; no plan written yet.</p>'}
+  <h3>Calendar</h3>${data.calendar.map(e=>entry(`${e.title} · ${label(e.location)}`,timeLabel(e.start))).join('')||'<p class="empty">Nothing scheduled.</p>'}
+  <h3>Recent memories</h3>${a.memories.slice(-10).reverse().map(m=>entry(m.text,`${timeLabel(m.minute)} · ${m.kind}`)).join('')}
+  <h3>Messages</h3>${data.messages.slice(-10).reverse().map(m=>entry(m.body,`${label(m.sender)} → ${label(m.to)} · ${timeLabel(m.sent_at)}`)).join('')||'<p class="empty">No messages yet.</p>'}`;
+}
+async function update(){
+  const version=++request,minute=Number($('#time').value);
+  try{
+    const [next,cost]=await Promise.all([get(`/api/state?minute=${minute}`),get(`/api/cost?minute=${minute}`)]);
+    if(version!==request)return;state=next;
+    $('#clock').textContent=timeLabel(minute);$('#timeLabel').textContent=`Day ${Math.floor(minute/1440)+1}`;
+    $('#residentCount').textContent=state.agents.length;$('#calls').textContent=`${cost.calls} / ${cost.cache_hits}`;
+    $('#cost').textContent=`$${Number(cost.usd).toFixed(4)} / $${Number(cost.max_usd).toFixed(2)}`;
+    $('#perDay').textContent=cost.usd_per_agent_day===null?'—':`$${Number(cost.usd_per_agent_day).toFixed(5)}`;
+    $('#people').innerHTML=state.agents.map(a=>`<button type="button" data-agent="${escapeHTML(a.id)}" class="${a.id===selected?'active':''}">${escapeHTML(a.persona.name)}</button>`).join('');
+    draw();await inspect(version);
+  }catch(e){$('#note').textContent=e.message;$('#note').className='error'}
+}
+function choose(id){selected=id;update()}
+$('#people').addEventListener('click',e=>{if(e.target.dataset.agent)choose(e.target.dataset.agent)});
+canvas.addEventListener('click',e=>{
+  const r=canvas.getBoundingClientRect(),x=(e.clientX-r.left)*canvas.width/r.width,y=(e.clientY-r.top)*canvas.height/r.height;
+  const near=points.slice().sort((a,b)=>Math.hypot(a.x-x,a.y-y)-Math.hypot(b.x-x,b.y-y))[0];
+  if(near&&Math.hypot(near.x-x,near.y-y)<25)choose(near.id);
+});
+$('#time').addEventListener('input',update);
+$('#play').addEventListener('click',()=>{
+  if(playing){clearInterval(playing);playing=null;$('#play').textContent='▶ Play';return}
+  $('#play').textContent='Ⅱ Pause';playing=setInterval(()=>{
+    const t=$('#time');if(Number(t.value)>=Number(t.max)){clearInterval(playing);playing=null;$('#play').textContent='▶ Play';return}
+    t.value=Math.min(Number(t.max),Number(t.value)+15);update();
+  },900);
+});
+(async()=>{
+  try{meta=await get('/api/meta');locationById=Object.fromEntries(meta.map.locations.map(l=>[l.id,l]));$('#time').max=meta.minute;$('#time').value=meta.minute;$('#mode').textContent=`${meta.backend.toUpperCase()} · ${meta.run.status}`;await update()}
+  catch(e){$('#note').textContent=e.message;$('#note').className='error'}
+})();
+</script>
+</body>
+</html>
