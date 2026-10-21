@@ -12,6 +12,24 @@
   population artifact for expanded runs. Extend the map with residential units
   rather than overfilling the original homes.
 
+### Phase 2 step 1 — Data, time and validation
+- Preserve duplicate GSS names and distinguish people by source-based resident
+  IDs. Names need not be unique in a realistic town.
+- Model new housing as apartment-unit entrances at three accessible map points.
+  These are authored map assumptions, not new geometry copied from upstream art.
+- Allow past messages, memories and calendar records to use negative epoch
+  minutes. Simulation events and runtime app scheduling remain nonnegative.
+- Compile reciprocal message exchanges and paired calendars from short style
+  templates. Validate ownership, dates, opening hours, capacity and travel gaps;
+  prohibit future party/campaign information in pre-populated phone templates.
+- Retain source facts and original seed goals independently of generated prose.
+  A failed survey/schema check causes bounded regeneration; unresolved profiles
+  prevent publishing a population.
+- Keep gold and prior test–retest answers in separate scorer fields. Penalize
+  invalid/missing predictions rather than reporting accuracy only on successes.
+- Read lightweight event fields for metrics instead of retaining every full
+  agent snapshot in memory when evaluating the expanded population.
+
 ## Step 1 — Scope and operating boundaries
 - Build only Phase 1. Full life histories, survey-based regeneration, digital histories, financial simulation and external long-term memory remain deferred.
 - Use an ordinary local Python package and FastAPI replay viewer; no hosted service is needed.

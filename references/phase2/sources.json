@@ -1,0 +1,735 @@
+[
+  {
+    "url": "https://raw.githubusercontent.com/StanfordHCI/genagents/96854071ef4c2d79c93144c973c7820722d52bab/agent_bank/populations/gss_agents/e7e14d7f-4f6a-461e-a991-45f3c2a44f59/scratch.json",
+    "path": "agent_bank/populations/gss_agents/e7e14d7f-4f6a-461e-a991-45f3c2a44f59/scratch.json",
+    "local": "smallville/data/gss/e7e14d7f-4f6a-461e-a991-45f3c2a44f59.json",
+    "revision": "96854071ef4c2d79c93144c973c7820722d52bab",
+    "license": "MIT",
+    "sha256": "5bc8f3177ff9b1c6239f8997617245a11be8a08f0d6395c8f40ca19f42f16113",
+    "bytes": 1031
+  },
+  {
+    "url": "https://raw.githubusercontent.com/StanfordHCI/genagents/96854071ef4c2d79c93144c973c7820722d52bab/agent_bank/populations/gss_agents/ccba112e-df73-49aa-89d3-c41380490ed8/scratch.json",
+    "path": "agent_bank/populations/gss_agents/ccba112e-df73-49aa-89d3-c41380490ed8/scratch.json",
+    "local": "smallville/data/gss/ccba112e-df73-49aa-89d3-c41380490ed8.json",
+    "revision": "96854071ef4c2d79c93144c973c7820722d52bab",
+    "license": "MIT",
+    "sha256": "768f4903ff80bdb7201104e49181919c300db8b1a2b34251b6edbc695e0eb40b",
+    "bytes": 1022
+  },
+  {
+    "url": "https://raw.githubusercontent.com/StanfordHCI/genagents/96854071ef4c2d79c93144c973c7820722d52bab/agent_bank/populations/gss_agents/4e1127f5-b30d-4fd6-94a3-3c37f27831d5/scratch.json",
+    "path": "agent_bank/populations/gss_agents/4e1127f5-b30d-4fd6-94a3-3c37f27831d5/scratch.json",
+    "local": "smallville/data/gss/4e1127f5-b30d-4fd6-94a3-3c37f27831d5.json",
+    "revision": "96854071ef4c2d79c93144c973c7820722d52bab",
+    "license": "MIT",
+    "sha256": "03ac46b3516c4433208ce5c503ca90489e68f72178ddc358f5179429d7bbbe35",
+    "bytes": 1073
+  },
+  {
+    "url": "https://raw.githubusercontent.com/StanfordHCI/genagents/96854071ef4c2d79c93144c973c7820722d52bab/agent_bank/populations/gss_agents/97799c0c-927e-4f52-8e7e-ede633598930/scratch.json",
+    "path": "agent_bank/populations/gss_agents/97799c0c-927e-4f52-8e7e-ede633598930/scratch.json",
+    "local": "smallville/data/gss/97799c0c-927e-4f52-8e7e-ede633598930.json",
+    "revision": "96854071ef4c2d79c93144c973c7820722d52bab",
+    "license": "MIT",
+    "sha256": "ea00d9b821e4229721bb179515f57b6e0712f5080144a891150a45a59d9d31ad",
+    "bytes": 999
+  },
+  {
+    "url": "https://raw.githubusercontent.com/StanfordHCI/genagents/96854071ef4c2d79c93144c973c7820722d52bab/agent_bank/populations/gss_agents/373476cc-5109-43f0-a06e-107dbf662b6e/scratch.json",
+    "path": "agent_bank/populations/gss_agents/373476cc-5109-43f0-a06e-107dbf662b6e/scratch.json",
+    "local": "smallville/data/gss/373476cc-5109-43f0-a06e-107dbf662b6e.json",
+    "revision": "96854071ef4c2d79c93144c973c7820722d52bab",
+    "license": "MIT",
+    "sha256": "fd16181e28311d4dad9ec0a27853ee509df7c7685384cf5a742e77345af20479",
+    "bytes": 1039
+  },
+  {
+    "url": "https://raw.githubusercontent.com/StanfordHCI/genagents/96854071ef4c2d79c93144c973c7820722d52bab/agent_bank/populations/gss_agents/a1da0d3c-d42a-4278-9b70-8c126d075a49/scratch.json",
+    "path": "agent_bank/populations/gss_agents/a1da0d3c-d42a-4278-9b70-8c126d075a49/scratch.json",
+    "local": "smallville/data/gss/a1da0d3c-d42a-4278-9b70-8c126d075a49.json",
+    "revision": "96854071ef4c2d79c93144c973c7820722d52bab",
+    "license": "MIT",
+    "sha256": "8918861edcd160cae84f789edcbc08d5a39287cb1ca28cba5e900512be5bc965",
+    "bytes": 1028
+  },
+  {
+    "url": "https://raw.githubusercontent.com/StanfordHCI/genagents/96854071ef4c2d79c93144c973c7820722d52bab/agent_bank/populations/gss_agents/dbc67374-84a2-4c40-aa7e-041899cd45c8/scratch.json",
+    "path": "agent_bank/populations/gss_agents/dbc67374-84a2-4c40-aa7e-041899cd45c8/scratch.json",
+    "local": "smallville/data/gss/dbc67374-84a2-4c40-aa7e-041899cd45c8.json",
+    "revision": "96854071ef4c2d79c93144c973c7820722d52bab",
+    "license": "MIT",
+    "sha256": "aff462a5c3063743fc0a6a2bdc7e64d27f35d6aa6378c0a35a5a8011562fcb16",
+    "bytes": 1019
+  },
+  {
+    "url": "https://raw.githubusercontent.com/StanfordHCI/genagents/96854071ef4c2d79c93144c973c7820722d52bab/agent_bank/populations/gss_agents/b10cb4b4-4154-44da-a401-48ad6349cfd8/scratch.json",
+    "path": "agent_bank/populations/gss_agents/b10cb4b4-4154-44da-a401-48ad6349cfd8/scratch.json",
+    "local": "smallville/data/gss/b10cb4b4-4154-44da-a401-48ad6349cfd8.json",
+    "revision": "96854071ef4c2d79c93144c973c7820722d52bab",
+    "license": "MIT",
+    "sha256": "024f438b7fff6f91e4d5453d277c0e0999afee66834bc80f45ae0327956ac5c1",
+    "bytes": 1022
+  },
+  {
+    "url": "https://raw.githubusercontent.com/StanfordHCI/genagents/96854071ef4c2d79c93144c973c7820722d52bab/agent_bank/populations/gss_agents/fdaa945d-48e0-49d0-b189-9abe028ba676/scratch.json",
+    "path": "agent_bank/populations/gss_agents/fdaa945d-48e0-49d0-b189-9abe028ba676/scratch.json",
+    "local": "smallville/data/gss/fdaa945d-48e0-49d0-b189-9abe028ba676.json",
+    "revision": "96854071ef4c2d79c93144c973c7820722d52bab",
+    "license": "MIT",
+    "sha256": "1d3989e94c5e5a1e05b9a5e4543e83a75c08241cd9a2ad0f590e175b87130e33",
+    "bytes": 1082
+  },
+  {
+    "url": "https://raw.githubusercontent.com/StanfordHCI/genagents/96854071ef4c2d79c93144c973c7820722d52bab/agent_bank/populations/gss_agents/d116bc1a-9afd-47f0-91f3-86ded8817d28/scratch.json",
+    "path": "agent_bank/populations/gss_agents/d116bc1a-9afd-47f0-91f3-86ded8817d28/scratch.json",
+    "local": "smallville/data/gss/d116bc1a-9afd-47f0-91f3-86ded8817d28.json",
+    "revision": "96854071ef4c2d79c93144c973c7820722d52bab",
+    "license": "MIT",
+    "sha256": "1e87fa0bf9e80abf5a75031ac4ee7b7013030be0c6a0754859ab33931ca430cb",
+    "bytes": 1052
+  },
+  {
+    "url": "https://raw.githubusercontent.com/StanfordHCI/genagents/96854071ef4c2d79c93144c973c7820722d52bab/agent_bank/populations/gss_agents/d9fdcf38-12ed-45b8-8acf-bca9ee68feed/scratch.json",
+    "path": "agent_bank/populations/gss_agents/d9fdcf38-12ed-45b8-8acf-bca9ee68feed/scratch.json",
+    "local": "smallville/data/gss/d9fdcf38-12ed-45b8-8acf-bca9ee68feed.json",
+    "revision": "96854071ef4c2d79c93144c973c7820722d52bab",
+    "license": "MIT",
+    "sha256": "33525fbda4ec3c4adeb8997aa0217f82882b5d87a98f183881d3dcd7b3eb9efe",
+    "bytes": 1077
+  },
+  {
+    "url": "https://raw.githubusercontent.com/StanfordHCI/genagents/96854071ef4c2d79c93144c973c7820722d52bab/agent_bank/populations/gss_agents/5d8c3703-cc6a-4880-95a3-200cab9ecb7d/scratch.json",
+    "path": "agent_bank/populations/gss_agents/5d8c3703-cc6a-4880-95a3-200cab9ecb7d/scratch.json",
+    "local": "smallville/data/gss/5d8c3703-cc6a-4880-95a3-200cab9ecb7d.json",
+    "revision": "96854071ef4c2d79c93144c973c7820722d52bab",
+    "license": "MIT",
+    "sha256": "585c3a52393595358655ca10fe990d4d6af2626a521f41dc4e5efe8f7ca3e53f",
+    "bytes": 1030
+  },
+  {
+    "url": "https://raw.githubusercontent.com/StanfordHCI/genagents/96854071ef4c2d79c93144c973c7820722d52bab/agent_bank/populations/gss_agents/5c472ccb-e59e-486f-a936-bf5163b41e32/scratch.json",
+    "path": "agent_bank/populations/gss_agents/5c472ccb-e59e-486f-a936-bf5163b41e32/scratch.json",
+    "local": "smallville/data/gss/5c472ccb-e59e-486f-a936-bf5163b41e32.json",
+    "revision": "96854071ef4c2d79c93144c973c7820722d52bab",
+    "license": "MIT",
+    "sha256": "9381581d8f4a34334ab89ef52558623751e83fc1318df7a82e7883e6261aa351",
+    "bytes": 1034
+  },
+  {
+    "url": "https://raw.githubusercontent.com/StanfordHCI/genagents/96854071ef4c2d79c93144c973c7820722d52bab/agent_bank/populations/gss_agents/02ed9e04-eb2a-4582-adf1-bf17792635a3/scratch.json",
+    "path": "agent_bank/populations/gss_agents/02ed9e04-eb2a-4582-adf1-bf17792635a3/scratch.json",
+    "local": "smallville/data/gss/02ed9e04-eb2a-4582-adf1-bf17792635a3.json",
+    "revision": "96854071ef4c2d79c93144c973c7820722d52bab",
+    "license": "MIT",
+    "sha256": "eb249b4850c04b92691399ed4527a4f32878a953e19ef26e5f4d3c5c420c4afc",
+    "bytes": 1047
+  },
+  {
+    "url": "https://raw.githubusercontent.com/StanfordHCI/genagents/96854071ef4c2d79c93144c973c7820722d52bab/agent_bank/populations/gss_agents/650e1f3e-ee63-4776-b4cf-3f8b8db7db77/scratch.json",
+    "path": "agent_bank/populations/gss_agents/650e1f3e-ee63-4776-b4cf-3f8b8db7db77/scratch.json",
+    "local": "smallville/data/gss/650e1f3e-ee63-4776-b4cf-3f8b8db7db77.json",
+    "revision": "96854071ef4c2d79c93144c973c7820722d52bab",
+    "license": "MIT",
+    "sha256": "03415f816ef2b1389ae77966ef56f8f03345784472aaf468cd0f5089736e2673",
+    "bytes": 1058
+  },
+  {
+    "url": "https://raw.githubusercontent.com/StanfordHCI/genagents/96854071ef4c2d79c93144c973c7820722d52bab/agent_bank/populations/gss_agents/f4e21171-3046-4615-b554-bc644ea65faa/scratch.json",
+    "path": "agent_bank/populations/gss_agents/f4e21171-3046-4615-b554-bc644ea65faa/scratch.json",
+    "local": "smallville/data/gss/f4e21171-3046-4615-b554-bc644ea65faa.json",
+    "revision": "96854071ef4c2d79c93144c973c7820722d52bab",
+    "license": "MIT",
+    "sha256": "01ca898abcd8a72d3a3b461fb01d5b6a7d015559dc68569ecf8b7ba91f856563",
+    "bytes": 1058
+  },
+  {
+    "url": "https://raw.githubusercontent.com/StanfordHCI/genagents/96854071ef4c2d79c93144c973c7820722d52bab/agent_bank/populations/gss_agents/0e80697b-e390-4569-a952-2a1885792041/scratch.json",
+    "path": "agent_bank/populations/gss_agents/0e80697b-e390-4569-a952-2a1885792041/scratch.json",
+    "local": "smallville/data/gss/0e80697b-e390-4569-a952-2a1885792041.json",
+    "revision": "96854071ef4c2d79c93144c973c7820722d52bab",
+    "license": "MIT",
+    "sha256": "9e3758e90b076ef969b73577e3ceb05ee98bcc96816fe23df4122340ea91d93f",
+    "bytes": 1057
+  },
+  {
+    "url": "https://raw.githubusercontent.com/StanfordHCI/genagents/96854071ef4c2d79c93144c973c7820722d52bab/agent_bank/populations/gss_agents/c0e3b1a5-286e-4eab-a42b-74f0a64ae68c/scratch.json",
+    "path": "agent_bank/populations/gss_agents/c0e3b1a5-286e-4eab-a42b-74f0a64ae68c/scratch.json",
+    "local": "smallville/data/gss/c0e3b1a5-286e-4eab-a42b-74f0a64ae68c.json",
+    "revision": "96854071ef4c2d79c93144c973c7820722d52bab",
+    "license": "MIT",
+    "sha256": "b86d8aa0576983f41b892590cc87643e5bb295feea632bb2b6c323a42883e581",
+    "bytes": 1018
+  },
+  {
+    "url": "https://raw.githubusercontent.com/StanfordHCI/genagents/96854071ef4c2d79c93144c973c7820722d52bab/agent_bank/populations/gss_agents/360010c9-bc46-4dff-a37f-99ebc86e5855/scratch.json",
+    "path": "agent_bank/populations/gss_agents/360010c9-bc46-4dff-a37f-99ebc86e5855/scratch.json",
+    "local": "smallville/data/gss/360010c9-bc46-4dff-a37f-99ebc86e5855.json",
+    "revision": "96854071ef4c2d79c93144c973c7820722d52bab",
+    "license": "MIT",
+    "sha256": "ae4a830c531a206f450c1fecfb63bf75d368e70227672c20e6e565d7d01766ac",
+    "bytes": 1001
+  },
+  {
+    "url": "https://raw.githubusercontent.com/StanfordHCI/genagents/96854071ef4c2d79c93144c973c7820722d52bab/agent_bank/populations/gss_agents/baab8927-5efd-47f9-8958-790e0d109575/scratch.json",
+    "path": "agent_bank/populations/gss_agents/baab8927-5efd-47f9-8958-790e0d109575/scratch.json",
+    "local": "smallville/data/gss/baab8927-5efd-47f9-8958-790e0d109575.json",
+    "revision": "96854071ef4c2d79c93144c973c7820722d52bab",
+    "license": "MIT",
+    "sha256": "eb49315ad7b6f44bd83a4ae627b646872e6554defe7eeb5a1d5f81c5040d0084",
+    "bytes": 1013
+  },
+  {
+    "url": "https://raw.githubusercontent.com/StanfordHCI/genagents/96854071ef4c2d79c93144c973c7820722d52bab/agent_bank/populations/gss_agents/b2723f7a-cc9a-4d21-955b-4ff1f9bf76e0/scratch.json",
+    "path": "agent_bank/populations/gss_agents/b2723f7a-cc9a-4d21-955b-4ff1f9bf76e0/scratch.json",
+    "local": "smallville/data/gss/b2723f7a-cc9a-4d21-955b-4ff1f9bf76e0.json",
+    "revision": "96854071ef4c2d79c93144c973c7820722d52bab",
+    "license": "MIT",
+    "sha256": "361d8a8f7b675fd0d3ade5a4d70c3eaca1dd5c4ceb9046197a56445489025811",
+    "bytes": 1062
+  },
+  {
+    "url": "https://raw.githubusercontent.com/StanfordHCI/genagents/96854071ef4c2d79c93144c973c7820722d52bab/agent_bank/populations/gss_agents/636b66ae-9fa1-468c-a05b-ea0594763d67/scratch.json",
+    "path": "agent_bank/populations/gss_agents/636b66ae-9fa1-468c-a05b-ea0594763d67/scratch.json",
+    "local": "smallville/data/gss/636b66ae-9fa1-468c-a05b-ea0594763d67.json",
+    "revision": "96854071ef4c2d79c93144c973c7820722d52bab",
+    "license": "MIT",
+    "sha256": "8ef90fd2b251a15c2a8d2d9085643373f349fafed2cf8f3a84108bf011786402",
+    "bytes": 1049
+  },
+  {
+    "url": "https://raw.githubusercontent.com/StanfordHCI/genagents/96854071ef4c2d79c93144c973c7820722d52bab/agent_bank/populations/gss_agents/2a1b926c-445a-4481-aa02-f67fdb819507/scratch.json",
+    "path": "agent_bank/populations/gss_agents/2a1b926c-445a-4481-aa02-f67fdb819507/scratch.json",
+    "local": "smallville/data/gss/2a1b926c-445a-4481-aa02-f67fdb819507.json",
+    "revision": "96854071ef4c2d79c93144c973c7820722d52bab",
+    "license": "MIT",
+    "sha256": "5c86f7aeeed671c6ec7c38854ed0a188acb09da87ded3edd425d6ca99bd54afe",
+    "bytes": 1029
+  },
+  {
+    "url": "https://raw.githubusercontent.com/StanfordHCI/genagents/96854071ef4c2d79c93144c973c7820722d52bab/agent_bank/populations/gss_agents/7000b580-96da-4dfd-a6f5-f3b99021652a/scratch.json",
+    "path": "agent_bank/populations/gss_agents/7000b580-96da-4dfd-a6f5-f3b99021652a/scratch.json",
+    "local": "smallville/data/gss/7000b580-96da-4dfd-a6f5-f3b99021652a.json",
+    "revision": "96854071ef4c2d79c93144c973c7820722d52bab",
+    "license": "MIT",
+    "sha256": "44539e95b82b15bfadbd7f38ef292d1913c4302a3c66100e4e3bb7e9674f86e8",
+    "bytes": 1001
+  },
+  {
+    "url": "https://raw.githubusercontent.com/StanfordHCI/genagents/96854071ef4c2d79c93144c973c7820722d52bab/agent_bank/populations/gss_agents/2b4bd946-57da-410a-bffe-9d66ee321e6d/scratch.json",
+    "path": "agent_bank/populations/gss_agents/2b4bd946-57da-410a-bffe-9d66ee321e6d/scratch.json",
+    "local": "smallville/data/gss/2b4bd946-57da-410a-bffe-9d66ee321e6d.json",
+    "revision": "96854071ef4c2d79c93144c973c7820722d52bab",
+    "license": "MIT",
+    "sha256": "986bc1521bb26dfdad36b0e97d446feaf08ab39d2de094294bdfe9fc125c7ec9",
+    "bytes": 1056
+  },
+  {
+    "url": "https://raw.githubusercontent.com/StanfordHCI/genagents/96854071ef4c2d79c93144c973c7820722d52bab/agent_bank/populations/gss_agents/1a9fcb14-1576-4580-a867-6437af67c214/scratch.json",
+    "path": "agent_bank/populations/gss_agents/1a9fcb14-1576-4580-a867-6437af67c214/scratch.json",
+    "local": "smallville/data/gss/1a9fcb14-1576-4580-a867-6437af67c214.json",
+    "revision": "96854071ef4c2d79c93144c973c7820722d52bab",
+    "license": "MIT",
+    "sha256": "59ae080a656898d2458c753b2a906e571b9fbf185ae8c2aa5335ef64a40ff494",
+    "bytes": 1059
+  },
+  {
+    "url": "https://raw.githubusercontent.com/StanfordHCI/genagents/96854071ef4c2d79c93144c973c7820722d52bab/agent_bank/populations/gss_agents/52b8f2ed-026e-494d-a769-21d3732b6010/scratch.json",
+    "path": "agent_bank/populations/gss_agents/52b8f2ed-026e-494d-a769-21d3732b6010/scratch.json",
+    "local": "smallville/data/gss/52b8f2ed-026e-494d-a769-21d3732b6010.json",
+    "revision": "96854071ef4c2d79c93144c973c7820722d52bab",
+    "license": "MIT",
+    "sha256": "e5f1e8ffdac37f2cc3c405a1f94be699c508e16e6fa3a3fba60735dd8675a617",
+    "bytes": 1116
+  },
+  {
+    "url": "https://raw.githubusercontent.com/StanfordHCI/genagents/96854071ef4c2d79c93144c973c7820722d52bab/agent_bank/populations/gss_agents/15cdc7dd-12a3-4ab7-9e85-67e77ebe9f8b/scratch.json",
+    "path": "agent_bank/populations/gss_agents/15cdc7dd-12a3-4ab7-9e85-67e77ebe9f8b/scratch.json",
+    "local": "smallville/data/gss/15cdc7dd-12a3-4ab7-9e85-67e77ebe9f8b.json",
+    "revision": "96854071ef4c2d79c93144c973c7820722d52bab",
+    "license": "MIT",
+    "sha256": "6164040dc5055d0cd0365a811641fe9e1cb97220d3a9fe22d7d0622ae0f74b8a",
+    "bytes": 1021
+  },
+  {
+    "url": "https://raw.githubusercontent.com/StanfordHCI/genagents/96854071ef4c2d79c93144c973c7820722d52bab/agent_bank/populations/gss_agents/a6e1f8ad-4558-480e-be15-0bdad3cfc96d/scratch.json",
+    "path": "agent_bank/populations/gss_agents/a6e1f8ad-4558-480e-be15-0bdad3cfc96d/scratch.json",
+    "local": "smallville/data/gss/a6e1f8ad-4558-480e-be15-0bdad3cfc96d.json",
+    "revision": "96854071ef4c2d79c93144c973c7820722d52bab",
+    "license": "MIT",
+    "sha256": "7f673559732b19b07c4a0616902fe5cfed64d383d6a9d6e4f5c7e265c70b249a",
+    "bytes": 1060
+  },
+  {
+    "url": "https://raw.githubusercontent.com/StanfordHCI/genagents/96854071ef4c2d79c93144c973c7820722d52bab/agent_bank/populations/gss_agents/ed24d205-b291-4188-8801-c84df57e7772/scratch.json",
+    "path": "agent_bank/populations/gss_agents/ed24d205-b291-4188-8801-c84df57e7772/scratch.json",
+    "local": "smallville/data/gss/ed24d205-b291-4188-8801-c84df57e7772.json",
+    "revision": "96854071ef4c2d79c93144c973c7820722d52bab",
+    "license": "MIT",
+    "sha256": "338d92c8876c6815a4a7f1dc8eefcf276f12255e6d631d6f21867e35a3232d4a",
+    "bytes": 1017
+  },
+  {
+    "url": "https://raw.githubusercontent.com/StanfordHCI/genagents/96854071ef4c2d79c93144c973c7820722d52bab/agent_bank/populations/gss_agents/e1bfa0f2-376c-45d6-b5e8-5fed91b7ce6d/scratch.json",
+    "path": "agent_bank/populations/gss_agents/e1bfa0f2-376c-45d6-b5e8-5fed91b7ce6d/scratch.json",
+    "local": "smallville/data/gss/e1bfa0f2-376c-45d6-b5e8-5fed91b7ce6d.json",
+    "revision": "96854071ef4c2d79c93144c973c7820722d52bab",
+    "license": "MIT",
+    "sha256": "d563e06148f6b9a588daaf93d9e0481baba9d03118b6a1ecbecd93ec851f282c",
+    "bytes": 1070
+  },
+  {
+    "url": "https://raw.githubusercontent.com/StanfordHCI/genagents/96854071ef4c2d79c93144c973c7820722d52bab/agent_bank/populations/gss_agents/2c90eb87-dca1-491a-b46e-dddb5ef2096a/scratch.json",
+    "path": "agent_bank/populations/gss_agents/2c90eb87-dca1-491a-b46e-dddb5ef2096a/scratch.json",
+    "local": "smallville/data/gss/2c90eb87-dca1-491a-b46e-dddb5ef2096a.json",
+    "revision": "96854071ef4c2d79c93144c973c7820722d52bab",
+    "license": "MIT",
+    "sha256": "b4113d79200e7bfbb62acdf2e50696c0d0da1229870311b705b8de3eadf19100",
+    "bytes": 1036
+  },
+  {
+    "url": "https://raw.githubusercontent.com/StanfordHCI/genagents/96854071ef4c2d79c93144c973c7820722d52bab/agent_bank/populations/gss_agents/1d53343a-125f-4985-b7d0-ff454c0c230c/scratch.json",
+    "path": "agent_bank/populations/gss_agents/1d53343a-125f-4985-b7d0-ff454c0c230c/scratch.json",
+    "local": "smallville/data/gss/1d53343a-125f-4985-b7d0-ff454c0c230c.json",
+    "revision": "96854071ef4c2d79c93144c973c7820722d52bab",
+    "license": "MIT",
+    "sha256": "e4287dc58a740ff64b9972d56ae9ff6af07cdaf374ce21f8993882398b60382b",
+    "bytes": 1018
+  },
+  {
+    "url": "https://raw.githubusercontent.com/StanfordHCI/genagents/96854071ef4c2d79c93144c973c7820722d52bab/agent_bank/populations/gss_agents/3168e36f-d48b-49e3-b98a-24c98336a268/scratch.json",
+    "path": "agent_bank/populations/gss_agents/3168e36f-d48b-49e3-b98a-24c98336a268/scratch.json",
+    "local": "smallville/data/gss/3168e36f-d48b-49e3-b98a-24c98336a268.json",
+    "revision": "96854071ef4c2d79c93144c973c7820722d52bab",
+    "license": "MIT",
+    "sha256": "0baf7d7185e535021c1cd962edf07bb69e73c1d7e1ce4196db0a5e7b0006c5a9",
+    "bytes": 1062
+  },
+  {
+    "url": "https://raw.githubusercontent.com/StanfordHCI/genagents/96854071ef4c2d79c93144c973c7820722d52bab/agent_bank/populations/gss_agents/a1a6ee58-28f6-4531-b5b0-e8509b0c7e52/scratch.json",
+    "path": "agent_bank/populations/gss_agents/a1a6ee58-28f6-4531-b5b0-e8509b0c7e52/scratch.json",
+    "local": "smallville/data/gss/a1a6ee58-28f6-4531-b5b0-e8509b0c7e52.json",
+    "revision": "96854071ef4c2d79c93144c973c7820722d52bab",
+    "license": "MIT",
+    "sha256": "50d185ca03bb6077e6c4e06411b3a9125c825bc8a27db33dd77e944665e7884e",
+    "bytes": 1061
+  },
+  {
+    "url": "https://raw.githubusercontent.com/StanfordHCI/genagents/96854071ef4c2d79c93144c973c7820722d52bab/agent_bank/populations/gss_agents/b39965d3-9b33-4673-b249-ef60137a481c/scratch.json",
+    "path": "agent_bank/populations/gss_agents/b39965d3-9b33-4673-b249-ef60137a481c/scratch.json",
+    "local": "smallville/data/gss/b39965d3-9b33-4673-b249-ef60137a481c.json",
+    "revision": "96854071ef4c2d79c93144c973c7820722d52bab",
+    "license": "MIT",
+    "sha256": "57597c3e07bd29f8ebc57e6310128f57aadf7785d844ace37c867eb2e1789a29",
+    "bytes": 1024
+  },
+  {
+    "url": "https://raw.githubusercontent.com/StanfordHCI/genagents/96854071ef4c2d79c93144c973c7820722d52bab/agent_bank/populations/gss_agents/bc1fa87c-b653-47a4-9b4e-d809cf5085ce/scratch.json",
+    "path": "agent_bank/populations/gss_agents/bc1fa87c-b653-47a4-9b4e-d809cf5085ce/scratch.json",
+    "local": "smallville/data/gss/bc1fa87c-b653-47a4-9b4e-d809cf5085ce.json",
+    "revision": "96854071ef4c2d79c93144c973c7820722d52bab",
+    "license": "MIT",
+    "sha256": "0fd8deb9e07763a6ed4754c09fd8a48470bafd72856e4cfa78125f476a8eb14d",
+    "bytes": 1010
+  },
+  {
+    "url": "https://raw.githubusercontent.com/StanfordHCI/genagents/96854071ef4c2d79c93144c973c7820722d52bab/agent_bank/populations/gss_agents/8ce24ef2-003a-4305-88e3-20e68a84758c/scratch.json",
+    "path": "agent_bank/populations/gss_agents/8ce24ef2-003a-4305-88e3-20e68a84758c/scratch.json",
+    "local": "smallville/data/gss/8ce24ef2-003a-4305-88e3-20e68a84758c.json",
+    "revision": "96854071ef4c2d79c93144c973c7820722d52bab",
+    "license": "MIT",
+    "sha256": "278d2ca11aec14c0280ae045ffec37a3ae0e905de51375a12094d47f8852940c",
+    "bytes": 1047
+  },
+  {
+    "url": "https://raw.githubusercontent.com/StanfordHCI/genagents/96854071ef4c2d79c93144c973c7820722d52bab/agent_bank/populations/gss_agents/2fde4554-cf45-4429-82a2-f79c76126763/scratch.json",
+    "path": "agent_bank/populations/gss_agents/2fde4554-cf45-4429-82a2-f79c76126763/scratch.json",
+    "local": "smallville/data/gss/2fde4554-cf45-4429-82a2-f79c76126763.json",
+    "revision": "96854071ef4c2d79c93144c973c7820722d52bab",
+    "license": "MIT",
+    "sha256": "735c49fe68a72ca77246ed027ed9c90f93141d029d95384a2fb88092a41eb273",
+    "bytes": 1046
+  },
+  {
+    "url": "https://raw.githubusercontent.com/StanfordHCI/genagents/96854071ef4c2d79c93144c973c7820722d52bab/agent_bank/populations/gss_agents/cae2493d-48ce-4e9c-a3f5-fd21c7406b9f/scratch.json",
+    "path": "agent_bank/populations/gss_agents/cae2493d-48ce-4e9c-a3f5-fd21c7406b9f/scratch.json",
+    "local": "smallville/data/gss/cae2493d-48ce-4e9c-a3f5-fd21c7406b9f.json",
+    "revision": "96854071ef4c2d79c93144c973c7820722d52bab",
+    "license": "MIT",
+    "sha256": "ce579a46c85435be8b4327646eb9793b9201c8b106d7dbf1b9241fd86639f5b8",
+    "bytes": 1062
+  },
+  {
+    "url": "https://raw.githubusercontent.com/StanfordHCI/genagents/96854071ef4c2d79c93144c973c7820722d52bab/agent_bank/populations/gss_agents/f1d1dd53-da02-4476-ac51-5d8f3f17d9a4/scratch.json",
+    "path": "agent_bank/populations/gss_agents/f1d1dd53-da02-4476-ac51-5d8f3f17d9a4/scratch.json",
+    "local": "smallville/data/gss/f1d1dd53-da02-4476-ac51-5d8f3f17d9a4.json",
+    "revision": "96854071ef4c2d79c93144c973c7820722d52bab",
+    "license": "MIT",
+    "sha256": "bad802698085b2dc9b7c965f6f19df54239e900007617427a4089cf5c9b9b307",
+    "bytes": 1026
+  },
+  {
+    "url": "https://raw.githubusercontent.com/StanfordHCI/genagents/96854071ef4c2d79c93144c973c7820722d52bab/agent_bank/populations/gss_agents/2b7925b2-fa8d-4d0d-8322-1e3bf4d339a1/scratch.json",
+    "path": "agent_bank/populations/gss_agents/2b7925b2-fa8d-4d0d-8322-1e3bf4d339a1/scratch.json",
+    "local": "smallville/data/gss/2b7925b2-fa8d-4d0d-8322-1e3bf4d339a1.json",
+    "revision": "96854071ef4c2d79c93144c973c7820722d52bab",
+    "license": "MIT",
+    "sha256": "42c04e8f55e6d9fc9ac18a616bacebfa336f861f4e2f01642f3f625cbb772261",
+    "bytes": 1022
+  },
+  {
+    "url": "https://raw.githubusercontent.com/StanfordHCI/genagents/96854071ef4c2d79c93144c973c7820722d52bab/agent_bank/populations/gss_agents/d2bc6fb8-56b8-4c15-ad2c-e35a8127f3c8/scratch.json",
+    "path": "agent_bank/populations/gss_agents/d2bc6fb8-56b8-4c15-ad2c-e35a8127f3c8/scratch.json",
+    "local": "smallville/data/gss/d2bc6fb8-56b8-4c15-ad2c-e35a8127f3c8.json",
+    "revision": "96854071ef4c2d79c93144c973c7820722d52bab",
+    "license": "MIT",
+    "sha256": "ff4ef579726b0919cda10089d19dc0029f58d28622cb232ed2a9ce795b3c5556",
+    "bytes": 1039
+  },
+  {
+    "url": "https://raw.githubusercontent.com/StanfordHCI/genagents/96854071ef4c2d79c93144c973c7820722d52bab/agent_bank/populations/gss_agents/817c1250-35b1-4270-892c-d4395000bac6/scratch.json",
+    "path": "agent_bank/populations/gss_agents/817c1250-35b1-4270-892c-d4395000bac6/scratch.json",
+    "local": "smallville/data/gss/817c1250-35b1-4270-892c-d4395000bac6.json",
+    "revision": "96854071ef4c2d79c93144c973c7820722d52bab",
+    "license": "MIT",
+    "sha256": "3f31c1681adedd3c580bb1d91f5c1a5f6acb853d92fb71b3ac3a9bb56afecbd0",
+    "bytes": 1076
+  },
+  {
+    "url": "https://raw.githubusercontent.com/StanfordHCI/genagents/96854071ef4c2d79c93144c973c7820722d52bab/agent_bank/populations/gss_agents/d8a479de-1c76-45e8-b1e7-656de3ef69fc/scratch.json",
+    "path": "agent_bank/populations/gss_agents/d8a479de-1c76-45e8-b1e7-656de3ef69fc/scratch.json",
+    "local": "smallville/data/gss/d8a479de-1c76-45e8-b1e7-656de3ef69fc.json",
+    "revision": "96854071ef4c2d79c93144c973c7820722d52bab",
+    "license": "MIT",
+    "sha256": "6f40c423bc654d114458ac9cedd10ee91a9cf64966d2c48cf32296d7ee71b6d4",
+    "bytes": 1054
+  },
+  {
+    "url": "https://raw.githubusercontent.com/StanfordHCI/genagents/96854071ef4c2d79c93144c973c7820722d52bab/agent_bank/populations/gss_agents/aea2824b-3377-4671-b440-2b6ef9f61466/scratch.json",
+    "path": "agent_bank/populations/gss_agents/aea2824b-3377-4671-b440-2b6ef9f61466/scratch.json",
+    "local": "smallville/data/gss/aea2824b-3377-4671-b440-2b6ef9f61466.json",
+    "revision": "96854071ef4c2d79c93144c973c7820722d52bab",
+    "license": "MIT",
+    "sha256": "73569735fd99c6b4e3a2775de7ac430da9618843dbeab95fd440fc5fde16939e",
+    "bytes": 1067
+  },
+  {
+    "url": "https://raw.githubusercontent.com/StanfordHCI/genagents/96854071ef4c2d79c93144c973c7820722d52bab/agent_bank/populations/gss_agents/cfb260e1-e623-4d7b-9274-44ecc043fc5f/scratch.json",
+    "path": "agent_bank/populations/gss_agents/cfb260e1-e623-4d7b-9274-44ecc043fc5f/scratch.json",
+    "local": "smallville/data/gss/cfb260e1-e623-4d7b-9274-44ecc043fc5f.json",
+    "revision": "96854071ef4c2d79c93144c973c7820722d52bab",
+    "license": "MIT",
+    "sha256": "d8fbe8483cfb09a60f7f88885bf6762320b8c1eb5683eb65cb61cb2a762c6748",
+    "bytes": 1115
+  },
+  {
+    "url": "https://raw.githubusercontent.com/StanfordHCI/genagents/96854071ef4c2d79c93144c973c7820722d52bab/agent_bank/populations/gss_agents/c982f1bd-e44f-45c5-9d59-c0e33de86562/scratch.json",
+    "path": "agent_bank/populations/gss_agents/c982f1bd-e44f-45c5-9d59-c0e33de86562/scratch.json",
+    "local": "smallville/data/gss/c982f1bd-e44f-45c5-9d59-c0e33de86562.json",
+    "revision": "96854071ef4c2d79c93144c973c7820722d52bab",
+    "license": "MIT",
+    "sha256": "25ffd81126a73c097042681ca1903528202fac2820af6f290da6d73411f0bdda",
+    "bytes": 1040
+  },
+  {
+    "url": "https://raw.githubusercontent.com/StanfordHCI/genagents/96854071ef4c2d79c93144c973c7820722d52bab/agent_bank/populations/gss_agents/2d396572-7373-45e3-9c67-676ed2a51da4/scratch.json",
+    "path": "agent_bank/populations/gss_agents/2d396572-7373-45e3-9c67-676ed2a51da4/scratch.json",
+    "local": "smallville/data/gss/2d396572-7373-45e3-9c67-676ed2a51da4.json",
+    "revision": "96854071ef4c2d79c93144c973c7820722d52bab",
+    "license": "MIT",
+    "sha256": "e10158de8b36d7dc2add502daaebd19bdca10dc9a03a1b010d340b4d7e3dcea0",
+    "bytes": 1064
+  },
+  {
+    "url": "https://raw.githubusercontent.com/StanfordHCI/genagents/96854071ef4c2d79c93144c973c7820722d52bab/agent_bank/populations/gss_agents/ab6f046a-45fe-43ec-b9f1-240c94d77baf/scratch.json",
+    "path": "agent_bank/populations/gss_agents/ab6f046a-45fe-43ec-b9f1-240c94d77baf/scratch.json",
+    "local": "smallville/data/gss/ab6f046a-45fe-43ec-b9f1-240c94d77baf.json",
+    "revision": "96854071ef4c2d79c93144c973c7820722d52bab",
+    "license": "MIT",
+    "sha256": "a50358eabf02353d90428dfa83e955fe185530aa4eb92ffeb3ab8c78268fba67",
+    "bytes": 1000
+  },
+  {
+    "url": "https://raw.githubusercontent.com/StanfordHCI/genagents/96854071ef4c2d79c93144c973c7820722d52bab/agent_bank/populations/gss_agents/867658fb-d439-4baa-8234-0685308969d2/scratch.json",
+    "path": "agent_bank/populations/gss_agents/867658fb-d439-4baa-8234-0685308969d2/scratch.json",
+    "local": "smallville/data/gss/867658fb-d439-4baa-8234-0685308969d2.json",
+    "revision": "96854071ef4c2d79c93144c973c7820722d52bab",
+    "license": "MIT",
+    "sha256": "0a4bded35f80b4be4ab2b003b57ca24ade382bcfff8b45816825fa14869b3756",
+    "bytes": 1005
+  },
+  {
+    "url": "https://raw.githubusercontent.com/StanfordHCI/genagents/96854071ef4c2d79c93144c973c7820722d52bab/agent_bank/populations/gss_agents/1aff4731-ed2c-4d93-9e81-2243cc739ea7/scratch.json",
+    "path": "agent_bank/populations/gss_agents/1aff4731-ed2c-4d93-9e81-2243cc739ea7/scratch.json",
+    "local": "smallville/data/gss/1aff4731-ed2c-4d93-9e81-2243cc739ea7.json",
+    "revision": "96854071ef4c2d79c93144c973c7820722d52bab",
+    "license": "MIT",
+    "sha256": "180a54fe04c220812d5cbf4eb084ddd663bb6bbd3f426a5376ddc18139955705",
+    "bytes": 1053
+  },
+  {
+    "url": "https://raw.githubusercontent.com/StanfordHCI/genagents/96854071ef4c2d79c93144c973c7820722d52bab/agent_bank/populations/gss_agents/72f9b821-2dc3-42a5-b3e1-dd610e5253b8/scratch.json",
+    "path": "agent_bank/populations/gss_agents/72f9b821-2dc3-42a5-b3e1-dd610e5253b8/scratch.json",
+    "local": "smallville/data/gss/72f9b821-2dc3-42a5-b3e1-dd610e5253b8.json",
+    "revision": "96854071ef4c2d79c93144c973c7820722d52bab",
+    "license": "MIT",
+    "sha256": "c786dcf1d6bfb3ff8bd4f6f37c11e64a247bdd4598091eed388c19fbe3d2311b",
+    "bytes": 1032
+  },
+  {
+    "url": "https://raw.githubusercontent.com/StanfordHCI/genagents/96854071ef4c2d79c93144c973c7820722d52bab/agent_bank/populations/gss_agents/f20797d7-0756-4188-9fb4-c7bbcc04d9ad/scratch.json",
+    "path": "agent_bank/populations/gss_agents/f20797d7-0756-4188-9fb4-c7bbcc04d9ad/scratch.json",
+    "local": "smallville/data/gss/f20797d7-0756-4188-9fb4-c7bbcc04d9ad.json",
+    "revision": "96854071ef4c2d79c93144c973c7820722d52bab",
+    "license": "MIT",
+    "sha256": "baa52779fb9478d553881c003f36dc05fe98c381af3d5c127096f5a2134d775a",
+    "bytes": 1014
+  },
+  {
+    "url": "https://raw.githubusercontent.com/StanfordHCI/genagents/96854071ef4c2d79c93144c973c7820722d52bab/agent_bank/populations/gss_agents/e942e09a-3208-4326-b973-4be1684f26aa/scratch.json",
+    "path": "agent_bank/populations/gss_agents/e942e09a-3208-4326-b973-4be1684f26aa/scratch.json",
+    "local": "smallville/data/gss/e942e09a-3208-4326-b973-4be1684f26aa.json",
+    "revision": "96854071ef4c2d79c93144c973c7820722d52bab",
+    "license": "MIT",
+    "sha256": "78926e548884cee3ff90c4b74027c4dc516af1833dbeb31a817e7aef14db72f0",
+    "bytes": 1041
+  },
+  {
+    "url": "https://raw.githubusercontent.com/StanfordHCI/genagents/96854071ef4c2d79c93144c973c7820722d52bab/agent_bank/populations/gss_agents/9c3251ef-fa4b-43de-899d-683769f918c5/scratch.json",
+    "path": "agent_bank/populations/gss_agents/9c3251ef-fa4b-43de-899d-683769f918c5/scratch.json",
+    "local": "smallville/data/gss/9c3251ef-fa4b-43de-899d-683769f918c5.json",
+    "revision": "96854071ef4c2d79c93144c973c7820722d52bab",
+    "license": "MIT",
+    "sha256": "88a7d7736f359a7bab952a6c0fb2d8aea6be26adbbfe3f54bde0c82dc7fa00b2",
+    "bytes": 1057
+  },
+  {
+    "url": "https://raw.githubusercontent.com/StanfordHCI/genagents/96854071ef4c2d79c93144c973c7820722d52bab/agent_bank/populations/gss_agents/0b317af6-8b0a-4f18-b962-894fb98d1c47/scratch.json",
+    "path": "agent_bank/populations/gss_agents/0b317af6-8b0a-4f18-b962-894fb98d1c47/scratch.json",
+    "local": "smallville/data/gss/0b317af6-8b0a-4f18-b962-894fb98d1c47.json",
+    "revision": "96854071ef4c2d79c93144c973c7820722d52bab",
+    "license": "MIT",
+    "sha256": "874b6df47985d2e200cb17640360c2b24274c4287e6e79bf605adb6a25e40844",
+    "bytes": 1041
+  },
+  {
+    "url": "https://raw.githubusercontent.com/StanfordHCI/genagents/96854071ef4c2d79c93144c973c7820722d52bab/agent_bank/populations/gss_agents/6d67a0ba-a1d8-4f84-99de-bfcc096418b8/scratch.json",
+    "path": "agent_bank/populations/gss_agents/6d67a0ba-a1d8-4f84-99de-bfcc096418b8/scratch.json",
+    "local": "smallville/data/gss/6d67a0ba-a1d8-4f84-99de-bfcc096418b8.json",
+    "revision": "96854071ef4c2d79c93144c973c7820722d52bab",
+    "license": "MIT",
+    "sha256": "36d4b1e4175119eff6b8b14277937167c665cae6d4242a15aecd596eb05b17c1",
+    "bytes": 1080
+  },
+  {
+    "url": "https://raw.githubusercontent.com/StanfordHCI/genagents/96854071ef4c2d79c93144c973c7820722d52bab/agent_bank/populations/gss_agents/96f0319e-ce31-40aa-a5bd-5e7ca4a80a0c/scratch.json",
+    "path": "agent_bank/populations/gss_agents/96f0319e-ce31-40aa-a5bd-5e7ca4a80a0c/scratch.json",
+    "local": "smallville/data/gss/96f0319e-ce31-40aa-a5bd-5e7ca4a80a0c.json",
+    "revision": "96854071ef4c2d79c93144c973c7820722d52bab",
+    "license": "MIT",
+    "sha256": "7dc320644b5ac0f309f5d9445287e445e6cb08d9238c6d10f1ca7d348e630e6b",
+    "bytes": 1050
+  },
+  {
+    "url": "https://raw.githubusercontent.com/StanfordHCI/genagents/96854071ef4c2d79c93144c973c7820722d52bab/agent_bank/populations/gss_agents/302887c8-3c3b-49e0-a4da-5d4ab3561a23/scratch.json",
+    "path": "agent_bank/populations/gss_agents/302887c8-3c3b-49e0-a4da-5d4ab3561a23/scratch.json",
+    "local": "smallville/data/gss/302887c8-3c3b-49e0-a4da-5d4ab3561a23.json",
+    "revision": "96854071ef4c2d79c93144c973c7820722d52bab",
+    "license": "MIT",
+    "sha256": "47bff56826c6ff45973f11031c381c47e421dc5cc09883c1932325993a8c6a9f",
+    "bytes": 1054
+  },
+  {
+    "url": "https://raw.githubusercontent.com/StanfordHCI/genagents/96854071ef4c2d79c93144c973c7820722d52bab/agent_bank/populations/gss_agents/2034d852-9716-47ca-8617-82556aa1672e/scratch.json",
+    "path": "agent_bank/populations/gss_agents/2034d852-9716-47ca-8617-82556aa1672e/scratch.json",
+    "local": "smallville/data/gss/2034d852-9716-47ca-8617-82556aa1672e.json",
+    "revision": "96854071ef4c2d79c93144c973c7820722d52bab",
+    "license": "MIT",
+    "sha256": "8062644c5366bc200f12b169a0fd95c7cdce5a592484a2b19260e934db56f86a",
+    "bytes": 1034
+  },
+  {
+    "url": "https://raw.githubusercontent.com/StanfordHCI/genagents/96854071ef4c2d79c93144c973c7820722d52bab/agent_bank/populations/gss_agents/27d5d096-475c-4ecc-8760-e9aa8c63a439/scratch.json",
+    "path": "agent_bank/populations/gss_agents/27d5d096-475c-4ecc-8760-e9aa8c63a439/scratch.json",
+    "local": "smallville/data/gss/27d5d096-475c-4ecc-8760-e9aa8c63a439.json",
+    "revision": "96854071ef4c2d79c93144c973c7820722d52bab",
+    "license": "MIT",
+    "sha256": "770d98cccfc1eeea4279304cb1bc86a6ac6f02785c80dc35ebff7ad1bd343a2c",
+    "bytes": 1021
+  },
+  {
+    "url": "https://raw.githubusercontent.com/StanfordHCI/genagents/96854071ef4c2d79c93144c973c7820722d52bab/agent_bank/populations/gss_agents/34f4c287-e571-444d-b062-42111d2ed13b/scratch.json",
+    "path": "agent_bank/populations/gss_agents/34f4c287-e571-444d-b062-42111d2ed13b/scratch.json",
+    "local": "smallville/data/gss/34f4c287-e571-444d-b062-42111d2ed13b.json",
+    "revision": "96854071ef4c2d79c93144c973c7820722d52bab",
+    "license": "MIT",
+    "sha256": "50bfdb59c59f66603f8067af1e8c2c78d9c8b5a7c8d54f13f370cb02193e5644",
+    "bytes": 1087
+  },
+  {
+    "url": "https://raw.githubusercontent.com/StanfordHCI/genagents/96854071ef4c2d79c93144c973c7820722d52bab/agent_bank/populations/gss_agents/5adb62e7-5af1-4188-9a95-7138936a5718/scratch.json",
+    "path": "agent_bank/populations/gss_agents/5adb62e7-5af1-4188-9a95-7138936a5718/scratch.json",
+    "local": "smallville/data/gss/5adb62e7-5af1-4188-9a95-7138936a5718.json",
+    "revision": "96854071ef4c2d79c93144c973c7820722d52bab",
+    "license": "MIT",
+    "sha256": "c82b9bfb70b08ef5053951e01c134b456f696430250d9edde707b64630efb0d5",
+    "bytes": 1092
+  },
+  {
+    "url": "https://raw.githubusercontent.com/StanfordHCI/genagents/96854071ef4c2d79c93144c973c7820722d52bab/agent_bank/populations/gss_agents/5d30ad4f-a299-4ecb-bb58-b50b2bdcb962/scratch.json",
+    "path": "agent_bank/populations/gss_agents/5d30ad4f-a299-4ecb-bb58-b50b2bdcb962/scratch.json",
+    "local": "smallville/data/gss/5d30ad4f-a299-4ecb-bb58-b50b2bdcb962.json",
+    "revision": "96854071ef4c2d79c93144c973c7820722d52bab",
+    "license": "MIT",
+    "sha256": "ce3b96b3152246d43ae5febda719e036ecc6a4ae23fc94a422c48134c6cb08bf",
+    "bytes": 1082
+  },
+  {
+    "url": "https://raw.githubusercontent.com/StanfordHCI/genagents/96854071ef4c2d79c93144c973c7820722d52bab/agent_bank/populations/gss_agents/bdeeb6a1-8407-4cec-8eae-30700aba5e3a/scratch.json",
+    "path": "agent_bank/populations/gss_agents/bdeeb6a1-8407-4cec-8eae-30700aba5e3a/scratch.json",
+    "local": "smallville/data/gss/bdeeb6a1-8407-4cec-8eae-30700aba5e3a.json",
+    "revision": "96854071ef4c2d79c93144c973c7820722d52bab",
+    "license": "MIT",
+    "sha256": "3f7858e325468f8426241d91b2875cc8f4deb7e2711262d22d05c6d7c196c7e4",
+    "bytes": 1051
+  },
+  {
+    "url": "https://raw.githubusercontent.com/StanfordHCI/genagents/96854071ef4c2d79c93144c973c7820722d52bab/agent_bank/populations/gss_agents/34ceca49-ec16-47f8-bb35-9441965a45e2/scratch.json",
+    "path": "agent_bank/populations/gss_agents/34ceca49-ec16-47f8-bb35-9441965a45e2/scratch.json",
+    "local": "smallville/data/gss/34ceca49-ec16-47f8-bb35-9441965a45e2.json",
+    "revision": "96854071ef4c2d79c93144c973c7820722d52bab",
+    "license": "MIT",
+    "sha256": "b5eae93e4382f3351b3c9b497f6304d2d1e45348cfcbcdb40a9ea26c8e6cebed",
+    "bytes": 1057
+  },
+  {
+    "url": "https://raw.githubusercontent.com/StanfordHCI/genagents/96854071ef4c2d79c93144c973c7820722d52bab/agent_bank/populations/gss_agents/990a581a-13be-445e-b9c5-81283200d662/scratch.json",
+    "path": "agent_bank/populations/gss_agents/990a581a-13be-445e-b9c5-81283200d662/scratch.json",
+    "local": "smallville/data/gss/990a581a-13be-445e-b9c5-81283200d662.json",
+    "revision": "96854071ef4c2d79c93144c973c7820722d52bab",
+    "license": "MIT",
+    "sha256": "b61928780b960f34c4f70ef16ea6c37ed940089346f3da21aedca8a29ac51e93",
+    "bytes": 1013
+  },
+  {
+    "url": "https://raw.githubusercontent.com/StanfordHCI/genagents/96854071ef4c2d79c93144c973c7820722d52bab/agent_bank/populations/gss_agents/4443416f-04f5-443d-9419-f548bc0d208d/scratch.json",
+    "path": "agent_bank/populations/gss_agents/4443416f-04f5-443d-9419-f548bc0d208d/scratch.json",
+    "local": "smallville/data/gss/4443416f-04f5-443d-9419-f548bc0d208d.json",
+    "revision": "96854071ef4c2d79c93144c973c7820722d52bab",
+    "license": "MIT",
+    "sha256": "0d95ab63f2008a39dee467d64810b329653a45400d7eb48ea8f028d44ff0b090",
+    "bytes": 1045
+  },
+  {
+    "url": "https://raw.githubusercontent.com/StanfordHCI/genagents/96854071ef4c2d79c93144c973c7820722d52bab/agent_bank/populations/gss_agents/07e7f36e-9939-4fc6-a554-3f4ab3c93fcb/scratch.json",
+    "path": "agent_bank/populations/gss_agents/07e7f36e-9939-4fc6-a554-3f4ab3c93fcb/scratch.json",
+    "local": "smallville/data/gss/07e7f36e-9939-4fc6-a554-3f4ab3c93fcb.json",
+    "revision": "96854071ef4c2d79c93144c973c7820722d52bab",
+    "license": "MIT",
+    "sha256": "0f55208f75c971f05eac40c031e149b72dc2de46dc4760e6df6e950177e5e38b",
+    "bytes": 1066
+  },
+  {
+    "url": "https://raw.githubusercontent.com/StanfordHCI/genagents/96854071ef4c2d79c93144c973c7820722d52bab/agent_bank/populations/gss_agents/708f552c-25f6-4d25-b2d7-ae0ca567923d/scratch.json",
+    "path": "agent_bank/populations/gss_agents/708f552c-25f6-4d25-b2d7-ae0ca567923d/scratch.json",
+    "local": "smallville/data/gss/708f552c-25f6-4d25-b2d7-ae0ca567923d.json",
+    "revision": "96854071ef4c2d79c93144c973c7820722d52bab",
+    "license": "MIT",
+    "sha256": "86c658c4b98a5a99066dfd5adede0d3d2b117e0aaa148356119e33c70477a9d0",
+    "bytes": 1021
+  },
+  {
+    "url": "https://raw.githubusercontent.com/StanfordHCI/genagents/96854071ef4c2d79c93144c973c7820722d52bab/agent_bank/populations/gss_agents/b1104731-ed47-4a60-b778-220c80794774/scratch.json",
+    "path": "agent_bank/populations/gss_agents/b1104731-ed47-4a60-b778-220c80794774/scratch.json",
+    "local": "smallville/data/gss/b1104731-ed47-4a60-b778-220c80794774.json",
+    "revision": "96854071ef4c2d79c93144c973c7820722d52bab",
+    "license": "MIT",
+    "sha256": "00f5568cdcad1c203394a58f442bc30d56fdd3c2179ac3e9a8f9e873690ebb93",
+    "bytes": 1078
+  },
+  {
+    "url": "https://raw.githubusercontent.com/StanfordHCI/genagents/96854071ef4c2d79c93144c973c7820722d52bab/agent_bank/populations/gss_agents/6ccfffb9-900a-4976-b4c9-a7eec1eabbd6/scratch.json",
+    "path": "agent_bank/populations/gss_agents/6ccfffb9-900a-4976-b4c9-a7eec1eabbd6/scratch.json",
+    "local": "smallville/data/gss/6ccfffb9-900a-4976-b4c9-a7eec1eabbd6.json",
+    "revision": "96854071ef4c2d79c93144c973c7820722d52bab",
+    "license": "MIT",
+    "sha256": "ccc67f4da077797f418b10706543c12d03eab05b0ca6b62c2f6ed650e34406c2",
+    "bytes": 1052
+  },
+  {
+    "url": "https://raw.githubusercontent.com/StanfordHCI/genagents/96854071ef4c2d79c93144c973c7820722d52bab/agent_bank/populations/gss_agents/118ba390-f86a-4118-b3ec-9a22da435b17/scratch.json",
+    "path": "agent_bank/populations/gss_agents/118ba390-f86a-4118-b3ec-9a22da435b17/scratch.json",
+    "local": "smallville/data/gss/118ba390-f86a-4118-b3ec-9a22da435b17.json",
+    "revision": "96854071ef4c2d79c93144c973c7820722d52bab",
+    "license": "MIT",
+    "sha256": "b485582e2a6d88167ec2e565407cd2253fe00912692f314cf352fc32cbc9d395",
+    "bytes": 1031
+  },
+  {
+    "url": "https://raw.githubusercontent.com/StanfordHCI/genagents/96854071ef4c2d79c93144c973c7820722d52bab/agent_bank/populations/gss_agents/0f688ecf-661d-40f4-86e1-45debab316fc/scratch.json",
+    "path": "agent_bank/populations/gss_agents/0f688ecf-661d-40f4-86e1-45debab316fc/scratch.json",
+    "local": "smallville/data/gss/0f688ecf-661d-40f4-86e1-45debab316fc.json",
+    "revision": "96854071ef4c2d79c93144c973c7820722d52bab",
+    "license": "MIT",
+    "sha256": "a08a1d949e14e2297ca43eb99e869064bfaecbf9aa00c4406dcd5cf15adb6dc8",
+    "bytes": 1082
+  },
+  {
+    "url": "https://huggingface.co/datasets/LLM-Digital-Twin/Twin-2K-500/resolve/f883165a3026fde855dfd448e0cd16443ab257b6/question_catalog_and_human_response_csv/wave1_3_response.csv",
+    "path": "question_catalog_and_human_response_csv/wave1_3_response.csv",
+    "local": "scratch/phase2/wave1_3_response.csv",
+    "revision": "f883165a3026fde855dfd448e0cd16443ab257b6",
+    "license": "CC-BY-4.0",
+    "sha256": "fc227b1682e2654fd4b2a8152294b68118c0e3be4d83f4a9af5f3e96df56d3f0",
+    "bytes": 5462260
+  },
+  {
+    "url": "https://huggingface.co/datasets/LLM-Digital-Twin/Twin-2K-500/resolve/f883165a3026fde855dfd448e0cd16443ab257b6/question_catalog_and_human_response_csv/wave4_response.csv",
+    "path": "question_catalog_and_human_response_csv/wave4_response.csv",
+    "local": "scratch/phase2/wave4_response.csv",
+    "revision": "f883165a3026fde855dfd448e0cd16443ab257b6",
+    "license": "CC-BY-4.0",
+    "sha256": "09ec1a88bdd48fec95963da3102df0ca467378bf729cbc1c0b869b0f1e4fb942",
+    "bytes": 633807
+  },
+  {
+    "url": "https://huggingface.co/datasets/LLM-Digital-Twin/Twin-2K-500/resolve/f883165a3026fde855dfd448e0cd16443ab257b6/question_catalog_and_human_response_csv/question_catalog.json",
+    "path": "question_catalog_and_human_response_csv/question_catalog.json",
+    "local": "scratch/phase2/question_catalog.json",
+    "revision": "f883165a3026fde855dfd448e0cd16443ab257b6",
+    "license": "CC-BY-4.0",
+    "sha256": "e72e305f0c7c83bb990e97de4c0cf2c718ead18cc197239b7feeb354c9ac1bef",
+    "bytes": 214137
+  },
+  {
+    "url": "https://huggingface.co/datasets/LLM-Digital-Twin/Twin-2K-500/resolve/f883165a3026fde855dfd448e0cd16443ab257b6/README.md",
+    "path": "README.md",
+    "local": "references/phase2/TWIN_DATASET_CARD.md",
+    "revision": "f883165a3026fde855dfd448e0cd16443ab257b6",
+    "license": "CC-BY-4.0",
+    "sha256": "9f71a028d2510476cdb3dd365f4525e7b7cc0736f17939adcfeae9bf91a52d4b",
+    "bytes": 10970
+  },
+  {
+    "url": "https://huggingface.co/datasets/LLM-Digital-Twin/Twin-2K-500/resolve/f883165a3026fde855dfd448e0cd16443ab257b6/question_catalog_and_human_response_csv/question_catalog_README.md",
+    "path": "question_catalog_and_human_response_csv/question_catalog_README.md",
+    "local": "references/phase2/TWIN_CATALOG_README.md",
+    "revision": "f883165a3026fde855dfd448e0cd16443ab257b6",
+    "license": "CC-BY-4.0",
+    "sha256": "eaf3ccb2a5a0382723a057d8e05a0d3a9464c8c9cef1a675205eb55f739689f8",
+    "bytes": 10078
+  },
+  {
+    "local": "smallville/data/surveys/twin_sample.json",
+    "license": "CC-BY-4.0",
+    "revision": "f883165a3026fde855dfd448e0cd16443ab257b6",
+    "derived_from": [
+      "question_catalog_and_human_response_csv/question_catalog.json",
+      "question_catalog_and_human_response_csv/wave1_3_response.csv",
+      "question_catalog_and_human_response_csv/wave4_response.csv"
+    ],
+    "normalizer": "smallville.eval.datasets.twin_dataset",
+    "sha256": "cd6a3539cb0d58785ad1b1c57aa99ef70b6439309ea0c45d813342930ef1a961",
+    "bytes": 518543
+  }
+]

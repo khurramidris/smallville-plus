@@ -12,6 +12,21 @@
   compile histories and population validation, integrate 100 residents, run
   offline acceptance and record limitations. No later phase will be built.
 
+### Phase 2 step 1 — Licensed sources and pipeline prototype
+- Retrieved all 75 GSS demographic records and both official Twin response CSVs
+  without a blocked download. Recorded revisions, URLs and hashes. The source
+  GSS names include two duplicate full names; resident IDs remain distinct.
+- Retained a normalized Twin subset: 20 of 2,058 participants, 122 supported
+  held-out items, 640 profile evidence fields and 1,888 eligible human answers.
+- Added structured life histories, typed categorical/numerical surveys, bounded
+  consistency repair, reciprocal digital histories, signed pre-epoch timestamps,
+  a versioned population artifact and residential map overlays.
+- Prototype MockLLM population: 100 residents, 4,200 messages across 21 prior
+  calendar days, 300 appointments and 100 passed t=0 checks. Preparation took
+  300 requests, $0 and 4.437 seconds. This is preliminary engineering evidence.
+- Existing component tests still pass: 19 tests. New module tests, CLI workflows,
+  full integration and final measurements are next.
+
 ## Step 1 — Specification and environment
 - Saved the complete user request in `SPEC.md` before implementation.
 - Workspace was empty; Python 3.12 is available. Pydantic, FastAPI, Uvicorn and HTTPX are installed.

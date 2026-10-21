@@ -34,3 +34,39 @@ of experimental equivalence.
 Twin-2K-500/GSS and all later-phase repositories are not imported, redistributed
 or used in Phase 1. Their licenses and data terms must be checked when their
 respective phases are authorized.
+
+## Phase 2 additions (authorized 2026-10-21)
+
+- **genagents public GSS demographic bank — MIT.** Retained 75 unmodified
+  `agent_bank/populations/gss_agents/*/scratch.json` files at commit
+  `96854071ef4c2d79c93144c973c7820722d52bab` under `smallville/data/gss/`.
+  The existing MIT notice is in `references/licenses/StanfordHCI__genagents.txt`.
+  Selection is the first 75 paths ordered by SHA-256 of
+  `smallville-phase2:` plus upstream path. Names/addresses in this bank are
+  fictional; two full names occur twice and distinct source IDs are retained.
+  These are demographic proxies, not the restricted interview-based agent bank.
+  Source city/state become previous residence; new Smallville homes are authored
+  overlays. Life histories and digital messages are fictional additions.
+- **Twin-2K-500 — CC BY 4.0.** Read the dataset card and license declaration
+  before downloading source survey material. Source revision:
+  `f883165a3026fde855dfd448e0cd16443ab257b6`. Retained a normalized, bounded
+  sample under `smallville/data/surveys/twin_sample.json`, derived from the
+  official question catalog and wave 1–3/wave 4 numerical response CSVs.
+  Source card and catalog documentation are retained in `references/phase2/`.
+  The 20 participants are chosen by SHA-256 of `smallville-twin:` plus pid.
+  The adapter supports single-choice, matrix, slider and explicitly bounded
+  numerical items. Exclusions and missingness are preserved in dataset metadata.
+  Every wave-4 QuestionID is excluded from profile evidence; prior responses to
+  targets are used only by the scorer. No dataset-generation code was copied.
+
+Attribution: **Twin-2K-500**, Olivier Toubia, George Z. Gui, Tianyi Peng,
+Daniel J. Merlau, Ang Li and Haozhe Chen (2025).
+Source: https://huggingface.co/datasets/LLM-Digital-Twin/Twin-2K-500
+Paper: https://arxiv.org/abs/2505.17479
+License: https://creativecommons.org/licenses/by/4.0/
+Changes: normalization into typed items and evidence/target splits, bounded
+subject selection, and explicit unsupported-item exclusions. No endorsement is implied.
+
+Exact Phase 2 URLs, revisions and original-file SHA-256 hashes are recorded in
+`references/phase2/sources.json`. Full response CSVs are not vendored; they remain
+local preparation inputs in `scratch/phase2/`. No Phase 3–6 sources were added.
