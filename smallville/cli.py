@@ -63,8 +63,9 @@ async def run_command(args):
     population = Population.load(args.population) if args.population else None
     seed = args.seed if args.seed is not None else population.seed if population else 42
     config = Config.from_env(args.backend, seed, args.allow_paid, args.replay_only)
-    config = config.model_copy(
-        update={
+    config = Config.model_validate(
+        config.model_dump()
+        | {
             "phase": args.phase or (2 if population else 1),
             "supply_delay_day": args.supply_delay_day,
         }
@@ -93,6 +94,9 @@ async def interview_command(args):
     minute = world.get("metadata", "run")["completed_minutes"]
     seed = args.seed if args.seed is not None else world.get("metadata", "config")["seed"]
     config = Config.from_env(args.backend, seed, args.allow_paid)
+    config = Config.model_validate(
+        config.model_dump() | {"phase": world.get("metadata", "run").get("phase", 1)}
+    )
     active = {"id": None}
     backend = (
         MockLLM()

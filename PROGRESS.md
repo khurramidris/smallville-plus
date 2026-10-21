@@ -83,6 +83,18 @@
   change affects notice cursors, not its scripted actions or financial rules.
 - The 100-resident three-day scenario is still running. No API run is active.
 
+### Phase 3 step 6 — Scoring and command validation
+- Corrected initial-awareness counting when an initialization event contains
+  multiple updates for one agent. The initial projection is counted once per
+  resident; no extra person or knowledge is inferred from a contract update.
+- Recomputed the completed 25-resident report from its unchanged event history.
+  All money/food/work-limit audits pass. The council fixture records 15 yes,
+  5 no, 5 abstentions and a funded 100-meal policy. Party: 12/20 invited guests
+  attended. Mock social results remain scripted engineering evidence.
+- Validated CLI scenario settings before creating a run and preserved the run's
+  phase when reopening for interviews. All 31 Phase 3 tests pass offline in
+  13.66 seconds. The final full regression and 100-resident run are in progress.
+
 ## Current follow-up — Authorized live inference
 - **Completed.** The 25-resident real-API day passes; evidence and problems are
   in `reports/LIVE_API_REPORT.md`. Development remains stopped at Phase 2.

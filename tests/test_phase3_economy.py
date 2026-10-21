@@ -9,6 +9,7 @@ from smallville.agents.mind import Mind
 from smallville.apps.bank import Bank
 from smallville.apps.civic import CastVote, Council, Notice, NoticeBoard
 from smallville.apps.phone import Calendar, CreateEvent
+from smallville.cli import main
 from smallville.config import Config
 from smallville.economy.ledger import LedgerBatch
 from smallville.economy.models import BankTransfer, Purchase
@@ -49,6 +50,13 @@ def test_contract_distinguishes_professor_students_and_unpaid_household_work(tow
     assert contract(people["ayesha_khan"]).kind == "study"
     assert contract(people["jane_moreno"]).hourly_cents == 0
     assert contract(people["jane_moreno"]).kind == "none"
+
+
+def test_invalid_scenario_is_rejected_before_creating_a_run(tmp_path, capsys):
+    output = tmp_path / "invalid"
+    assert main(["run", "--phase", "3", "--supply-delay-day", "-1", "--out", str(output)]) == 2
+    assert not output.exists()
+    assert "supply_delay_day" in capsys.readouterr().err
 
 
 @pytest.mark.parametrize(
@@ -457,6 +465,8 @@ async def test_phase3_integration_audits_and_exact_replay(tmp_path):
         result = await sim.run(0.5)
         assert result["status"] == "completed" and Decimal(result["cost"]["usd"]) == 0
         report = evaluate(sim.world)
+        assert report["diffusion"]["sam"]["initial"] == 1
+        assert report["diffusion"]["party"]["initial"] == 1
         audit = report["economy"]["audit"]
         assert all(
             audit[k]

@@ -71,7 +71,11 @@ def evaluate(world: WorldState) -> dict:
         )
     ]
     first = world.log.read(limit=1)[0]
-    initial = [Agent.model_validate(c.value) for c in first.changes if c.table == "agents"]
+    # Bootstrap can replace seed projections with phase-specific contracts in
+    # the same event. Reconstruct the actual initial projection once per ID.
+    initial = list(
+        {c.id: Agent.model_validate(c.value) for c in first.changes if c.table == "agents"}.values()
+    )
     days = run["completed_minutes"] / 1440
     denominator = len(agents) * days
     costs = cost_from_events(events)

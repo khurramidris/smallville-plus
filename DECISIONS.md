@@ -50,6 +50,12 @@
 - Use event sequence cursors for unread public news, not timestamps alone:
   multiple posts can commit within one simulated minute. Keep a finite eight-
   notice read limit without dropping later or unselected posts at the same time.
+- Reconstruct initial agent state using the last update for each ID in the
+  initialization event. Counting each update would double initial awareness in
+  Phase 3, even though only one resident exists. Recompute derived reports from
+  the immutable history; do not rewrite the underlying events.
+- Validate scenario options through Config instead of unchecked model copies,
+  and reopen research interviews using the recorded phase's rules and app context.
 
 ## Live API follow-up — Exact free route and zero spending
 - The user's latest instruction authorizes OpenRouter calls using the supplied
