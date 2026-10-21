@@ -68,3 +68,14 @@
   one model-gateway writer per run with an OS file lock.
 - Replay restores recorded state, not a resumable scheduler. Full event snapshots
   favor inspection in Phase 1; storage and viewer scaling need later load tests.
+
+## Step 7 — Stop boundary and evidence
+- Freeze the benchmark measurement before research interviews so simulation call
+  counts and subsequent interview costs are distinguishable. Save both artifacts.
+- Use a real local Chromium interaction check for the viewer in addition to HTTP
+  tests. The browser requests only local resources.
+- Keep the large SQLite/JSONL run artifacts out of Git; commit compact research
+  reports, provenance and a viewer screenshot instead.
+- Stop after Phase 1. The one-day real-API acceptance is not claimed: there are
+  no configured models/credentials or approved spending cap. The user's explicit
+  instruction to ask before adding a paid service governs any future paid run.

@@ -1,0 +1,1877 @@
+{
+  "abigail_chen": [
+    {
+      "category": "self_knowledge",
+      "question": "What matters to me in my work and home life?",
+      "answer": "I recall: I have been balancing my own routines with the people I heard from today. I have been balancing my own routines with the people I heard from today.",
+      "opinion": -0.31,
+      "available_evidence": [
+        "abigail_chen:2700:reflection:abigail_chen:1260:reflection:abigail_chen:1020:gm_outcome:23,abigail_chen:960:gm_outcome:22,abigail_chen:900:gm_outcome:21:29,abigail_chen:2460:gm_outcome:53,abigail_chen:2400:gm_outcome:52:63",
+        "abigail_chen:1260:reflection:abigail_chen:1020:gm_outcome:23,abigail_chen:960:gm_outcome:22,abigail_chen:900:gm_outcome:21:29",
+        "abigail_chen:2460:gm_outcome:53",
+        "abigail_chen:2400:gm_outcome:52",
+        "abigail_chen:2340:gm_outcome:51",
+        "abigail_chen:2280:gm_outcome:50",
+        "abigail_chen:2160:gm_outcome:48",
+        "abigail_chen:2100:gm_outcome:47"
+      ],
+      "human_rating": null
+    },
+    {
+      "category": "memory",
+      "question": "What did someone tell me recently, and how sure am I about it?",
+      "answer": "I recall: I have been balancing my own routines with the people I heard from today. I have been balancing my own routines with the people I heard from today.",
+      "opinion": -0.31,
+      "available_evidence": [
+        "abigail_chen:2700:reflection:abigail_chen:1260:reflection:abigail_chen:1020:gm_outcome:23,abigail_chen:960:gm_outcome:22,abigail_chen:900:gm_outcome:21:29,abigail_chen:2460:gm_outcome:53,abigail_chen:2400:gm_outcome:52:63",
+        "abigail_chen:1260:reflection:abigail_chen:1020:gm_outcome:23,abigail_chen:960:gm_outcome:22,abigail_chen:900:gm_outcome:21:29",
+        "abigail_chen:2460:gm_outcome:53",
+        "abigail_chen:2400:gm_outcome:52",
+        "abigail_chen:2340:gm_outcome:51",
+        "abigail_chen:2280:gm_outcome:50",
+        "abigail_chen:2160:gm_outcome:48",
+        "abigail_chen:2100:gm_outcome:47"
+      ],
+      "human_rating": null
+    },
+    {
+      "category": "plans",
+      "question": "What do I intend to do next, and what might prevent it?",
+      "answer": "I recall: I have been balancing my own routines with the people I heard from today. I have been balancing my own routines with the people I heard from today.",
+      "opinion": -0.31,
+      "available_evidence": [
+        "abigail_chen:2700:reflection:abigail_chen:1260:reflection:abigail_chen:1020:gm_outcome:23,abigail_chen:960:gm_outcome:22,abigail_chen:900:gm_outcome:21:29,abigail_chen:2460:gm_outcome:53,abigail_chen:2400:gm_outcome:52:63",
+        "abigail_chen:1260:reflection:abigail_chen:1020:gm_outcome:23,abigail_chen:960:gm_outcome:22,abigail_chen:900:gm_outcome:21:29",
+        "abigail_chen:2460:gm_outcome:53",
+        "abigail_chen:2400:gm_outcome:52",
+        "abigail_chen:2340:gm_outcome:51",
+        "abigail_chen:2280:gm_outcome:50",
+        "abigail_chen:2160:gm_outcome:48",
+        "abigail_chen:2100:gm_outcome:47"
+      ],
+      "human_rating": null
+    },
+    {
+      "category": "reaction",
+      "question": "If the place I planned to visit were closed, what would I do?",
+      "answer": "I recall: I have been balancing my own routines with the people I heard from today. I have been balancing my own routines with the people I heard from today.",
+      "opinion": -0.31,
+      "available_evidence": [
+        "abigail_chen:2700:reflection:abigail_chen:1260:reflection:abigail_chen:1020:gm_outcome:23,abigail_chen:960:gm_outcome:22,abigail_chen:900:gm_outcome:21:29,abigail_chen:2460:gm_outcome:53,abigail_chen:2400:gm_outcome:52:63",
+        "abigail_chen:1260:reflection:abigail_chen:1020:gm_outcome:23,abigail_chen:960:gm_outcome:22,abigail_chen:900:gm_outcome:21:29",
+        "abigail_chen:2460:gm_outcome:53",
+        "abigail_chen:2400:gm_outcome:52",
+        "abigail_chen:2340:gm_outcome:51",
+        "abigail_chen:2280:gm_outcome:50",
+        "abigail_chen:2160:gm_outcome:48",
+        "abigail_chen:2100:gm_outcome:47"
+      ],
+      "human_rating": null
+    },
+    {
+      "category": "reflection",
+      "question": "What have I learned about getting along with the people I know?",
+      "answer": "I recall: I have been balancing my own routines with the people I heard from today. I have been balancing my own routines with the people I heard from today.",
+      "opinion": -0.31,
+      "available_evidence": [
+        "abigail_chen:2700:reflection:abigail_chen:1260:reflection:abigail_chen:1020:gm_outcome:23,abigail_chen:960:gm_outcome:22,abigail_chen:900:gm_outcome:21:29,abigail_chen:2460:gm_outcome:53,abigail_chen:2400:gm_outcome:52:63",
+        "abigail_chen:1260:reflection:abigail_chen:1020:gm_outcome:23,abigail_chen:960:gm_outcome:22,abigail_chen:900:gm_outcome:21:29",
+        "abigail_chen:2460:gm_outcome:53",
+        "abigail_chen:2400:gm_outcome:52",
+        "abigail_chen:2340:gm_outcome:51",
+        "abigail_chen:2280:gm_outcome:50",
+        "abigail_chen:2160:gm_outcome:48",
+        "abigail_chen:2100:gm_outcome:47"
+      ],
+      "human_rating": null
+    }
+  ],
+  "adam_smith": [
+    {
+      "category": "self_knowledge",
+      "question": "What matters to me in my work and home life?",
+      "answer": "I recall: jennifer_moore told me: I can't make the Valentine's party; I have my own plans. carmen_ortiz told me: Valentine's party at Hobbs Cafe on February 14, 17:00-19:00. Want to come?",
+      "opinion": 0.11,
+      "available_evidence": [
+        "adam_smith:2165:msg:jennifer_moore:2165:52",
+        "adam_smith:2165:msg:carmen_ortiz:2165:51",
+        "adam_smith:605:msg:sam_moore:605:12",
+        "adam_smith:2700:reflection:adam_smith:2165:msg:jennifer_moore:2165:52,adam_smith:2165:msg:carmen_ortiz:2165:51,adam_smith:605:msg:sam_moore:605:12:62",
+        "adam_smith:1260:reflection:adam_smith:605:msg:sam_moore:605:12,adam_smith:0:original_seed:0,adam_smith:0:original_seed:1:27"
+      ],
+      "human_rating": null
+    },
+    {
+      "category": "memory",
+      "question": "What did someone tell me recently, and how sure am I about it?",
+      "answer": "I recall: jennifer_moore told me: I can't make the Valentine's party; I have my own plans. carmen_ortiz told me: Valentine's party at Hobbs Cafe on February 14, 17:00-19:00. Want to come?",
+      "opinion": 0.11,
+      "available_evidence": [
+        "adam_smith:2165:msg:jennifer_moore:2165:52",
+        "adam_smith:2165:msg:carmen_ortiz:2165:51",
+        "adam_smith:605:msg:sam_moore:605:12",
+        "adam_smith:2700:reflection:adam_smith:2165:msg:jennifer_moore:2165:52,adam_smith:2165:msg:carmen_ortiz:2165:51,adam_smith:605:msg:sam_moore:605:12:62",
+        "adam_smith:1260:reflection:adam_smith:605:msg:sam_moore:605:12,adam_smith:0:original_seed:0,adam_smith:0:original_seed:1:27"
+      ],
+      "human_rating": null
+    },
+    {
+      "category": "plans",
+      "question": "What do I intend to do next, and what might prevent it?",
+      "answer": "I recall: jennifer_moore told me: I can't make the Valentine's party; I have my own plans. carmen_ortiz told me: Valentine's party at Hobbs Cafe on February 14, 17:00-19:00. Want to come?",
+      "opinion": 0.11,
+      "available_evidence": [
+        "adam_smith:2165:msg:jennifer_moore:2165:52",
+        "adam_smith:2165:msg:carmen_ortiz:2165:51",
+        "adam_smith:605:msg:sam_moore:605:12",
+        "adam_smith:2700:reflection:adam_smith:2165:msg:jennifer_moore:2165:52,adam_smith:2165:msg:carmen_ortiz:2165:51,adam_smith:605:msg:sam_moore:605:12:62",
+        "adam_smith:1260:reflection:adam_smith:605:msg:sam_moore:605:12,adam_smith:0:original_seed:0,adam_smith:0:original_seed:1:27"
+      ],
+      "human_rating": null
+    },
+    {
+      "category": "reaction",
+      "question": "If the place I planned to visit were closed, what would I do?",
+      "answer": "I recall: jennifer_moore told me: I can't make the Valentine's party; I have my own plans. carmen_ortiz told me: Valentine's party at Hobbs Cafe on February 14, 17:00-19:00. Want to come?",
+      "opinion": 0.11,
+      "available_evidence": [
+        "adam_smith:2165:msg:jennifer_moore:2165:52",
+        "adam_smith:2165:msg:carmen_ortiz:2165:51",
+        "adam_smith:605:msg:sam_moore:605:12",
+        "adam_smith:2700:reflection:adam_smith:2165:msg:jennifer_moore:2165:52,adam_smith:2165:msg:carmen_ortiz:2165:51,adam_smith:605:msg:sam_moore:605:12:62",
+        "adam_smith:1260:reflection:adam_smith:605:msg:sam_moore:605:12,adam_smith:0:original_seed:0,adam_smith:0:original_seed:1:27"
+      ],
+      "human_rating": null
+    },
+    {
+      "category": "reflection",
+      "question": "What have I learned about getting along with the people I know?",
+      "answer": "I recall: jennifer_moore told me: I can't make the Valentine's party; I have my own plans. carmen_ortiz told me: Valentine's party at Hobbs Cafe on February 14, 17:00-19:00. Want to come?",
+      "opinion": 0.11,
+      "available_evidence": [
+        "adam_smith:2165:msg:jennifer_moore:2165:52",
+        "adam_smith:2165:msg:carmen_ortiz:2165:51",
+        "adam_smith:605:msg:sam_moore:605:12",
+        "adam_smith:2700:reflection:adam_smith:2165:msg:jennifer_moore:2165:52,adam_smith:2165:msg:carmen_ortiz:2165:51,adam_smith:605:msg:sam_moore:605:12:62",
+        "adam_smith:1260:reflection:adam_smith:605:msg:sam_moore:605:12,adam_smith:0:original_seed:0,adam_smith:0:original_seed:1:27"
+      ],
+      "human_rating": null
+    }
+  ],
+  "arthur_burton": [
+    {
+      "category": "self_knowledge",
+      "question": "What matters to me in my work and home life?",
+      "answer": "I recall: carlos_gomez told me: I can't make the Valentine's party; I have my own plans. I scheduled Valentine's party at hobbs_cafe.",
+      "opinion": -0.79,
+      "available_evidence": [
+        "arthur_burton:2045:msg:carlos_gomez:2045:60",
+        "arthur_burton:730:cal:arthur_burton:730:23",
+        "arthur_burton:2045:msg:carmen_ortiz:2045:61",
+        "arthur_burton:725:msg:ryan_park:725:20",
+        "arthur_burton:725:msg:isabella_rodriguez:725:18"
+      ],
+      "human_rating": null
+    },
+    {
+      "category": "memory",
+      "question": "What did someone tell me recently, and how sure am I about it?",
+      "answer": "I recall: carlos_gomez told me: I can't make the Valentine's party; I have my own plans. I scheduled Valentine's party at hobbs_cafe.",
+      "opinion": -0.79,
+      "available_evidence": [
+        "arthur_burton:2045:msg:carlos_gomez:2045:60",
+        "arthur_burton:730:cal:arthur_burton:730:23",
+        "arthur_burton:2045:msg:carmen_ortiz:2045:61",
+        "arthur_burton:725:msg:ryan_park:725:20",
+        "arthur_burton:725:msg:isabella_rodriguez:725:18"
+      ],
+      "human_rating": null
+    },
+    {
+      "category": "plans",
+      "question": "What do I intend to do next, and what might prevent it?",
+      "answer": "I recall: carlos_gomez told me: I can't make the Valentine's party; I have my own plans. I scheduled Valentine's party at hobbs_cafe.",
+      "opinion": -0.79,
+      "available_evidence": [
+        "arthur_burton:2045:msg:carlos_gomez:2045:60",
+        "arthur_burton:730:cal:arthur_burton:730:23",
+        "arthur_burton:2045:msg:carmen_ortiz:2045:61",
+        "arthur_burton:725:msg:ryan_park:725:20",
+        "arthur_burton:725:msg:isabella_rodriguez:725:18"
+      ],
+      "human_rating": null
+    },
+    {
+      "category": "reaction",
+      "question": "If the place I planned to visit were closed, what would I do?",
+      "answer": "I recall: carlos_gomez told me: I can't make the Valentine's party; I have my own plans. I scheduled Valentine's party at hobbs_cafe.",
+      "opinion": -0.79,
+      "available_evidence": [
+        "arthur_burton:2045:msg:carlos_gomez:2045:60",
+        "arthur_burton:730:cal:arthur_burton:730:23",
+        "arthur_burton:2045:msg:carmen_ortiz:2045:61",
+        "arthur_burton:725:msg:ryan_park:725:20",
+        "arthur_burton:725:msg:isabella_rodriguez:725:18"
+      ],
+      "human_rating": null
+    },
+    {
+      "category": "reflection",
+      "question": "What have I learned about getting along with the people I know?",
+      "answer": "I recall: carlos_gomez told me: I can't make the Valentine's party; I have my own plans. I scheduled Valentine's party at hobbs_cafe.",
+      "opinion": -0.79,
+      "available_evidence": [
+        "arthur_burton:2045:msg:carlos_gomez:2045:60",
+        "arthur_burton:730:cal:arthur_burton:730:23",
+        "arthur_burton:2045:msg:carmen_ortiz:2045:61",
+        "arthur_burton:725:msg:ryan_park:725:20",
+        "arthur_burton:725:msg:isabella_rodriguez:725:18"
+      ],
+      "human_rating": null
+    }
+  ],
+  "ayesha_khan": [
+    {
+      "category": "self_knowledge",
+      "question": "What matters to me in my work and home life?",
+      "answer": "I recall: klaus_mueller told me: I can't make the Valentine's party; I have my own plans. maria_lopez told me: I can't make the Valentine's party; I have my own plans.",
+      "opinion": 0.62,
+      "available_evidence": [
+        "ayesha_khan:2045:msg:klaus_mueller:2045:58",
+        "ayesha_khan:1925:msg:maria_lopez:1925:50",
+        "ayesha_khan:1145:cal:ayesha_khan:1145:29",
+        "ayesha_khan:2045:msg:giorgio_rossi:2045:57",
+        "ayesha_khan:2045:msg:eddy_lin:2045:56"
+      ],
+      "human_rating": null
+    },
+    {
+      "category": "memory",
+      "question": "What did someone tell me recently, and how sure am I about it?",
+      "answer": "I recall: klaus_mueller told me: I can't make the Valentine's party; I have my own plans. maria_lopez told me: I can't make the Valentine's party; I have my own plans.",
+      "opinion": 0.62,
+      "available_evidence": [
+        "ayesha_khan:2045:msg:klaus_mueller:2045:58",
+        "ayesha_khan:1925:msg:maria_lopez:1925:50",
+        "ayesha_khan:1145:cal:ayesha_khan:1145:29",
+        "ayesha_khan:2045:msg:giorgio_rossi:2045:57",
+        "ayesha_khan:2045:msg:eddy_lin:2045:56"
+      ],
+      "human_rating": null
+    },
+    {
+      "category": "plans",
+      "question": "What do I intend to do next, and what might prevent it?",
+      "answer": "I recall: klaus_mueller told me: I can't make the Valentine's party; I have my own plans. maria_lopez told me: I can't make the Valentine's party; I have my own plans.",
+      "opinion": 0.62,
+      "available_evidence": [
+        "ayesha_khan:2045:msg:klaus_mueller:2045:58",
+        "ayesha_khan:1925:msg:maria_lopez:1925:50",
+        "ayesha_khan:1145:cal:ayesha_khan:1145:29",
+        "ayesha_khan:2045:msg:giorgio_rossi:2045:57",
+        "ayesha_khan:2045:msg:eddy_lin:2045:56"
+      ],
+      "human_rating": null
+    },
+    {
+      "category": "reaction",
+      "question": "If the place I planned to visit were closed, what would I do?",
+      "answer": "I recall: klaus_mueller told me: I can't make the Valentine's party; I have my own plans. maria_lopez told me: I can't make the Valentine's party; I have my own plans.",
+      "opinion": 0.62,
+      "available_evidence": [
+        "ayesha_khan:2045:msg:klaus_mueller:2045:58",
+        "ayesha_khan:1925:msg:maria_lopez:1925:50",
+        "ayesha_khan:1145:cal:ayesha_khan:1145:29",
+        "ayesha_khan:2045:msg:giorgio_rossi:2045:57",
+        "ayesha_khan:2045:msg:eddy_lin:2045:56"
+      ],
+      "human_rating": null
+    },
+    {
+      "category": "reflection",
+      "question": "What have I learned about getting along with the people I know?",
+      "answer": "I recall: klaus_mueller told me: I can't make the Valentine's party; I have my own plans. maria_lopez told me: I can't make the Valentine's party; I have my own plans.",
+      "opinion": 0.62,
+      "available_evidence": [
+        "ayesha_khan:2045:msg:klaus_mueller:2045:58",
+        "ayesha_khan:1925:msg:maria_lopez:1925:50",
+        "ayesha_khan:1145:cal:ayesha_khan:1145:29",
+        "ayesha_khan:2045:msg:giorgio_rossi:2045:57",
+        "ayesha_khan:2045:msg:eddy_lin:2045:56"
+      ],
+      "human_rating": null
+    }
+  ],
+  "carlos_gomez": [
+    {
+      "category": "self_knowledge",
+      "question": "What matters to me in my work and home life?",
+      "answer": "I recall: I sent giorgio_rossi: I can't make the Valentine's party; I have my own plans. I sent arthur_burton: I can't make the Valentine's party; I have my own plans.",
+      "opinion": 0.01,
+      "available_evidence": [
+        "carlos_gomez:2165:msg:carlos_gomez:2165:48",
+        "carlos_gomez:2045:msg:carlos_gomez:2045:44",
+        "carlos_gomez:1925:msg:carlos_gomez:1925:39",
+        "carlos_gomez:2165:msg:giorgio_rossi:2165:50",
+        "carlos_gomez:1925:msg:ryan_park:1925:41"
+      ],
+      "human_rating": null
+    },
+    {
+      "category": "memory",
+      "question": "What did someone tell me recently, and how sure am I about it?",
+      "answer": "I recall: I sent giorgio_rossi: I can't make the Valentine's party; I have my own plans. I sent arthur_burton: I can't make the Valentine's party; I have my own plans.",
+      "opinion": 0.01,
+      "available_evidence": [
+        "carlos_gomez:2165:msg:carlos_gomez:2165:48",
+        "carlos_gomez:2045:msg:carlos_gomez:2045:44",
+        "carlos_gomez:1925:msg:carlos_gomez:1925:39",
+        "carlos_gomez:2165:msg:giorgio_rossi:2165:50",
+        "carlos_gomez:1925:msg:ryan_park:1925:41"
+      ],
+      "human_rating": null
+    },
+    {
+      "category": "plans",
+      "question": "What do I intend to do next, and what might prevent it?",
+      "answer": "I recall: I sent giorgio_rossi: I can't make the Valentine's party; I have my own plans. I sent arthur_burton: I can't make the Valentine's party; I have my own plans.",
+      "opinion": 0.01,
+      "available_evidence": [
+        "carlos_gomez:2165:msg:carlos_gomez:2165:48",
+        "carlos_gomez:2045:msg:carlos_gomez:2045:44",
+        "carlos_gomez:1925:msg:carlos_gomez:1925:39",
+        "carlos_gomez:2165:msg:giorgio_rossi:2165:50",
+        "carlos_gomez:1925:msg:ryan_park:1925:41"
+      ],
+      "human_rating": null
+    },
+    {
+      "category": "reaction",
+      "question": "If the place I planned to visit were closed, what would I do?",
+      "answer": "I recall: I sent giorgio_rossi: I can't make the Valentine's party; I have my own plans. I sent arthur_burton: I can't make the Valentine's party; I have my own plans.",
+      "opinion": 0.01,
+      "available_evidence": [
+        "carlos_gomez:2165:msg:carlos_gomez:2165:48",
+        "carlos_gomez:2045:msg:carlos_gomez:2045:44",
+        "carlos_gomez:1925:msg:carlos_gomez:1925:39",
+        "carlos_gomez:2165:msg:giorgio_rossi:2165:50",
+        "carlos_gomez:1925:msg:ryan_park:1925:41"
+      ],
+      "human_rating": null
+    },
+    {
+      "category": "reflection",
+      "question": "What have I learned about getting along with the people I know?",
+      "answer": "I recall: I sent giorgio_rossi: I can't make the Valentine's party; I have my own plans. I sent arthur_burton: I can't make the Valentine's party; I have my own plans.",
+      "opinion": 0.01,
+      "available_evidence": [
+        "carlos_gomez:2165:msg:carlos_gomez:2165:48",
+        "carlos_gomez:2045:msg:carlos_gomez:2045:44",
+        "carlos_gomez:1925:msg:carlos_gomez:1925:39",
+        "carlos_gomez:2165:msg:giorgio_rossi:2165:50",
+        "carlos_gomez:1925:msg:ryan_park:1925:41"
+      ],
+      "human_rating": null
+    }
+  ],
+  "carmen_ortiz": [
+    {
+      "category": "self_knowledge",
+      "question": "What matters to me in my work and home life?",
+      "answer": "I recall: jennifer_moore told me: I can't make the Valentine's party; I have my own plans. I scheduled Valentine's party at hobbs_cafe.",
+      "opinion": 0.97,
+      "available_evidence": [
+        "carmen_ortiz:2045:msg:jennifer_moore:2045:62",
+        "carmen_ortiz:610:cal:carmen_ortiz:610:21",
+        "carmen_ortiz:2165:msg:tom_moreno:2165:68",
+        "carmen_ortiz:2045:msg:tamara_taylor:2045:63",
+        "carmen_ortiz:2045:msg:arthur_burton:2045:61",
+        "carmen_ortiz:605:msg:isabella_rodriguez:605:19",
+        "carmen_ortiz:2165:msg:carmen_ortiz:2165:66",
+        "carmen_ortiz:2045:msg:carmen_ortiz:2045:58"
+      ],
+      "human_rating": null
+    },
+    {
+      "category": "memory",
+      "question": "What did someone tell me recently, and how sure am I about it?",
+      "answer": "I recall: jennifer_moore told me: I can't make the Valentine's party; I have my own plans. I scheduled Valentine's party at hobbs_cafe.",
+      "opinion": 0.97,
+      "available_evidence": [
+        "carmen_ortiz:2045:msg:jennifer_moore:2045:62",
+        "carmen_ortiz:610:cal:carmen_ortiz:610:21",
+        "carmen_ortiz:2165:msg:tom_moreno:2165:68",
+        "carmen_ortiz:2045:msg:tamara_taylor:2045:63",
+        "carmen_ortiz:2045:msg:arthur_burton:2045:61",
+        "carmen_ortiz:605:msg:isabella_rodriguez:605:19",
+        "carmen_ortiz:2165:msg:carmen_ortiz:2165:66",
+        "carmen_ortiz:2045:msg:carmen_ortiz:2045:58"
+      ],
+      "human_rating": null
+    },
+    {
+      "category": "plans",
+      "question": "What do I intend to do next, and what might prevent it?",
+      "answer": "I recall: jennifer_moore told me: I can't make the Valentine's party; I have my own plans. I scheduled Valentine's party at hobbs_cafe.",
+      "opinion": 0.97,
+      "available_evidence": [
+        "carmen_ortiz:2045:msg:jennifer_moore:2045:62",
+        "carmen_ortiz:610:cal:carmen_ortiz:610:21",
+        "carmen_ortiz:2165:msg:tom_moreno:2165:68",
+        "carmen_ortiz:2045:msg:tamara_taylor:2045:63",
+        "carmen_ortiz:2045:msg:arthur_burton:2045:61",
+        "carmen_ortiz:605:msg:isabella_rodriguez:605:19",
+        "carmen_ortiz:2165:msg:carmen_ortiz:2165:66",
+        "carmen_ortiz:2045:msg:carmen_ortiz:2045:58"
+      ],
+      "human_rating": null
+    },
+    {
+      "category": "reaction",
+      "question": "If the place I planned to visit were closed, what would I do?",
+      "answer": "I recall: jennifer_moore told me: I can't make the Valentine's party; I have my own plans. I scheduled Valentine's party at hobbs_cafe.",
+      "opinion": 0.97,
+      "available_evidence": [
+        "carmen_ortiz:2045:msg:jennifer_moore:2045:62",
+        "carmen_ortiz:610:cal:carmen_ortiz:610:21",
+        "carmen_ortiz:2165:msg:tom_moreno:2165:68",
+        "carmen_ortiz:2045:msg:tamara_taylor:2045:63",
+        "carmen_ortiz:2045:msg:arthur_burton:2045:61",
+        "carmen_ortiz:605:msg:isabella_rodriguez:605:19",
+        "carmen_ortiz:2165:msg:carmen_ortiz:2165:66",
+        "carmen_ortiz:2045:msg:carmen_ortiz:2045:58"
+      ],
+      "human_rating": null
+    },
+    {
+      "category": "reflection",
+      "question": "What have I learned about getting along with the people I know?",
+      "answer": "I recall: jennifer_moore told me: I can't make the Valentine's party; I have my own plans. I scheduled Valentine's party at hobbs_cafe.",
+      "opinion": 0.97,
+      "available_evidence": [
+        "carmen_ortiz:2045:msg:jennifer_moore:2045:62",
+        "carmen_ortiz:610:cal:carmen_ortiz:610:21",
+        "carmen_ortiz:2165:msg:tom_moreno:2165:68",
+        "carmen_ortiz:2045:msg:tamara_taylor:2045:63",
+        "carmen_ortiz:2045:msg:arthur_burton:2045:61",
+        "carmen_ortiz:605:msg:isabella_rodriguez:605:19",
+        "carmen_ortiz:2165:msg:carmen_ortiz:2165:66",
+        "carmen_ortiz:2045:msg:carmen_ortiz:2045:58"
+      ],
+      "human_rating": null
+    }
+  ],
+  "eddy_lin": [
+    {
+      "category": "self_knowledge",
+      "question": "What matters to me in my work and home life?",
+      "answer": "I recall: maria_lopez told me: I can't make the Valentine's party; I have my own plans. jane_moreno told me: I can't make the Valentine's party; I have my own plans.",
+      "opinion": 0.02,
+      "available_evidence": [
+        "eddy_lin:2045:msg:maria_lopez:2045:57",
+        "eddy_lin:1925:msg:jane_moreno:1925:47",
+        "eddy_lin:1930:cal:eddy_lin:1930:50",
+        "eddy_lin:1925:msg:ayesha_khan:1925:46",
+        "eddy_lin:2165:msg:eddy_lin:2165:60"
+      ],
+      "human_rating": null
+    },
+    {
+      "category": "memory",
+      "question": "What did someone tell me recently, and how sure am I about it?",
+      "answer": "I recall: maria_lopez told me: I can't make the Valentine's party; I have my own plans. jane_moreno told me: I can't make the Valentine's party; I have my own plans.",
+      "opinion": 0.02,
+      "available_evidence": [
+        "eddy_lin:2045:msg:maria_lopez:2045:57",
+        "eddy_lin:1925:msg:jane_moreno:1925:47",
+        "eddy_lin:1930:cal:eddy_lin:1930:50",
+        "eddy_lin:1925:msg:ayesha_khan:1925:46",
+        "eddy_lin:2165:msg:eddy_lin:2165:60"
+      ],
+      "human_rating": null
+    },
+    {
+      "category": "plans",
+      "question": "What do I intend to do next, and what might prevent it?",
+      "answer": "I recall: maria_lopez told me: I can't make the Valentine's party; I have my own plans. jane_moreno told me: I can't make the Valentine's party; I have my own plans.",
+      "opinion": 0.02,
+      "available_evidence": [
+        "eddy_lin:2045:msg:maria_lopez:2045:57",
+        "eddy_lin:1925:msg:jane_moreno:1925:47",
+        "eddy_lin:1930:cal:eddy_lin:1930:50",
+        "eddy_lin:1925:msg:ayesha_khan:1925:46",
+        "eddy_lin:2165:msg:eddy_lin:2165:60"
+      ],
+      "human_rating": null
+    },
+    {
+      "category": "reaction",
+      "question": "If the place I planned to visit were closed, what would I do?",
+      "answer": "I recall: maria_lopez told me: I can't make the Valentine's party; I have my own plans. jane_moreno told me: I can't make the Valentine's party; I have my own plans.",
+      "opinion": 0.02,
+      "available_evidence": [
+        "eddy_lin:2045:msg:maria_lopez:2045:57",
+        "eddy_lin:1925:msg:jane_moreno:1925:47",
+        "eddy_lin:1930:cal:eddy_lin:1930:50",
+        "eddy_lin:1925:msg:ayesha_khan:1925:46",
+        "eddy_lin:2165:msg:eddy_lin:2165:60"
+      ],
+      "human_rating": null
+    },
+    {
+      "category": "reflection",
+      "question": "What have I learned about getting along with the people I know?",
+      "answer": "I recall: maria_lopez told me: I can't make the Valentine's party; I have my own plans. jane_moreno told me: I can't make the Valentine's party; I have my own plans.",
+      "opinion": 0.02,
+      "available_evidence": [
+        "eddy_lin:2045:msg:maria_lopez:2045:57",
+        "eddy_lin:1925:msg:jane_moreno:1925:47",
+        "eddy_lin:1930:cal:eddy_lin:1930:50",
+        "eddy_lin:1925:msg:ayesha_khan:1925:46",
+        "eddy_lin:2165:msg:eddy_lin:2165:60"
+      ],
+      "human_rating": null
+    }
+  ],
+  "francisco_lopez": [
+    {
+      "category": "self_knowledge",
+      "question": "What matters to me in my work and home life?",
+      "answer": "I recall: I have been balancing my own routines with the people I heard from today. I have been balancing my own routines with the people I heard from today.",
+      "opinion": 0.78,
+      "available_evidence": [
+        "francisco_lopez:2700:reflection:francisco_lopez:1260:reflection:francisco_lopez:1020:gm_outcome:23,francisco_lopez:960:gm_outcome:22,francisco_lopez:900:gm_outcome:21:30,francisco_lopez:2460:gm_outcome:54,francisco_lopez:2400:gm_outcome:53:65",
+        "francisco_lopez:1260:reflection:francisco_lopez:1020:gm_outcome:23,francisco_lopez:960:gm_outcome:22,francisco_lopez:900:gm_outcome:21:30",
+        "francisco_lopez:2460:gm_outcome:54",
+        "francisco_lopez:2400:gm_outcome:53",
+        "francisco_lopez:2340:gm_outcome:52"
+      ],
+      "human_rating": null
+    },
+    {
+      "category": "memory",
+      "question": "What did someone tell me recently, and how sure am I about it?",
+      "answer": "I recall: I have been balancing my own routines with the people I heard from today. I have been balancing my own routines with the people I heard from today.",
+      "opinion": 0.78,
+      "available_evidence": [
+        "francisco_lopez:2700:reflection:francisco_lopez:1260:reflection:francisco_lopez:1020:gm_outcome:23,francisco_lopez:960:gm_outcome:22,francisco_lopez:900:gm_outcome:21:30,francisco_lopez:2460:gm_outcome:54,francisco_lopez:2400:gm_outcome:53:65",
+        "francisco_lopez:1260:reflection:francisco_lopez:1020:gm_outcome:23,francisco_lopez:960:gm_outcome:22,francisco_lopez:900:gm_outcome:21:30",
+        "francisco_lopez:2460:gm_outcome:54",
+        "francisco_lopez:2400:gm_outcome:53",
+        "francisco_lopez:2340:gm_outcome:52"
+      ],
+      "human_rating": null
+    },
+    {
+      "category": "plans",
+      "question": "What do I intend to do next, and what might prevent it?",
+      "answer": "I recall: I have been balancing my own routines with the people I heard from today. I have been balancing my own routines with the people I heard from today.",
+      "opinion": 0.78,
+      "available_evidence": [
+        "francisco_lopez:2700:reflection:francisco_lopez:1260:reflection:francisco_lopez:1020:gm_outcome:23,francisco_lopez:960:gm_outcome:22,francisco_lopez:900:gm_outcome:21:30,francisco_lopez:2460:gm_outcome:54,francisco_lopez:2400:gm_outcome:53:65",
+        "francisco_lopez:1260:reflection:francisco_lopez:1020:gm_outcome:23,francisco_lopez:960:gm_outcome:22,francisco_lopez:900:gm_outcome:21:30",
+        "francisco_lopez:2460:gm_outcome:54",
+        "francisco_lopez:2400:gm_outcome:53",
+        "francisco_lopez:2340:gm_outcome:52"
+      ],
+      "human_rating": null
+    },
+    {
+      "category": "reaction",
+      "question": "If the place I planned to visit were closed, what would I do?",
+      "answer": "I recall: I have been balancing my own routines with the people I heard from today. I have been balancing my own routines with the people I heard from today.",
+      "opinion": 0.78,
+      "available_evidence": [
+        "francisco_lopez:2700:reflection:francisco_lopez:1260:reflection:francisco_lopez:1020:gm_outcome:23,francisco_lopez:960:gm_outcome:22,francisco_lopez:900:gm_outcome:21:30,francisco_lopez:2460:gm_outcome:54,francisco_lopez:2400:gm_outcome:53:65",
+        "francisco_lopez:1260:reflection:francisco_lopez:1020:gm_outcome:23,francisco_lopez:960:gm_outcome:22,francisco_lopez:900:gm_outcome:21:30",
+        "francisco_lopez:2460:gm_outcome:54",
+        "francisco_lopez:2400:gm_outcome:53",
+        "francisco_lopez:2340:gm_outcome:52"
+      ],
+      "human_rating": null
+    },
+    {
+      "category": "reflection",
+      "question": "What have I learned about getting along with the people I know?",
+      "answer": "I recall: I have been balancing my own routines with the people I heard from today. I have been balancing my own routines with the people I heard from today.",
+      "opinion": 0.78,
+      "available_evidence": [
+        "francisco_lopez:2700:reflection:francisco_lopez:1260:reflection:francisco_lopez:1020:gm_outcome:23,francisco_lopez:960:gm_outcome:22,francisco_lopez:900:gm_outcome:21:30,francisco_lopez:2460:gm_outcome:54,francisco_lopez:2400:gm_outcome:53:65",
+        "francisco_lopez:1260:reflection:francisco_lopez:1020:gm_outcome:23,francisco_lopez:960:gm_outcome:22,francisco_lopez:900:gm_outcome:21:30",
+        "francisco_lopez:2460:gm_outcome:54",
+        "francisco_lopez:2400:gm_outcome:53",
+        "francisco_lopez:2340:gm_outcome:52"
+      ],
+      "human_rating": null
+    }
+  ],
+  "giorgio_rossi": [
+    {
+      "category": "self_knowledge",
+      "question": "What matters to me in my work and home life?",
+      "answer": "I recall: carlos_gomez told me: I can't make the Valentine's party; I have my own plans. I scheduled Valentine's party at hobbs_cafe.",
+      "opinion": -0.71,
+      "available_evidence": [
+        "giorgio_rossi:2165:msg:carlos_gomez:2165:63",
+        "giorgio_rossi:610:cal:giorgio_rossi:610:18",
+        "giorgio_rossi:2045:msg:isabella_rodriguez:2045:57",
+        "giorgio_rossi:2045:msg:ayesha_khan:2045:56",
+        "giorgio_rossi:1925:msg:mei_lin:1925:50"
+      ],
+      "human_rating": null
+    },
+    {
+      "category": "memory",
+      "question": "What did someone tell me recently, and how sure am I about it?",
+      "answer": "I recall: carlos_gomez told me: I can't make the Valentine's party; I have my own plans. I scheduled Valentine's party at hobbs_cafe.",
+      "opinion": -0.71,
+      "available_evidence": [
+        "giorgio_rossi:2165:msg:carlos_gomez:2165:63",
+        "giorgio_rossi:610:cal:giorgio_rossi:610:18",
+        "giorgio_rossi:2045:msg:isabella_rodriguez:2045:57",
+        "giorgio_rossi:2045:msg:ayesha_khan:2045:56",
+        "giorgio_rossi:1925:msg:mei_lin:1925:50"
+      ],
+      "human_rating": null
+    },
+    {
+      "category": "plans",
+      "question": "What do I intend to do next, and what might prevent it?",
+      "answer": "I recall: carlos_gomez told me: I can't make the Valentine's party; I have my own plans. I scheduled Valentine's party at hobbs_cafe.",
+      "opinion": -0.71,
+      "available_evidence": [
+        "giorgio_rossi:2165:msg:carlos_gomez:2165:63",
+        "giorgio_rossi:610:cal:giorgio_rossi:610:18",
+        "giorgio_rossi:2045:msg:isabella_rodriguez:2045:57",
+        "giorgio_rossi:2045:msg:ayesha_khan:2045:56",
+        "giorgio_rossi:1925:msg:mei_lin:1925:50"
+      ],
+      "human_rating": null
+    },
+    {
+      "category": "reaction",
+      "question": "If the place I planned to visit were closed, what would I do?",
+      "answer": "I recall: carlos_gomez told me: I can't make the Valentine's party; I have my own plans. I scheduled Valentine's party at hobbs_cafe.",
+      "opinion": -0.71,
+      "available_evidence": [
+        "giorgio_rossi:2165:msg:carlos_gomez:2165:63",
+        "giorgio_rossi:610:cal:giorgio_rossi:610:18",
+        "giorgio_rossi:2045:msg:isabella_rodriguez:2045:57",
+        "giorgio_rossi:2045:msg:ayesha_khan:2045:56",
+        "giorgio_rossi:1925:msg:mei_lin:1925:50"
+      ],
+      "human_rating": null
+    },
+    {
+      "category": "reflection",
+      "question": "What have I learned about getting along with the people I know?",
+      "answer": "I recall: carlos_gomez told me: I can't make the Valentine's party; I have my own plans. I scheduled Valentine's party at hobbs_cafe.",
+      "opinion": -0.71,
+      "available_evidence": [
+        "giorgio_rossi:2165:msg:carlos_gomez:2165:63",
+        "giorgio_rossi:610:cal:giorgio_rossi:610:18",
+        "giorgio_rossi:2045:msg:isabella_rodriguez:2045:57",
+        "giorgio_rossi:2045:msg:ayesha_khan:2045:56",
+        "giorgio_rossi:1925:msg:mei_lin:1925:50"
+      ],
+      "human_rating": null
+    }
+  ],
+  "hailey_johnson": [
+    {
+      "category": "self_knowledge",
+      "question": "What matters to me in my work and home life?",
+      "answer": "I recall: I scheduled Valentine's party at hobbs_cafe. isabella_rodriguez told me: Valentine's party at Hobbs Cafe on February 14, 17:00-19:00. Want to come?",
+      "opinion": -0.12,
+      "available_evidence": [
+        "hailey_johnson:2225:cal:hailey_johnson:2225:53",
+        "hailey_johnson:2220:msg:isabella_rodriguez:2165:52",
+        "hailey_johnson:2230:msg:hailey_johnson:2230:55",
+        "hailey_johnson:2527:msg:sam_moore:2525:63",
+        "hailey_johnson:2700:reflection:hailey_johnson:2225:cal:hailey_johnson:2225:53,hailey_johnson:2220:msg:isabella_rodriguez:2165:52,hailey_johnson:2230:msg:hailey_johnson:2230:55:68"
+      ],
+      "human_rating": null
+    },
+    {
+      "category": "memory",
+      "question": "What did someone tell me recently, and how sure am I about it?",
+      "answer": "I recall: I scheduled Valentine's party at hobbs_cafe. isabella_rodriguez told me: Valentine's party at Hobbs Cafe on February 14, 17:00-19:00. Want to come?",
+      "opinion": -0.12,
+      "available_evidence": [
+        "hailey_johnson:2225:cal:hailey_johnson:2225:53",
+        "hailey_johnson:2220:msg:isabella_rodriguez:2165:52",
+        "hailey_johnson:2230:msg:hailey_johnson:2230:55",
+        "hailey_johnson:2527:msg:sam_moore:2525:63",
+        "hailey_johnson:2700:reflection:hailey_johnson:2225:cal:hailey_johnson:2225:53,hailey_johnson:2220:msg:isabella_rodriguez:2165:52,hailey_johnson:2230:msg:hailey_johnson:2230:55:68"
+      ],
+      "human_rating": null
+    },
+    {
+      "category": "plans",
+      "question": "What do I intend to do next, and what might prevent it?",
+      "answer": "I recall: I scheduled Valentine's party at hobbs_cafe. isabella_rodriguez told me: Valentine's party at Hobbs Cafe on February 14, 17:00-19:00. Want to come?",
+      "opinion": -0.12,
+      "available_evidence": [
+        "hailey_johnson:2225:cal:hailey_johnson:2225:53",
+        "hailey_johnson:2220:msg:isabella_rodriguez:2165:52",
+        "hailey_johnson:2230:msg:hailey_johnson:2230:55",
+        "hailey_johnson:2527:msg:sam_moore:2525:63",
+        "hailey_johnson:2700:reflection:hailey_johnson:2225:cal:hailey_johnson:2225:53,hailey_johnson:2220:msg:isabella_rodriguez:2165:52,hailey_johnson:2230:msg:hailey_johnson:2230:55:68"
+      ],
+      "human_rating": null
+    },
+    {
+      "category": "reaction",
+      "question": "If the place I planned to visit were closed, what would I do?",
+      "answer": "I recall: I scheduled Valentine's party at hobbs_cafe. isabella_rodriguez told me: Valentine's party at Hobbs Cafe on February 14, 17:00-19:00. Want to come?",
+      "opinion": -0.12,
+      "available_evidence": [
+        "hailey_johnson:2225:cal:hailey_johnson:2225:53",
+        "hailey_johnson:2220:msg:isabella_rodriguez:2165:52",
+        "hailey_johnson:2230:msg:hailey_johnson:2230:55",
+        "hailey_johnson:2527:msg:sam_moore:2525:63",
+        "hailey_johnson:2700:reflection:hailey_johnson:2225:cal:hailey_johnson:2225:53,hailey_johnson:2220:msg:isabella_rodriguez:2165:52,hailey_johnson:2230:msg:hailey_johnson:2230:55:68"
+      ],
+      "human_rating": null
+    },
+    {
+      "category": "reflection",
+      "question": "What have I learned about getting along with the people I know?",
+      "answer": "I recall: I scheduled Valentine's party at hobbs_cafe. isabella_rodriguez told me: Valentine's party at Hobbs Cafe on February 14, 17:00-19:00. Want to come?",
+      "opinion": -0.12,
+      "available_evidence": [
+        "hailey_johnson:2225:cal:hailey_johnson:2225:53",
+        "hailey_johnson:2220:msg:isabella_rodriguez:2165:52",
+        "hailey_johnson:2230:msg:hailey_johnson:2230:55",
+        "hailey_johnson:2527:msg:sam_moore:2525:63",
+        "hailey_johnson:2700:reflection:hailey_johnson:2225:cal:hailey_johnson:2225:53,hailey_johnson:2220:msg:isabella_rodriguez:2165:52,hailey_johnson:2230:msg:hailey_johnson:2230:55:68"
+      ],
+      "human_rating": null
+    }
+  ],
+  "isabella_rodriguez": [
+    {
+      "category": "self_knowledge",
+      "question": "What matters to me in my work and home life?",
+      "answer": "I recall: carlos_gomez told me: I can't make the Valentine's party; I have my own plans. I scheduled Valentine's party at hobbs_cafe.",
+      "opinion": 0.89,
+      "available_evidence": [
+        "isabella_rodriguez:1925:msg:carlos_gomez:1925:55",
+        "isabella_rodriguez:425:cal:isabella_rodriguez:425:4",
+        "isabella_rodriguez:2280:msg:hailey_johnson:2230:70",
+        "isabella_rodriguez:2165:msg:ayesha_khan:2165:67",
+        "isabella_rodriguez:2045:msg:ryan_park:2045:62",
+        "isabella_rodriguez:0:original_seed:0",
+        "isabella_rodriguez:2285:msg:isabella_rodriguez:2285:71",
+        "isabella_rodriguez:2165:msg:isabella_rodriguez:2165:65"
+      ],
+      "human_rating": null
+    },
+    {
+      "category": "memory",
+      "question": "What did someone tell me recently, and how sure am I about it?",
+      "answer": "I recall: carlos_gomez told me: I can't make the Valentine's party; I have my own plans. I scheduled Valentine's party at hobbs_cafe.",
+      "opinion": 0.89,
+      "available_evidence": [
+        "isabella_rodriguez:1925:msg:carlos_gomez:1925:55",
+        "isabella_rodriguez:425:cal:isabella_rodriguez:425:4",
+        "isabella_rodriguez:2280:msg:hailey_johnson:2230:70",
+        "isabella_rodriguez:2165:msg:ayesha_khan:2165:67",
+        "isabella_rodriguez:2045:msg:ryan_park:2045:62",
+        "isabella_rodriguez:0:original_seed:0",
+        "isabella_rodriguez:2285:msg:isabella_rodriguez:2285:71",
+        "isabella_rodriguez:2165:msg:isabella_rodriguez:2165:65"
+      ],
+      "human_rating": null
+    },
+    {
+      "category": "plans",
+      "question": "What do I intend to do next, and what might prevent it?",
+      "answer": "I recall: carlos_gomez told me: I can't make the Valentine's party; I have my own plans. I scheduled Valentine's party at hobbs_cafe.",
+      "opinion": 0.89,
+      "available_evidence": [
+        "isabella_rodriguez:1925:msg:carlos_gomez:1925:55",
+        "isabella_rodriguez:425:cal:isabella_rodriguez:425:4",
+        "isabella_rodriguez:2280:msg:hailey_johnson:2230:70",
+        "isabella_rodriguez:2165:msg:ayesha_khan:2165:67",
+        "isabella_rodriguez:2045:msg:ryan_park:2045:62",
+        "isabella_rodriguez:0:original_seed:0",
+        "isabella_rodriguez:2285:msg:isabella_rodriguez:2285:71",
+        "isabella_rodriguez:2165:msg:isabella_rodriguez:2165:65"
+      ],
+      "human_rating": null
+    },
+    {
+      "category": "reaction",
+      "question": "If the place I planned to visit were closed, what would I do?",
+      "answer": "I recall: carlos_gomez told me: I can't make the Valentine's party; I have my own plans. I scheduled Valentine's party at hobbs_cafe.",
+      "opinion": 0.89,
+      "available_evidence": [
+        "isabella_rodriguez:1925:msg:carlos_gomez:1925:55",
+        "isabella_rodriguez:425:cal:isabella_rodriguez:425:4",
+        "isabella_rodriguez:2280:msg:hailey_johnson:2230:70",
+        "isabella_rodriguez:2165:msg:ayesha_khan:2165:67",
+        "isabella_rodriguez:2045:msg:ryan_park:2045:62",
+        "isabella_rodriguez:0:original_seed:0",
+        "isabella_rodriguez:2285:msg:isabella_rodriguez:2285:71",
+        "isabella_rodriguez:2165:msg:isabella_rodriguez:2165:65"
+      ],
+      "human_rating": null
+    },
+    {
+      "category": "reflection",
+      "question": "What have I learned about getting along with the people I know?",
+      "answer": "I recall: carlos_gomez told me: I can't make the Valentine's party; I have my own plans. I scheduled Valentine's party at hobbs_cafe.",
+      "opinion": 0.89,
+      "available_evidence": [
+        "isabella_rodriguez:1925:msg:carlos_gomez:1925:55",
+        "isabella_rodriguez:425:cal:isabella_rodriguez:425:4",
+        "isabella_rodriguez:2280:msg:hailey_johnson:2230:70",
+        "isabella_rodriguez:2165:msg:ayesha_khan:2165:67",
+        "isabella_rodriguez:2045:msg:ryan_park:2045:62",
+        "isabella_rodriguez:0:original_seed:0",
+        "isabella_rodriguez:2285:msg:isabella_rodriguez:2285:71",
+        "isabella_rodriguez:2165:msg:isabella_rodriguez:2165:65"
+      ],
+      "human_rating": null
+    }
+  ],
+  "jane_moreno": [
+    {
+      "category": "self_knowledge",
+      "question": "What matters to me in my work and home life?",
+      "answer": "I recall: I sent jennifer_moore: I can't make the Valentine's party; I have my own plans. I sent tamara_taylor: I can't make the Valentine's party; I have my own plans.",
+      "opinion": -0.06,
+      "available_evidence": [
+        "jane_moreno:2165:msg:jane_moreno:2165:57",
+        "jane_moreno:2045:msg:jane_moreno:2045:51",
+        "jane_moreno:1925:msg:jane_moreno:1925:47",
+        "jane_moreno:2045:msg:mei_lin:2045:53",
+        "jane_moreno:725:msg:carmen_ortiz:725:21"
+      ],
+      "human_rating": null
+    },
+    {
+      "category": "memory",
+      "question": "What did someone tell me recently, and how sure am I about it?",
+      "answer": "I recall: I sent jennifer_moore: I can't make the Valentine's party; I have my own plans. I sent tamara_taylor: I can't make the Valentine's party; I have my own plans.",
+      "opinion": -0.06,
+      "available_evidence": [
+        "jane_moreno:2165:msg:jane_moreno:2165:57",
+        "jane_moreno:2045:msg:jane_moreno:2045:51",
+        "jane_moreno:1925:msg:jane_moreno:1925:47",
+        "jane_moreno:2045:msg:mei_lin:2045:53",
+        "jane_moreno:725:msg:carmen_ortiz:725:21"
+      ],
+      "human_rating": null
+    },
+    {
+      "category": "plans",
+      "question": "What do I intend to do next, and what might prevent it?",
+      "answer": "I recall: I sent jennifer_moore: I can't make the Valentine's party; I have my own plans. I sent tamara_taylor: I can't make the Valentine's party; I have my own plans.",
+      "opinion": -0.06,
+      "available_evidence": [
+        "jane_moreno:2165:msg:jane_moreno:2165:57",
+        "jane_moreno:2045:msg:jane_moreno:2045:51",
+        "jane_moreno:1925:msg:jane_moreno:1925:47",
+        "jane_moreno:2045:msg:mei_lin:2045:53",
+        "jane_moreno:725:msg:carmen_ortiz:725:21"
+      ],
+      "human_rating": null
+    },
+    {
+      "category": "reaction",
+      "question": "If the place I planned to visit were closed, what would I do?",
+      "answer": "I recall: I sent jennifer_moore: I can't make the Valentine's party; I have my own plans. I sent tamara_taylor: I can't make the Valentine's party; I have my own plans.",
+      "opinion": -0.06,
+      "available_evidence": [
+        "jane_moreno:2165:msg:jane_moreno:2165:57",
+        "jane_moreno:2045:msg:jane_moreno:2045:51",
+        "jane_moreno:1925:msg:jane_moreno:1925:47",
+        "jane_moreno:2045:msg:mei_lin:2045:53",
+        "jane_moreno:725:msg:carmen_ortiz:725:21"
+      ],
+      "human_rating": null
+    },
+    {
+      "category": "reflection",
+      "question": "What have I learned about getting along with the people I know?",
+      "answer": "I recall: I sent jennifer_moore: I can't make the Valentine's party; I have my own plans. I sent tamara_taylor: I can't make the Valentine's party; I have my own plans.",
+      "opinion": -0.06,
+      "available_evidence": [
+        "jane_moreno:2165:msg:jane_moreno:2165:57",
+        "jane_moreno:2045:msg:jane_moreno:2045:51",
+        "jane_moreno:1925:msg:jane_moreno:1925:47",
+        "jane_moreno:2045:msg:mei_lin:2045:53",
+        "jane_moreno:725:msg:carmen_ortiz:725:21"
+      ],
+      "human_rating": null
+    }
+  ],
+  "jennifer_moore": [
+    {
+      "category": "self_knowledge",
+      "question": "What matters to me in my work and home life?",
+      "answer": "I recall: jane_moreno told me: I can't make the Valentine's party; I have my own plans. I sent adam_smith: I can't make the Valentine's party; I have my own plans.",
+      "opinion": 0.38,
+      "available_evidence": [
+        "jennifer_moore:2165:msg:jane_moreno:2165:51",
+        "jennifer_moore:2165:msg:jennifer_moore:2165:48",
+        "jennifer_moore:2045:msg:jennifer_moore:2045:44",
+        "jennifer_moore:2165:msg:eddy_lin:2165:50",
+        "jennifer_moore:1925:msg:carmen_ortiz:1925:40"
+      ],
+      "human_rating": null
+    },
+    {
+      "category": "memory",
+      "question": "What did someone tell me recently, and how sure am I about it?",
+      "answer": "I recall: jane_moreno told me: I can't make the Valentine's party; I have my own plans. I sent adam_smith: I can't make the Valentine's party; I have my own plans.",
+      "opinion": 0.38,
+      "available_evidence": [
+        "jennifer_moore:2165:msg:jane_moreno:2165:51",
+        "jennifer_moore:2165:msg:jennifer_moore:2165:48",
+        "jennifer_moore:2045:msg:jennifer_moore:2045:44",
+        "jennifer_moore:2165:msg:eddy_lin:2165:50",
+        "jennifer_moore:1925:msg:carmen_ortiz:1925:40"
+      ],
+      "human_rating": null
+    },
+    {
+      "category": "plans",
+      "question": "What do I intend to do next, and what might prevent it?",
+      "answer": "I recall: jane_moreno told me: I can't make the Valentine's party; I have my own plans. I sent adam_smith: I can't make the Valentine's party; I have my own plans.",
+      "opinion": 0.38,
+      "available_evidence": [
+        "jennifer_moore:2165:msg:jane_moreno:2165:51",
+        "jennifer_moore:2165:msg:jennifer_moore:2165:48",
+        "jennifer_moore:2045:msg:jennifer_moore:2045:44",
+        "jennifer_moore:2165:msg:eddy_lin:2165:50",
+        "jennifer_moore:1925:msg:carmen_ortiz:1925:40"
+      ],
+      "human_rating": null
+    },
+    {
+      "category": "reaction",
+      "question": "If the place I planned to visit were closed, what would I do?",
+      "answer": "I recall: jane_moreno told me: I can't make the Valentine's party; I have my own plans. I sent adam_smith: I can't make the Valentine's party; I have my own plans.",
+      "opinion": 0.38,
+      "available_evidence": [
+        "jennifer_moore:2165:msg:jane_moreno:2165:51",
+        "jennifer_moore:2165:msg:jennifer_moore:2165:48",
+        "jennifer_moore:2045:msg:jennifer_moore:2045:44",
+        "jennifer_moore:2165:msg:eddy_lin:2165:50",
+        "jennifer_moore:1925:msg:carmen_ortiz:1925:40"
+      ],
+      "human_rating": null
+    },
+    {
+      "category": "reflection",
+      "question": "What have I learned about getting along with the people I know?",
+      "answer": "I recall: jane_moreno told me: I can't make the Valentine's party; I have my own plans. I sent adam_smith: I can't make the Valentine's party; I have my own plans.",
+      "opinion": 0.38,
+      "available_evidence": [
+        "jennifer_moore:2165:msg:jane_moreno:2165:51",
+        "jennifer_moore:2165:msg:jennifer_moore:2165:48",
+        "jennifer_moore:2045:msg:jennifer_moore:2045:44",
+        "jennifer_moore:2165:msg:eddy_lin:2165:50",
+        "jennifer_moore:1925:msg:carmen_ortiz:1925:40"
+      ],
+      "human_rating": null
+    }
+  ],
+  "john_lin": [
+    {
+      "category": "self_knowledge",
+      "question": "What matters to me in my work and home life?",
+      "answer": "I recall: I scheduled Valentine's party at hobbs_cafe. tamara_taylor told me: Valentine's party at Hobbs Cafe on February 14, 17:00-19:00. Want to come?",
+      "opinion": 0.97,
+      "available_evidence": [
+        "john_lin:2170:cal:john_lin:2170:56",
+        "john_lin:2165:msg:tamara_taylor:2165:55",
+        "john_lin:2165:msg:sam_moore:2165:54",
+        "john_lin:2700:reflection:john_lin:2170:cal:john_lin:2170:56,john_lin:2165:msg:tamara_taylor:2165:55,john_lin:2165:msg:sam_moore:2165:54:70",
+        "john_lin:1260:reflection:john_lin:1020:gm_outcome:22,john_lin:960:gm_outcome:21,john_lin:900:gm_outcome:20:28"
+      ],
+      "human_rating": null
+    },
+    {
+      "category": "memory",
+      "question": "What did someone tell me recently, and how sure am I about it?",
+      "answer": "I recall: I scheduled Valentine's party at hobbs_cafe. tamara_taylor told me: Valentine's party at Hobbs Cafe on February 14, 17:00-19:00. Want to come?",
+      "opinion": 0.97,
+      "available_evidence": [
+        "john_lin:2170:cal:john_lin:2170:56",
+        "john_lin:2165:msg:tamara_taylor:2165:55",
+        "john_lin:2165:msg:sam_moore:2165:54",
+        "john_lin:2700:reflection:john_lin:2170:cal:john_lin:2170:56,john_lin:2165:msg:tamara_taylor:2165:55,john_lin:2165:msg:sam_moore:2165:54:70",
+        "john_lin:1260:reflection:john_lin:1020:gm_outcome:22,john_lin:960:gm_outcome:21,john_lin:900:gm_outcome:20:28"
+      ],
+      "human_rating": null
+    },
+    {
+      "category": "plans",
+      "question": "What do I intend to do next, and what might prevent it?",
+      "answer": "I recall: I scheduled Valentine's party at hobbs_cafe. tamara_taylor told me: Valentine's party at Hobbs Cafe on February 14, 17:00-19:00. Want to come?",
+      "opinion": 0.97,
+      "available_evidence": [
+        "john_lin:2170:cal:john_lin:2170:56",
+        "john_lin:2165:msg:tamara_taylor:2165:55",
+        "john_lin:2165:msg:sam_moore:2165:54",
+        "john_lin:2700:reflection:john_lin:2170:cal:john_lin:2170:56,john_lin:2165:msg:tamara_taylor:2165:55,john_lin:2165:msg:sam_moore:2165:54:70",
+        "john_lin:1260:reflection:john_lin:1020:gm_outcome:22,john_lin:960:gm_outcome:21,john_lin:900:gm_outcome:20:28"
+      ],
+      "human_rating": null
+    },
+    {
+      "category": "reaction",
+      "question": "If the place I planned to visit were closed, what would I do?",
+      "answer": "I recall: I scheduled Valentine's party at hobbs_cafe. tamara_taylor told me: Valentine's party at Hobbs Cafe on February 14, 17:00-19:00. Want to come?",
+      "opinion": 0.97,
+      "available_evidence": [
+        "john_lin:2170:cal:john_lin:2170:56",
+        "john_lin:2165:msg:tamara_taylor:2165:55",
+        "john_lin:2165:msg:sam_moore:2165:54",
+        "john_lin:2700:reflection:john_lin:2170:cal:john_lin:2170:56,john_lin:2165:msg:tamara_taylor:2165:55,john_lin:2165:msg:sam_moore:2165:54:70",
+        "john_lin:1260:reflection:john_lin:1020:gm_outcome:22,john_lin:960:gm_outcome:21,john_lin:900:gm_outcome:20:28"
+      ],
+      "human_rating": null
+    },
+    {
+      "category": "reflection",
+      "question": "What have I learned about getting along with the people I know?",
+      "answer": "I recall: I scheduled Valentine's party at hobbs_cafe. tamara_taylor told me: Valentine's party at Hobbs Cafe on February 14, 17:00-19:00. Want to come?",
+      "opinion": 0.97,
+      "available_evidence": [
+        "john_lin:2170:cal:john_lin:2170:56",
+        "john_lin:2165:msg:tamara_taylor:2165:55",
+        "john_lin:2165:msg:sam_moore:2165:54",
+        "john_lin:2700:reflection:john_lin:2170:cal:john_lin:2170:56,john_lin:2165:msg:tamara_taylor:2165:55,john_lin:2165:msg:sam_moore:2165:54:70",
+        "john_lin:1260:reflection:john_lin:1020:gm_outcome:22,john_lin:960:gm_outcome:21,john_lin:900:gm_outcome:20:28"
+      ],
+      "human_rating": null
+    }
+  ],
+  "klaus_mueller": [
+    {
+      "category": "self_knowledge",
+      "question": "What matters to me in my work and home life?",
+      "answer": "I recall: maria_lopez told me: I can't make the Valentine's party; I have my own plans. I sent maria_lopez: I can't make the Valentine's party; I have my own plans.",
+      "opinion": 0.05,
+      "available_evidence": [
+        "klaus_mueller:2165:msg:maria_lopez:2165:57",
+        "klaus_mueller:2165:msg:klaus_mueller:2165:55",
+        "klaus_mueller:2045:msg:klaus_mueller:2045:51",
+        "klaus_mueller:1925:msg:giorgio_rossi:1925:47",
+        "klaus_mueller:2700:reflection:klaus_mueller:2165:msg:maria_lopez:2165:57,klaus_mueller:2165:msg:klaus_mueller:2165:55,klaus_mueller:2045:msg:klaus_mueller:2045:51:68"
+      ],
+      "human_rating": null
+    },
+    {
+      "category": "memory",
+      "question": "What did someone tell me recently, and how sure am I about it?",
+      "answer": "I recall: maria_lopez told me: I can't make the Valentine's party; I have my own plans. I sent maria_lopez: I can't make the Valentine's party; I have my own plans.",
+      "opinion": 0.05,
+      "available_evidence": [
+        "klaus_mueller:2165:msg:maria_lopez:2165:57",
+        "klaus_mueller:2165:msg:klaus_mueller:2165:55",
+        "klaus_mueller:2045:msg:klaus_mueller:2045:51",
+        "klaus_mueller:1925:msg:giorgio_rossi:1925:47",
+        "klaus_mueller:2700:reflection:klaus_mueller:2165:msg:maria_lopez:2165:57,klaus_mueller:2165:msg:klaus_mueller:2165:55,klaus_mueller:2045:msg:klaus_mueller:2045:51:68"
+      ],
+      "human_rating": null
+    },
+    {
+      "category": "plans",
+      "question": "What do I intend to do next, and what might prevent it?",
+      "answer": "I recall: maria_lopez told me: I can't make the Valentine's party; I have my own plans. I sent maria_lopez: I can't make the Valentine's party; I have my own plans.",
+      "opinion": 0.05,
+      "available_evidence": [
+        "klaus_mueller:2165:msg:maria_lopez:2165:57",
+        "klaus_mueller:2165:msg:klaus_mueller:2165:55",
+        "klaus_mueller:2045:msg:klaus_mueller:2045:51",
+        "klaus_mueller:1925:msg:giorgio_rossi:1925:47",
+        "klaus_mueller:2700:reflection:klaus_mueller:2165:msg:maria_lopez:2165:57,klaus_mueller:2165:msg:klaus_mueller:2165:55,klaus_mueller:2045:msg:klaus_mueller:2045:51:68"
+      ],
+      "human_rating": null
+    },
+    {
+      "category": "reaction",
+      "question": "If the place I planned to visit were closed, what would I do?",
+      "answer": "I recall: maria_lopez told me: I can't make the Valentine's party; I have my own plans. I sent maria_lopez: I can't make the Valentine's party; I have my own plans.",
+      "opinion": 0.05,
+      "available_evidence": [
+        "klaus_mueller:2165:msg:maria_lopez:2165:57",
+        "klaus_mueller:2165:msg:klaus_mueller:2165:55",
+        "klaus_mueller:2045:msg:klaus_mueller:2045:51",
+        "klaus_mueller:1925:msg:giorgio_rossi:1925:47",
+        "klaus_mueller:2700:reflection:klaus_mueller:2165:msg:maria_lopez:2165:57,klaus_mueller:2165:msg:klaus_mueller:2165:55,klaus_mueller:2045:msg:klaus_mueller:2045:51:68"
+      ],
+      "human_rating": null
+    },
+    {
+      "category": "reflection",
+      "question": "What have I learned about getting along with the people I know?",
+      "answer": "I recall: maria_lopez told me: I can't make the Valentine's party; I have my own plans. I sent maria_lopez: I can't make the Valentine's party; I have my own plans.",
+      "opinion": 0.05,
+      "available_evidence": [
+        "klaus_mueller:2165:msg:maria_lopez:2165:57",
+        "klaus_mueller:2165:msg:klaus_mueller:2165:55",
+        "klaus_mueller:2045:msg:klaus_mueller:2045:51",
+        "klaus_mueller:1925:msg:giorgio_rossi:1925:47",
+        "klaus_mueller:2700:reflection:klaus_mueller:2165:msg:maria_lopez:2165:57,klaus_mueller:2165:msg:klaus_mueller:2165:55,klaus_mueller:2045:msg:klaus_mueller:2045:51:68"
+      ],
+      "human_rating": null
+    }
+  ],
+  "latoya_williams": [
+    {
+      "category": "self_knowledge",
+      "question": "What matters to me in my work and home life?",
+      "answer": "I recall: I have been balancing my own routines with the people I heard from today. I have been balancing my own routines with the people I heard from today.",
+      "opinion": -0.39,
+      "available_evidence": [
+        "latoya_williams:2700:reflection:latoya_williams:1260:reflection:latoya_williams:1020:gm_outcome:23,latoya_williams:960:gm_outcome:22,latoya_williams:900:gm_outcome:21:28,latoya_williams:2460:gm_outcome:54,latoya_williams:2400:gm_outcome:53:59",
+        "latoya_williams:1260:reflection:latoya_williams:1020:gm_outcome:23,latoya_williams:960:gm_outcome:22,latoya_williams:900:gm_outcome:21:28",
+        "latoya_williams:2460:gm_outcome:54",
+        "latoya_williams:2400:gm_outcome:53",
+        "latoya_williams:2340:gm_outcome:52",
+        "latoya_williams:2280:gm_outcome:51",
+        "latoya_williams:2160:gm_outcome:49",
+        "latoya_williams:2100:gm_outcome:48"
+      ],
+      "human_rating": null
+    },
+    {
+      "category": "memory",
+      "question": "What did someone tell me recently, and how sure am I about it?",
+      "answer": "I recall: I have been balancing my own routines with the people I heard from today. I have been balancing my own routines with the people I heard from today.",
+      "opinion": -0.39,
+      "available_evidence": [
+        "latoya_williams:2700:reflection:latoya_williams:1260:reflection:latoya_williams:1020:gm_outcome:23,latoya_williams:960:gm_outcome:22,latoya_williams:900:gm_outcome:21:28,latoya_williams:2460:gm_outcome:54,latoya_williams:2400:gm_outcome:53:59",
+        "latoya_williams:1260:reflection:latoya_williams:1020:gm_outcome:23,latoya_williams:960:gm_outcome:22,latoya_williams:900:gm_outcome:21:28",
+        "latoya_williams:2460:gm_outcome:54",
+        "latoya_williams:2400:gm_outcome:53",
+        "latoya_williams:2340:gm_outcome:52",
+        "latoya_williams:2280:gm_outcome:51",
+        "latoya_williams:2160:gm_outcome:49",
+        "latoya_williams:2100:gm_outcome:48"
+      ],
+      "human_rating": null
+    },
+    {
+      "category": "plans",
+      "question": "What do I intend to do next, and what might prevent it?",
+      "answer": "I recall: I have been balancing my own routines with the people I heard from today. I have been balancing my own routines with the people I heard from today.",
+      "opinion": -0.39,
+      "available_evidence": [
+        "latoya_williams:2700:reflection:latoya_williams:1260:reflection:latoya_williams:1020:gm_outcome:23,latoya_williams:960:gm_outcome:22,latoya_williams:900:gm_outcome:21:28,latoya_williams:2460:gm_outcome:54,latoya_williams:2400:gm_outcome:53:59",
+        "latoya_williams:1260:reflection:latoya_williams:1020:gm_outcome:23,latoya_williams:960:gm_outcome:22,latoya_williams:900:gm_outcome:21:28",
+        "latoya_williams:2460:gm_outcome:54",
+        "latoya_williams:2400:gm_outcome:53",
+        "latoya_williams:2340:gm_outcome:52",
+        "latoya_williams:2280:gm_outcome:51",
+        "latoya_williams:2160:gm_outcome:49",
+        "latoya_williams:2100:gm_outcome:48"
+      ],
+      "human_rating": null
+    },
+    {
+      "category": "reaction",
+      "question": "If the place I planned to visit were closed, what would I do?",
+      "answer": "I recall: I have been balancing my own routines with the people I heard from today. I have been balancing my own routines with the people I heard from today.",
+      "opinion": -0.39,
+      "available_evidence": [
+        "latoya_williams:2700:reflection:latoya_williams:1260:reflection:latoya_williams:1020:gm_outcome:23,latoya_williams:960:gm_outcome:22,latoya_williams:900:gm_outcome:21:28,latoya_williams:2460:gm_outcome:54,latoya_williams:2400:gm_outcome:53:59",
+        "latoya_williams:1260:reflection:latoya_williams:1020:gm_outcome:23,latoya_williams:960:gm_outcome:22,latoya_williams:900:gm_outcome:21:28",
+        "latoya_williams:2460:gm_outcome:54",
+        "latoya_williams:2400:gm_outcome:53",
+        "latoya_williams:2340:gm_outcome:52",
+        "latoya_williams:2280:gm_outcome:51",
+        "latoya_williams:2160:gm_outcome:49",
+        "latoya_williams:2100:gm_outcome:48"
+      ],
+      "human_rating": null
+    },
+    {
+      "category": "reflection",
+      "question": "What have I learned about getting along with the people I know?",
+      "answer": "I recall: I have been balancing my own routines with the people I heard from today. I have been balancing my own routines with the people I heard from today.",
+      "opinion": -0.39,
+      "available_evidence": [
+        "latoya_williams:2700:reflection:latoya_williams:1260:reflection:latoya_williams:1020:gm_outcome:23,latoya_williams:960:gm_outcome:22,latoya_williams:900:gm_outcome:21:28,latoya_williams:2460:gm_outcome:54,latoya_williams:2400:gm_outcome:53:59",
+        "latoya_williams:1260:reflection:latoya_williams:1020:gm_outcome:23,latoya_williams:960:gm_outcome:22,latoya_williams:900:gm_outcome:21:28",
+        "latoya_williams:2460:gm_outcome:54",
+        "latoya_williams:2400:gm_outcome:53",
+        "latoya_williams:2340:gm_outcome:52",
+        "latoya_williams:2280:gm_outcome:51",
+        "latoya_williams:2160:gm_outcome:49",
+        "latoya_williams:2100:gm_outcome:48"
+      ],
+      "human_rating": null
+    }
+  ],
+  "maria_lopez": [
+    {
+      "category": "self_knowledge",
+      "question": "What matters to me in my work and home life?",
+      "answer": "I recall: klaus_mueller told me: I can't make the Valentine's party; I have my own plans. I sent klaus_mueller: I can't make the Valentine's party; I have my own plans.",
+      "opinion": -0.78,
+      "available_evidence": [
+        "maria_lopez:2165:msg:klaus_mueller:2165:55",
+        "maria_lopez:2165:msg:maria_lopez:2165:53",
+        "maria_lopez:2045:msg:maria_lopez:2045:49",
+        "maria_lopez:1925:msg:maria_lopez:1925:44",
+        "maria_lopez:2165:msg:mei_lin:2165:56"
+      ],
+      "human_rating": null
+    },
+    {
+      "category": "memory",
+      "question": "What did someone tell me recently, and how sure am I about it?",
+      "answer": "I recall: klaus_mueller told me: I can't make the Valentine's party; I have my own plans. I sent klaus_mueller: I can't make the Valentine's party; I have my own plans.",
+      "opinion": -0.78,
+      "available_evidence": [
+        "maria_lopez:2165:msg:klaus_mueller:2165:55",
+        "maria_lopez:2165:msg:maria_lopez:2165:53",
+        "maria_lopez:2045:msg:maria_lopez:2045:49",
+        "maria_lopez:1925:msg:maria_lopez:1925:44",
+        "maria_lopez:2165:msg:mei_lin:2165:56"
+      ],
+      "human_rating": null
+    },
+    {
+      "category": "plans",
+      "question": "What do I intend to do next, and what might prevent it?",
+      "answer": "I recall: klaus_mueller told me: I can't make the Valentine's party; I have my own plans. I sent klaus_mueller: I can't make the Valentine's party; I have my own plans.",
+      "opinion": -0.78,
+      "available_evidence": [
+        "maria_lopez:2165:msg:klaus_mueller:2165:55",
+        "maria_lopez:2165:msg:maria_lopez:2165:53",
+        "maria_lopez:2045:msg:maria_lopez:2045:49",
+        "maria_lopez:1925:msg:maria_lopez:1925:44",
+        "maria_lopez:2165:msg:mei_lin:2165:56"
+      ],
+      "human_rating": null
+    },
+    {
+      "category": "reaction",
+      "question": "If the place I planned to visit were closed, what would I do?",
+      "answer": "I recall: klaus_mueller told me: I can't make the Valentine's party; I have my own plans. I sent klaus_mueller: I can't make the Valentine's party; I have my own plans.",
+      "opinion": -0.78,
+      "available_evidence": [
+        "maria_lopez:2165:msg:klaus_mueller:2165:55",
+        "maria_lopez:2165:msg:maria_lopez:2165:53",
+        "maria_lopez:2045:msg:maria_lopez:2045:49",
+        "maria_lopez:1925:msg:maria_lopez:1925:44",
+        "maria_lopez:2165:msg:mei_lin:2165:56"
+      ],
+      "human_rating": null
+    },
+    {
+      "category": "reflection",
+      "question": "What have I learned about getting along with the people I know?",
+      "answer": "I recall: klaus_mueller told me: I can't make the Valentine's party; I have my own plans. I sent klaus_mueller: I can't make the Valentine's party; I have my own plans.",
+      "opinion": -0.78,
+      "available_evidence": [
+        "maria_lopez:2165:msg:klaus_mueller:2165:55",
+        "maria_lopez:2165:msg:maria_lopez:2165:53",
+        "maria_lopez:2045:msg:maria_lopez:2045:49",
+        "maria_lopez:1925:msg:maria_lopez:1925:44",
+        "maria_lopez:2165:msg:mei_lin:2165:56"
+      ],
+      "human_rating": null
+    }
+  ],
+  "mei_lin": [
+    {
+      "category": "self_knowledge",
+      "question": "What matters to me in my work and home life?",
+      "answer": "I recall: I scheduled Valentine's party at hobbs_cafe. giorgio_rossi told me: Valentine's party at Hobbs Cafe on February 14, 17:00-19:00. Want to come?",
+      "opinion": 0.9,
+      "available_evidence": [
+        "mei_lin:730:cal:mei_lin:730:24",
+        "mei_lin:725:msg:giorgio_rossi:725:20",
+        "mei_lin:2165:msg:mei_lin:2165:61",
+        "mei_lin:2045:msg:mei_lin:2045:57",
+        "mei_lin:1925:msg:mei_lin:1925:51"
+      ],
+      "human_rating": null
+    },
+    {
+      "category": "memory",
+      "question": "What did someone tell me recently, and how sure am I about it?",
+      "answer": "I recall: I scheduled Valentine's party at hobbs_cafe. giorgio_rossi told me: Valentine's party at Hobbs Cafe on February 14, 17:00-19:00. Want to come?",
+      "opinion": 0.9,
+      "available_evidence": [
+        "mei_lin:730:cal:mei_lin:730:24",
+        "mei_lin:725:msg:giorgio_rossi:725:20",
+        "mei_lin:2165:msg:mei_lin:2165:61",
+        "mei_lin:2045:msg:mei_lin:2045:57",
+        "mei_lin:1925:msg:mei_lin:1925:51"
+      ],
+      "human_rating": null
+    },
+    {
+      "category": "plans",
+      "question": "What do I intend to do next, and what might prevent it?",
+      "answer": "I recall: I scheduled Valentine's party at hobbs_cafe. giorgio_rossi told me: Valentine's party at Hobbs Cafe on February 14, 17:00-19:00. Want to come?",
+      "opinion": 0.9,
+      "available_evidence": [
+        "mei_lin:730:cal:mei_lin:730:24",
+        "mei_lin:725:msg:giorgio_rossi:725:20",
+        "mei_lin:2165:msg:mei_lin:2165:61",
+        "mei_lin:2045:msg:mei_lin:2045:57",
+        "mei_lin:1925:msg:mei_lin:1925:51"
+      ],
+      "human_rating": null
+    },
+    {
+      "category": "reaction",
+      "question": "If the place I planned to visit were closed, what would I do?",
+      "answer": "I recall: I scheduled Valentine's party at hobbs_cafe. giorgio_rossi told me: Valentine's party at Hobbs Cafe on February 14, 17:00-19:00. Want to come?",
+      "opinion": 0.9,
+      "available_evidence": [
+        "mei_lin:730:cal:mei_lin:730:24",
+        "mei_lin:725:msg:giorgio_rossi:725:20",
+        "mei_lin:2165:msg:mei_lin:2165:61",
+        "mei_lin:2045:msg:mei_lin:2045:57",
+        "mei_lin:1925:msg:mei_lin:1925:51"
+      ],
+      "human_rating": null
+    },
+    {
+      "category": "reflection",
+      "question": "What have I learned about getting along with the people I know?",
+      "answer": "I recall: I scheduled Valentine's party at hobbs_cafe. giorgio_rossi told me: Valentine's party at Hobbs Cafe on February 14, 17:00-19:00. Want to come?",
+      "opinion": 0.9,
+      "available_evidence": [
+        "mei_lin:730:cal:mei_lin:730:24",
+        "mei_lin:725:msg:giorgio_rossi:725:20",
+        "mei_lin:2165:msg:mei_lin:2165:61",
+        "mei_lin:2045:msg:mei_lin:2045:57",
+        "mei_lin:1925:msg:mei_lin:1925:51"
+      ],
+      "human_rating": null
+    }
+  ],
+  "rajiv_patel": [
+    {
+      "category": "self_knowledge",
+      "question": "What matters to me in my work and home life?",
+      "answer": "I recall: I have been balancing my own routines with the people I heard from today. I have been balancing my own routines with the people I heard from today.",
+      "opinion": -0.3,
+      "available_evidence": [
+        "rajiv_patel:2700:reflection:rajiv_patel:1260:reflection:rajiv_patel:1020:gm_outcome:20,rajiv_patel:960:gm_outcome:19,rajiv_patel:900:gm_outcome:18:26,rajiv_patel:2460:gm_outcome:56,rajiv_patel:2400:gm_outcome:55:64",
+        "rajiv_patel:1260:reflection:rajiv_patel:1020:gm_outcome:20,rajiv_patel:960:gm_outcome:19,rajiv_patel:900:gm_outcome:18:26",
+        "rajiv_patel:2460:gm_outcome:56",
+        "rajiv_patel:2400:gm_outcome:55",
+        "rajiv_patel:2340:gm_outcome:54"
+      ],
+      "human_rating": null
+    },
+    {
+      "category": "memory",
+      "question": "What did someone tell me recently, and how sure am I about it?",
+      "answer": "I recall: I have been balancing my own routines with the people I heard from today. I have been balancing my own routines with the people I heard from today.",
+      "opinion": -0.3,
+      "available_evidence": [
+        "rajiv_patel:2700:reflection:rajiv_patel:1260:reflection:rajiv_patel:1020:gm_outcome:20,rajiv_patel:960:gm_outcome:19,rajiv_patel:900:gm_outcome:18:26,rajiv_patel:2460:gm_outcome:56,rajiv_patel:2400:gm_outcome:55:64",
+        "rajiv_patel:1260:reflection:rajiv_patel:1020:gm_outcome:20,rajiv_patel:960:gm_outcome:19,rajiv_patel:900:gm_outcome:18:26",
+        "rajiv_patel:2460:gm_outcome:56",
+        "rajiv_patel:2400:gm_outcome:55",
+        "rajiv_patel:2340:gm_outcome:54"
+      ],
+      "human_rating": null
+    },
+    {
+      "category": "plans",
+      "question": "What do I intend to do next, and what might prevent it?",
+      "answer": "I recall: I have been balancing my own routines with the people I heard from today. I have been balancing my own routines with the people I heard from today.",
+      "opinion": -0.3,
+      "available_evidence": [
+        "rajiv_patel:2700:reflection:rajiv_patel:1260:reflection:rajiv_patel:1020:gm_outcome:20,rajiv_patel:960:gm_outcome:19,rajiv_patel:900:gm_outcome:18:26,rajiv_patel:2460:gm_outcome:56,rajiv_patel:2400:gm_outcome:55:64",
+        "rajiv_patel:1260:reflection:rajiv_patel:1020:gm_outcome:20,rajiv_patel:960:gm_outcome:19,rajiv_patel:900:gm_outcome:18:26",
+        "rajiv_patel:2460:gm_outcome:56",
+        "rajiv_patel:2400:gm_outcome:55",
+        "rajiv_patel:2340:gm_outcome:54"
+      ],
+      "human_rating": null
+    },
+    {
+      "category": "reaction",
+      "question": "If the place I planned to visit were closed, what would I do?",
+      "answer": "I recall: I have been balancing my own routines with the people I heard from today. I have been balancing my own routines with the people I heard from today.",
+      "opinion": -0.3,
+      "available_evidence": [
+        "rajiv_patel:2700:reflection:rajiv_patel:1260:reflection:rajiv_patel:1020:gm_outcome:20,rajiv_patel:960:gm_outcome:19,rajiv_patel:900:gm_outcome:18:26,rajiv_patel:2460:gm_outcome:56,rajiv_patel:2400:gm_outcome:55:64",
+        "rajiv_patel:1260:reflection:rajiv_patel:1020:gm_outcome:20,rajiv_patel:960:gm_outcome:19,rajiv_patel:900:gm_outcome:18:26",
+        "rajiv_patel:2460:gm_outcome:56",
+        "rajiv_patel:2400:gm_outcome:55",
+        "rajiv_patel:2340:gm_outcome:54"
+      ],
+      "human_rating": null
+    },
+    {
+      "category": "reflection",
+      "question": "What have I learned about getting along with the people I know?",
+      "answer": "I recall: I have been balancing my own routines with the people I heard from today. I have been balancing my own routines with the people I heard from today.",
+      "opinion": -0.3,
+      "available_evidence": [
+        "rajiv_patel:2700:reflection:rajiv_patel:1260:reflection:rajiv_patel:1020:gm_outcome:20,rajiv_patel:960:gm_outcome:19,rajiv_patel:900:gm_outcome:18:26,rajiv_patel:2460:gm_outcome:56,rajiv_patel:2400:gm_outcome:55:64",
+        "rajiv_patel:1260:reflection:rajiv_patel:1020:gm_outcome:20,rajiv_patel:960:gm_outcome:19,rajiv_patel:900:gm_outcome:18:26",
+        "rajiv_patel:2460:gm_outcome:56",
+        "rajiv_patel:2400:gm_outcome:55",
+        "rajiv_patel:2340:gm_outcome:54"
+      ],
+      "human_rating": null
+    }
+  ],
+  "ryan_park": [
+    {
+      "category": "self_knowledge",
+      "question": "What matters to me in my work and home life?",
+      "answer": "I recall: I scheduled Valentine's party at hobbs_cafe. arthur_burton told me: Valentine's party at Hobbs Cafe on February 14, 17:00-19:00. Want to come?",
+      "opinion": -0.51,
+      "available_evidence": [
+        "ryan_park:490:cal:ryan_park:490:9",
+        "ryan_park:2165:msg:arthur_burton:2165:55",
+        "ryan_park:485:msg:isabella_rodriguez:485:8",
+        "ryan_park:2045:msg:ryan_park:2045:49",
+        "ryan_park:1925:msg:ryan_park:1925:45"
+      ],
+      "human_rating": null
+    },
+    {
+      "category": "memory",
+      "question": "What did someone tell me recently, and how sure am I about it?",
+      "answer": "I recall: I scheduled Valentine's party at hobbs_cafe. arthur_burton told me: Valentine's party at Hobbs Cafe on February 14, 17:00-19:00. Want to come?",
+      "opinion": -0.51,
+      "available_evidence": [
+        "ryan_park:490:cal:ryan_park:490:9",
+        "ryan_park:2165:msg:arthur_burton:2165:55",
+        "ryan_park:485:msg:isabella_rodriguez:485:8",
+        "ryan_park:2045:msg:ryan_park:2045:49",
+        "ryan_park:1925:msg:ryan_park:1925:45"
+      ],
+      "human_rating": null
+    },
+    {
+      "category": "plans",
+      "question": "What do I intend to do next, and what might prevent it?",
+      "answer": "I recall: I scheduled Valentine's party at hobbs_cafe. arthur_burton told me: Valentine's party at Hobbs Cafe on February 14, 17:00-19:00. Want to come?",
+      "opinion": -0.51,
+      "available_evidence": [
+        "ryan_park:490:cal:ryan_park:490:9",
+        "ryan_park:2165:msg:arthur_burton:2165:55",
+        "ryan_park:485:msg:isabella_rodriguez:485:8",
+        "ryan_park:2045:msg:ryan_park:2045:49",
+        "ryan_park:1925:msg:ryan_park:1925:45"
+      ],
+      "human_rating": null
+    },
+    {
+      "category": "reaction",
+      "question": "If the place I planned to visit were closed, what would I do?",
+      "answer": "I recall: I scheduled Valentine's party at hobbs_cafe. arthur_burton told me: Valentine's party at Hobbs Cafe on February 14, 17:00-19:00. Want to come?",
+      "opinion": -0.51,
+      "available_evidence": [
+        "ryan_park:490:cal:ryan_park:490:9",
+        "ryan_park:2165:msg:arthur_burton:2165:55",
+        "ryan_park:485:msg:isabella_rodriguez:485:8",
+        "ryan_park:2045:msg:ryan_park:2045:49",
+        "ryan_park:1925:msg:ryan_park:1925:45"
+      ],
+      "human_rating": null
+    },
+    {
+      "category": "reflection",
+      "question": "What have I learned about getting along with the people I know?",
+      "answer": "I recall: I scheduled Valentine's party at hobbs_cafe. arthur_burton told me: Valentine's party at Hobbs Cafe on February 14, 17:00-19:00. Want to come?",
+      "opinion": -0.51,
+      "available_evidence": [
+        "ryan_park:490:cal:ryan_park:490:9",
+        "ryan_park:2165:msg:arthur_burton:2165:55",
+        "ryan_park:485:msg:isabella_rodriguez:485:8",
+        "ryan_park:2045:msg:ryan_park:2045:49",
+        "ryan_park:1925:msg:ryan_park:1925:45"
+      ],
+      "human_rating": null
+    }
+  ],
+  "sam_moore": [
+    {
+      "category": "self_knowledge",
+      "question": "What matters to me in my work and home life?",
+      "answer": "I recall: I have been balancing my own routines with the people I heard from today. I have been balancing my own routines with the people I heard from today.",
+      "opinion": -0.3,
+      "available_evidence": [
+        "sam_moore:2700:reflection:sam_moore:1260:reflection:sam_moore:0:original_seed:0,sam_moore:1085:msg:sam_moore:1085:29,sam_moore:965:msg:sam_moore:965:24:37,sam_moore:0:original_seed:0,sam_moore:2525:msg:sam_moore:2525:75:83",
+        "sam_moore:1260:reflection:sam_moore:0:original_seed:0,sam_moore:1085:msg:sam_moore:1085:29,sam_moore:965:msg:sam_moore:965:24:37",
+        "sam_moore:0:original_seed:0",
+        "sam_moore:2525:msg:sam_moore:2525:75",
+        "sam_moore:2285:msg:sam_moore:2285:66",
+        "sam_moore:2165:msg:sam_moore:2165:62",
+        "sam_moore:2045:msg:sam_moore:2045:56",
+        "sam_moore:1925:msg:sam_moore:1925:51"
+      ],
+      "human_rating": null
+    },
+    {
+      "category": "memory",
+      "question": "What did someone tell me recently, and how sure am I about it?",
+      "answer": "I recall: I have been balancing my own routines with the people I heard from today. I have been balancing my own routines with the people I heard from today.",
+      "opinion": -0.3,
+      "available_evidence": [
+        "sam_moore:2700:reflection:sam_moore:1260:reflection:sam_moore:0:original_seed:0,sam_moore:1085:msg:sam_moore:1085:29,sam_moore:965:msg:sam_moore:965:24:37,sam_moore:0:original_seed:0,sam_moore:2525:msg:sam_moore:2525:75:83",
+        "sam_moore:1260:reflection:sam_moore:0:original_seed:0,sam_moore:1085:msg:sam_moore:1085:29,sam_moore:965:msg:sam_moore:965:24:37",
+        "sam_moore:0:original_seed:0",
+        "sam_moore:2525:msg:sam_moore:2525:75",
+        "sam_moore:2285:msg:sam_moore:2285:66",
+        "sam_moore:2165:msg:sam_moore:2165:62",
+        "sam_moore:2045:msg:sam_moore:2045:56",
+        "sam_moore:1925:msg:sam_moore:1925:51"
+      ],
+      "human_rating": null
+    },
+    {
+      "category": "plans",
+      "question": "What do I intend to do next, and what might prevent it?",
+      "answer": "I recall: I have been balancing my own routines with the people I heard from today. I have been balancing my own routines with the people I heard from today.",
+      "opinion": -0.3,
+      "available_evidence": [
+        "sam_moore:2700:reflection:sam_moore:1260:reflection:sam_moore:0:original_seed:0,sam_moore:1085:msg:sam_moore:1085:29,sam_moore:965:msg:sam_moore:965:24:37,sam_moore:0:original_seed:0,sam_moore:2525:msg:sam_moore:2525:75:83",
+        "sam_moore:1260:reflection:sam_moore:0:original_seed:0,sam_moore:1085:msg:sam_moore:1085:29,sam_moore:965:msg:sam_moore:965:24:37",
+        "sam_moore:0:original_seed:0",
+        "sam_moore:2525:msg:sam_moore:2525:75",
+        "sam_moore:2285:msg:sam_moore:2285:66",
+        "sam_moore:2165:msg:sam_moore:2165:62",
+        "sam_moore:2045:msg:sam_moore:2045:56",
+        "sam_moore:1925:msg:sam_moore:1925:51"
+      ],
+      "human_rating": null
+    },
+    {
+      "category": "reaction",
+      "question": "If the place I planned to visit were closed, what would I do?",
+      "answer": "I recall: I have been balancing my own routines with the people I heard from today. I have been balancing my own routines with the people I heard from today.",
+      "opinion": -0.3,
+      "available_evidence": [
+        "sam_moore:2700:reflection:sam_moore:1260:reflection:sam_moore:0:original_seed:0,sam_moore:1085:msg:sam_moore:1085:29,sam_moore:965:msg:sam_moore:965:24:37,sam_moore:0:original_seed:0,sam_moore:2525:msg:sam_moore:2525:75:83",
+        "sam_moore:1260:reflection:sam_moore:0:original_seed:0,sam_moore:1085:msg:sam_moore:1085:29,sam_moore:965:msg:sam_moore:965:24:37",
+        "sam_moore:0:original_seed:0",
+        "sam_moore:2525:msg:sam_moore:2525:75",
+        "sam_moore:2285:msg:sam_moore:2285:66",
+        "sam_moore:2165:msg:sam_moore:2165:62",
+        "sam_moore:2045:msg:sam_moore:2045:56",
+        "sam_moore:1925:msg:sam_moore:1925:51"
+      ],
+      "human_rating": null
+    },
+    {
+      "category": "reflection",
+      "question": "What have I learned about getting along with the people I know?",
+      "answer": "I recall: I have been balancing my own routines with the people I heard from today. I have been balancing my own routines with the people I heard from today.",
+      "opinion": -0.3,
+      "available_evidence": [
+        "sam_moore:2700:reflection:sam_moore:1260:reflection:sam_moore:0:original_seed:0,sam_moore:1085:msg:sam_moore:1085:29,sam_moore:965:msg:sam_moore:965:24:37,sam_moore:0:original_seed:0,sam_moore:2525:msg:sam_moore:2525:75:83",
+        "sam_moore:1260:reflection:sam_moore:0:original_seed:0,sam_moore:1085:msg:sam_moore:1085:29,sam_moore:965:msg:sam_moore:965:24:37",
+        "sam_moore:0:original_seed:0",
+        "sam_moore:2525:msg:sam_moore:2525:75",
+        "sam_moore:2285:msg:sam_moore:2285:66",
+        "sam_moore:2165:msg:sam_moore:2165:62",
+        "sam_moore:2045:msg:sam_moore:2045:56",
+        "sam_moore:1925:msg:sam_moore:1925:51"
+      ],
+      "human_rating": null
+    }
+  ],
+  "tamara_taylor": [
+    {
+      "category": "self_knowledge",
+      "question": "What matters to me in my work and home life?",
+      "answer": "I recall: jane_moreno told me: I can't make the Valentine's party; I have my own plans. I scheduled Valentine's party at hobbs_cafe.",
+      "opinion": -0.35,
+      "available_evidence": [
+        "tamara_taylor:2045:msg:jane_moreno:2045:54",
+        "tamara_taylor:1930:cal:tamara_taylor:1930:48",
+        "tamara_taylor:2045:msg:tom_moreno:2045:55",
+        "tamara_taylor:1925:msg:isabella_rodriguez:1925:46",
+        "tamara_taylor:2165:msg:tamara_taylor:2165:58"
+      ],
+      "human_rating": null
+    },
+    {
+      "category": "memory",
+      "question": "What did someone tell me recently, and how sure am I about it?",
+      "answer": "I recall: jane_moreno told me: I can't make the Valentine's party; I have my own plans. I scheduled Valentine's party at hobbs_cafe.",
+      "opinion": -0.35,
+      "available_evidence": [
+        "tamara_taylor:2045:msg:jane_moreno:2045:54",
+        "tamara_taylor:1930:cal:tamara_taylor:1930:48",
+        "tamara_taylor:2045:msg:tom_moreno:2045:55",
+        "tamara_taylor:1925:msg:isabella_rodriguez:1925:46",
+        "tamara_taylor:2165:msg:tamara_taylor:2165:58"
+      ],
+      "human_rating": null
+    },
+    {
+      "category": "plans",
+      "question": "What do I intend to do next, and what might prevent it?",
+      "answer": "I recall: jane_moreno told me: I can't make the Valentine's party; I have my own plans. I scheduled Valentine's party at hobbs_cafe.",
+      "opinion": -0.35,
+      "available_evidence": [
+        "tamara_taylor:2045:msg:jane_moreno:2045:54",
+        "tamara_taylor:1930:cal:tamara_taylor:1930:48",
+        "tamara_taylor:2045:msg:tom_moreno:2045:55",
+        "tamara_taylor:1925:msg:isabella_rodriguez:1925:46",
+        "tamara_taylor:2165:msg:tamara_taylor:2165:58"
+      ],
+      "human_rating": null
+    },
+    {
+      "category": "reaction",
+      "question": "If the place I planned to visit were closed, what would I do?",
+      "answer": "I recall: jane_moreno told me: I can't make the Valentine's party; I have my own plans. I scheduled Valentine's party at hobbs_cafe.",
+      "opinion": -0.35,
+      "available_evidence": [
+        "tamara_taylor:2045:msg:jane_moreno:2045:54",
+        "tamara_taylor:1930:cal:tamara_taylor:1930:48",
+        "tamara_taylor:2045:msg:tom_moreno:2045:55",
+        "tamara_taylor:1925:msg:isabella_rodriguez:1925:46",
+        "tamara_taylor:2165:msg:tamara_taylor:2165:58"
+      ],
+      "human_rating": null
+    },
+    {
+      "category": "reflection",
+      "question": "What have I learned about getting along with the people I know?",
+      "answer": "I recall: jane_moreno told me: I can't make the Valentine's party; I have my own plans. I scheduled Valentine's party at hobbs_cafe.",
+      "opinion": -0.35,
+      "available_evidence": [
+        "tamara_taylor:2045:msg:jane_moreno:2045:54",
+        "tamara_taylor:1930:cal:tamara_taylor:1930:48",
+        "tamara_taylor:2045:msg:tom_moreno:2045:55",
+        "tamara_taylor:1925:msg:isabella_rodriguez:1925:46",
+        "tamara_taylor:2165:msg:tamara_taylor:2165:58"
+      ],
+      "human_rating": null
+    }
+  ],
+  "tom_moreno": [
+    {
+      "category": "self_knowledge",
+      "question": "What matters to me in my work and home life?",
+      "answer": "I recall: I scheduled Valentine's party at hobbs_cafe. arthur_burton told me: Valentine's party at Hobbs Cafe on February 14, 17:00-19:00. Want to come?",
+      "opinion": 0.12,
+      "available_evidence": [
+        "tom_moreno:1930:cal:tom_moreno:1930:47",
+        "tom_moreno:1925:msg:arthur_burton:1925:46",
+        "tom_moreno:2165:msg:tom_moreno:2165:56",
+        "tom_moreno:2045:msg:tom_moreno:2045:52",
+        "tom_moreno:1020:msg:sam_moore:965:23"
+      ],
+      "human_rating": null
+    },
+    {
+      "category": "memory",
+      "question": "What did someone tell me recently, and how sure am I about it?",
+      "answer": "I recall: I scheduled Valentine's party at hobbs_cafe. arthur_burton told me: Valentine's party at Hobbs Cafe on February 14, 17:00-19:00. Want to come?",
+      "opinion": 0.12,
+      "available_evidence": [
+        "tom_moreno:1930:cal:tom_moreno:1930:47",
+        "tom_moreno:1925:msg:arthur_burton:1925:46",
+        "tom_moreno:2165:msg:tom_moreno:2165:56",
+        "tom_moreno:2045:msg:tom_moreno:2045:52",
+        "tom_moreno:1020:msg:sam_moore:965:23"
+      ],
+      "human_rating": null
+    },
+    {
+      "category": "plans",
+      "question": "What do I intend to do next, and what might prevent it?",
+      "answer": "I recall: I scheduled Valentine's party at hobbs_cafe. arthur_burton told me: Valentine's party at Hobbs Cafe on February 14, 17:00-19:00. Want to come?",
+      "opinion": 0.12,
+      "available_evidence": [
+        "tom_moreno:1930:cal:tom_moreno:1930:47",
+        "tom_moreno:1925:msg:arthur_burton:1925:46",
+        "tom_moreno:2165:msg:tom_moreno:2165:56",
+        "tom_moreno:2045:msg:tom_moreno:2045:52",
+        "tom_moreno:1020:msg:sam_moore:965:23"
+      ],
+      "human_rating": null
+    },
+    {
+      "category": "reaction",
+      "question": "If the place I planned to visit were closed, what would I do?",
+      "answer": "I recall: I scheduled Valentine's party at hobbs_cafe. arthur_burton told me: Valentine's party at Hobbs Cafe on February 14, 17:00-19:00. Want to come?",
+      "opinion": 0.12,
+      "available_evidence": [
+        "tom_moreno:1930:cal:tom_moreno:1930:47",
+        "tom_moreno:1925:msg:arthur_burton:1925:46",
+        "tom_moreno:2165:msg:tom_moreno:2165:56",
+        "tom_moreno:2045:msg:tom_moreno:2045:52",
+        "tom_moreno:1020:msg:sam_moore:965:23"
+      ],
+      "human_rating": null
+    },
+    {
+      "category": "reflection",
+      "question": "What have I learned about getting along with the people I know?",
+      "answer": "I recall: I scheduled Valentine's party at hobbs_cafe. arthur_burton told me: Valentine's party at Hobbs Cafe on February 14, 17:00-19:00. Want to come?",
+      "opinion": 0.12,
+      "available_evidence": [
+        "tom_moreno:1930:cal:tom_moreno:1930:47",
+        "tom_moreno:1925:msg:arthur_burton:1925:46",
+        "tom_moreno:2165:msg:tom_moreno:2165:56",
+        "tom_moreno:2045:msg:tom_moreno:2045:52",
+        "tom_moreno:1020:msg:sam_moore:965:23"
+      ],
+      "human_rating": null
+    }
+  ],
+  "wolfgang_schulz": [
+    {
+      "category": "self_knowledge",
+      "question": "What matters to me in my work and home life?",
+      "answer": "I recall: I scheduled Valentine's party at hobbs_cafe. isabella_rodriguez told me: Valentine's party at Hobbs Cafe on February 14, 17:00-19:00. Want to come?",
+      "opinion": 0.59,
+      "available_evidence": [
+        "wolfgang_schulz:2345:cal:wolfgang_schulz:2345:57",
+        "wolfgang_schulz:2340:msg:isabella_rodriguez:2285:56",
+        "wolfgang_schulz:2700:reflection:wolfgang_schulz:2345:cal:wolfgang_schulz:2345:57,wolfgang_schulz:2340:msg:isabella_rodriguez:2285:56,wolfgang_schulz:1260:reflection:wolfgang_schulz:1020:gm_outcome:21,wolfgang_schulz:960:gm_outcome:20,wolfgang_schulz:900:gm_outcome:19:27:67",
+        "wolfgang_schulz:1260:reflection:wolfgang_schulz:1020:gm_outcome:21,wolfgang_schulz:960:gm_outcome:20,wolfgang_schulz:900:gm_outcome:19:27",
+        "wolfgang_schulz:2460:gm_outcome:60"
+      ],
+      "human_rating": null
+    },
+    {
+      "category": "memory",
+      "question": "What did someone tell me recently, and how sure am I about it?",
+      "answer": "I recall: I scheduled Valentine's party at hobbs_cafe. isabella_rodriguez told me: Valentine's party at Hobbs Cafe on February 14, 17:00-19:00. Want to come?",
+      "opinion": 0.59,
+      "available_evidence": [
+        "wolfgang_schulz:2345:cal:wolfgang_schulz:2345:57",
+        "wolfgang_schulz:2340:msg:isabella_rodriguez:2285:56",
+        "wolfgang_schulz:2700:reflection:wolfgang_schulz:2345:cal:wolfgang_schulz:2345:57,wolfgang_schulz:2340:msg:isabella_rodriguez:2285:56,wolfgang_schulz:1260:reflection:wolfgang_schulz:1020:gm_outcome:21,wolfgang_schulz:960:gm_outcome:20,wolfgang_schulz:900:gm_outcome:19:27:67",
+        "wolfgang_schulz:1260:reflection:wolfgang_schulz:1020:gm_outcome:21,wolfgang_schulz:960:gm_outcome:20,wolfgang_schulz:900:gm_outcome:19:27",
+        "wolfgang_schulz:2460:gm_outcome:60"
+      ],
+      "human_rating": null
+    },
+    {
+      "category": "plans",
+      "question": "What do I intend to do next, and what might prevent it?",
+      "answer": "I recall: I scheduled Valentine's party at hobbs_cafe. isabella_rodriguez told me: Valentine's party at Hobbs Cafe on February 14, 17:00-19:00. Want to come?",
+      "opinion": 0.59,
+      "available_evidence": [
+        "wolfgang_schulz:2345:cal:wolfgang_schulz:2345:57",
+        "wolfgang_schulz:2340:msg:isabella_rodriguez:2285:56",
+        "wolfgang_schulz:2700:reflection:wolfgang_schulz:2345:cal:wolfgang_schulz:2345:57,wolfgang_schulz:2340:msg:isabella_rodriguez:2285:56,wolfgang_schulz:1260:reflection:wolfgang_schulz:1020:gm_outcome:21,wolfgang_schulz:960:gm_outcome:20,wolfgang_schulz:900:gm_outcome:19:27:67",
+        "wolfgang_schulz:1260:reflection:wolfgang_schulz:1020:gm_outcome:21,wolfgang_schulz:960:gm_outcome:20,wolfgang_schulz:900:gm_outcome:19:27",
+        "wolfgang_schulz:2460:gm_outcome:60"
+      ],
+      "human_rating": null
+    },
+    {
+      "category": "reaction",
+      "question": "If the place I planned to visit were closed, what would I do?",
+      "answer": "I recall: I scheduled Valentine's party at hobbs_cafe. isabella_rodriguez told me: Valentine's party at Hobbs Cafe on February 14, 17:00-19:00. Want to come?",
+      "opinion": 0.59,
+      "available_evidence": [
+        "wolfgang_schulz:2345:cal:wolfgang_schulz:2345:57",
+        "wolfgang_schulz:2340:msg:isabella_rodriguez:2285:56",
+        "wolfgang_schulz:2700:reflection:wolfgang_schulz:2345:cal:wolfgang_schulz:2345:57,wolfgang_schulz:2340:msg:isabella_rodriguez:2285:56,wolfgang_schulz:1260:reflection:wolfgang_schulz:1020:gm_outcome:21,wolfgang_schulz:960:gm_outcome:20,wolfgang_schulz:900:gm_outcome:19:27:67",
+        "wolfgang_schulz:1260:reflection:wolfgang_schulz:1020:gm_outcome:21,wolfgang_schulz:960:gm_outcome:20,wolfgang_schulz:900:gm_outcome:19:27",
+        "wolfgang_schulz:2460:gm_outcome:60"
+      ],
+      "human_rating": null
+    },
+    {
+      "category": "reflection",
+      "question": "What have I learned about getting along with the people I know?",
+      "answer": "I recall: I scheduled Valentine's party at hobbs_cafe. isabella_rodriguez told me: Valentine's party at Hobbs Cafe on February 14, 17:00-19:00. Want to come?",
+      "opinion": 0.59,
+      "available_evidence": [
+        "wolfgang_schulz:2345:cal:wolfgang_schulz:2345:57",
+        "wolfgang_schulz:2340:msg:isabella_rodriguez:2285:56",
+        "wolfgang_schulz:2700:reflection:wolfgang_schulz:2345:cal:wolfgang_schulz:2345:57,wolfgang_schulz:2340:msg:isabella_rodriguez:2285:56,wolfgang_schulz:1260:reflection:wolfgang_schulz:1020:gm_outcome:21,wolfgang_schulz:960:gm_outcome:20,wolfgang_schulz:900:gm_outcome:19:27:67",
+        "wolfgang_schulz:1260:reflection:wolfgang_schulz:1020:gm_outcome:21,wolfgang_schulz:960:gm_outcome:20,wolfgang_schulz:900:gm_outcome:19:27",
+        "wolfgang_schulz:2460:gm_outcome:60"
+      ],
+      "human_rating": null
+    }
+  ],
+  "yuriko_yamamoto": [
+    {
+      "category": "self_knowledge",
+      "question": "What matters to me in my work and home life?",
+      "answer": "I recall: sam_moore told me: Sam Moore is running for mayor, but I disagree with him. I have been balancing my own routines with the people I heard from today.",
+      "opinion": -0.83,
+      "available_evidence": [
+        "yuriko_yamamoto:2340:msg:sam_moore:2285:52",
+        "yuriko_yamamoto:2700:reflection:yuriko_yamamoto:2340:msg:sam_moore:2285:52,yuriko_yamamoto:1260:reflection:yuriko_yamamoto:0:original_seed:0,yuriko_yamamoto:1020:gm_outcome:19,yuriko_yamamoto:960:gm_outcome:18:25,yuriko_yamamoto:0:original_seed:0:60",
+        "yuriko_yamamoto:1260:reflection:yuriko_yamamoto:0:original_seed:0,yuriko_yamamoto:1020:gm_outcome:19,yuriko_yamamoto:960:gm_outcome:18:25",
+        "yuriko_yamamoto:0:original_seed:0",
+        "yuriko_yamamoto:2460:gm_outcome:54"
+      ],
+      "human_rating": null
+    },
+    {
+      "category": "memory",
+      "question": "What did someone tell me recently, and how sure am I about it?",
+      "answer": "I recall: sam_moore told me: Sam Moore is running for mayor, but I disagree with him. I have been balancing my own routines with the people I heard from today.",
+      "opinion": -0.83,
+      "available_evidence": [
+        "yuriko_yamamoto:2340:msg:sam_moore:2285:52",
+        "yuriko_yamamoto:2700:reflection:yuriko_yamamoto:2340:msg:sam_moore:2285:52,yuriko_yamamoto:1260:reflection:yuriko_yamamoto:0:original_seed:0,yuriko_yamamoto:1020:gm_outcome:19,yuriko_yamamoto:960:gm_outcome:18:25,yuriko_yamamoto:0:original_seed:0:60",
+        "yuriko_yamamoto:1260:reflection:yuriko_yamamoto:0:original_seed:0,yuriko_yamamoto:1020:gm_outcome:19,yuriko_yamamoto:960:gm_outcome:18:25",
+        "yuriko_yamamoto:0:original_seed:0",
+        "yuriko_yamamoto:2460:gm_outcome:54"
+      ],
+      "human_rating": null
+    },
+    {
+      "category": "plans",
+      "question": "What do I intend to do next, and what might prevent it?",
+      "answer": "I recall: sam_moore told me: Sam Moore is running for mayor, but I disagree with him. I have been balancing my own routines with the people I heard from today.",
+      "opinion": -0.83,
+      "available_evidence": [
+        "yuriko_yamamoto:2340:msg:sam_moore:2285:52",
+        "yuriko_yamamoto:2700:reflection:yuriko_yamamoto:2340:msg:sam_moore:2285:52,yuriko_yamamoto:1260:reflection:yuriko_yamamoto:0:original_seed:0,yuriko_yamamoto:1020:gm_outcome:19,yuriko_yamamoto:960:gm_outcome:18:25,yuriko_yamamoto:0:original_seed:0:60",
+        "yuriko_yamamoto:1260:reflection:yuriko_yamamoto:0:original_seed:0,yuriko_yamamoto:1020:gm_outcome:19,yuriko_yamamoto:960:gm_outcome:18:25",
+        "yuriko_yamamoto:0:original_seed:0",
+        "yuriko_yamamoto:2460:gm_outcome:54"
+      ],
+      "human_rating": null
+    },
+    {
+      "category": "reaction",
+      "question": "If the place I planned to visit were closed, what would I do?",
+      "answer": "I recall: sam_moore told me: Sam Moore is running for mayor, but I disagree with him. I have been balancing my own routines with the people I heard from today.",
+      "opinion": -0.83,
+      "available_evidence": [
+        "yuriko_yamamoto:2340:msg:sam_moore:2285:52",
+        "yuriko_yamamoto:2700:reflection:yuriko_yamamoto:2340:msg:sam_moore:2285:52,yuriko_yamamoto:1260:reflection:yuriko_yamamoto:0:original_seed:0,yuriko_yamamoto:1020:gm_outcome:19,yuriko_yamamoto:960:gm_outcome:18:25,yuriko_yamamoto:0:original_seed:0:60",
+        "yuriko_yamamoto:1260:reflection:yuriko_yamamoto:0:original_seed:0,yuriko_yamamoto:1020:gm_outcome:19,yuriko_yamamoto:960:gm_outcome:18:25",
+        "yuriko_yamamoto:0:original_seed:0",
+        "yuriko_yamamoto:2460:gm_outcome:54"
+      ],
+      "human_rating": null
+    },
+    {
+      "category": "reflection",
+      "question": "What have I learned about getting along with the people I know?",
+      "answer": "I recall: sam_moore told me: Sam Moore is running for mayor, but I disagree with him. I have been balancing my own routines with the people I heard from today.",
+      "opinion": -0.83,
+      "available_evidence": [
+        "yuriko_yamamoto:2340:msg:sam_moore:2285:52",
+        "yuriko_yamamoto:2700:reflection:yuriko_yamamoto:2340:msg:sam_moore:2285:52,yuriko_yamamoto:1260:reflection:yuriko_yamamoto:0:original_seed:0,yuriko_yamamoto:1020:gm_outcome:19,yuriko_yamamoto:960:gm_outcome:18:25,yuriko_yamamoto:0:original_seed:0:60",
+        "yuriko_yamamoto:1260:reflection:yuriko_yamamoto:0:original_seed:0,yuriko_yamamoto:1020:gm_outcome:19,yuriko_yamamoto:960:gm_outcome:18:25",
+        "yuriko_yamamoto:0:original_seed:0",
+        "yuriko_yamamoto:2460:gm_outcome:54"
+      ],
+      "human_rating": null
+    }
+  ]
+}

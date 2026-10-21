@@ -1,0 +1,30 @@
+{
+  "implementation_commit": "0b9f6717b5b19d2efbbd93c1c579b2bcebdfd209",
+  "offline_tests": {
+    "command": "python -m pytest",
+    "passed": 25,
+    "failed": 0,
+    "seconds": 102.71,
+    "internet_sockets_disabled": true
+  },
+  "checks": {
+    "a_offline_suite": "passed",
+    "b_two_days_25_agents_mock": "passed",
+    "c_valentine_benchmark": "passed",
+    "d_one_day_real_api_under_cap": "not_run"
+  },
+  "live_api_blockers": [
+    "No configured completion/embedding model variables",
+    "No configured API credentials",
+    "No approved paid run or spending cap"
+  ],
+  "paid_calls_made": 0,
+  "note": "MockLLM is a deterministic engineering fixture. Its synthetic tokens and party outcomes do not establish realism gains. Benchmark metrics exclude the subsequent research interview calls.",
+  "interviews": {
+    "residents": 25,
+    "responses": 125,
+    "additional_usd": "0",
+    "human_ratings_collected": false
+  },
+  "browser_verified": true
+}

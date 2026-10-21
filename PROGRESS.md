@@ -7,10 +7,9 @@
 - No paid service has been added or called.
 
 ## Next
-1. Finish browser verification and save a final acceptance report.
-2. Commit the remaining Phase 1 modules and documentation.
-3. Stop at Phase 1. A live day additionally requires model configuration,
-   API credentials and explicit spending approval.
+1. Stop at Phase 1; implementation and offline verification are complete.
+2. A live day remains blocked on model configuration, API credentials and
+   explicit spending approval. No paid service was added or called.
 
 ## Step 2 — Reference inspection and provenance
 - Read all six current-phase repository licenses before copying any material.
@@ -37,13 +36,14 @@
   Representatives now use the component connecting the most named sectors.
 
 ## Open issues / acceptance
-- (a) Offline tests: 23 passed before the interruption (55.30 seconds).
-  Two additional gateway regression tests await the final run.
-- (b) Two MockLLM days / 25 agents: passed in the offline integration test and
-  a development run; final report artifact pending.
-- (c) Valentine's benchmark: CLI implemented and exercised in integration.
+- (a) Offline tests: **25 passed**, final run 102.71 seconds; internet sockets disabled.
+- (b) Two MockLLM days / 25 agents: **passed**, completed all 2,880 simulated minutes.
+- (c) Valentine's benchmark: **passed**, runnable CLI and saved measurements.
 - (d) One paid API day under cap: pending explicit approval and configured models/credentials.
 - Later phases are deliberately out of scope.
+- Mock behavior and synthetic token counts do not demonstrate realism gains.
+- No blinded human ratings or 1,000-resident load test have been conducted.
+- Seed relationships start at density 0.233, differing from the paper's 0.167.
 
 ## Step 4 — Model gateway and offline backend
 - Added env-only live model configuration, individual model overrides, a lazy
@@ -85,3 +85,26 @@
   must be measured again after those fixes.
 - Restored workspace after interruption on 2026-10-21. No code or test files
   were lost. Model variables and API credentials are still absent.
+
+## Step 7 — Final offline acceptance and stop
+- Final suite: **25 passed in 102.71 seconds**, including the two additional
+  budget-persistence and single-writer regression tests. Ruff/format checks pass.
+- Fresh CLI benchmark: 25 residents, 2 simulated days, 1,594 model requests,
+  161 messages, $0 total / **$0 per resident per simulated day**. Wall time
+  was 121.296 seconds while the full suite ran concurrently.
+- Awareness: Sam 1 to 14; party 1 to 19. Attendance: 12 of 18 invited guests;
+  mutual-knowledge density 0.233 to 0.327. These are scripted mock diagnostics.
+- The GM rejected 12 attempts that crossed a venue's closing time; no rejected
+  intent was allowed to change physical outcomes.
+- Chromium/Playwright verified 25 rendered residents, selection, all five needs,
+  past sleep state, play/pause, party-time inspection and cost display, with no
+  page errors or external browser requests. Saved a screenshot.
+- Ran all five interview categories for all 25 residents: 125 responses, $0
+  additional cost. Human ratings remain uncollected. Interview calls are separate
+  from the 1,594-request simulation measurement.
+- Rechecked all 31 retained map/seed files against recorded upstream hashes.
+- Saved benchmark, interviews, browser evidence and acceptance status under
+  `reports/`; complete replay artifacts remain in `runs/phase1-acceptance/`.
+- All Phase 1 implementation is committed. No Phase 2 or later work was started.
+- Paid API validation was not attempted: models, credentials, cap and spending
+  approval are absent. Acceptance (d) remains explicitly incomplete.

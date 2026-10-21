@@ -40,6 +40,9 @@ events commit together; JSONL is mirrored after commit. Reopening recovers missi
 or torn JSONL tails from SQLite and rejects a conflicting complete prefix.
 There is one authoritative writer per run. Full agent snapshots favor transparent
 replay over storage efficiency in Phase 1; this is not yet a 1,000-agent load test.
+Reopening a run preserves its original spending cap; a larger environment value
+cannot silently increase that run's allowance. Tested direct dependency versions
+are recorded in `requirements-tested.txt`.
 
 The map provider turns the retained Tiled geometry/collision matrices into named
 locations with paths, synthetic addresses, opening hours and capacities. The
@@ -97,3 +100,5 @@ account balances exercise resource guards, but no financial economy is simulated
 
 `SPEC.md` is the complete original request. `PROGRESS.md` records completion and
 open issues, and `DECISIONS.md` records the rationale. Only Phase 1 is implemented.
+The saved [Phase 1 report](reports/PHASE1_REPORT.md) contains acceptance evidence,
+mock benchmark measurements, browser verification and the remaining API blocker.

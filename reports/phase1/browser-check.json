@@ -1,0 +1,12 @@
+{
+  "browser": "Chromium via Playwright",
+  "residents_rendered": 25,
+  "inspected_resident": "Isabella Rodriguez",
+  "needs_bars": 5,
+  "historical_sleep_view": true,
+  "play_pause": true,
+  "party_time_selected": 2520,
+  "page_errors": [],
+  "external_requests": [],
+  "screenshot": "viewer.png"
+}
