@@ -1,3 +1,5 @@
+from copy import deepcopy
+
 import httpx
 import pytest
 
@@ -185,6 +187,40 @@ def test_mock_does_not_propose_an_overlapping_scene():
         "last_social_at": 600,
     }
     assert mock_action(context, 42)["kind"] == "leisure"
+
+
+def test_mock_invitation_choice_changes_when_only_directed_trust_changes():
+    context = {
+        "self": {"id": "mei_lin", "home": "lin_family_s_house"},
+        "minute": 100,
+        "perception": {"location": "lin_family_s_house"},
+        "hour_plan": {
+            "start": 100,
+            "end": 160,
+            "activity": "leisure",
+            "location": "lin_family_s_house",
+        },
+        "needs": {"fullness": 80, "energy": 80},
+        "conversation_app": {
+            "pending_invitations": [
+                {
+                    "id": "conversation:john_lin:95",
+                    "from": "john_lin",
+                    "can_accept": True,
+                    "constraint": None,
+                }
+            ],
+            "commitments": [],
+            "hosted_today": 0,
+        },
+        "relationship_states": {"john_lin": {"trust": 0.2}},
+    }
+    trusted = mock_action(context, 42)
+    wary_context = deepcopy(context)
+    wary_context["relationship_states"]["john_lin"]["trust"] = -0.2
+    wary = mock_action(wary_context, 42)
+    assert trusted["arguments"]["response"] == "accept"
+    assert wary["arguments"]["response"] == "refuse"
 
 
 async def test_conversation_invitations_require_independent_acceptance_and_time(setup_world, town):
