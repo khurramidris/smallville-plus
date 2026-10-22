@@ -7,6 +7,11 @@ from smallville.agents.goals import GoalRequest, Goals
 from smallville.agents.memory import archive_changes, remember
 from smallville.apps.bank import Bank
 from smallville.apps.civic import CastVote, Council, Notice, NoticeBoard
+from smallville.apps.conversations import (
+    Conversations,
+    ProposeConversation,
+    RespondConversation,
+)
 from smallville.apps.gatherings import Gatherings
 from smallville.apps.phone import Calendar, CreateEvent, Messaging, SendMessage
 from smallville.config import Config
@@ -26,6 +31,7 @@ class GameMaster:
     def __init__(self, world: WorldState, town: MapProvider, gateway: Gateway, config: Config):
         self.world, self.town, self.gateway, self.config = world, town, gateway, config
         self.messaging, self.calendar = Messaging(world), Calendar(world)
+        self.conversations = Conversations(world, town)
         self.bank, self.economy = Bank(world), Economy(world, config)
         self.goals = Goals(world)
         self.board, self.council, self.gatherings = (
@@ -43,7 +49,7 @@ class GameMaster:
             raise RuleViolation("not enough food")
 
     def _check(self, actor: Agent, intent: Intent, minute: int) -> int:
-        if actor.busy_until > minute or actor.pending:
+        if actor.busy_until > minute or actor.pending or actor.scene_id:
             raise RuleViolation("I am already busy")
         if actor.location is None:
             raise RuleViolation("I am still travelling")
@@ -57,7 +63,17 @@ class GameMaster:
             raise RuleViolation("that app is not available")
         if (
             intent.kind
-            not in ("message", "calendar", "buy", "transfer", "post_notice", "vote", "goal")
+            not in (
+                "message",
+                "calendar",
+                "buy",
+                "transfer",
+                "post_notice",
+                "vote",
+                "goal",
+                "conversation_invite",
+                "conversation_respond",
+            )
             and intent.arguments
         ):
             raise RuleViolation("unsupported action arguments")
@@ -128,6 +144,25 @@ class GameMaster:
                 raise RuleViolation("goal updates require the connected realism profile")
             self.goals.validate(actor, GoalRequest.model_validate(intent.arguments), minute + 5)
             duration = 5
+        elif intent.kind in ("check_phone", "conversation_invite", "conversation_respond"):
+            if self.config.realism_profile != "connected_v1":
+                raise RuleViolation("that social app requires the connected realism profile")
+            if intent.kind == "check_phone":
+                duration = 5
+            elif intent.kind == "conversation_invite":
+                self.conversations.validate_proposal(
+                    actor,
+                    ProposeConversation.model_validate(intent.arguments),
+                    minute + 5,
+                )
+                duration = 5
+            else:
+                self.conversations.validate_response(
+                    actor,
+                    RespondConversation.model_validate(intent.arguments),
+                    minute + 5,
+                )
+                duration = 5
         elif intent.kind == "attend":
             matches = [
                 e
@@ -147,6 +182,9 @@ class GameMaster:
         if intent.kind != "move":
             if not self.world.location(actor.location).open_throughout(minute, minute + duration):
                 raise RuleViolation("this place will close before I finish")
+        commitment = self.conversations.next_commitment(actor.id, minute)
+        if commitment and minute < commitment["start"] < minute + duration:
+            raise RuleViolation("this would overlap a conversation I accepted")
         return duration
 
     def reject(self, actor: Agent, minute: int, reason: str, intent: Intent | None = None):
@@ -334,6 +372,38 @@ class GameMaster:
             changes.extend(self.goals.transition_changes(actor, request, minute))
             data.update(goal_id=request.goal_id, goal_action=request.action)
             observation = f"I recorded a {request.action} update to one of my goals."
+        elif intent.kind == "check_phone":
+            updates, read, remaining = self.messaging.check_changes(actor, minute, limit=2)
+            changes.extend(updates)
+            data.update(messages=read, remaining=remaining)
+            observation = f"I read {len(read)} phone messages; {remaining} remain unread."
+            if read:
+                actor.surprise = True
+        elif intent.kind == "conversation_invite":
+            request = ProposeConversation.model_validate(intent.arguments)
+            conversation, updates = self.conversations.proposal_changes(actor, request, minute)
+            changes.extend(updates)
+            data.update(
+                conversation_id=conversation.id,
+                conversation_start=conversation.start,
+                recipients=conversation.invitees,
+            )
+            observation = (
+                f"I proposed a conversation about {conversation.topic} and await each reply."
+            )
+        elif intent.kind == "conversation_respond":
+            request = RespondConversation.model_validate(intent.arguments)
+            conversation, updates = self.conversations.response_changes(actor, request, minute)
+            changes.extend(updates)
+            data.update(
+                conversation_id=conversation.id,
+                conversation_response=request.response,
+            )
+            observation = (
+                "I accepted the conversation invitation."
+                if request.response == "accept"
+                else "I refused the conversation invitation."
+            )
         elif intent.kind == "attend":
             data["location"] = actor.location
             observation = f"I spent time at the event in {actor.location}."

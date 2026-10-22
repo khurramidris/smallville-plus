@@ -14,6 +14,17 @@
 - Treat unread phone bodies as private information that costs attention to obtain.
   Notifications expose metadata only, and each five-minute check will read at most
   two messages with urgent-first ordering; residents may leave the rest unread.
+- Schedule spoken scenes through an app proposal rather than turning co-location
+  into automatic dialogue. The host chooses a near-future local window; each other
+  resident spends their own turn accepting or refusing, and silence expires.
+- Reserve accepted conversation windows against calendar and action overlap, then
+  admit only accepted residents who are actually present and free at the start.
+  An acceptance never teleports, interrupts an existing action or invents consent.
+- Store a listener set on every spoken turn and use it for observations, memories,
+  knowledge exposure and appraisal evidence. Physical bystanders can observe that
+  a conversation exists but cannot receive its private words.
+- Allow voluntary departure without ending a scene that still has two people.
+  Conversation text is testimony; the app does not decide whether it is true.
 
 ## Connected realism implementation, batch 2 — 2026-10-22
 - Complete R1 before adding R2 conversation mechanics. Histories, memory, goals

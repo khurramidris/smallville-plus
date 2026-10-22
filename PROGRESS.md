@@ -13,7 +13,20 @@
   prioritizes urgent mail, reads at most two messages and records its time/count.
 - New focused tests cover bounded urgent-first reads, hidden unread bodies,
   asymmetric evidenced appraisal, private-evidence rejection and emotion decay.
-  Fourteen affected foundation tests pass; R2 conversation scheduling remains next.
+  Fourteen affected foundation tests passed at this step.
+- R2 step 2, consent and private scenes: added conversation-app proposals for one
+  to three invitees, independent accept/refuse responses, response deadlines,
+  calendar/travel/accepted-scene conflicts and explicit start/end state. Accepted
+  commitments block ordinary actions that would run across the scene start.
+- Conversation turns store the actual speaker, text, action and listener set.
+  Only accepted active participants receive observations and memories; co-located
+  bystanders receive neither. Statements enter listener knowledge as attributed
+  testimony rather than world truth.
+- A participant may leave on their own turn. The scene continues with two or more
+  people and ends when fewer remain or its scheduled window closes. Direct service
+  tests cover a willing invitee, an explicit refusal, a busy nonresponse, a
+  three-person scene, false testimony, private routing, appraisal and departure.
+  All 16 affected world/GM/social tests pass. Scheduler/model integration is next.
 
 ## Connected realism implementation, batch 2 — completed 2026-10-22
 - Continued the ordered plan by completing the R1 engineering gate. R2 social

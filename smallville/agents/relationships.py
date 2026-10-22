@@ -62,10 +62,19 @@ def relationship_state(world, actor: Agent, peer: str) -> RelationshipState:
         return default_state(actor, peer)
 
 
-def contact_change(world, actor: Agent, peer: str, minute: int, evidence: str):
+def contact_change(
+    world,
+    actor: Agent,
+    peer: str,
+    minute: int,
+    evidence: str,
+    state: RelationshipState | None = None,
+):
     """Record actual contact without guessing sentiment from its words."""
 
-    state = relationship_state(world, actor, peer)
+    state = (
+        state.model_copy(deep=True) if state is not None else relationship_state(world, actor, peer)
+    )
     state.familiarity = clamp(state.familiarity + 0.01, 0, 1)
     state.updated_at = minute
     state.evidence = [*state.evidence, evidence][-32:]
@@ -79,6 +88,7 @@ def appraisal_changes(
     minute: int,
     appraisal: RelationshipAppraisal,
     witnessed_turns: dict[str, dict],
+    state: RelationshipState | None = None,
 ):
     if appraisal.peer == actor.id:
         raise ValueError("I cannot appraise myself as a conversation partner")
@@ -89,7 +99,11 @@ def appraisal_changes(
         for identifier in appraisal.evidence
     ):
         raise ValueError("relationship evidence must include that person's turn")
-    state = relationship_state(world, actor, appraisal.peer)
+    state = (
+        state.model_copy(deep=True)
+        if state is not None
+        else relationship_state(world, actor, appraisal.peer)
+    )
     state.trust = clamp(state.trust + appraisal.trust_delta, -1, 1)
     state.affinity = clamp(state.affinity + appraisal.affinity_delta, -1, 1)
     state.obligation = clamp(state.obligation + appraisal.obligation_delta, -1, 1)
