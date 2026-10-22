@@ -34,7 +34,23 @@ def merge_future(plan: DailyPlan, patch: PlanPatch) -> DailyPlan:
             break
         else:
             break
-    return DailyPlan(day=plan.day, blocks=[*prefix, *patch.blocks])
+    merged: list[PlanBlock] = []
+    for block in [*prefix, *patch.blocks]:
+        # Repeated surprise repairs often split the same routine block at the
+        # current minute.  Keeping those artificial seams eventually exhausts
+        # DailyPlan's bounded representation even though the schedule has not
+        # become more complex.  Adjacent equivalent blocks describe exactly
+        # the same minute-by-minute plan, so normalize them at every merge.
+        if (
+            merged
+            and merged[-1].end == block.start
+            and merged[-1].activity == block.activity
+            and merged[-1].location == block.location
+        ):
+            merged[-1] = merged[-1].model_copy(update={"end": block.end})
+        else:
+            merged.append(block.model_copy(deep=True))
+    return DailyPlan(day=plan.day, blocks=merged)
 
 
 def appointment_constraints(context: dict) -> tuple[list[dict], list[dict]]:
@@ -42,10 +58,12 @@ def appointment_constraints(context: dict) -> tuple[list[dict], list[dict]]:
 
     minute = context["minute"]
     day_start = minute // 1440 * 1440
+    schedule = [*context["calendar"]]
+    schedule.extend(context.get("conversation_app", {}).get("commitments", []))
     candidates = sorted(
         (
             event
-            for event in context["calendar"]
+            for event in schedule
             if minute < event["end"] <= day_start + 1440 and event["start"] >= minute
         ),
         key=lambda event: (event["start"], event["id"]),

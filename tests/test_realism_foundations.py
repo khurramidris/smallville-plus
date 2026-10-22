@@ -4,6 +4,7 @@ from smallville.agents.goals import GoalRequest, Goals
 from smallville.agents.knowledge import campaign_claim
 from smallville.agents.memory import LexicalMemoryRetriever, archive_changes, remember, retrieve
 from smallville.agents.mind import Mind
+from smallville.agents.planning import PlanPatch, merge_future
 from smallville.apps.phone import Messaging, SendMessage
 from smallville.config import Config
 from smallville.engine.simulation import Simulation
@@ -293,6 +294,37 @@ async def test_future_plan_repair_preserves_elapsed_time_and_known_constraints(s
     assert protected
     assert not any(block.location == market for block in actor.plan.blocks if block.start >= 1000)
     assert all(block.location in actor.persona.known_locations for block in actor.plan.blocks)
+
+
+def test_repeated_plan_repairs_do_not_accumulate_equivalent_seams():
+    plan = DailyPlan.model_validate(
+        {
+            "day": 0,
+            "blocks": [
+                {"start": 0, "end": 600, "activity": "sleep", "location": "home"},
+                {"start": 600, "end": 720, "activity": "work", "location": "shop"},
+                {"start": 720, "end": 1440, "activity": "leisure", "location": "home"},
+            ],
+        }
+    )
+    for start in range(601, 641):
+        patch = PlanPatch.model_validate(
+            {
+                "day": 0,
+                "start": start,
+                "blocks": [
+                    {"start": start, "end": 720, "activity": "work", "location": "shop"},
+                    {
+                        "start": 720,
+                        "end": 1440,
+                        "activity": "leisure",
+                        "location": "home",
+                    },
+                ],
+            }
+        )
+        plan = merge_future(plan, patch)
+    assert len(plan.blocks) == 3
 
 
 async def test_connected_profile_requires_and_uses_rich_population(tmp_path):

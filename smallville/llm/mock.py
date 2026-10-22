@@ -77,6 +77,76 @@ def action(context: dict, seed: int) -> dict:
             return intend("move", location, text=f"I want to walk to {location}.")
         return intend(kind, duration=duration)
 
+    social = context.get("conversation_app")
+    if social:
+        if social["pending_invitations"]:
+            invitation = social["pending_invitations"][0]
+            relationship = context["relationship_states"].get(invitation["from"], {})
+            willing = invitation["can_accept"] and relationship.get("trust", 0) >= -0.1
+            return intend(
+                "conversation_respond",
+                duration=5,
+                arguments={
+                    "conversation_id": invitation["id"],
+                    "response": "accept" if willing else "refuse",
+                    "reason": (
+                        "I have room in my plans and am willing to hear them out."
+                        if willing
+                        else invitation["constraint"]
+                        or "I do not trust this conversation enough to give it my time."
+                    ),
+                },
+                text="I want to answer the conversation invitation for myself.",
+            )
+        for scene in social["commitments"]:
+            travel = context["travel_minutes"].get(scene["location"], 10**6)
+            if scene["start"] - travel <= minute < scene["start"]:
+                return go_or("wait", scene["location"], max(1, scene["start"] - minute))
+        notifications = context["perception"]["notifications"]
+        last_checked = context["phone_attention"]["last_checked"]
+        if notifications and (
+            any(item["verbosity"] == "urgent" for item in notifications)
+            or last_checked < minute - 90
+        ):
+            return intend(
+                "check_phone",
+                duration=5,
+                text="I want to spend a few minutes checking some messages.",
+            )
+        can_host = "conversation_invite" in context.get("known_feasible_actions", [])
+        nearby = sorted(peer["id"] for peer in context["perception"]["nearby"])
+        if (
+            can_host
+            and nearby
+            and social["hosted_today"] == 0
+            and block["activity"] == "leisure"
+            and 600 <= hour < 1200
+        ):
+            start = minute + 15
+            end = start + 20
+            hours = context["opening_hours"][here]
+            local_end = end % 1440
+            stays_open = hours["opens"] == 0 and hours["closes"] == 1440
+            stays_open = stays_open or hours["opens"] <= hour < local_end <= hours["closes"]
+            if stays_open:
+                topic = (
+                    context["active_goals"][0]["description"][:180]
+                    if context["active_goals"]
+                    else "how our current plans are going"
+                )
+                return intend(
+                    "conversation_invite",
+                    duration=5,
+                    arguments={
+                        "participants": nearby[:2],
+                        "topic": topic,
+                        "start": start,
+                        "end": end,
+                        "location": here,
+                    },
+                    text="I want to ask the people here whether they want to talk.",
+                )
+
     if context.get("phase") == 3 and block["activity"] != "sleep":
         from smallville.llm.mock_economy import economic_action
 
@@ -190,6 +260,63 @@ def action(context: dict, seed: int) -> dict:
     return go_or(block["activity"], destination, duration)
 
 
+def conversation_turn(context: dict, seed: int) -> dict:
+    private = context["private_conversation"]
+    conversation = private["conversation"]
+    turns = private["turns"]
+    actor = context["self"]["id"]
+    if min(context["needs"]["energy"], context["needs"]["fullness"]) < 20:
+        return {
+            "action": "leave",
+            "text": "I need to look after myself, so I am leaving now.",
+            "appraisals": [],
+        }
+    if turns and len(turns) >= len(conversation["turn_order"]) + 1:
+        digest = int(hashlib.sha256(f"{actor}:{conversation['id']}".encode()).hexdigest()[:4], 16)
+        if digest % 4 == 0:
+            return {
+                "action": "leave",
+                "text": "I have said what I needed to say and am returning to my plans.",
+                "appraisals": [],
+            }
+    if not turns:
+        text = f"I wanted to hear your own views about {conversation['topic']}."
+        appraisals = []
+    else:
+        last = turns[-1]
+        peer = last["speaker"]
+        digest = int(
+            hashlib.sha256(f"{actor}:{peer}:{last['id']}:{seed}".encode()).hexdigest()[:4],
+            16,
+        )
+        stance = digest % 3 - 1
+        if stance > 0:
+            text = "That sounds useful to me, though I want to think through the details myself."
+        elif stance < 0:
+            text = "I do not see it the same way, and I am keeping my own priorities in mind."
+        else:
+            text = "I heard what you said. I do not have enough evidence to agree or disagree yet."
+        appraisals = (
+            [
+                {
+                    "peer": peer,
+                    "trust_delta": 0.03 * stance,
+                    "affinity_delta": 0.02 * stance,
+                    "obligation_delta": 0,
+                    "reason": (
+                        "Their actual turn made me more receptive."
+                        if stance > 0
+                        else "Their actual turn made me more cautious."
+                    ),
+                    "evidence": [last["id"]],
+                }
+            ]
+            if stance
+            else []
+        )
+    return {"action": "speak", "text": text, "appraisals": appraisals}
+
+
 class MockLLM:
     async def complete(self, *, model, prompt, seed, temperature, max_tokens):
         context = json.loads(prompt.rsplit("\n\nCURRENT CONTEXT:\n", 1)[1])
@@ -202,6 +329,8 @@ class MockLLM:
             result = deterministic_patch(context).model_dump()
         elif task == "action":
             result = action(context, seed)
+        elif task == "conversation_turn":
+            result = conversation_turn(context, seed)
         elif task == "reflection":
             recalled = context["memories"][:3]
             result = {

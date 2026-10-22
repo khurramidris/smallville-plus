@@ -77,6 +77,9 @@ class Conversations:
     def _conversation(self, identifier: str) -> Conversation:
         return Conversation.model_validate(self.world.get("conversations", identifier))
 
+    def conversation(self, identifier: str) -> Conversation:
+        return self._conversation(identifier)
+
     def _invitation(self, identifier: str, owner: str) -> ConversationInvitation:
         return ConversationInvitation.model_validate(
             self.world.get("conversation_invitations", self.invitation_id(identifier, owner))
@@ -503,6 +506,7 @@ class Conversations:
                 "conversation_id": conversation.id,
                 "turn_id": turn.id,
                 "action": decision.action,
+                "appraisals_applied": len(decision.appraisals),
                 "ended": conversation.status == "ended",
                 "wake": list(dict.fromkeys(wake)),
             },

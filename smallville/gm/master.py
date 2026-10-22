@@ -183,8 +183,16 @@ class GameMaster:
             if not self.world.location(actor.location).open_throughout(minute, minute + duration):
                 raise RuleViolation("this place will close before I finish")
         commitment = self.conversations.next_commitment(actor.id, minute)
-        if commitment and minute < commitment["start"] < minute + duration:
-            raise RuleViolation("this would overlap a conversation I accepted")
+        if commitment:
+            completion = minute + duration
+            if completion > commitment["start"]:
+                raise RuleViolation("this would overlap a conversation I accepted")
+            projected_location = intent.target if intent.kind == "move" else actor.location
+            return_travel = self.town.travel_minutes(projected_location, commitment["location"])
+            if completion + return_travel > commitment["start"]:
+                raise RuleViolation(
+                    "this would leave too little time to reach a conversation I accepted"
+                )
         return duration
 
     def reject(self, actor: Agent, minute: int, reason: str, intent: Intent | None = None):

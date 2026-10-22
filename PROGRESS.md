@@ -26,7 +26,24 @@
   people and ends when fewer remain or its scheduled window closes. Direct service
   tests cover a willing invitee, an explicit refusal, a busy nonresponse, a
   three-person scene, false testimony, private routing, appraisal and departure.
-  All 16 affected world/GM/social tests pass. Scheduler/model integration is next.
+  All 16 affected world/GM/social tests passed at this step.
+- R2 step 3, scheduler/model integration: the engine now books scene starts and
+  ends, obtains each turn from that speaker's private context, records the
+  intention separately from the GM-committed utterance, and releases participants
+  on departure or ending. MockLLM independently accepts/refuses using directed
+  trust, checks a bounded inbox, proposes at most one scene per day and can
+  disagree or leave. A focused engine test proves turns run through the scheduler,
+  exclude a co-located bystander and release both participants.
+- The first full-day probe exposed accumulated plan-repair seams at the 32-block
+  bound. Equivalent adjacent blocks are now normalized after every repair; a
+  regression performs 40 repairs without growing the plan. The next probe exposed
+  a host walking away after inviting others. GM commitment checks now reserve both
+  action time and the return travel needed to reach the accepted scene.
+- A 25-resident one-day Phase 3 probe completed all 1,440 minutes before the travel
+  fix with 21 proposals, two started scenes, eight independently generated turns
+  and 19 expired/unavailable cancellations. This is diagnostic evidence: the low
+  start rate is visible and is not presented as a realism success. Metrics, viewer
+  inspection and final replay/full-suite gates are next.
 
 ## Connected realism implementation, batch 2 — completed 2026-10-22
 - Continued the ordered plan by completing the R1 engineering gate. R2 social

@@ -14,6 +14,10 @@ from smallville.world.models import (
 )
 
 
+class RelationshipAppraisalError(ValueError):
+    """An appraisal cites social evidence the resident cannot validly use."""
+
+
 class RelationshipAppraisal(Model):
     peer: str
     trust_delta: float = Field(default=0, ge=-0.15, le=0.15)
@@ -91,14 +95,14 @@ def appraisal_changes(
     state: RelationshipState | None = None,
 ):
     if appraisal.peer == actor.id:
-        raise ValueError("I cannot appraise myself as a conversation partner")
+        raise RelationshipAppraisalError("I cannot appraise myself as a conversation partner")
     if set(appraisal.evidence) - witnessed_turns.keys():
-        raise ValueError("relationship evidence must be a turn I witnessed")
+        raise RelationshipAppraisalError("relationship evidence must be a turn I witnessed")
     if not any(
         witnessed_turns[identifier]["speaker"] == appraisal.peer
         for identifier in appraisal.evidence
     ):
-        raise ValueError("relationship evidence must include that person's turn")
+        raise RelationshipAppraisalError("relationship evidence must include that person's turn")
     state = (
         state.model_copy(deep=True)
         if state is not None

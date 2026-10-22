@@ -28,9 +28,19 @@ class Population(Model):
     digest: str = ""
 
     def fingerprint(self) -> str:
-        return hashlib.sha256(
-            canonical(self.model_dump(mode="json", exclude={"digest"})).encode()
-        ).hexdigest()
+        payload = self.model_dump(mode="json", exclude={"digest"})
+        # Runtime-only fields added after population v3 must not invalidate a
+        # previously published t=0 artifact. Their neutral defaults carry no
+        # authored population information and are initialized by the engine.
+        for agent in payload["agents"]:
+            if agent.get("scene_id") is None:
+                agent.pop("scene_id", None)
+            emotion = agent["emotion"]
+            if emotion.get("social_valence") == 0:
+                emotion.pop("social_valence", None)
+            if emotion.get("social_arousal") == 0:
+                emotion.pop("social_arousal", None)
+        return hashlib.sha256(canonical(payload).encode()).hexdigest()
 
     @model_validator(mode="after")
     def validate_structure(self):
@@ -48,6 +58,7 @@ class Population(Model):
                 a.persona.life_history is None
                 or a.updated_at != 0
                 or a.pending
+                or a.scene_id
                 or a.busy_until != 0
             ):
                 raise ValueError(

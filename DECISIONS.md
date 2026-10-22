@@ -25,6 +25,16 @@
   a conversation exists but cannot receive its private words.
 - Allow voluntary departure without ending a scene that still has two people.
   Conversation text is testimony; the app does not decide whether it is true.
+- Reserve reachability as well as clock overlap for an accepted conversation. An
+  action that finishes before the scene can still be invalid when its projected
+  location leaves too little return-travel time; the GM rejects that action.
+- Normalize adjacent plan blocks with identical activity and location whenever a
+  future patch is merged. Repair boundaries are implementation seams, not new
+  behavior, and must not consume the bounded plan representation.
+- Drive scheduled turns one speaker at a time through the ordinary budgeted model
+  gateway. Store the proposed decision for diagnosis, but let the conversation
+  service validate listener-scoped evidence and commit the actual turn. A fixed
+  MockLLM scene rate is only a deterministic integration fixture.
 
 ## Connected realism implementation, batch 2 — 2026-10-22
 - Complete R1 before adding R2 conversation mechanics. Histories, memory, goals

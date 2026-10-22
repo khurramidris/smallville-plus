@@ -14,6 +14,8 @@ from smallville.apps.conversations import (
     RespondConversation,
 )
 from smallville.apps.phone import Messaging, SendMessage
+from smallville.config import Config
+from smallville.engine.simulation import Simulation
 from smallville.gm.master import GameMaster
 from smallville.world.models import Intent, change
 
@@ -190,6 +192,18 @@ async def test_conversation_invitations_require_independent_acceptance_and_time(
     assert pending_busy[0]["can_accept"] is False
     assert "busy" in pending_busy[0]["constraint"]
 
+    stranded_host = await gm.resolve(
+        host.id,
+        Intent(
+            kind="move",
+            target="johnson_park",
+            text="I want to leave even though I could not get back in time.",
+        ),
+        115,
+    )
+    assert stranded_host.kind == "action_rejected"
+    assert "too little time" in stranded_host.data["reason"]
+
     overlap = await gm.resolve(
         "mei_lin",
         Intent(kind="wait", text="I want to ignore my commitment.", duration=30),
@@ -309,3 +323,63 @@ def test_three_person_private_turns_false_testimony_appraisal_and_departure(setu
     ended = conversations.end(conversation.id, 150)
     assert set(ended.data["wake"]) == {host.id, "eddy_lin"}
     assert all(world.agent(owner).scene_id is None for owner in (host.id, "eddy_lin"))
+
+
+async def test_engine_runs_private_turns_and_releases_participants(tmp_path):
+    sim = Simulation(tmp_path / "conversation_engine", Config())
+    try:
+        sim.scheduler.queue.clear()
+        sim.scheduler.conditions.clear()
+        owners = ("john_lin", "mei_lin", "jane_moreno")
+        agents = {owner: sim.world.agent(owner) for owner in owners}
+        for actor in agents.values():
+            actor.location = "johnson_park"
+            actor.destination = None
+            actor.pending = None
+            actor.busy_until = 0
+            actor.activity = "wait"
+        sim.world.log.append(
+            0,
+            "conversation_engine_fixture",
+            changes=[change("agents", owner, actor) for owner, actor in agents.items()],
+        )
+        conversation, updates = sim.gm.conversations.proposal_changes(
+            agents["john_lin"],
+            ProposeConversation(
+                participants=["mei_lin"],
+                topic="whether to share responsibility for a neighborhood meal",
+                start=10,
+                end=20,
+                location="johnson_park",
+            ),
+            0,
+        )
+        sim.world.log.append(0, "conversation_proposed", "john_lin", changes=updates)
+        _, updates = sim.gm.conversations.response_changes(
+            agents["mei_lin"],
+            RespondConversation(
+                conversation_id=conversation.id,
+                response="accept",
+                reason="I have time and want to decide for myself.",
+            ),
+            1,
+        )
+        sim.world.log.append(1, "conversation_accepted", "mei_lin", changes=updates)
+        sim.scheduler.schedule(
+            10,
+            "conversation_start",
+            data={"conversation_id": conversation.id},
+            priority=5,
+        )
+
+        result = await sim.run(20 / 1440)
+        assert result["status"] == "completed"
+        events = sim.world.log.read(limit=1000)
+        turns = [event for event in events if event.kind == "conversation_turn"]
+        assert len(turns) == 2
+        assert all(set(event.observations) == {"john_lin", "mei_lin"} for event in turns)
+        assert all("jane_moreno" not in event.observations for event in turns)
+        assert sim.world.get("conversations", conversation.id)["status"] == "ended"
+        assert all(sim.world.agent(owner).scene_id is None for owner in ("john_lin", "mei_lin"))
+    finally:
+        sim.close()

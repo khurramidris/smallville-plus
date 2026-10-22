@@ -9,7 +9,10 @@ from smallville.agents.drives import advance_drives
 from smallville.agents.goals import initial_goal_changes
 from smallville.agents.knowledge import campaign_knowledge_change
 from smallville.agents.mind import Mind
-from smallville.agents.relationships import initial_relationship_changes
+from smallville.agents.relationships import (
+    RelationshipAppraisalError,
+    initial_relationship_changes,
+)
 from smallville.apps.civic import Council, NoticeBoard, initial_council
 from smallville.apps.gatherings import initial_gathering
 from smallville.config import Config
@@ -265,7 +268,11 @@ class Simulation:
                 self.wake(actor.id, actor.busy_until)
                 continue
             advance_drives(actor, minute)
-            changes = self.gm.messaging.read_changes(actor, minute)
+            changes = (
+                []
+                if self.config.realism_profile == "connected_v1"
+                else self.gm.messaging.read_changes(actor, minute)
+            )
             if self.config.phase == 3:
                 changes.extend(self.economy.perception_changes(actor, minute))
             changes.append(change("agents", actor.id, actor))
@@ -283,7 +290,13 @@ class Simulation:
                         "unread_notifications": len(self.gm.messaging.notifications(actor.id)),
                     },
                     changes=changes,
-                    observations={actor.id: "I notice my surroundings and check my phone."},
+                    observations={
+                        actor.id: (
+                            "I notice my surroundings and phone notifications."
+                            if self.config.realism_profile == "connected_v1"
+                            else "I notice my surroundings and check my phone."
+                        )
+                    },
                 )
             )
             prepared.append((actor, []))
@@ -409,6 +422,96 @@ class Simulation:
                     if recipient := event.data.get("recipient"):
                         peer = self.world.agent(recipient)
                         self.wake(recipient, max(item.minute, peer.busy_until))
+                    for recipient in event.data.get("recipients", []):
+                        peer = self.world.agent(recipient)
+                        self.wake(recipient, max(item.minute, peer.busy_until))
+                    if start := event.data.get("conversation_start"):
+                        self.scheduler.schedule(
+                            start,
+                            "conversation_start",
+                            data={"conversation_id": event.data["conversation_id"]},
+                            priority=5,
+                        )
+                elif item.kind == "conversation_start":
+                    event = self.gm.conversations.start(item.data["conversation_id"], item.minute)
+                    await self._publish(event)
+                    for owner in event.data.get("wake", []):
+                        actor = self.world.agent(owner)
+                        self.wake(owner, max(item.minute, actor.busy_until))
+                    if event.kind == "conversation_started":
+                        self.scheduler.schedule(
+                            item.minute,
+                            "conversation_turn",
+                            data={"conversation_id": item.data["conversation_id"]},
+                            priority=6,
+                        )
+                        self.scheduler.schedule(
+                            event.data["end"],
+                            "conversation_end",
+                            data={"conversation_id": item.data["conversation_id"]},
+                            priority=5,
+                        )
+                elif item.kind == "conversation_turn":
+                    conversation = self.gm.conversations.conversation(item.data["conversation_id"])
+                    if conversation.status != "active":
+                        continue
+                    speaker = self.gm.conversations.next_speaker(conversation)
+                    if speaker is None:
+                        event = self.gm.conversations.end(
+                            conversation.id, item.minute, "no participants remained"
+                        )
+                        if event:
+                            await self._publish(event)
+                        continue
+                    self.active_agent = speaker
+                    actor = self.world.agent(speaker)
+                    self.mind.begin_turn()
+                    decision, diagnostic = await self.mind.conversation_turn(
+                        actor, conversation.id, item.minute
+                    )
+                    memory_changes = self.mind.take_archive_changes(actor.id, item.minute)
+                    await self._publish(
+                        self.world.log.append(
+                            item.minute,
+                            "conversation_intention",
+                            actor.id,
+                            data={
+                                "conversation_id": conversation.id,
+                                "decision": decision.model_dump(mode="json"),
+                                "diagnostic": diagnostic,
+                            },
+                            changes=[change("agents", actor.id, actor), *memory_changes],
+                        )
+                    )
+                    try:
+                        event = self.gm.conversations.record_turn(
+                            actor.id, conversation.id, decision, item.minute
+                        )
+                    except RelationshipAppraisalError:
+                        if not decision.appraisals:
+                            raise
+                        decision = decision.model_copy(update={"appraisals": []})
+                        event = self.gm.conversations.record_turn(
+                            actor.id, conversation.id, decision, item.minute
+                        )
+                    await self._publish(event)
+                    for owner in event.data.get("wake", []):
+                        self.wake(owner, item.minute)
+                    current = self.gm.conversations.conversation(conversation.id)
+                    next_minute = item.minute + 5
+                    if current.status == "active" and next_minute < current.end:
+                        self.scheduler.schedule(
+                            next_minute,
+                            "conversation_turn",
+                            data={"conversation_id": conversation.id},
+                            priority=6,
+                        )
+                elif item.kind == "conversation_end":
+                    event = self.gm.conversations.end(item.data["conversation_id"], item.minute)
+                    if event:
+                        await self._publish(event)
+                        for owner in event.data.get("wake", []):
+                            self.wake(owner, item.minute)
                 elif item.kind == "needs_alert":
                     actor = self.world.agent(item.agent)
                     actor.surprise = True
@@ -448,6 +551,13 @@ class Simulation:
             )
         if status == "completed":
             self.clock.advance(horizon)
+        for conversation in self.world.all("conversations"):
+            if conversation["status"] == "active":
+                event = self.gm.conversations.end(
+                    conversation["id"], self.clock.minute, "simulation horizon"
+                )
+                if event:
+                    await self._publish(event)
         changes = []
         for actor in self.world.agents():
             advance_drives(actor, self.clock.minute)
