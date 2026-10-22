@@ -19,6 +19,7 @@ from smallville.config import Config
 from smallville.engine.simulation import Simulation
 from smallville.eval.metrics import evaluate
 from smallville.gm.master import GameMaster
+from smallville.llm.mock import action as mock_action
 from smallville.viewer.app import create_app
 from smallville.world.models import Intent, change
 
@@ -136,6 +137,54 @@ def test_relationship_appraisal_is_directed_evidenced_and_emotion_decays(setup_w
             appraisal.model_copy(update={"evidence": ["turn:private"]}),
             witnessed,
         )
+
+
+def test_mock_does_not_propose_an_overlapping_scene():
+    context = {
+        "self": {
+            "id": "john_lin",
+            "home": "lin_family_s_house",
+            "sociability": 0.7,
+            "contacts": ["mei_lin"],
+        },
+        "minute": 600,
+        "perception": {
+            "location": "johnson_park",
+            "nearby": [{"id": "mei_lin"}],
+            "notifications": [],
+        },
+        "hour_plan": {
+            "start": 600,
+            "end": 660,
+            "activity": "leisure",
+            "location": "johnson_park",
+        },
+        "needs": {"fullness": 80, "energy": 80},
+        "conversation_app": {
+            "pending_invitations": [],
+            "hosted_today": 0,
+            "commitments": [
+                {
+                    "id": "conversation:peer:590",
+                    "start": 650,
+                    "end": 680,
+                    "location": "johnson_park",
+                }
+            ],
+        },
+        "relationship_states": {},
+        "phone_attention": {"last_checked": 600},
+        "known_feasible_actions": ["leisure", "conversation_invite"],
+        "opening_hours": {"johnson_park": {"opens": 0, "closes": 1440}},
+        "travel_minutes": {"johnson_park": 0},
+        "active_goals": [],
+        "phase": 1,
+        "calendar": [],
+        "memories": [],
+        "sent": [],
+        "last_social_at": 600,
+    }
+    assert mock_action(context, 42)["kind"] == "leisure"
 
 
 async def test_conversation_invitations_require_independent_acceptance_and_time(setup_world, town):

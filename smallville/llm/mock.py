@@ -118,6 +118,7 @@ def action(context: dict, seed: int) -> dict:
         if (
             can_host
             and nearby
+            and not social["commitments"]
             and social["hosted_today"] == 0
             and block["activity"] == "leisure"
             and 600 <= hour < 1200
