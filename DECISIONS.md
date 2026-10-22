@@ -1,5 +1,34 @@
 # Decisions
 
+## Connected realism implementation, batch 2 — 2026-10-22
+- Complete R1 before adding R2 conversation mechanics. Histories, memory, goals
+  and repair must have causal state transitions before richer dialogue can use them.
+- Publish connected histories as population artifact version 3. Keep version 2
+  readable for legacy runs, but require version 3 for `connected_v1` so a thin or
+  generic artifact cannot silently enter the richer profile.
+- Treat a historical obligation as established only by an explicit request and
+  the future debtor's own acceptance message. Store the accepter's private promise
+  as evidence and bootstrap a separate deadline-bearing commitment goal.
+- Keep evicted episodes in a separate owner-indexed projection, committed through
+  the immutable event log. Do not enlarge prompt memory or expose the archive to
+  another resident. Rank working and archived candidates locally and return the
+  same bounded recall limit.
+- Make goal changes ordinary time-consuming intentions checked by the GM. Enforce
+  ownership, terminal states, prerequisites, future deadlines and private evidence;
+  record a separate immutable transition row beside the current goal projection.
+- Repair from the current simulated minute to midnight. Preserve elapsed blocks,
+  reserve known walking time, honor opening hours, and defer a lower-priority
+  conflicting appointment. An invalid model patch receives a deterministic future
+  repair and an explicit diagnostic rather than rewriting the whole day.
+- Give the model a list of actions feasible under facts the resident can know.
+  Hidden stock, capacity and concurrent changes remain GM checks, so this hint is
+  not an omniscient guarantee or permission to declare outcomes.
+- Keep the lexical retriever honestly labeled. Do not introduce embeddings,
+  Graphiti or another paid service during this offline R1 gate.
+- Interpret MockLLM's 0% fallback rate only as fixed-fixture engineering evidence.
+  R2 interaction, real-model controlled comparisons and human ratings are still
+  required before any comparative realism claim.
+
 ## Connected realism implementation, batch 1 — 2026-10-22
 - Implement R0 and only the foundational part of R1 first. Better measurement,
   durable motives and relevant recall are prerequisites for judging more complex

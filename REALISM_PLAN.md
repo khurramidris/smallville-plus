@@ -15,10 +15,16 @@ goals, retention-aware bounded memory and contextual lexical retrieval. A fresh
 and exact event/state replay. See
 [`reports/REALISM_IMPLEMENTATION_1.md`](reports/REALISM_IMPLEMENTATION_1.md).
 
-R1 is still open for connected household/work histories, an archived episodic
-store, explicit goal revision/abandonment, local future-plan repair and the full
-missed-travel/closure/conflict diagnostic gate. R2 and later stages have not
-started. Passing deterministic fixtures does not establish greater realism.
+Batch 2 completes the R1 engineering scope: version 3 cohorts connect household,
+work and friendship histories; accepted promises become deadline-bearing goals;
+evicted episodes enter a private replayable archive; residents can revise or close
+their own goals; and surprises patch only the unelapsed plan around known travel,
+closures and appointments. The fixed MockLLM diagnostic recorded 0% full-plan and
+repair fallbacks. See
+[`reports/REALISM_IMPLEMENTATION_2.md`](reports/REALISM_IMPLEMENTATION_2.md).
+
+R2 and later stages have not started. R1 passing deterministic gates establishes
+engineering behavior, not human realism or superiority to the original study.
 
 The immediate priority is to connect motives, memory, interaction and consequences.
 Adding more residents, model calls or reference libraries first would amplify the

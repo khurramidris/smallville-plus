@@ -1,5 +1,50 @@
 # Smallville+ progress
 
+## Connected realism implementation, batch 2 — completed 2026-10-22
+- Continued the ordered plan by completing the R1 engineering gate. R2 social
+  scenes and later institutional/scale work remain outside this batch.
+- Step 1, connected histories: population artifact version 3 replaces a single
+  generic ring partner with recurring household, workplace and friendship ties.
+  The final historical exchange is an explicit request and acceptance. Every
+  resident begins with one private unfinished promise due after the epoch; version
+  2 artifacts remain loadable for legacy baseline runs.
+- Step 2, durable goal lifecycle: accepted promises bootstrap as commitment goals
+  with deadlines and evidence. Residents can revise, block, reactivate, complete
+  or abandon only their own goals through a five-minute GM-validated action.
+  Completion requires evidence from the resident's working or archived memory;
+  every transition is recorded in `goal_history` for replay.
+- Step 3, episodic archive: capacity eviction now emits owner-scoped
+  `memory_archive` changes in the same event transaction as the agent update.
+  Connected retrieval ranks working and archived memories together through the
+  explicit `local_lexical_v1` fallback while returning only a bounded result.
+- Step 4, bounded planning: a surprise repairs only the future part of today's
+  plan. Elapsed blocks remain immutable. Repair accounts for known walking time,
+  opening hours and appointments, and exposes infeasible conflicting appointments
+  rather than double-booking them. Decisions also receive a known-feasible action
+  set without remote stock, occupancy or other hidden state.
+- Step 5, inspection and metrics: the viewer exposes goals, transitions and recent
+  archived episodes. Reports separate working/archived evidence and include goal,
+  archive, full-plan and repair-fallback diagnostics.
+- Step 6, gates: the suite now contains **122 offline tests**. Added cases verify
+  500-event commitment survival, archive privacy, bounded archive retrieval,
+  goal ownership/evidence/abandonment, closed-shop repair, walking time and a
+  conflicting appointment. Ruff and whitespace checks pass.
+- Step 7, measured smoke: a fresh 25-resident version 3 artifact has 21 history
+  days, 1,050 messages, 75 calendar entries and digest
+  `227c856e91acb3160d61e50b582646b8ec9a40e237bf87cff0bb178a6bc7ccc1`.
+  One Phase 3 day completed in 45.466 seconds with 748 MockLLM calls, 100 goals,
+  25 accepted commitments, 25 full plans and 104 bounded repairs. Both full-plan
+  and repair fallback rates were 0%; cost and uncertain calls were zero.
+- Step 8, replay: all 3,993 events replay byte-identically with JSONL SHA-256
+  `408d147c2a0af53b6612dcbb1882d1ca1751e3768d83e2cf7048c66567286150`.
+  All material projections, including goals and archives, match. The 42,995,236
+  byte log confirms full snapshots remain a scale bottleneck.
+- No provider API, network dependency or paid service was used. MockLLM behavior,
+  a 0% fixture fallback rate, or Sam's retained-awareness count matching the paper
+  is not evidence of greater human realism.
+- Next: R2 consent-based multi-turn conversations with independent participant
+  decisions, bounded attention and asymmetric relationship appraisal.
+
 ## Connected realism implementation, batch 1 — completed 2026-10-22
 - The user authorized implementation of the new realism plan. This batch covers
   the R0 evidence foundation and a bounded subset of R1; R2 social scenes and

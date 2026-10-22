@@ -12,6 +12,8 @@ and measurement gaps. [REALISM_PLAN.md](REALISM_PLAN.md) defines the next work a
 acceptance gates before claims of greater realism or further population scaling.
 The first implementation batch is documented in
 [reports/REALISM_IMPLEMENTATION_1.md](reports/REALISM_IMPLEMENTATION_1.md).
+The completed R1 engineering gate is documented in
+[reports/REALISM_IMPLEMENTATION_2.md](reports/REALISM_IMPLEMENTATION_2.md).
 
 ```bash
 python -m pip install -e '.[test]'
@@ -33,8 +35,10 @@ python -m smallville run --phase 3 --optimized --realism --days 2 \
 
 `--realism` refuses a thin seed-only cohort or fewer than 14 history days. This
 profile is an implementation milestone, not proof of human realism or superiority
-to Park et al. Its current durable goals are initial context; goal revision,
-targeted plan repair and multi-turn spoken scenes remain later gates in the plan.
+to Park et al. Version 3 cohorts include household/work/friend histories and
+accepted unfinished commitments. Goals can be revised, blocked, completed or
+abandoned through GM-validated actions; surprises repair only the unelapsed plan.
+Multi-turn spoken scenes remain the next gate in the plan.
 
 Open http://127.0.0.1:8000. Move the time slider, play the history, and click a
 resident to inspect their memories, needs, emotions, plans, calendar and messages.
