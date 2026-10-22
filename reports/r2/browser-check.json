@@ -1,0 +1,14 @@
+{
+  "url": "http://127.0.0.1:8766",
+  "minute": 1040,
+  "resident_buttons": 25,
+  "selected": "eddy_lin",
+  "active_scene_visible": true,
+  "directed_relationships_visible": true,
+  "private_conversations_visible": true,
+  "phone_attention_visible": true,
+  "spoken_turn_visible": true,
+  "page_errors": [],
+  "external_requests": [],
+  "screenshot": "reports/r2/viewer.png"
+}

@@ -1,0 +1,9 @@
+{
+  "source": "runs/connected-v1-r2-accepted/events.jsonl",
+  "destination": "runs/connected-v1-r2-replay",
+  "events": 4820,
+  "snapshots_equal": true,
+  "event_bytes_equal": true,
+  "jsonl_sha256": "9eac01223e75aed37d805c6eb152bb81cf39050d193d6049668ee7c12fd80dce",
+  "jsonl_bytes": 53963644
+}

@@ -1,6 +1,6 @@
 # Smallville+ progress
 
-## Connected realism implementation, batch 3 — in progress 2026-10-22
+## Connected realism implementation, batch 3 — completed 2026-10-22
 - R2 step 1, social state and attention: added replayable directed relationship
   state with separate trust, affinity, familiarity and obligation dimensions.
   Signed changes require an explicit resident appraisal and witnessed turn IDs;
@@ -53,8 +53,28 @@
   phone-attention record, directed social state and evidence-linked transitions.
   Its conversation panel includes only turns whose stored observer list contains
   that resident; a co-located excluded bystander receives no thread. API/privacy,
-  metrics, JavaScript syntax and legacy evaluation tests pass. Final fresh-run,
-  replay, browser and full-suite gates remain.
+  metrics, JavaScript syntax and legacy evaluation tests pass.
+- R2 step 5, trace hardening: full-day probes exposed and fixed redundant plan
+  seams, a host stranding themself away from a scene, invitations offered too
+  late for a five-minute reply, and a MockLLM attempt to host while already
+  committed. Focused regressions cover all four cases. Changing only directed
+  trust now flips an otherwise identical invite response in a controlled fixture.
+- R2 step 6, final acceptance: all **130 offline tests pass** in 165.948 seconds;
+  Ruff and owned-file formatting checks pass. The final 25-resident Phase 3 day
+  completed all 1,440 minutes in 121.248 seconds with 955 MockLLM calls, $0 total
+  and **$0 per resident per simulated day**. It recorded 21 proposals, 7 refusals,
+  29 expirations, 3 admitted scenes, 12 turns from 7 speakers and one departure.
+  Sixty-three phone checks read at most two messages each; one runtime message
+  remained unread. Three evidence-linked directed appraisals were committed.
+- Exact replay matched all 4,820 events, every projection and all 53,963,644 JSONL
+  bytes (SHA-256 `9eac01223e75aed37d805c6eb152bb81cf39050d193d6049668ee7c12fd80dce`).
+  Local Chromium verified the active-scene, relationship, phone and private-thread
+  UI with no page error or external request. Evidence is under `reports/r2/` and
+  the detailed account is `reports/REALISM_IMPLEMENTATION_3.md`.
+- No provider API, network model, credential or paid service was used. Mock
+  dialogue remains formulaic; 18 of 21 proposals did not start; there are no
+  human ratings, multi-seed estimates or matched Park et al. comparison. R3 typed
+  causal exchanges is next.
 
 ## Connected realism implementation, batch 2 — completed 2026-10-22
 - Continued the ordered plan by completing the R1 engineering gate. R2 social

@@ -23,7 +23,14 @@ closures and appointments. The fixed MockLLM diagnostic recorded 0% full-plan an
 repair fallbacks. See
 [`reports/REALISM_IMPLEMENTATION_2.md`](reports/REALISM_IMPLEMENTATION_2.md).
 
-R2 and later stages have not started. R1 passing deterministic gates establishes
+Batch 3 completes the R2 engineering scope: bounded phone attention, consent-based
+scheduled conversations, independent private turns and departures, directed
+evidence-linked social state, decaying social emotion, social-process metrics and
+privacy-aware replay inspection. A fresh 25-resident day completed with three
+admitted scenes and exact replay. See
+[`reports/REALISM_IMPLEMENTATION_3.md`](reports/REALISM_IMPLEMENTATION_3.md).
+
+R3 and later stages have not started. Passing R0–R2 deterministic gates establishes
 engineering behavior, not human realism or superiority to the original study.
 
 The immediate priority is to connect motives, memory, interaction and consequences.

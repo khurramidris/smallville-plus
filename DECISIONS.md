@@ -42,6 +42,20 @@
 - Keep the replay viewer a researcher tool, but scope an inspected conversation
   thread to turns the selected resident actually observed. This makes privacy
   auditable without implying that the viewer itself is part of agent perception.
+- Treat the five-minute response duration as part of the invitation deadline.
+  When a response cannot finish strictly before the scene, remove it from the
+  resident's actionable inbox and let silence expire; do not invite a predictable
+  GM rejection loop.
+- Make accepted-scene feasibility depend on an action's projected ending location,
+  not only its end time. Keep MockLLM from proposing another scene while committed,
+  while preserving the GM as the authoritative backstop for external models.
+- Use the final clean one-day trace for R2 measurements and retain earlier probes
+  only as local debugging evidence. Do not select higher diffusion or conversation
+  counts as the acceptance criterion; correctness, privacy, exact replay and
+  transparent failure counts define this engineering gate.
+- Stop batch 3 after R2. The next work is R3 typed causal consequences; a real-model
+  experiment or human realism comparison needs a separate design and authorization,
+  and no API call is necessary for this deterministic gate.
 
 ## Connected realism implementation, batch 2 — 2026-10-22
 - Complete R1 before adding R2 conversation mechanics. Histories, memory, goals

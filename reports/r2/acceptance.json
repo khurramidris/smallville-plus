@@ -1,0 +1,590 @@
+{
+  "run": {
+    "benchmark": "valentine",
+    "completed_minutes": 1440,
+    "epoch": "2023-02-13T00:00:00+00:00",
+    "phase": 3,
+    "problem": null,
+    "requested_minutes": 1440,
+    "status": "completed"
+  },
+  "backend": "mock",
+  "agents": 25,
+  "interpretation": "Deterministic scripted MockLLM fixture: engineering evidence only, not realism or emergence.",
+  "paper_reference": {
+    "source": "https://arxiv.org/html/2304.03442v2#S7.SS1",
+    "agents": 25,
+    "days": 2,
+    "sam_awareness": 8,
+    "party_awareness": 13,
+    "party_invited_guests": 12,
+    "party_attending_guests": 5,
+    "network_density_initial": 0.167,
+    "network_density_final": 0.74
+  },
+  "evaluation_manifest": {
+    "protocol_version": "realism-eval-v2",
+    "seed": 42,
+    "backend": "mock",
+    "models": {
+      "deep": "mock-deep",
+      "fast": "mock-fast",
+      "gm": "mock-gm",
+      "embedding": "mock-lexical",
+      "overrides": {}
+    },
+    "realism_profile": "connected_v1",
+    "population": {
+      "kind": "validated_artifact",
+      "digest": "227c856e91acb3160d61e50b582646b8ec9a40e237bf87cff0bb178a6bc7ccc1",
+      "version": 3,
+      "residents": 25,
+      "history_days": 21
+    },
+    "horizon_minutes": 1440,
+    "benchmark": "valentine",
+    "measurement": {
+      "legacy_diffusion": "retained phrase evidence; preserved for historical comparison",
+      "structured_knowledge": "owner-scoped exposure/acceptance/retention/recall stages",
+      "interview_recall": "reported only after human claim assessment",
+      "memory_retrieval": "owner-scoped bounded working/archive lexical ranking",
+      "goal_lifecycle": "current projection plus immutable validated transitions",
+      "plan_repair": "future-only patch; elapsed plan blocks remain unchanged",
+      "relationship_density": "mutual recorded relationship edges",
+      "attendance": "completed and confirmed event actions",
+      "social_scenes": "app proposals, independent final invitation states, admitted participants and listener-scoped committed turns",
+      "phone_attention": "explicit five-minute checks, messages read by those checks and unread remainder",
+      "directed_relationships": "owner-to-peer trust, affinity, familiarity and obligation; signed changes cite witnessed turns"
+    },
+    "claim_boundary": "This manifest enables comparison but does not make runs independent, matched to the original paper, or human-validated. Cached reruns are not replications."
+  },
+  "diffusion": {
+    "sam": {
+      "initial": 1,
+      "retained_final": 8,
+      "paper_final": 8
+    },
+    "party": {
+      "initial": 1,
+      "retained_final": 11,
+      "paper_final": 13
+    },
+    "method": "Retained memory evidence, not omniscient delivery or unverified interview assertions."
+  },
+  "knowledge_evidence": {
+    "version": 1,
+    "campaign": {
+      "records": 14,
+      "exposed_residents": [
+        "adam_smith",
+        "carlos_gomez",
+        "carmen_ortiz",
+        "eddy_lin",
+        "jennifer_moore",
+        "john_lin",
+        "ryan_park",
+        "sam_moore",
+        "tamara_taylor"
+      ],
+      "accepted_belief_residents": [
+        "sam_moore"
+      ],
+      "retained_evidence_residents": [
+        "adam_smith",
+        "carlos_gomez",
+        "carmen_ortiz",
+        "eddy_lin",
+        "jennifer_moore",
+        "john_lin",
+        "ryan_park",
+        "sam_moore",
+        "tamara_taylor"
+      ],
+      "working_evidence_residents": [
+        "adam_smith",
+        "carlos_gomez",
+        "carmen_ortiz",
+        "eddy_lin",
+        "jennifer_moore",
+        "john_lin",
+        "ryan_park",
+        "sam_moore",
+        "tamara_taylor"
+      ],
+      "archived_evidence_residents": [],
+      "claim_status_counts": {
+        "declared": 13,
+        "considering": 1
+      },
+      "interview_recall": {
+        "collected": 0,
+        "human_assessed": 0,
+        "aware": null
+      }
+    },
+    "method": "Owner-scoped structured evidence distinguishes exposure, acceptance, retained records and recall. Testimony is not world truth; unassessed interview answers do not become awareness scores. The historical diffusion metric is preserved."
+  },
+  "cognition_diagnostics": {
+    "plans": {
+      "accepted": 25,
+      "repaired": 158,
+      "reused": 776
+    },
+    "full_plan_fallback_rate": 0.0,
+    "repair_fallback_rate": 0.0,
+    "actions": {
+      "accepted": 735,
+      "routine": 224
+    },
+    "reflections": {
+      "recorded": 25
+    },
+    "interaction_opportunities": {
+      "activations_with_someone_nearby": 686,
+      "nearby_resident_exposures": 3342,
+      "activations_with_unread_notifications": 191
+    },
+    "note": "Opportunities are co-presence/notifications at activation, not proof of interaction."
+  },
+  "memory_system": {
+    "working_limit_per_resident": 128,
+    "archived_episodes": 0,
+    "residents_with_archived_episodes": 0,
+    "retrieval_backend": "local_lexical_v1",
+    "note": "Archive retrieval remains owner-scoped, query-ranked and bounded."
+  },
+  "goal_diagnostics": {
+    "goals": 100,
+    "status_counts": {
+      "active": 100
+    },
+    "source_counts": {
+      "generated_life_history": 75,
+      "commitment": 25
+    },
+    "transitions": {},
+    "overdue_active": 0
+  },
+  "relationships": {
+    "initial_density": 0.31333333333333335,
+    "final_density": 0.31333333333333335,
+    "growth": 0.0,
+    "definition": "Undirected edge only when both residents have relationship records; negative ties count.",
+    "directed": {
+      "states": 232,
+      "initial_averages": {
+        "trust": 0.13673076923076924,
+        "affinity": 0.22788461538461538,
+        "familiarity": 0.2304326923076923,
+        "obligation": 0.0
+      },
+      "final_averages": {
+        "trust": 0.12297413793103448,
+        "affinity": 0.20456896551724138,
+        "familiarity": 0.23043103448275862,
+        "obligation": 0.0
+      },
+      "states_updated_after_epoch": 129,
+      "evidence_linked_transitions": 3,
+      "positive_dimension_changes": 6,
+      "negative_dimension_changes": 0,
+      "asymmetric_mutual_pairs": 20,
+      "note": "Directed values are resident-owned state. Contact alone changes familiarity; signed changes require a witnessed-turn appraisal."
+    }
+  },
+  "social_process": {
+    "enabled": true,
+    "proposals": 21,
+    "invitation_outcomes": {
+      "refused": 7,
+      "expired": 29,
+      "accepted": 4
+    },
+    "scenes_started": 3,
+    "scenes_cancelled_at_start": 18,
+    "started_scenes_ended": 3,
+    "scheduled_end_events": 2,
+    "scene_start_rate": 0.14285714285714285,
+    "started_scenes_with_spoken_exchange": 3,
+    "exchange_rate_per_started_scene": 1.0,
+    "turns": 12,
+    "spoken_turns": 11,
+    "departures": 1,
+    "distinct_speakers": 7,
+    "listener_exposures": 28,
+    "mean_admitted_participants": 2.3333333333333335,
+    "turn_decisions": {
+      "accepted": 12
+    },
+    "appraisals_attempted": 3,
+    "appraisals_applied": 3,
+    "started_scenes_per_100_copresent_activations": 0.43731778425655976,
+    "note": "Co-present activations are opportunity diagnostics, not independent trials. Started scenes and listener-scoped turns establish actual exchanges; neither their count nor success rate establishes human realism."
+  },
+  "phone_attention": {
+    "enabled": true,
+    "residents_tracked": 25,
+    "checks": 63,
+    "messages_read_during_checks": 84,
+    "max_messages_read_in_one_check": 2,
+    "runtime_messages_delivered": 79,
+    "runtime_messages_unread_at_horizon": 1,
+    "residents_with_deferred_unread": 1,
+    "note": "Notification metadata is visible before a check; bodies enter memory only when an explicit bounded check reads them."
+  },
+  "party": {
+    "invited_guests": 10,
+    "read_invitation_guests": 10,
+    "attending_guests": 0,
+    "guest_ids": [],
+    "invited_attending_guests": 0,
+    "attendance_rate": 0.0,
+    "paper_attendance_rate": 0.4166666666666667,
+    "window": {
+      "location": "hobbs_cafe",
+      "start": 2460,
+      "end": 2580
+    },
+    "method": "Completed attend actions overlapping the party window; host excluded."
+  },
+  "anti_homogeneity": {
+    "seeded_opinion_variance": 0.32864544,
+    "observed_daily_behavior_variance": {
+      "sleep_hours": 0.4300328888888889,
+      "work_hours": 3.419890666666667,
+      "leisure_hours": 3.180037333333333,
+      "travel_hours": 0.12455733333333334,
+      "other_hours": 1.9450293333333337
+    },
+    "note": "Opinion values are synthetic heterogeneous priors; survey fidelity is not measured."
+  },
+  "daily_life": {
+    "average_hours": {
+      "sleep_hours": 8.349333333333334,
+      "work_hours": 5.926,
+      "leisure_hours": 7.502666666666666,
+      "travel_hours": 0.5406666666666666,
+      "other_hours": 1.6813333333333333
+    },
+    "per_agent": {
+      "abigail_chen": {
+        "sleep_hours": 8.916666666666666,
+        "work_hours": 6.5,
+        "leisure_hours": 7.083333333333333,
+        "travel_hours": 0.16666666666666666,
+        "other_hours": 1.3333333333333333
+      },
+      "adam_smith": {
+        "sleep_hours": 8.5,
+        "work_hours": 6.5,
+        "leisure_hours": 7.083333333333333,
+        "travel_hours": 0.6666666666666666,
+        "other_hours": 1.25
+      },
+      "arthur_burton": {
+        "sleep_hours": 8.466666666666667,
+        "work_hours": 4.2,
+        "leisure_hours": 9.1,
+        "travel_hours": 0.31666666666666665,
+        "other_hours": 1.9166666666666667
+      },
+      "ayesha_khan": {
+        "sleep_hours": 8.0,
+        "work_hours": 6.666666666666667,
+        "leisure_hours": 7.416666666666667,
+        "travel_hours": 0.3333333333333333,
+        "other_hours": 1.5833333333333333
+      },
+      "carlos_gomez": {
+        "sleep_hours": 9.0,
+        "work_hours": 6.583333333333333,
+        "leisure_hours": 7.5,
+        "travel_hours": 0.0,
+        "other_hours": 0.9166666666666666
+      },
+      "carmen_ortiz": {
+        "sleep_hours": 6.0,
+        "work_hours": 6.416666666666667,
+        "leisure_hours": 2.75,
+        "travel_hours": 0.5,
+        "other_hours": 8.333333333333334
+      },
+      "eddy_lin": {
+        "sleep_hours": 7.833333333333333,
+        "work_hours": 6.45,
+        "leisure_hours": 7.616666666666666,
+        "travel_hours": 0.43333333333333335,
+        "other_hours": 1.6666666666666667
+      },
+      "francisco_lopez": {
+        "sleep_hours": 8.0,
+        "work_hours": 6.833333333333333,
+        "leisure_hours": 7.766666666666667,
+        "travel_hours": 0.23333333333333334,
+        "other_hours": 1.1666666666666667
+      },
+      "giorgio_rossi": {
+        "sleep_hours": 9.0,
+        "work_hours": 6.416666666666667,
+        "leisure_hours": 6.783333333333333,
+        "travel_hours": 0.4666666666666667,
+        "other_hours": 1.3333333333333333
+      },
+      "hailey_johnson": {
+        "sleep_hours": 8.833333333333334,
+        "work_hours": 6.666666666666667,
+        "leisure_hours": 7.083333333333333,
+        "travel_hours": 0.3333333333333333,
+        "other_hours": 1.0833333333333333
+      },
+      "isabella_rodriguez": {
+        "sleep_hours": 9.0,
+        "work_hours": 8.0,
+        "leisure_hours": 5.933333333333334,
+        "travel_hours": 0.06666666666666667,
+        "other_hours": 1.0
+      },
+      "jane_moreno": {
+        "sleep_hours": 8.866666666666667,
+        "work_hours": 0.0,
+        "leisure_hours": 12.7,
+        "travel_hours": 0.5833333333333334,
+        "other_hours": 1.85
+      },
+      "jennifer_moore": {
+        "sleep_hours": 9.0,
+        "work_hours": 5.583333333333333,
+        "leisure_hours": 6.05,
+        "travel_hours": 1.3666666666666667,
+        "other_hours": 2.0
+      },
+      "john_lin": {
+        "sleep_hours": 7.833333333333333,
+        "work_hours": 6.516666666666667,
+        "leisure_hours": 7.516666666666667,
+        "travel_hours": 0.6333333333333333,
+        "other_hours": 1.5
+      },
+      "klaus_mueller": {
+        "sleep_hours": 8.0,
+        "work_hours": 6.45,
+        "leisure_hours": 7.733333333333333,
+        "travel_hours": 0.7333333333333333,
+        "other_hours": 1.0833333333333333
+      },
+      "latoya_williams": {
+        "sleep_hours": 8.0,
+        "work_hours": 6.666666666666667,
+        "leisure_hours": 7.766666666666667,
+        "travel_hours": 0.23333333333333334,
+        "other_hours": 1.3333333333333333
+      },
+      "maria_lopez": {
+        "sleep_hours": 9.0,
+        "work_hours": 6.283333333333333,
+        "leisure_hours": 6.733333333333333,
+        "travel_hours": 0.7333333333333333,
+        "other_hours": 1.25
+      },
+      "mei_lin": {
+        "sleep_hours": 8.333333333333334,
+        "work_hours": 6.483333333333333,
+        "leisure_hours": 7.133333333333334,
+        "travel_hours": 0.8,
+        "other_hours": 1.25
+      },
+      "rajiv_patel": {
+        "sleep_hours": 7.916666666666667,
+        "work_hours": 6.75,
+        "leisure_hours": 7.766666666666667,
+        "travel_hours": 0.5666666666666667,
+        "other_hours": 1.0
+      },
+      "ryan_park": {
+        "sleep_hours": 7.883333333333334,
+        "work_hours": 6.833333333333333,
+        "leisure_hours": 7.8,
+        "travel_hours": 0.23333333333333334,
+        "other_hours": 1.25
+      },
+      "sam_moore": {
+        "sleep_hours": 9.0,
+        "work_hours": 0.0,
+        "leisure_hours": 11.783333333333333,
+        "travel_hours": 1.1166666666666667,
+        "other_hours": 2.1
+      },
+      "tamara_taylor": {
+        "sleep_hours": 7.883333333333334,
+        "work_hours": 6.666666666666667,
+        "leisure_hours": 8.05,
+        "travel_hours": 0.23333333333333334,
+        "other_hours": 1.1666666666666667
+      },
+      "tom_moreno": {
+        "sleep_hours": 8.333333333333334,
+        "work_hours": 6.416666666666667,
+        "leisure_hours": 7.116666666666666,
+        "travel_hours": 0.6333333333333333,
+        "other_hours": 1.5
+      },
+      "wolfgang_schulz": {
+        "sleep_hours": 8.35,
+        "work_hours": 6.366666666666666,
+        "leisure_hours": 7.1,
+        "travel_hours": 0.7666666666666667,
+        "other_hours": 1.4166666666666667
+      },
+      "yuriko_yamamoto": {
+        "sleep_hours": 8.783333333333333,
+        "work_hours": 5.9,
+        "leisure_hours": 6.2,
+        "travel_hours": 1.3666666666666667,
+        "other_hours": 1.75
+      }
+    },
+    "atus_reference": {
+      "source": "https://www.bls.gov/news.release/archives/atus_06262025.htm",
+      "year": 2024,
+      "population": "US civilian population age 15+, all days",
+      "sleep_hours": 9.04,
+      "work_hours": 3.13,
+      "leisure_hours": 5.07
+    },
+    "difference_hours": {
+      "sleep_hours": -0.6906666666666652,
+      "work_hours": 2.7960000000000003,
+      "leisure_hours": 2.432666666666666
+    },
+    "note": "Shape diagnostic only. Smallville occupations/age mix and two weekdays differ from ATUS. Study is grouped with work; leisure includes messages; travel is separate. No calibration claim."
+  },
+  "cost": {
+    "calls": 955,
+    "cache_hits": 0,
+    "input_tokens": 5629889,
+    "output_tokens": 43430,
+    "usd": "0",
+    "uncertain_calls": 0,
+    "purposes": {
+      "plan": 25,
+      "action": 735,
+      "repair_plan": 158,
+      "conversation_turn": 12,
+      "reflection": 25
+    },
+    "usd_per_agent_per_simulated_day": "0E+1",
+    "max_usd": "0",
+    "accounting": "MockLLM has no billable tokens or USD; token counts are synthetic."
+  },
+  "messages": 79,
+  "historical_messages": 1050,
+  "economy": {
+    "enabled": true,
+    "units": "fictional town cents and meal units, separate from API USD",
+    "assumptions": {
+      "initial_cents": 5169371,
+      "initial_meals": 243,
+      "last_restock_day": 0,
+      "rates": "fictional authored scenario",
+      "rent": "daily prorated household total $36, shared equally"
+    },
+    "audit": {
+      "initial_cents": 5169371,
+      "final_cents": 5169371,
+      "money_conserved": true,
+      "ledger_matches_accounts": true,
+      "mismatched_accounts": [],
+      "nonnegative_accounts": true,
+      "initial_meals": 243,
+      "remaining_meals": 218,
+      "consumed_meals": 25,
+      "food_conserved": true,
+      "work_limits_respected": true
+    },
+    "transfers": 200,
+    "flows_cents": {
+      "pension/support": 24500,
+      "meal purchase": 30600,
+      "prorated rent": 46800,
+      "wages": 213839
+    },
+    "rent_arrears_cents": 0,
+    "residents_in_arrears": 0,
+    "unpaid_wages_cents": 0,
+    "shops": [
+      {
+        "account": "business:hobbs_cafe",
+        "daily_target": 12,
+        "id": "hobbs_cafe",
+        "price_cents": 800,
+        "product": "meal",
+        "stock": 0,
+        "wholesale_cents": 300
+      },
+      {
+        "account": "business:the_rose_and_crown_pub",
+        "daily_target": 6,
+        "id": "the_rose_and_crown_pub",
+        "price_cents": 1000,
+        "product": "meal",
+        "stock": 0,
+        "wholesale_cents": 300
+      },
+      {
+        "account": "business:the_willows_market_and_pharmacy",
+        "daily_target": 25,
+        "id": "the_willows_market_and_pharmacy",
+        "price_cents": 600,
+        "product": "meal",
+        "stock": 0,
+        "wholesale_cents": 300
+      }
+    ],
+    "resource_pressure": {
+      "residents_without_meals": 1,
+      "hungry_without_meals": 0,
+      "failed_purchases": 20,
+      "delayed_delivery_days": []
+    },
+    "council": [
+      {
+        "body": "Spend up to $300 of town funds buying meals from the finite wholesaler for the town market. Retail prices stay unchanged. Funds and supply must exist.",
+        "budget_cents": 30000,
+        "closes": 3600,
+        "id": "community_food",
+        "market": "the_willows_market_and_pharmacy",
+        "opens": 480,
+        "quorum": 13,
+        "status": "open",
+        "title": "Fund additional affordable meal stock"
+      }
+    ],
+    "ballots": 25,
+    "news": {
+      "published": 2,
+      "residents_reading": 25
+    },
+    "note": "Scenario rates, support transfers and freelance demand are authored assumptions; this is not a calibrated economy or a validated model of political behavior."
+  },
+  "rejected_actions": {
+    "this would overlap a conversation I accepted": 19,
+    "this place will close before I finish": 28,
+    "this would leave too little time to reach a conversation I accepted": 4
+  },
+  "interviews": {
+    "responses": 0,
+    "human_believability_score": null,
+    "note": "Run the interview command and collect blinded human ratings; no automatic score is fabricated."
+  },
+  "wall_seconds": 121.248,
+  "inference_timing": {
+    "timed_calls": 955,
+    "provider_calls": 955,
+    "provider_seconds_sum": 7.731,
+    "provider_ms_mean": 8.095,
+    "provider_ms_p50": 3.781,
+    "provider_ms_p95": 11.394,
+    "queue_ms_sum": 6070.443,
+    "note": "Provider duration includes network and generation; concurrent durations overlap."
+  }
+}

@@ -14,6 +14,8 @@ The first implementation batch is documented in
 [reports/REALISM_IMPLEMENTATION_1.md](reports/REALISM_IMPLEMENTATION_1.md).
 The completed R1 engineering gate is documented in
 [reports/REALISM_IMPLEMENTATION_2.md](reports/REALISM_IMPLEMENTATION_2.md).
+The completed R2 social-process gate is documented in
+[reports/REALISM_IMPLEMENTATION_3.md](reports/REALISM_IMPLEMENTATION_3.md).
 
 ```bash
 python -m pip install -e '.[test]'
@@ -298,8 +300,9 @@ been validated. Human gold data is kept outside persona repair feedback.
 `SPEC.md` is the complete original request. `PROGRESS.md` records completion and
 open issues, and `DECISIONS.md` records the rationale. `PHASE2.md` records the
 authorized extension; `PHASE3.md` records the subsequent scope. Development stops
-at Phase 3. The [Phase 3 report](reports/PHASE3_REPORT.md) contains the completed
-three-day real-model experiment, optimized offline runs and remaining limits.
+after Phase 3 plus the R0–R2 connected-realism integration; R3 is next. The
+[Phase 3 report](reports/PHASE3_REPORT.md) contains the completed three-day
+real-model experiment, optimized offline runs and remaining limits.
 The [Phase 2 report](reports/PHASE2_REPORT.md) contains the 100-resident run,
 consistency/cache checks, fidelity measurements and known limitations.
 The saved [Phase 1 report](reports/PHASE1_REPORT.md) contains acceptance evidence,
