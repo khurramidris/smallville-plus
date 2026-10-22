@@ -167,6 +167,58 @@ def evaluate(world: WorldState) -> dict:
     plan_counts = Counter(row.get("plan", "legacy_unknown") for row in cognition)
     full_plan_attempts = plan_counts["accepted"] + plan_counts["fallback"]
     repair_attempts = plan_counts["repaired"] + plan_counts["repair_fallback"]
+    conversations = world.all("conversations")
+    conversation_invitations = world.all("conversation_invitations")
+    conversation_turns = world.all("conversation_turns")
+    conversation_intentions = [
+        event.data for event in events if event.kind == "conversation_intention"
+    ]
+    started_scenes = [event for event in events if event.kind == "conversation_started"]
+    cancelled_scenes = [event for event in events if event.kind == "conversation_cancelled"]
+    completed_scenes = [event for event in events if event.kind == "conversation_ended"]
+    started_ids = {event.data["conversation_id"] for event in started_scenes}
+    exchange_ids = {
+        turn["conversation_id"] for turn in conversation_turns if turn["action"] == "speak"
+    }
+    copresent_activations = sum(bool(row.get("nearby")) for row in perceptions)
+    check_events = [
+        event
+        for event in events
+        if event.kind == "action_completed" and event.data.get("kind") == "check_phone"
+    ]
+    phone_attention = world.all("phone_attention")
+    relationship_states = world.all("relationship_states")
+    relationship_history = world.all("relationship_history")
+    initial_relationship_states = [
+        change.value for change in first.changes if change.table == "relationship_states"
+    ]
+
+    def relationship_averages(rows):
+        dimensions = ("trust", "affinity", "familiarity", "obligation")
+        return {
+            dimension: mean(row[dimension] for row in rows) if rows else None
+            for dimension in dimensions
+        }
+
+    directed_by_pair = {(row["owner"], row["peer"]): row for row in relationship_states}
+    asymmetric_pairs = set()
+    for (owner, peer), row in directed_by_pair.items():
+        reverse = directed_by_pair.get((peer, owner))
+        if reverse and any(
+            abs(row[key] - reverse[key]) > 1e-12
+            for key in ("trust", "affinity", "familiarity", "obligation")
+        ):
+            asymmetric_pairs.add(tuple(sorted((owner, peer))))
+    runtime_messages = [
+        message for message in messages if 0 <= message["sent_at"] <= run["completed_minutes"]
+    ]
+    attempted_appraisals = sum(
+        len(row.get("decision", {}).get("appraisals", [])) for row in conversation_intentions
+    )
+    # Each relationship transition is one appraisal that passed witnessed-turn
+    # validation. This remains accurate for logs written before turn events
+    # included an explicit applied-appraisal count.
+    applied_appraisals = len(relationship_history)
     return {
         "run": run,
         "backend": config["backend"],
@@ -258,9 +310,7 @@ def evaluate(world: WorldState) -> dict:
                 Counter(row["reflection"] for row in cognition if row.get("reflection") is not None)
             ),
             "interaction_opportunities": {
-                "activations_with_someone_nearby": sum(
-                    bool(row.get("nearby")) for row in perceptions
-                ),
+                "activations_with_someone_nearby": copresent_activations,
                 "nearby_resident_exposures": sum(len(row.get("nearby", [])) for row in perceptions),
                 "activations_with_unread_notifications": sum(
                     row.get("unread_notifications", 0) > 0 for row in perceptions
@@ -296,6 +346,101 @@ def evaluate(world: WorldState) -> dict:
             "final_density": density(agents),
             "growth": density(agents) - density(initial),
             "definition": "Undirected edge only when both residents have relationship records; negative ties count.",
+            "directed": {
+                "states": len(relationship_states),
+                "initial_averages": relationship_averages(initial_relationship_states),
+                "final_averages": relationship_averages(relationship_states),
+                "states_updated_after_epoch": sum(
+                    row["updated_at"] > 0 for row in relationship_states
+                ),
+                "evidence_linked_transitions": len(relationship_history),
+                "positive_dimension_changes": sum(
+                    value > 0
+                    for row in relationship_history
+                    for value in (
+                        row["trust_delta"],
+                        row["affinity_delta"],
+                        row["obligation_delta"],
+                    )
+                ),
+                "negative_dimension_changes": sum(
+                    value < 0
+                    for row in relationship_history
+                    for value in (
+                        row["trust_delta"],
+                        row["affinity_delta"],
+                        row["obligation_delta"],
+                    )
+                ),
+                "asymmetric_mutual_pairs": len(asymmetric_pairs),
+                "note": (
+                    "Directed values are resident-owned state. Contact alone changes familiarity; "
+                    "signed changes require a witnessed-turn appraisal."
+                ),
+            },
+        },
+        "social_process": {
+            "enabled": config.get("realism_profile") == "connected_v1",
+            "proposals": len(conversations),
+            "invitation_outcomes": dict(Counter(row["status"] for row in conversation_invitations)),
+            "scenes_started": len(started_scenes),
+            "scenes_cancelled_at_start": len(cancelled_scenes),
+            "started_scenes_ended": sum(
+                row["id"] in started_ids and row["status"] == "ended" for row in conversations
+            ),
+            "scheduled_end_events": len(completed_scenes),
+            "scene_start_rate": (len(started_ids) / len(conversations) if conversations else None),
+            "started_scenes_with_spoken_exchange": len(started_ids & exchange_ids),
+            "exchange_rate_per_started_scene": (
+                len(started_ids & exchange_ids) / len(started_ids) if started_ids else None
+            ),
+            "turns": len(conversation_turns),
+            "spoken_turns": sum(turn["action"] == "speak" for turn in conversation_turns),
+            "departures": sum(turn["action"] == "leave" for turn in conversation_turns),
+            "distinct_speakers": len({turn["speaker"] for turn in conversation_turns}),
+            "listener_exposures": sum(len(turn["observers"]) for turn in conversation_turns),
+            "mean_admitted_participants": (
+                mean(len(event.data.get("participants", [])) for event in started_scenes)
+                if started_scenes
+                else None
+            ),
+            "turn_decisions": dict(
+                Counter(row.get("diagnostic", "unknown") for row in conversation_intentions)
+            ),
+            "appraisals_attempted": attempted_appraisals,
+            "appraisals_applied": applied_appraisals,
+            "started_scenes_per_100_copresent_activations": (
+                100 * len(started_ids) / copresent_activations if copresent_activations else None
+            ),
+            "note": (
+                "Co-present activations are opportunity diagnostics, not independent trials. "
+                "Started scenes and listener-scoped turns establish actual exchanges; neither "
+                "their count nor success rate establishes human realism."
+            ),
+        },
+        "phone_attention": {
+            "enabled": config.get("realism_profile") == "connected_v1",
+            "residents_tracked": len(phone_attention),
+            "checks": sum(row["checks"] for row in phone_attention),
+            "messages_read_during_checks": sum(row["messages_read"] for row in phone_attention),
+            "max_messages_read_in_one_check": max(
+                (len(event.data.get("messages", [])) for event in check_events), default=0
+            ),
+            "runtime_messages_delivered": len(runtime_messages),
+            "runtime_messages_unread_at_horizon": sum(
+                message["read_at"] is None for message in runtime_messages
+            ),
+            "residents_with_deferred_unread": len(
+                {
+                    message["to"]
+                    for message in messages
+                    if message["sent_at"] <= run["completed_minutes"] and message["read_at"] is None
+                }
+            ),
+            "note": (
+                "Notification metadata is visible before a check; bodies enter memory only when "
+                "an explicit bounded check reads them."
+            ),
         },
         "party": {
             "invited_guests": len(invited),

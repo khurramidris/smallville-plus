@@ -44,6 +44,17 @@
   and 19 expired/unavailable cancellations. This is diagnostic evidence: the low
   start rate is visible and is not presented as a realism success. Metrics, viewer
   inspection and final replay/full-suite gates are next.
+- R2 step 4, measurement and inspection: `realism-eval-v2` reports final invitation
+  outcomes, admission/cancellation, spoken turns, departures, distinct speakers,
+  listener exposures, scene conversion from co-presence opportunities, bounded
+  phone checks/deferred unread messages and directed relationship asymmetry and
+  signed transitions. Legacy profiles retain the v1 manifest.
+- The replay viewer now marks active scenes and gives the selected resident's
+  phone-attention record, directed social state and evidence-linked transitions.
+  Its conversation panel includes only turns whose stored observer list contains
+  that resident; a co-located excluded bystander receives no thread. API/privacy,
+  metrics, JavaScript syntax and legacy evaluation tests pass. Final fresh-run,
+  replay, browser and full-suite gates remain.
 
 ## Connected realism implementation, batch 2 — completed 2026-10-22
 - Continued the ordered plan by completing the R1 engineering gate. R2 social

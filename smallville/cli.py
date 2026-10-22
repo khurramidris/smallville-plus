@@ -44,6 +44,28 @@ def write_report(directory: Path, report: dict):
         "Human believability scores remain uncollected.\n"
     )
     (directory / "report.md").write_text(text)
+    if report.get("social_process", {}).get("enabled"):
+        social = report["social_process"]
+        phone = report["phone_attention"]
+        directed = report["relationships"]["directed"]
+        outcomes = social["invitation_outcomes"]
+        with (directory / "report.md").open("a") as file:
+            file.write(
+                "\n## Social process diagnostics\n\n"
+                f"{social['scenes_started']} of {social['proposals']} proposed scenes started; "
+                f"{social['started_scenes_with_spoken_exchange']} contained spoken exchange. "
+                f"The log contains {social['spoken_turns']} spoken turns and "
+                f"{social['departures']} voluntary departures. Invitations ended with "
+                f"{outcomes.get('accepted', 0)} acceptances, "
+                f"{outcomes.get('refused', 0)} refusals and "
+                f"{outcomes.get('expired', 0)} expirations.\n\n"
+                f"Residents made {phone['checks']} bounded phone checks and read "
+                f"{phone['messages_read_during_checks']} messages; "
+                f"{phone['runtime_messages_unread_at_horizon']} runtime messages remained unread. "
+                f"There were {directed['evidence_linked_transitions']} evidence-linked directed "
+                "relationship appraisals. These are mechanism diagnostics, not a human-realism "
+                "score.\n"
+            )
     if report.get("economy", {}).get("enabled"):
         economy = report["economy"]
         audit = economy["audit"]

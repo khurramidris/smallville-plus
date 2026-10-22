@@ -58,9 +58,10 @@
 </main>
 <script>
 const $=s=>document.querySelector(s),canvas=$('#map'),ctx=canvas.getContext('2d');
-let meta,state,selected=null,playing=null,points=[],request=0,locationById={};
+let meta,state,selected=null,playing=null,points=[],request=0,locationById={},personById={};
 const escapeHTML=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const label=id=>locationById[id]?.name||id.replaceAll('_',' ');
+const personName=id=>personById[id]?.persona.name||label(id);
 const readable=text=>{let value=String(text);for(const [id,loc] of Object.entries(locationById))value=value.replaceAll(id,loc.name);return escapeHTML(value)};
 const timeLabel=m=>new Date(Date.UTC(2023,1,13)+m*60000).toLocaleString('en-GB',{timeZone:'UTC',month:'short',day:'2-digit',hour:'2-digit',minute:'2-digit'});
 const money=c=>`$${(Number(c)/100).toFixed(2)}`;
@@ -91,33 +92,42 @@ function draw(){
     points.push({x,y,id:a.id});
     ctx.beginPath();ctx.arc(x,y,a.id===selected?8:5,0,Math.PI*2);
     ctx.fillStyle=a.persona.tier==='deep'?'#ec8b50':'#243d52';ctx.fill();
-    ctx.strokeStyle=a.id===selected?'#ffffff':'#eaf0dd';ctx.lineWidth=2;ctx.stroke();
+    ctx.strokeStyle=a.id===selected?'#ffffff':a.scene_id?'#f2c14e':'#eaf0dd';ctx.lineWidth=a.scene_id?3:2;ctx.stroke();
     if(a.id===selected){ctx.font='bold 12px system-ui';ctx.fillStyle='#172d33';ctx.fillText(a.persona.name,x,y-16)}
   });
 }
 function entry(text,small=''){return `<div class="entry"><small>${escapeHTML(small)}</small>${readable(text)}</div>`}
+function conversationEntry(c){
+  const response=c.my_invitation?.status||(c.host===selected?'host':'participant');
+  const turns=c.observed_turns.map(t=>entry(t.action==='leave'?`${personName(t.speaker)} left the conversation.`:`${personName(t.speaker)}: ${t.text}`,`${timeLabel(t.minute)} · ${t.action}`)).join('');
+  return `<div class="entry"><small>${timeLabel(c.start)}–${timeLabel(c.end)} · ${escapeHTML(c.status)} · ${escapeHTML(response)}</small><strong>${escapeHTML(c.topic)}</strong>${turns||'<p class="empty">No spoken turn reached this resident.</p>'}</div>`
+}
 async function inspect(version){
   if(!selected)return;
   const data=await get(`/api/agents/${encodeURIComponent(selected)}?minute=${state.minute}`);
   if(version!==request)return;
   const a=data.agent;
-  $('#inspector').innerHTML=`<h2>${escapeHTML(a.persona.name)}</h2><div class="subtle">${escapeHTML(a.persona.tier)} tier · ${escapeHTML(a.emotion.label)} · ${escapeHTML(a.activity)}</div>
+  $('#inspector').innerHTML=`<h2>${escapeHTML(a.persona.name)}</h2><div class="subtle">${escapeHTML(a.persona.tier)} tier · ${escapeHTML(a.emotion.label)} · ${escapeHTML(a.activity)}${a.scene_id?' · in a private conversation':''}</div>
   <p>${escapeHTML(a.persona.description)}</p>
   ${a.persona.life_history?`<details><summary>Life story · fictional expansion</summary><p>${readable(a.persona.life_history.narrative)}</p>${a.persona.life_history.events.map(e=>entry(e.description,`Age ${e.age}`)).join('')}<p class="subtle">${escapeHTML(a.persona.provenance.source||'')} · ${escapeHTML(a.persona.provenance.biography||'')}</p></details>`:''}<h3>Needs</h3>
   ${Object.entries(a.needs).map(([k,v])=>`<div class="need"><span>${escapeHTML(k)}</span><progress max="100" value="${v}"></progress><span>${Math.round(v)}</span></div>`).join('')}
   <h3>Goals and commitments</h3>${data.goals.map(g=>entry(g.description,`${g.status} · priority ${g.priority.toFixed(2)}${g.deadline===null?'':` · due ${timeLabel(g.deadline)}`}`)).join('')||'<p class="empty">No durable goals recorded.</p>'}
+  <h3>Directed relationships</h3>${data.relationships.slice(0,12).map(r=>entry(personName(r.peer),`trust ${r.trust.toFixed(2)} · affinity ${r.affinity.toFixed(2)} · familiarity ${r.familiarity.toFixed(2)} · obligation ${r.obligation.toFixed(2)}`)).join('')||'<p class="empty">No directed relationship state recorded.</p>'}
+  ${data.relationship_history.length?`<details><summary>Recent relationship changes · ${data.relationship_history.length}</summary>${data.relationship_history.slice().reverse().map(r=>entry(r.reason,`${personName(r.peer)} · trust ${r.trust_delta>=0?'+':''}${r.trust_delta.toFixed(2)} · affinity ${r.affinity_delta>=0?'+':''}${r.affinity_delta.toFixed(2)} · ${timeLabel(r.minute)}`)).join('')}</details>`:''}
+  <h3>Private conversations</h3>${data.conversations.slice(0,8).map(conversationEntry).join('')||'<p class="empty">No conversation invitation recorded.</p>'}
+  <h3>Phone attention</h3>${data.phone_attention?`<p>${data.phone_attention.checks} checks · ${data.phone_attention.messages_read} messages read · ${data.unread_messages} unread</p><p class="subtle">Last checked ${data.phone_attention.last_checked<0?'never':timeLabel(data.phone_attention.last_checked)}. Notification summaries do not expose unread bodies.</p>`:'<p class="empty">Bounded phone attention is not enabled for this replay.</p>'}
   <h3>Recorded plan</h3>${a.plan?a.plan.blocks.map(b=>entry(`${b.activity} · ${label(b.location)}`,`${Math.floor(b.start/60)}:${String(b.start%60).padStart(2,'0')}–${Math.floor(b.end/60)}:${String(b.end%60).padStart(2,'0')}`)).join(''):'<p class="empty">Still asleep; no plan written yet.</p>'}
   <h3>Calendar</h3>${data.calendar.map(e=>entry(`${e.title} · ${label(e.location)}`,timeLabel(e.start))).join('')||'<p class="empty">Nothing scheduled.</p>'}
   ${data.finances?.job?`<h3>Money and work</h3><p>${money(data.finances.account.cents)} balance · ${data.finances.inventory.meals} meals</p><p class="subtle">${escapeHTML(data.finances.job.kind)} · ${money(data.finances.job.hourly_cents)}/hour · ${money(data.finances.lease.daily_cents)}/day rent · ${money(data.finances.lease.arrears_cents)} owed</p>${data.finances.transactions.slice(-5).reverse().map(t=>entry(`${money(t.cents)} · ${t.purpose}`,`${label(t.source)} → ${label(t.destination)} · ${timeLabel(t.minute)}`)).join('')}`:''}
   <h3>Recent memories</h3>${a.memories.slice(-10).reverse().map(m=>entry(m.text,`${timeLabel(m.minute)} · ${m.kind}`)).join('')}
   <details><summary>Archived private episodes · ${data.archived_memories.length} shown</summary>${data.archived_memories.slice().reverse().map(row=>entry(row.memory.text,`${timeLabel(row.memory.minute)} · archived ${timeLabel(row.archived_at)}`)).join('')||'<p class="empty">No episodes archived yet.</p>'}</details>
-  <h3>Messages</h3>${data.messages.slice(-10).reverse().map(m=>entry(m.body,`${label(m.sender)} → ${label(m.to)} · ${timeLabel(m.sent_at)}`)).join('')||'<p class="empty">No messages yet.</p>'}`;
+  <h3>Messages</h3>${data.messages.slice(-10).reverse().map(m=>entry(m.body,`${personName(m.sender)} → ${personName(m.to)} · ${timeLabel(m.sent_at)}${m.read_at===null?' · unread':''}`)).join('')||'<p class="empty">No messages yet.</p>'}`;
 }
 async function update(){
   const version=++request,minute=Number($('#time').value);
   try{
     const [next,cost,economy]=await Promise.all([get(`/api/state?minute=${minute}`),get(`/api/cost?minute=${minute}`),get(`/api/economy?minute=${minute}`)]);
-    if(version!==request)return;state=next;
+    if(version!==request)return;state=next;personById=Object.fromEntries(state.agents.map(a=>[a.id,a]));
     $('#clock').textContent=timeLabel(minute);$('#timeLabel').textContent=`Day ${Math.floor(minute/1440)+1}`;
     $('#residentCount').textContent=state.agents.length;$('#tagline').textContent=`One town. ${state.agents.length} lives. A record of what happened.`;$('#calls').textContent=`${cost.calls} / ${cost.cache_hits}`;
     $('#cost').textContent=`$${Number(cost.usd).toFixed(4)} / $${Number(cost.max_usd).toFixed(2)}`;

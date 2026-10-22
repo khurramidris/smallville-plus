@@ -1,3 +1,4 @@
+import httpx
 import pytest
 
 from smallville.agents.drives import advance_drives
@@ -16,7 +17,9 @@ from smallville.apps.conversations import (
 from smallville.apps.phone import Messaging, SendMessage
 from smallville.config import Config
 from smallville.engine.simulation import Simulation
+from smallville.eval.metrics import evaluate
 from smallville.gm.master import GameMaster
+from smallville.viewer.app import create_app
 from smallville.world.models import Intent, change
 
 
@@ -69,6 +72,16 @@ def test_phone_attention_reads_bounded_priority_batch_without_body_preview(setup
     assert len(phone.notifications(recipient_id, "summary")) == 1
     attention = world.get("phone_attention", recipient_id)
     assert attention["checks"] == 1 and attention["messages_read"] == 2
+    run = world.get("metadata", "run") | {
+        "status": "completed",
+        "completed_minutes": 10,
+        "requested_minutes": 10,
+    }
+    world.log.append(10, "attention_fixture_finished", changes=[change("metadata", "run", run)])
+    report = evaluate(world)
+    assert report["phone_attention"]["checks"] == 1
+    assert report["phone_attention"]["messages_read_during_checks"] == 2
+    assert report["phone_attention"]["residents_with_deferred_unread"] == 1
 
 
 def test_relationship_appraisal_is_directed_evidenced_and_emotion_decays(setup_world):
@@ -323,6 +336,15 @@ def test_three_person_private_turns_false_testimony_appraisal_and_departure(setu
     ended = conversations.end(conversation.id, 150)
     assert set(ended.data["wake"]) == {host.id, "eddy_lin"}
     assert all(world.agent(owner).scene_id is None for owner in (host.id, "eddy_lin"))
+    report = evaluate(world)
+    assert report["evaluation_manifest"]["protocol_version"] == "realism-eval-v2"
+    assert report["social_process"]["proposals"] == 1
+    assert report["social_process"]["invitation_outcomes"] == {"accepted": 2}
+    assert report["social_process"]["scenes_started"] == 1
+    assert report["social_process"]["turns"] == 5
+    assert report["social_process"]["departures"] == 1
+    assert report["relationships"]["directed"]["evidence_linked_transitions"] == 1
+    assert report["relationships"]["directed"]["positive_dimension_changes"] == 2
 
 
 async def test_engine_runs_private_turns_and_releases_participants(tmp_path):
@@ -381,5 +403,15 @@ async def test_engine_runs_private_turns_and_releases_participants(tmp_path):
         assert all("jane_moreno" not in event.observations for event in turns)
         assert sim.world.get("conversations", conversation.id)["status"] == "ended"
         assert all(sim.world.agent(owner).scene_id is None for owner in ("john_lin", "mei_lin"))
+        app = create_app(tmp_path / "conversation_engine")
+        async with httpx.AsyncClient(
+            transport=httpx.ASGITransport(app=app), base_url="http://test"
+        ) as client:
+            participant = (await client.get("/api/agents/john_lin?minute=20")).json()
+            bystander = (await client.get("/api/agents/jane_moreno?minute=20")).json()
+        assert len(participant["conversations"]) == 1
+        assert len(participant["conversations"][0]["observed_turns"]) == 2
+        assert participant["relationships"]
+        assert bystander["conversations"] == []
     finally:
         sim.close()

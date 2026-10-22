@@ -35,6 +35,13 @@
   gateway. Store the proposed decision for diagnosis, but let the conversation
   service validate listener-scoped evidence and commit the actual turn. A fixed
   MockLLM scene rate is only a deterministic integration fixture.
+- Advance the evaluation manifest only for `connected_v1`: legacy runs remain on
+  `realism-eval-v1`, while v2 declares scene, attention and directed-relationship
+  measurement rules. Report invitation failure and silence alongside exchanges;
+  co-presence activations are diagnostic opportunities, not independent trials.
+- Keep the replay viewer a researcher tool, but scope an inspected conversation
+  thread to turns the selected resident actually observed. This makes privacy
+  auditable without implying that the viewer itself is part of agent perception.
 
 ## Connected realism implementation, batch 2 — 2026-10-22
 - Complete R1 before adding R2 conversation mechanics. Histories, memory, goals

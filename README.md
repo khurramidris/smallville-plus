@@ -38,11 +38,17 @@ profile is an implementation milestone, not proof of human realism or superiorit
 to Park et al. Version 3 cohorts include household/work/friend histories and
 accepted unfinished commitments. Goals can be revised, blocked, completed or
 abandoned through GM-validated actions; surprises repair only the unelapsed plan.
-Multi-turn spoken scenes remain the next gate in the plan.
+R2 adds bounded phone checks and consent-based private spoken scenes: residents
+independently accept, refuse, speak, disagree or leave; only actual listeners
+receive each turn. Directed trust, affinity, familiarity and obligation changes
+must cite a turn that resident witnessed. The report exposes opportunity, scene,
+turn, attention and appraisal counts without treating them as a realism score.
 
 Open http://127.0.0.1:8000. Move the time slider, play the history, and click a
 resident to inspect their memories, needs, emotions, plans, calendar and messages.
-The dashboard reports requests, cached responses and cost at the selected time.
+Connected runs also show their directed relationships, phone attention and only
+the private conversation turns that resident heard. The dashboard reports
+requests, cached responses and cost at the selected time.
 The viewer is read-only and intended for local researcher use.
 
 Tests disable internet sockets by default; Unix sockets remain available solely

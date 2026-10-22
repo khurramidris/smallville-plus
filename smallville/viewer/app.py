@@ -81,6 +81,7 @@ def create_app(directory: str | Path) -> FastAPI:
                         "destination",
                         "activity",
                         "busy_until",
+                        "scene_id",
                         "pending",
                         "needs",
                         "emotion",
@@ -94,6 +95,29 @@ def create_app(directory: str | Path) -> FastAPI:
         minute, state = snapshot(minute)
         if identifier not in state["agents"]:
             raise HTTPException(404, "Unknown resident")
+        conversations = []
+        for conversation in state["conversations"].values():
+            if identifier != conversation["host"] and identifier not in conversation["invitees"]:
+                continue
+            invitation = state["conversation_invitations"].get(
+                f"invite:{conversation['id']}:{identifier}"
+            )
+            observed_turns = sorted(
+                [
+                    turn
+                    for turn in state["conversation_turns"].values()
+                    if turn["conversation_id"] == conversation["id"]
+                    and identifier in turn["observers"]
+                ],
+                key=lambda turn: (turn["minute"], turn["id"]),
+            )
+            conversations.append(
+                {
+                    **conversation,
+                    "my_invitation": invitation,
+                    "observed_turns": observed_turns,
+                }
+            )
         return {
             "minute": minute,
             "agent": display_agent(state["agents"][identifier], minute),
@@ -113,6 +137,32 @@ def create_app(directory: str | Path) -> FastAPI:
                 [row for row in state["memory_archive"].values() if row["owner"] == identifier],
                 key=lambda row: (row["archived_at"], row["id"]),
             )[-10:],
+            "phone_attention": state["phone_attention"].get(identifier),
+            "unread_messages": sum(
+                message["to"] == identifier
+                and message["sent_at"] <= minute
+                and message["read_at"] is None
+                for message in state["messages"].values()
+            ),
+            "relationships": sorted(
+                [
+                    row
+                    for row in state["relationship_states"].values()
+                    if row["owner"] == identifier
+                ],
+                key=lambda row: (-row["familiarity"], row["peer"]),
+            ),
+            "relationship_history": sorted(
+                [
+                    row
+                    for row in state["relationship_history"].values()
+                    if row["owner"] == identifier
+                ],
+                key=lambda row: (row["minute"], row["id"]),
+            )[-10:],
+            "conversations": sorted(
+                conversations, key=lambda row: (row["start"], row["id"]), reverse=True
+            ),
             "finances": {
                 "account": state["accounts"].get(identifier),
                 "inventory": state["inventories"].get(identifier),
