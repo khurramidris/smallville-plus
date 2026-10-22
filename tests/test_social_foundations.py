@@ -204,6 +204,7 @@ async def test_conversation_invitations_require_independent_acceptance_and_time(
     pending_busy = gm.conversations.pending(world.agent(busy.id), 115)
     assert pending_busy[0]["can_accept"] is False
     assert "busy" in pending_busy[0]["constraint"]
+    assert gm.conversations.pending(world.agent(busy.id), 125) == []
 
     stranded_host = await gm.resolve(
         host.id,

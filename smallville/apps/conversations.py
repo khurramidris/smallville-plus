@@ -213,7 +213,10 @@ class Conversations:
             if row["status"] != "pending":
                 continue
             conversation = self._conversation(row["conversation_id"])
-            if conversation.status != "proposed" or minute >= conversation.start:
+            # Responding consumes five minutes. Once a reply cannot finish
+            # strictly before the scene, leave it to expire rather than offer an
+            # impossible action that the GM must reject.
+            if conversation.status != "proposed" or minute + 5 >= conversation.start:
                 continue
             reason = self._acceptance_error(actor, conversation, minute + 5)
             result.append(
