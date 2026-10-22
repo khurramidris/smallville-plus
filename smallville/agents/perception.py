@@ -3,7 +3,9 @@ from smallville.world.models import Agent
 from smallville.world.store import WorldState
 
 
-def perceive(world: WorldState, agent: Agent, minute: int) -> dict:
+def perceive(
+    world: WorldState, agent: Agent, minute: int, *, private_phone_preview: bool = True
+) -> dict:
     """Only public co-located activity and this person's phone; never other minds."""
     peers = (
         []
@@ -18,5 +20,7 @@ def perceive(world: WorldState, agent: Agent, minute: int) -> dict:
         "minute": minute,
         "location": agent.location,
         "nearby": peers,
-        "notifications": Messaging(world).notifications(agent.id, "verbose"),
+        "notifications": Messaging(world).notifications(
+            agent.id, "verbose" if private_phone_preview else "summary"
+        ),
     }

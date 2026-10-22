@@ -1,5 +1,20 @@
 # Smallville+ progress
 
+## Connected realism implementation, batch 3 — in progress 2026-10-22
+- R2 step 1, social state and attention: added replayable directed relationship
+  state with separate trust, affinity, familiarity and obligation dimensions.
+  Signed changes require an explicit resident appraisal and witnessed turn IDs;
+  ordinary contact can increase familiarity without guessing sentiment from text.
+- Added decaying social emotion impulses, preserving an interaction's effect over
+  simulated time while needs still shape the underlying mood. The connected path
+  no longer treats substrings such as `disagree` as a relationship judgment.
+- Added per-resident phone-attention state and bounded message reads. Connected
+  perception exposes sender/time/urgency summaries without unread bodies; a check
+  prioritizes urgent mail, reads at most two messages and records its time/count.
+- New focused tests cover bounded urgent-first reads, hidden unread bodies,
+  asymmetric evidenced appraisal, private-evidence rejection and emotion decay.
+  Fourteen affected foundation tests pass; R2 conversation scheduling remains next.
+
 ## Connected realism implementation, batch 2 — completed 2026-10-22
 - Continued the ordered plan by completing the R1 engineering gate. R2 social
   scenes and later institutional/scale work remain outside this batch.

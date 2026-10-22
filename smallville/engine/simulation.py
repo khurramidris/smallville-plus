@@ -9,6 +9,7 @@ from smallville.agents.drives import advance_drives
 from smallville.agents.goals import initial_goal_changes
 from smallville.agents.knowledge import campaign_knowledge_change
 from smallville.agents.mind import Mind
+from smallville.agents.relationships import initial_relationship_changes
 from smallville.apps.civic import Council, NoticeBoard, initial_council
 from smallville.apps.gatherings import initial_gathering
 from smallville.config import Config
@@ -21,7 +22,7 @@ from smallville.llm.mock import MockLLM, routine
 from smallville.personas.population import Population
 from smallville.personas.seeds import load_agents
 from smallville.world.maps import MapProvider, SmallvilleMap
-from smallville.world.models import Intent, change
+from smallville.world.models import Intent, PhoneAttention, change
 from smallville.world.store import WorldState
 
 
@@ -80,6 +81,14 @@ def bootstrap(
                 changes.append(evidence)
         if config.realism_profile == "connected_v1":
             changes.extend(initial_goal_changes(agent))
+            changes.extend(initial_relationship_changes(agent))
+            changes.append(
+                change(
+                    "phone_attention",
+                    agent.id,
+                    PhoneAttention(id=agent.id, owner=agent.id),
+                )
+            )
     changes.extend(
         [
             change("metadata", "map", town.view()),

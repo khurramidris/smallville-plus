@@ -1,5 +1,20 @@
 # Decisions
 
+## Connected realism implementation, batch 3 — 2026-10-22
+- Extend the opt-in `connected_v1` profile for R2 while keeping legacy profiles
+  replayable. New tables are projections of the same immutable event log.
+- Make relationship state directed. Trust, affinity, familiarity and obligation
+  can diverge between two residents; the legacy scalar remains a compatibility
+  projection of affinity until later migrations remove it.
+- Never infer trust or affection from message substrings in the connected path.
+  Familiarity may rise from verified contact, while signed appraisal requires a
+  resident's bounded deltas and IDs of turns that resident actually witnessed.
+- Represent social emotion as a six-hour half-life impulse combined with needs.
+  This retains consequences without making an appraisal a permanent mood label.
+- Treat unread phone bodies as private information that costs attention to obtain.
+  Notifications expose metadata only, and each five-minute check will read at most
+  two messages with urgent-first ordering; residents may leave the rest unread.
+
 ## Connected realism implementation, batch 2 — 2026-10-22
 - Complete R1 before adding R2 conversation mechanics. Histories, memory, goals
   and repair must have causal state transitions before richer dialogue can use them.

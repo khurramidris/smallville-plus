@@ -38,7 +38,7 @@ def test_drives_time_memory_limit_and_closeness(town):
     remember(agent, 900, "Valentine party at Hobbs Cafe", "letter", 1)
     assert len(agent.memories) == 128
     assert retrieve(agent, "Valentine party", 901, 1)[0].source == "letter"
-    conversation_effect(agent, "peer", "I disagree")
+    conversation_effect(agent, "peer", "I disagree", affinity_delta=-0.12)
     assert agent.relationships["peer"] < 0
     with pytest.raises(ValueError):
         advance_drives(agent, 0)

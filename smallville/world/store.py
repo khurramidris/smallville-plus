@@ -29,6 +29,11 @@ class WorldState:
             CREATE INDEX IF NOT EXISTS goal_history_owner ON goal_history(json_extract(data, '$.owner'));
             CREATE INDEX IF NOT EXISTS memory_archive_owner ON memory_archive(json_extract(data, '$.owner'));
             CREATE INDEX IF NOT EXISTS knowledge_owner ON knowledge(json_extract(data, '$.owner'));
+            CREATE INDEX IF NOT EXISTS phone_attention_owner ON phone_attention(json_extract(data, '$.owner'));
+            CREATE INDEX IF NOT EXISTS relationship_states_owner ON relationship_states(json_extract(data, '$.owner'));
+            CREATE INDEX IF NOT EXISTS relationship_history_owner ON relationship_history(json_extract(data, '$.owner'));
+            CREATE INDEX IF NOT EXISTS conversation_invites_owner ON conversation_invitations(json_extract(data, '$.owner'));
+            CREATE INDEX IF NOT EXISTS conversation_turns_conversation ON conversation_turns(json_extract(data, '$.conversation_id'));
         """)
         self.db.commit()
         self.log = EventLog(self.db, self.directory / "events.jsonl")

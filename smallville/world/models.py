@@ -42,6 +42,8 @@ class Emotion(Model):
     valence: float = Field(default=0, ge=-1, le=1)
     arousal: float = Field(default=0.2, ge=0, le=1)
     label: str = "neutral"
+    social_valence: float = Field(default=0, ge=-1, le=1)
+    social_arousal: float = Field(default=0, ge=0, le=1)
 
 
 class LifeEvent(Model):
@@ -210,8 +212,102 @@ class Agent(Model):
     last_reflection_day: int = -1
     surprise: bool = False
     last_social_at: int = -60
+    scene_id: str | None = None
     pending: dict[str, Any] | None = None
     activity_minutes: dict[str, int] = Field(default_factory=dict)
+
+
+class PhoneAttention(Model):
+    id: str
+    owner: str
+    last_checked: int = -1
+    checks: int = Field(default=0, ge=0)
+    messages_read: int = Field(default=0, ge=0)
+
+
+class RelationshipState(Model):
+    id: str
+    owner: str
+    peer: str
+    trust: float = Field(default=0, ge=-1, le=1)
+    affinity: float = Field(default=0, ge=-1, le=1)
+    familiarity: float = Field(default=0, ge=0, le=1)
+    obligation: float = Field(default=0, ge=-1, le=1)
+    updated_at: int = 0
+    evidence: list[str] = Field(default_factory=list, max_length=32)
+
+
+class RelationshipTransition(Model):
+    id: str
+    owner: str
+    peer: str
+    minute: int
+    conversation_id: str
+    trust_delta: float = Field(default=0, ge=-0.15, le=0.15)
+    affinity_delta: float = Field(default=0, ge=-0.15, le=0.15)
+    obligation_delta: float = Field(default=0, ge=-0.15, le=0.15)
+    reason: str = Field(min_length=3, max_length=500)
+    evidence: list[str] = Field(min_length=1, max_length=8)
+
+
+class Conversation(Model):
+    id: str
+    host: str
+    topic: str = Field(min_length=3, max_length=300)
+    location: str
+    proposed_at: int
+    start: int
+    end: int
+    invitees: list[str] = Field(min_length=1, max_length=3)
+    accepted: list[str] = Field(default_factory=list)
+    refused: list[str] = Field(default_factory=list)
+    status: Literal["proposed", "active", "ended", "cancelled"] = "proposed"
+    active_participants: list[str] = Field(default_factory=list)
+    turn_order: list[str] = Field(default_factory=list)
+    turn_cursor: int = Field(default=0, ge=0)
+    turn_count: int = Field(default=0, ge=0)
+    ended_at: int | None = None
+    end_reason: str | None = None
+
+    @model_validator(mode="after")
+    def valid_conversation(self):
+        if self.end <= self.start or self.start < self.proposed_at:
+            raise ValueError("conversation times are invalid")
+        if len(set(self.invitees)) != len(self.invitees) or self.host in self.invitees:
+            raise ValueError("conversation invitees must be unique and exclude the host")
+        participants = {self.host, *self.invitees}
+        for group in (self.accepted, self.refused, self.active_participants, self.turn_order):
+            if len(set(group)) != len(group) or set(group) - participants:
+                raise ValueError("conversation participant state is invalid")
+        if self.host not in self.accepted:
+            raise ValueError("conversation host must accept their own proposal")
+        return self
+
+
+class ConversationInvitation(Model):
+    id: str
+    owner: str
+    conversation_id: str
+    sender: str
+    status: Literal["pending", "accepted", "refused", "expired"] = "pending"
+    reason: str | None = Field(default=None, max_length=500)
+    responded_at: int | None = None
+
+
+class ConversationTurn(Model):
+    id: str
+    conversation_id: str
+    minute: int
+    speaker: str
+    action: Literal["speak", "leave"]
+    text: str = Field(default="", max_length=2000)
+    observers: list[str] = Field(min_length=1)
+
+    @model_validator(mode="after")
+    def spoken_text(self):
+        if self.action == "speak" and not self.text.strip():
+            raise ValueError("spoken conversation turn needs text")
+        return self
 
 
 ActionKind = Literal[
@@ -231,6 +327,9 @@ ActionKind = Literal[
     "post_notice",
     "vote",
     "goal",
+    "check_phone",
+    "conversation_invite",
+    "conversation_respond",
 ]
 
 
@@ -298,6 +397,12 @@ TABLES = (
     "goal_history",
     "memory_archive",
     "knowledge",
+    "phone_attention",
+    "relationship_states",
+    "relationship_history",
+    "conversations",
+    "conversation_invitations",
+    "conversation_turns",
     "metadata",
 )
 
@@ -327,6 +432,12 @@ class Change(Model):
         "goal_history",
         "memory_archive",
         "knowledge",
+        "phone_attention",
+        "relationship_states",
+        "relationship_history",
+        "conversations",
+        "conversation_invitations",
+        "conversation_turns",
         "metadata",
     ]
     id: str

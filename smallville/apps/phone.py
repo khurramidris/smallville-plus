@@ -5,8 +5,17 @@ from pydantic import Field
 from smallville.agents.drives import conversation_effect
 from smallville.agents.knowledge import campaign_knowledge_change
 from smallville.agents.memory import archive_changes, remember
+from smallville.agents.relationships import contact_change
 from smallville.apps.gatherings import Gatherings
-from smallville.world.models import Agent, CalendarEntry, Change, Message, Model, change
+from smallville.world.models import (
+    Agent,
+    CalendarEntry,
+    Change,
+    Message,
+    Model,
+    PhoneAttention,
+    change,
+)
 from smallville.world.store import WorldState
 
 
@@ -28,6 +37,12 @@ class CreateEvent(Model):
 class Messaging:
     def __init__(self, world: WorldState):
         self.world = world
+
+    def connected(self) -> bool:
+        try:
+            return self.world.get("metadata", "config").get("realism_profile") == "connected_v1"
+        except KeyError:
+            return False
 
     def validate(self, actor: Agent, request: SendMessage) -> None:
         if request.to == actor.id:
@@ -55,7 +70,10 @@ class Messaging:
         )
         if request.to not in actor.contacts:
             actor.contacts.append(request.to)
-        conversation_effect(actor, request.to, request.body)
+        if self.connected():
+            actor.needs.social = min(100, actor.needs.social + 2)
+        else:
+            conversation_effect(actor, request.to, request.body)
         evicted = []
         memory = remember(
             actor,
@@ -77,12 +95,18 @@ class Messaging:
             listener=request.to,
             retained_memory_id=memory.id,
         )
+        relationship_changes = (
+            [contact_change(self.world, actor, request.to, minute, identifier)]
+            if self.connected()
+            else []
+        )
         return message, [
             change("messages", identifier, message),
             *([evidence] if evidence is not None and evidence.value["subject"] == actor.id else []),
             *Gatherings(self.world).invitation_changes(
                 actor, request.body, request.event_id, identifier, request.to
             ),
+            *relationship_changes,
             *archive_changes(actor.id, evicted, minute),
         ]
 
@@ -90,11 +114,24 @@ class Messaging:
         self.world.agent(owner)
         return [m for m in self.world.messages(owner) if m.to == owner]
 
-    def read_changes(self, actor: Agent, minute: int) -> list[Change]:
+    def read_batch(
+        self, actor: Agent, minute: int, limit: int | None = None
+    ) -> tuple[list[Change], list[str]]:
         changes, evicted = [], []
-        for message in self.inbox(actor.id):
-            if message.read_at is not None or message.sent_at > minute:
-                continue
+        unread = [
+            message
+            for message in self.inbox(actor.id)
+            if message.read_at is None and message.sent_at <= minute
+        ]
+        unread.sort(
+            key=lambda message: (
+                0 if message.verbosity == "urgent" else 1,
+                message.sent_at,
+                message.id,
+            )
+        )
+        selected = unread[:limit] if limit is not None else unread
+        for message in selected:
             message.read_at = minute
             memory = remember(
                 actor,
@@ -106,7 +143,13 @@ class Messaging:
             )
             if message.sender not in actor.contacts:
                 actor.contacts.append(message.sender)
-            conversation_effect(actor, message.sender, message.body)
+            if self.connected():
+                actor.needs.social = min(100, actor.needs.social + 2)
+                changes.append(
+                    contact_change(self.world, actor, message.sender, minute, message.id)
+                )
+            else:
+                conversation_effect(actor, message.sender, message.body)
             actor.surprise = True
             changes.append(change("messages", message.id, message))
             evidence = campaign_knowledge_change(
@@ -123,10 +166,39 @@ class Messaging:
             if evidence:
                 changes.append(evidence)
         changes.extend(archive_changes(actor.id, evicted, minute))
-        return changes
+        return changes, [message.id for message in selected]
+
+    def read_changes(self, actor: Agent, minute: int, limit: int | None = None) -> list[Change]:
+        return self.read_batch(actor, minute, limit)[0]
+
+    def attention(self, owner: str) -> PhoneAttention:
+        try:
+            return PhoneAttention.model_validate(self.world.get("phone_attention", owner))
+        except KeyError:
+            return PhoneAttention(id=owner, owner=owner)
+
+    def check_changes(
+        self, actor: Agent, minute: int, limit: int = 2
+    ) -> tuple[list[Change], list[str], int]:
+        changes, read = self.read_batch(actor, minute, limit)
+        attention = self.attention(actor.id)
+        attention.last_checked = minute
+        attention.checks += 1
+        attention.messages_read += len(read)
+        remaining = len(
+            [
+                message
+                for message in self.inbox(actor.id)
+                if message.read_at is None and message.sent_at <= minute and message.id not in read
+            ]
+        )
+        changes.append(change("phone_attention", attention.id, attention))
+        return changes, read, remaining
 
     def notifications(
-        self, owner: str, verbosity: Literal["quiet", "normal", "verbose"] = "normal"
+        self,
+        owner: str,
+        verbosity: Literal["quiet", "normal", "verbose", "summary"] = "normal",
     ) -> list[dict]:
         messages = [m for m in self.inbox(owner) if m.read_at is None]
         if verbosity == "quiet":
@@ -136,7 +208,12 @@ class Messaging:
                 "id": m.id,
                 "from": m.sender,
                 "sent_at": m.sent_at,
-                "body": m.body if verbosity == "verbose" else m.body[:120],
+                "verbosity": m.verbosity,
+                **(
+                    {}
+                    if verbosity == "summary"
+                    else {"body": m.body if verbosity == "verbose" else m.body[:120]}
+                ),
             }
             for m in messages[-8:]
         ]
