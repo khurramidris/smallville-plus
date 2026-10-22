@@ -1,207 +1,222 @@
-# Phase 3 — Economy, council and three-day experiments
+# Phase 3 — Completed three-day simulation
 
-**Phase 3 has resumed with a performance and planning pass. The optimized
-25- and 100-person three-day offline scenarios and all 83 tests pass. A fresh
-three-day API experiment is in progress; both expanded and original-cohort
-optimized event replays pass.** The previous live
-experiment remains preserved as interrupted at 21 hours. No Phase 4 work was
-started and no paid service was added.
+Phase 3 and the performance/planning improvements are implemented. The real-model
+experiment completed **25 residents × three days** (4,320 minutes each), using
+`openrouter/minimax/minimax-m3.1-flash:free` through LiteLLM. Both optimized offline
+scenarios, with 25 and 100 residents, also completed three days. No Phase 4 work
+or paid service was added. “Number thing” was interpreted as item 1, performance
+and planning, after optional clarification received no answer.
 
-## Resumption — performance and planning
+## What was built
 
-The environment restarted at minute **2,490 / February 14, 17:30**, stopping the
-first optimized live process. Its **1,500 known responses and two uncertain
-requests** are preserved. A fresh run reconstructed the 1,500 cached decisions
-and matched every world-state projection to the pre-restart checksum **before
-any new network request**. It is continuing in `runs/phase3-resumed-live-25/`.
-No completed API call was repeated during reconstruction. Prior/new usage will
-be counted once; exact shutdown duration and the two lost responses remain unknown.
+- Auditable integer-cent accounts, private bank transfers, paid work with shift
+  and daily limits, finite employer funds, fractional-cent carry and unpaid wages.
+- Shared household rent and arrears; three priced food shops, portable meals,
+  finite stock and funded wholesale replenishment.
+- Public notices and evidence-backed local news; private council ballots, quorum,
+  deadlines and a policy that spends actual treasury funds on existing meals.
+- Shared invitations and validated host/date/venue attendance; dated private
+  observations of stock, without remote knowledge of unseen sales.
+- Historical finance, work, shop and council panels in the research viewer,
+  economic audits, command integration and offline regression coverage.
+- Optional `--optimized`: bounded concurrent same-minute decisions, smaller phone
+  context, recent rejection feedback, explicit known movement/work constraints,
+  request deduplication and separate provider/queue timing measurements.
 
-[Recovery manifest](phase3/environment-recovery-manifest.json),
-[checksum verification](phase3/resumed-checkpoint-verification.json),
-[interrupted optimized attempt](phase3/optimized-interrupted-live-simulation.json).
+Chosen work, sleep or leisure can continue for at most two hours, with hourly
+checks and interruptions for needs, new information, appointments and GM rules.
+Purchases, messaging, voting and attendance still require fresh model decisions.
+Independent decisions read a fixed scene; the GM applies results in scheduler
+order and rechecks scarce resources. In-flight reservations count against the
+hard spending cap. Production inference/world behavior stayed at `8e2b410`.
 
-`--optimized` enables bounded same-time decisions (four for this experiment),
-atomic in-flight budget reservations, duplicate-request caching, bounded phone
-context, explicit known movement/work constraints and recent rejection feedback.
-Only a person's chosen work/sleep/leisure can continue without another model
-decision, for at most two hours with hourly checks. New information, needs,
-appointments and GM rules interrupt it. Social decisions still use the model.
+Economic prices, contracts, support transfers and capital are authored scenario
+assumptions. The second day's regular delivery is deliberately delayed. Town
+money is fictional and separate from API USD.
 
-Decisions read a fixed scene and apply in scheduler order. Per-call provider and
-queue timings are separate from deterministic events. All tasks settle before a
-cancelled run finishes. Production behavior is frozen at `8e2b410`.
+## What people did in the real-model run
 
-- **83 tests pass offline in 142.49 seconds**, including overlap, in-flight caps,
-  cancellation, privacy/ordered capacity checks and cached/event replay.
-- Optimized 25-person fixture: **2,870 requests**, versus 3,317 previously
-  (13.5% fewer); **332.999 wall seconds**, versus 389.783. Competing work differed,
-  so this is not an isolated timing benchmark. Both runs cover three days.
-- All **14,679** optimized events replay to byte-identical JSONL and identical
-  state. All money, food, ledger, work-limit and elapsed-activity audits pass.
-- A fixed-100ms synthetic provider probe measured **4.07x** gateway throughput
-  with four concurrent requests. This is not an API or full-engine speed claim.
-- Optimized 100-person fixture: **12,141 requests**, versus 14,076 previously
-  (13.7% fewer). Synthetic input tokens fell from 88,642,393 to 51,851,835
-  (41.5% fewer); wall time was 1,686.868 seconds, versus 2,260.967 under different
-  competing work. All financial/resource audits pass. Eleven residents owe
-  23,081 town cents; eleven are hungry without meals. Party: 29/49 guests.
-- These modes change attention/history limits and action timing, so their
-  behavior is not guaranteed identical. Social fixture results remain scripted.
-- All **59,359** optimized expanded events reproduce identical state and JSONL
-  bytes; every resident accounts for every minute. No inference during replay.
-- Fresh live inference results are pending. They use
-  separate directories/reports; none overwrite the prior experiments below.
+Residents worked, bought meals, paid rent, exchanged **89 messages**, read town
+news and voted. Average daily recorded time was **8.88 hours sleeping, 6.29
+working, 4.58 on leisure, 1.76 travelling and 2.48 on other activity**. These are
+coarse activity categories, not validated human time-use measurements.
 
-Evidence: [optimized fixture](phase3/optimized-mock-25-simulation.json),
-[replay](phase3/optimized-mock-25-verification.json),
-[expanded fixture](phase3/optimized-mock-100-simulation.json),
-[expanded replay](phase3/optimized-mock-100-verification.json),
-[offline checks](phase3/optimized-offline-checks.json),
-[synthetic concurrency probe](phase3/concurrency-probe.json).
+**Isabella hosted the Valentine's party at Hobbs Cafe. Maria Lopez, Ryan Park
+and Tamara Taylor attended: three of four guests receiving complete invitations.**
+Attendance requires a completed action overlapping the party window and host
+confirmation. It excludes the host and is not inferred from a message or map dot.
 
-## Built
+**The council voted 21 yes and 3 no**, with 24 of 25 eligible residents voting.
+At the day-three noon deadline, the passed policy spent **30,000 town cents
+($300 fictional)** to move **100 existing wholesale meals** to the market.
+Retail prices did not change. Seven public notices were published, with all
+25 residents reading news at least once. Carmen also posted requests for spare
+meals for herself and Tamara; a request alone does not establish a successful
+food transfer.
 
-- Integer-cent account transfers and a ledger, paid work with shift/daily limits,
-  fractional-cent carry, finite employer funds and unpaid-wage obligations.
-- Shared household rent, arrears, funded pension/support allowances, three
-  priced food shops, portable meals and finite funded wholesale replenishment.
-- Private bank transfers/statements, public notices, evidence-backed local news,
-  secret council ballots, quorum/deadlines and a funded food-stock policy.
-- Shared event invitations and host/date/venue checks for confirmed attendance.
-  The earlier written-time invitation parser defect is corrected.
-- Private, dated stock observations, new action prompts/MockLLM fixtures,
-  economic audits, historical viewer panels and command/report integration.
+Wages totaled **646,206 town cents**, rent **140,400**, meal purchases **78,600**,
+pension/support **73,500**, and personal transfers **1,200**. All **5,169,371
+initial town cents** remain accounted for. The **243 initial meals** reconcile
+as **154 consumed + 89 remaining**. No account is negative; account-ledger and
+work-limit audits pass. No rent arrears or unpaid wages remained. Three residents
+were hungry without meals at the endpoint, and 12 purchase attempts/completions
+failed. Remaining town supply does not prove personal access or affordability.
 
-Economic rates, capital, support and freelance demand are authored assumptions.
-The scenario explicitly delays the second day's regular food delivery. Town
-cents and real API USD are separate accounting systems.
+[Complete measurements](phase3/resumed-live-simulation.json) and
+[final progress record](phase3/resumed-live-progress.json).
 
-## Completed offline scenarios
+## API cost, interruption and speed
 
-| Measurement | Original 25 | Expanded 100 |
+| Whole completed experiment | Measurement |
+| --- | ---: |
+| Actual provider attempts across both execution attempts | 3,342 |
+| Successful recorded provider responses | 3,340 |
+| Interrupted requests with unknown usage | 2 |
+| Known input tokens | 13,105,152 |
+| Known output tokens | 794,401 |
+| Published-rate API cost | $0 |
+| API USD per resident per simulated day | $0 |
+| Active execution wall time, lower bound | 10,787.017 seconds (about 3 hours) |
+| Median successful request duration | 3.62 seconds |
+| 95th percentile request duration | 10.18 seconds |
+
+The exact authorized route had zero listed input/output prices. Both gateway
+`SIM_MAX_USD` and provider price ceilings were zero, with no retries or paid
+fallbacks. This is published-rate accounting, not a provider invoice. Unknown
+usage is excluded from known token totals; it is not presented as zero usage.
+No secrets are saved in reports, code or logs.
+
+The environment restarted on day two at minute **2,490**. The first attempt
+preserved **1,500 successful responses and two uncertain in-flight requests**.
+Recovery rebuilt the known prefix locally and verified every world projection
+against the original checksum **before its first new API request**. It then made
+**1,840 new successful calls** and reached minute 4,320. Completed provider calls
+were not repeated. The resumed run's own ledger includes 1,500 reconstruction
+cache hits; its token totals cover only the new requests. Use the report's
+`whole_experiment_cost` for combined accounting. Viewer counters describe the
+resumed attempt, not the sum of both provider journals.
+
+The resumed attempt took 6,258.347 seconds, including cache reconstruction. The
+combined lower bound adds the last observed 4,528.67 seconds before interruption;
+exact shutdown time and the outage duration are unavailable. It is not an exact
+uninterrupted-run speed measurement. Recovery reconstructs from responses;
+there is still no directly resumable persisted scheduler.
+
+Concurrency is bounded at four, but only independent decisions at the same
+simulated minute overlap. Most groups are smaller; thousands of requests taking
+several seconds still accumulate. Full world snapshots and local SQLite/JSONL
+work also cost time. The optimization changes attention/history limits and
+routine timing, so behavioral equality with earlier unoptimized runs is not
+claimed. A synthetic fixed-100ms gateway probe showed 4.07× throughput; this is
+not a real-API or whole-engine speedup.
+
+![Measured successful API request latencies](phase3/resumed-live-latencies.png)
+
+[Timing summary](phase3/resumed-live-latency-summary.json),
+[request data](phase3/resumed-live-latencies.csv),
+[vector figure](phase3/resumed-live-latencies.svg),
+[recovery manifest](phase3/environment-recovery-manifest.json),
+[pre-network checksum proof](phase3/resumed-checkpoint-verification.json) and
+[key-free settings](phase3/resumed-live-settings.json).
+
+## Offline validation and comparison
+
+**83 tests passed with internet sockets disabled**, in 142.49 seconds. Ruff passes.
+A subsequently strengthened populated-history/privacy case also passed offline;
+no simulation code changed. Tests cover budget races, deduplication, concurrency,
+cancellation, ordered capacity, partial observability, routines and replay.
+
+| Optimized three-day fixture | Original 25 | Expanded 100 |
 | --- | ---: | ---: |
-| Simulated days | 3 | 3 |
-| Minutes per resident | 4,320 | 4,320 |
-| Mock requests | 3,317 | 14,076 |
-| USD / resident / day | $0 | $0 |
-| Wall seconds | 389.783 | 2,260.967 |
-| Recorded events | 14,528 | 59,768 |
-| Rent arrears, town cents | 0 | 27,081 across 11 residents |
-| Hungry residents without meals at end | 0 | 14 |
-| Failed purchase attempts/completions | 71 | 191 |
-| Confirmed party guests / receiving details | 12 / 20 | 31 / 46 |
+| Mock requests | 2,870 | 12,141 |
+| Previous unoptimized requests | 3,317 | 14,076 |
+| Request reduction | 13.5% | 13.7% |
+| Synthetic input-token reduction | 12.0% | 41.5% |
+| Wall seconds | 332.999 | 1,686.868 |
+| Recorded events | 14,679 | 59,359 |
+| Confirmed party guests / receiving details | 12 / 18 | 29 / 49 |
+| Rent arrears, town cents | 0 | 23,081 across 11 residents |
+| Hungry residents without meals at end | 0 | 11 |
 
-These are deterministic scripted fixtures, including their social decisions and
-synthetic token counts. Wall times include competing validation work. They
-demonstrate implementation behavior, not human realism or emergent politics.
+Both fixtures conserve money/food, reconcile all accounts, respect work limits
+and account for every resident's 4,320 minutes. Both full event imports reproduce
+identical world state and byte-identical JSONL without inference. Mock social
+choices and token counts are scripted diagnostics. Wall-time comparisons had
+different competing work and do not isolate the optimization's causal effect.
+The 100-person cohort uses the existing Phase 2 full-history population artifact;
+the live cohort uses the original 25 seed workflow, without those digital histories.
+There is no live 100-resident result.
 
-Both scenarios conserve all money and meal units, respect work limits, keep
-accounts nonnegative and reconcile every account with its transfer ledger.
-In the 100-resident run, 19,873,747 cents remain conserved and 974 initial meals
-equal 461 consumed plus 513 remaining. Fourteen residents are hungry without
-food despite remaining town supply; the fixture exposes access/affordability
-pressure rather than automatically solving it.
+[Offline checks](phase3/optimized-offline-checks.json),
+[fixture comparison](phase3/optimized-fixture-comparison.json),
+[25-person fixture](phase3/optimized-mock-25-simulation.json),
+[25-person replay](phase3/optimized-mock-25-verification.json),
+[100-person fixture](phase3/optimized-mock-100-simulation.json) and
+[100-person replay](phase3/optimized-mock-100-verification.json).
 
-The council fixture passed its proposal in both towns. The 25-person vote was
-15 yes, 5 no, 5 abstentions; the 100-person vote was 67 yes, 22 no, 11 abstentions.
-Each policy spent 30,000 town cents on 100 actual remaining wholesale meals.
-The policy adds stock while retail prices remain unchanged.
+The completed real-model run's **16,149 events** import to identical state and
+byte-identical JSONL. All 25 residents account for every minute, and all five
+economic audits pass. A separate full three-day cached rerun used **3,340 cache
+hits and zero provider calls**, reproducing every world table except the explicit
+replay configuration flag. No fresh API inference was used for either check.
 
-![Recorded retail food stock](phase3/food-stock.png)
+[Real-run event verification](phase3/resumed-live-verification.json) and
+[full cached rerun](phase3/resumed-live-cache-verification.json). Event-log SHA-256:
+`00f977f2ae32d08c58b1369726bb2c26011e4bc2bbfb0217c22e35bf5b98b452`.
 
-Retail stocks emptied before the second-day delivery delay. The regular
-third-day replenishment and council purchase added actual stock. The expanded
-fixture exhausted its retail supply again. [Vector figure](phase3/food-stock.svg)
-and [transaction-derived data](phase3/food-stock.csv) are available for inspection.
+## Original Smallville comparison and limits
 
-Party counts are distinct guests over February 14, 17:00–19:00, with host/time
-confirmation. They are not simultaneous occupancy. Receiving full shared-event
-details is the invitation metric. A host-owned event is seeded from the original
-party goal; this setup, three-day horizon and communication channel differ from
-Park et al.'s two-day experiment.
+| Measurement | Completed real-model run | Park et al. |
+| --- | ---: | ---: |
+| Sam campaign awareness retained at end | 0 / 25 | 8 / 25 |
+| Party awareness retained at end | 5 / 25 | 13 / 25 |
+| Invited guests attending | 3 / 4 | 5 / 12 |
+| Mutual-knowledge density | 0.233 → 0.243 | 0.167 → 0.740 |
 
-## Verification
+Our awareness measure uses retained memory evidence, not paper-style interviews;
+Sam's seeded evidence was no longer retained at the end. The horizon is three
+days rather than two, the initial network differs, a host-owned party event is
+seeded, communication uses phone apps, and models/contexts differ. Guest counts
+are distinct over the party window rather than simultaneous occupancy. These
+are descriptive comparisons against [paper §7.1](https://arxiv.org/html/2304.03442v2#S7.SS1),
+not a matched replication or proof of better realism. No blinded human ratings
+or extra live interview calls were collected.
 
-- **76 tests pass offline**, 173.06 seconds, with internet sockets disabled.
-  Ruff and formatting pass for 59 Python files.
-- The additional Phase 3 cache regression uses **443/443 cache hits**, zero
-  provider calls and identical world state except the replay configuration flag.
-- Both complete event imports reproduce every table and JSONL bytes exactly,
-  without inference. All agents account for every simulated minute.
-- Chromium checked the historical finance/contract/council interfaces with no
-  page errors or external requests. [Viewer screenshot](phase3/viewer.png).
+The GM still rejected **32 closed-destination attempts**, nine activities that
+would overrun closing, fourteen unsupported action arguments, five attempts
+without a matching event, and other invalid intentions. Refusal feedback helps
+expose these problems but has not eliminated them. Needs/emotions/relationships
+remain simple heuristics; opinions start from synthetic heterogeneous priors.
 
-Offline scenarios began at `4525c58`. Later changes correct news read cursors,
-CLI validation and derived initial-awareness counting; reports were recomputed
-from unchanged event histories. Final production behavior is frozen at
-`87778b4` for the API experiment.
+Prices and primary contracts are fixed. There is one meal commodity, automatic
+prorated rent, a fixed council proposal, and no labor market, eviction, credit,
+full inventory trading or calibrated macroeconomy. Movement admission reserves
+capacity at departure and does not simulate detailed queues. Full snapshots are
+expensive: the optimized 100-person three-day JSONL is about **995 MiB**. No
+1,000-agent load test, 30-day drift validation or human realism improvement was
+established. Graphiti and the social-media layer remain later-phase work.
 
-## Original live API experiment — interrupted by user
+## Viewer and retained earlier attempts
 
-The original 25 residents were scheduled for three days on the authorized
-`openrouter/minimax/minimax-m3.1-flash:free` route through LiteLLM. Published
-prompt/output rates were zero; the gateway cap and provider price ceiling remain
-zero, with no retries or paid fallbacks. Keys enter only the process environment
-through hidden input. [Settings](phase3/live-settings.json) contain no key.
+Chromium verified all 25 resident controls, the selected notebook, correct
+real-model source wording, final completion and party-time replay, with no page
+errors or external requests. This is a schematic of the original tile map;
+researchers can inspect private notebooks, but residents cannot.
 
-The user requested a stop at **minute 1,260 / February 13, 21:00**, before the
-requested 4,320-minute horizon. Graceful cancellation recorded `interrupted`,
-preserved all committed outcomes and finalized cost accounting. There were
-**947 attempts: 946 successful responses and one interrupted request with unknown
-usage**, 3,261,849 known input tokens and 252,265 known output tokens. Recorded
-published-rate cost is **$0**, or **$0 per resident per simulated day elapsed**;
-this is not a completed three-day API measurement. Wall time was 5,041.746 seconds.
+[Final town screenshot](phase3/resumed-live-viewer.png),
+[party-time screenshot](phase3/resumed-live-party-viewer.png) and
+[browser evidence](phase3/resumed-live-browser-check.json).
 
-Residents completed paid work, shopping and the first rent collection. Wages
-totaled 253,480 town cents, purchases 19,200 and rent 46,800. All town money and
-food reconcile, accounts remain nonnegative and work limits pass. Eighteen
-residents cast ballots, 25 messages were sent and four guests read full party
-invitations. The council deadline and Valentine's party were still in the future;
-neither a final vote result nor live party attendance was observed. Maria and
-Klaus exchanged study-meeting messages; Maria's completed actions place her at
-Hobbs Cafe after her later arrival message. A substantive study conversation is
-not established by those records.
+The previous user-stopped live run remains interrupted at minute 1,260. It used
+947 attempts (946 known responses, one uncertain); two earlier diagnostics used
+83 attempts (81 known, two uncertain). Their **1,030 attempts and three uncertain
+requests**, all at $0, remain separate from the new completed experiment's
+3,342 attempts. The interrupted optimized prefix is also preserved; its costs
+are already included once in the completed experiment's whole-experiment totals.
+Earlier offline measurements and plots remain historical artifacts, not final
+optimized results. No interrupted attempt is relabeled as completed.
 
-The GM rejected 38 closed-destination attempts, six out-of-shift work periods,
-two daily-work-limit violations, five activities crossing closing time and five
-attendance attempts without a matching event. One phone request was invalid.
-These are remaining planning/coordination problems, not successful outcomes.
-
-Two early API diagnostics were interrupted while correcting offline-discovered
-stock and contract issues: **83 attempts, 81 known responses and two uncertain
-interrupted requests, $0**. These remain separate from the final runtime. Unknown
-usage for interrupted requests is not reported as measured tokens.
-
-Including diagnostics, Phase 3 used **1,030 attempts, 1,027 known responses and
-three uncertain interrupted requests, $0**. Unknown usage is excluded from known
-token totals. [Final interrupted report](phase3/live-simulation.json) and
-[last progress record](phase3/live-progress.json) are preserved. Full replay of
-this partial live run was not performed. Published-rate accounting is not a
-provider invoice; partial-day time-use figures are normalized diagnostics.
-
-## Problems found and limits
-
-Fixed lost shop-stock observations, teacher/student and unpaid-work
-classification errors, part-time limits, same-minute news loss, duplicate initial
-awareness counting, shared-event date validation and incomplete interruption
-status. Early diagnostics and their costs remain retained.
-
-Remaining limits include fixed prices and primary contracts, one meal commodity,
-automatic prorated rent, simple emotional/relationship heuristics, scarce-venue
-retry behavior and a fixed council proposal. There is no labor market, eviction,
-credit, full inventory trading or calibrated macroeconomy. Full state snapshots
-are expensive: the expanded three-day JSONL is about 954 MiB.
-
-No blinded human ratings, matched paper replication, live 100-resident cohort,
-paid-price validation or 1,000-agent load test was performed. These results do not
-establish that Smallville+ exceeds the original paper's realism.
-
-That experiment's three-day objective was unfinished at the user's stop. A fresh
-experiment is now authorized by the user's resumption; its results are pending.
-
-Evidence: [offline checks](phase3/offline-checks.json),
-[25-person report](phase3/mock-25-simulation.json),
-[100-person report](phase3/mock-100-simulation.json),
-[25-person replay](phase3/mock-25-verification.json),
-[100-person replay](phase3/mock-100-verification.json).
+[User-stopped report](phase3/live-simulation.json),
+[earlier diagnostic](phase3/diagnostic-live-simulation.json),
+[stock diagnostic](phase3/stock-diagnostic-live-simulation.json) and
+[environment-interrupted prefix](phase3/optimized-interrupted-live-simulation.json).

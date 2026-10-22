@@ -1,0 +1,41 @@
+{
+  "status": "passed",
+  "residents": 25,
+  "minutes": 4320,
+  "audits": {
+    "money_conserved": true,
+    "food_conserved": true,
+    "nonnegative_accounts": true,
+    "ledger_matches_accounts": true,
+    "work_limits_respected": true
+  },
+  "state_equal": true,
+  "jsonl_byte_identical": true,
+  "event_log_sha256": "00f977f2ae32d08c58b1369726bb2c26011e4bc2bbfb0217c22e35bf5b98b452",
+  "events": 16149,
+  "all_activity_minutes_match": true,
+  "inference_during_verification": 0,
+  "runtime_cost": {
+    "calls": 3340,
+    "cache_hits": 1500,
+    "input_tokens": 7592024,
+    "output_tokens": 450517,
+    "usd": "0",
+    "uncertain_calls": 0,
+    "usd_per_agent_per_simulated_day": "0E+1",
+    "max_usd": "0",
+    "accounting": "Usage at configured conservative token rates, not a provider invoice."
+  },
+  "whole_experiment_cost": {
+    "provider_attempts": 3342,
+    "cache_reconstruction_hits": 1500,
+    "known_input_tokens": 13105152,
+    "known_output_tokens": 794401,
+    "uncertain_requests": 2,
+    "usd": "0",
+    "max_usd": "0",
+    "usd_per_agent_per_simulated_day": "0",
+    "active_wall_seconds_lower_bound": 10787.017,
+    "accounting": "Published free-route rates, not an invoice. Includes the interrupted attempt; unknown usage excluded. Wall time excludes the outage and exact shutdown time is unavailable."
+  }
+}

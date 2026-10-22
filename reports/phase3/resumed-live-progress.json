@@ -1,0 +1,47 @@
+{
+  "status": "completed",
+  "minute": 4320,
+  "requested_minutes": 4320,
+  "residents": 25,
+  "cost": {
+    "calls": 3340,
+    "cache_hits": 1500,
+    "input_tokens": 7592024,
+    "output_tokens": 450517,
+    "usd": "0",
+    "uncertain_calls": 0,
+    "usd_per_agent_per_simulated_day": "0E+1",
+    "max_usd": "0",
+    "accounting": "Usage at configured conservative token rates, not a provider invoice."
+  },
+  "call_statuses": {
+    "cached": 1500,
+    "ok": 1840
+  },
+  "new_provider_attempts": 1840,
+  "whole_experiment_cost": {
+    "provider_attempts": 3342,
+    "cache_reconstruction_hits": 1500,
+    "known_input_tokens": 13105152,
+    "known_output_tokens": 794401,
+    "uncertain_requests": 2,
+    "usd": "0",
+    "max_usd": "0",
+    "usd_per_agent_per_simulated_day": "0",
+    "active_wall_seconds_lower_bound": 10787.017,
+    "accounting": "Published free-route rates, not an invoice. Includes the interrupted attempt; unknown usage excluded. Wall time excludes the outage and exact shutdown time is unavailable."
+  },
+  "checkpoint_verified": true,
+  "wall_seconds": 6258.347,
+  "inference_timing": {
+    "timed_calls": 1840,
+    "provider_calls": 1840,
+    "provider_seconds_sum": 8438.572,
+    "provider_ms_mean": 4586.181,
+    "provider_ms_p50": 3696.51,
+    "provider_ms_p95": 10216.435,
+    "queue_ms_sum": 149372.843,
+    "note": "Provider duration includes network and generation; concurrent durations overlap."
+  },
+  "note": "Final completed state, replacing the periodic in-flight monitor sample; whole_experiment_cost includes the preserved interrupted attempt."
+}

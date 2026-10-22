@@ -1,0 +1,8 @@
+{
+  "known_requests": 3340,
+  "uncertain_requests": 2,
+  "median_seconds": 3.6217733429948566,
+  "p95_seconds": 10.178721829994174,
+  "mean_seconds": 4.497405786765225,
+  "method": "Recorded timings from successful original and resumed provider requests; cache hits and uncertain requests excluded."
+}

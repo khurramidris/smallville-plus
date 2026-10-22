@@ -1,0 +1,18 @@
+{
+  "status": "passed",
+  "minutes": 4320,
+  "residents": 25,
+  "all_world_tables_equal_except_replay_flag": true,
+  "provider_calls": 0,
+  "cost": {
+    "calls": 3340,
+    "cache_hits": 3340,
+    "input_tokens": 0,
+    "output_tokens": 0,
+    "usd": "0",
+    "max_usd": "0",
+    "uncertain_calls": 0,
+    "accounting": "conservative configured token prices; not a provider invoice"
+  },
+  "wall_seconds": 180.432
+}

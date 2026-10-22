@@ -1,0 +1,28 @@
+{
+  "minute": 2489,
+  "cost": {
+    "calls": 1500,
+    "cache_hits": 0,
+    "input_tokens": 5509285,
+    "output_tokens": 343686,
+    "usd": "0",
+    "max_usd": "0",
+    "uncertain_calls": 1,
+    "accounting": "conservative configured token prices; not a provider invoice"
+  },
+  "requests_by_status": {
+    "ok": 1499,
+    "reserved": 1
+  },
+  "timing": {
+    "timed_calls": 1499,
+    "provider_calls": 1499,
+    "provider_seconds_sum": 6578.369,
+    "provider_ms_mean": 4388.505,
+    "provider_ms_p50": 3504.859,
+    "provider_ms_p95": 10168.823,
+    "queue_ms_sum": 94642.121,
+    "note": "Provider duration includes network and generation; concurrent durations overlap."
+  },
+  "wall_seconds": 4528.67
+}

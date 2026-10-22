@@ -1,13 +1,16 @@
 # Smallville+ progress
 
-## Current status — Phase 3 resumed
-- The latest request resumes Phase 3. Implement bounded inference concurrency,
-  latency accounting, smaller contexts and safe continuation of chosen routines;
-  then rerun offline checks and the three-day real-model experiment.
-- The phrase "number thing" is ambiguous; an optional clarification is pending.
-  Work proceeds on the explicitly authorized Phase 3. No later phase is assumed.
-- Preserve the interrupted run and its reports. Use fresh directories, the same
-  authorized free route and the existing zero-dollar cap; add no paid service.
+## Current status — Phase 3 completed and verified
+- The optimized real-model run completed all 4,320 minutes with 25 residents.
+  Both optimized three-day offline scenarios (25 and 100 residents) also completed;
+  83 tests pass offline. Final real-run event/cache replay and viewer checks pass.
+- Interpreted "number thing" as item 1, performance/planning improvements, after
+  optional clarification received no answer. No later phase is included.
+- The full real experiment used 3,342 provider attempts, including two requests
+  whose usage was lost during an environment restart, at $0 published free-route
+  prices. Recovery reused 1,500 responses without repeating completed API calls.
+- Preserve every interrupted attempt and cost record. No further inference is
+  needed, no paid service was added, and Phase 4 has not started.
 
 ## Previous stop — preserved results
 - Phase 3 implementation is complete. Both three-day MockLLM scenarios (25 and
@@ -134,6 +137,48 @@
 - Changed the viewer label to "Recorded plan", so an end-of-window midnight
   snapshot does not imply that a new day has already been planned. Presentation
   only; simulation behavior remains unchanged at `8e2b410`.
+
+### Resumption step 11 — Three-day real run completed
+- Verified the saved report after resumption: status completed, 25 residents,
+  4,320 minutes, no run problem. Known usage across both attempts is 13,105,152
+  input tokens and 794,401 output tokens. Total published-rate cost and cost per
+  resident-day are $0; two interrupted requests have unknown usage.
+- Three of four invited guests attended (Maria, Ryan, Tamara). The 21–3 council
+  vote funded 100 meals; all saved economy audits pass, with no rent arrears and
+  three residents hungry without meals at the endpoint.
+- No simulation or viewer process remained active when checked. Started fresh,
+  provider-forbidden cache verification and independent event import. Final
+  screenshots, timing exports and consolidated reporting follow those checks.
+
+### Resumption step 12 — Final viewer and latency evidence
+- Chromium verified the completed real-model viewer and party-time replay: 25
+  resident controls, correct source label, no page errors or external requests.
+  Saved and visually inspected both screenshots; the viewer remains schematic.
+- Combined both provider journals for 3,340 successful request timings, excluding
+  cache hits and the two uncertain requests. Median 3.62 seconds, p95 10.18,
+  mean 4.50. Saved CSV, PNG, SVG and summary; visually checked the figure.
+- Updated the final progress record and consolidated report with completed
+  outcomes, whole-experiment cost, interrupted history and realism limitations.
+  Independent event/cache verification is still running; no provider is available
+  to the cache verifier. README now reflects the authorized Phase 3 stop boundary.
+
+### Resumption step 13 — Final acceptance and stop
+- Imported all 16,149 real-run events into a fresh destination. Every projection
+  and the JSONL bytes match; SHA-256 is
+  `00f977f2ae32d08c58b1369726bb2c26011e4bc2bbfb0217c22e35bf5b98b452`.
+  All 25 residents account for 4,320 minutes; all five economic audits pass.
+- Re-executed the entire real-model scenario using 3,340/3,340 cache hits with a
+  backend that forbids provider access. Every world table matches except the
+  explicit replay flag; zero provider calls, 180.432 wall seconds.
+- Retained final reports, cost/latency data, screenshots, cache/event verification
+  and earlier incomplete attempts. Ruff and whitespace checks pass. No further
+  simulation, interviews, paid service or Phase 4 development is scheduled.
+- Stopped the temporary viewer after browser verification and confirmed that no
+  simulation, verification or viewer processes remain active. Final evidence
+  statuses pass; tracked/proposed files contain no supplied-key patterns.
+- Next: no work until a new instruction. Remaining research issues are the
+  report's planning/coordination failures, unvalidated human realism, snapshot
+  storage costs and later-phase memory/scale work; Phase 3 acceptance is complete.
 
 ## Phase 3 authorization and scope
 - Authorized on 2026-10-21: implement the next phase, then run three simulated

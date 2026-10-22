@@ -1,6 +1,19 @@
 # Decisions
 
 ## Phase 3 resumption — Performance and planning
+- Complete the authorized three-day run and verification, then stop at Phase 3.
+  Use whole-experiment accounting across the environment interruption: count
+  1,500 reconstructed responses once, retain two unknown requests, and distinguish
+  the resumed attempt's ledger from total provider usage. Add no interview calls.
+- Report successful-request latency across both journals, excluding cache hits
+  and unknown interrupted requests. Combined active wall time is a lower bound,
+  not an exact uninterrupted benchmark; fixture comparisons used different load.
+- Preserve the failed Sam-awareness retention and modest network growth in the
+  report alongside party/council outcomes. Added physical/economic rules alone
+  do not establish greater human realism than the original Smallville study.
+- Close Phase 3 only after the real three-day world passes both event import
+  and full response-cache re-execution with provider access forbidden. Keep all
+  artifacts and stop the temporary local viewer after its browser verification.
 - Resume only the clearly authorized Phase 3 while clarifying the ambiguous
   numbered item. Preserve prior incomplete experiments rather than rewriting them.
 - Batch independent decisions at the same simulated minute against a fixed world
