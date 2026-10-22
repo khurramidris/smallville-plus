@@ -1,5 +1,35 @@
 # Decisions
 
+## Realism audit — 2026-10-22
+- Reassess the implementation against the original research goal, not the number
+  of modules or passing tests. Separate demonstrated mechanisms, simplified
+  substitutes, unused capabilities and genuinely deferred work.
+- Inspect existing live traces and pinned reference material before prescribing
+  additional integrations. Treat observed correlations as diagnostic evidence,
+  not causal proof; propose controlled comparisons for unresolved hypotheses.
+- Deliver an actionable plan and reproducible read-only diagnostics. Do not add
+  paid services, run more model calls or start later-phase implementation merely
+  because the audit recommends them.
+- Separate memory eviction from measurement error: both are demonstrated here.
+  The campaign detector cannot establish absence of knowledge and does not
+  reliably resolve first-person testimony or candidacy status. Keep observed
+  message evidence beside the old score rather than replacing it with an
+  unvalidated semantic score or attributing all weak diffusion to forgetting.
+- Repair and connect current mechanisms before increasing population or run
+  duration. Prioritize actual exchanges and consequences over additional module
+  names: other people must respond independently and GM effects remain validated.
+- Keep richer conversation and institution work explicit as proposed follow-up
+  scope. The original later-phase dependencies are not silently implemented by
+  an audit, and their current compatibility/licenses require review before use.
+- Evaluate engineering correctness, behavioral adequacy and human realism
+  separately. Require comparable protocols, held-out evidence and uncertainty;
+  do not optimize for more agreement, more disagreement or the paper's exact
+  attendance count as a substitute for plausible behavior.
+- Verify the diagnostic itself by rerunning against the same read-only source,
+  reconciling event/request/memory totals and checking the preserved log hash.
+  Keep the original three-day experiment immutable and record measurement caveats
+  in its narrative report rather than rewriting its raw historical results.
+
 ## Phase 3 resumption — Performance and planning
 - Complete the authorized three-day run and verification, then stop at Phase 3.
   Use whole-experiment accounting across the environment interruption: count

@@ -1,5 +1,38 @@
 # Smallville+ progress
 
+## Realism audit — completed 2026-10-22
+- The user asked why complexity/realism still falls short of the original goal
+  and requested an evidence-based development plan. This step audits code,
+  retained upstream references and existing runs; it does not start Phase 4.
+- Initial findings: bounded keyword memory, a narrow action vocabulary, simple
+  needs/relationship heuristics, a minimal GM and unused Phase 2 histories in
+  the completed live cohort. Functional completion is distinct from validated
+  realism. Detailed trace analysis and a prioritized plan are in progress.
+- Step 2: read-only trace audit covers all 16,149 events and 3,340 cached real
+  responses. All 25 memory buffers reached 128 entries; only 2/62 original seed
+  memories survive. Found 55 invalid-plan fallbacks and 8 failed reflections.
+  The 25 completed ambiguous attempts changed only the actor projection and
+  recorded no wider confirmed outcome. No additional provider calls were made.
+- The campaign scorer also misses Sam's message to Adam about considering a
+  mayoral run and Adam's encouragement. Its reported zero is narrow retained
+  phrase evidence, not proof that nobody knew. Preserve historical numbers and
+  explicitly plan a better evidence/recall measurement before comparative claims.
+- Step 3: saved `reports/REALISM_AUDIT.md`, reproducible diagnostic script/data,
+  and `REALISM_PLAN.md`. The plan prioritizes measurement repair, active goals,
+  contextual memory, richer live personas, real conversations and consequential
+  actions before broader institutions, Graphiti/30-day runs and population scale.
+- Defined offline invariants, labeled behavioral cases, controlled pilot/paired
+  runs, human ratings and survey/time-use validation as separate acceptance gates.
+  No new provider calls, services, upstream code, or simulation behavior changes.
+- Next proposed implementation boundary: R0 and core R1 from `REALISM_PLAN.md`.
+  This turn delivered the requested investigation and plan; later stages are
+  recommendations, not completed or automatically scheduled work.
+- Step 4: the audit rerun produces byte-identical JSON. Checked its totals against
+  the saved acceptance report and verified the original event-log checksum is
+  unchanged. Ruff/format/whitespace checks and all local audit/plan links pass.
+  Production simulation code is unchanged; no full simulation/test rerun needed
+  for this read-only investigation and documentation task.
+
 ## Current status — Phase 3 completed and verified
 - The optimized real-model run completed all 4,320 minutes with 25 residents.
   Both optimized three-day offline scenarios (25 and 100 residents) also completed;

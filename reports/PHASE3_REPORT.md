@@ -174,7 +174,11 @@ replay configuration flag. No fresh API inference was used for either check.
 | Mutual-knowledge density | 0.233 → 0.243 | 0.167 → 0.740 |
 
 Our awareness measure uses retained memory evidence, not paper-style interviews;
-Sam's seeded evidence was no longer retained at the end. The horizon is three
+Sam's seeded evidence was no longer retained at the end. A subsequent read-only
+audit found that the narrow phrase detector also misses Sam telling Adam he is
+considering a mayoral run and Adam's encouragement. The reported zero is therefore
+not proof of zero knowledge; candidacy status, attribution and recall need separate
+measurement. See [audit evidence](realism/phase3-audit.json). The horizon is three
 days rather than two, the initial network differs, a host-owned party event is
 seeded, communication uses phone apps, and models/contexts differ. Guest counts
 are distinct over the party window rather than simultaneous occupancy. These

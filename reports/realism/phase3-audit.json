@@ -1,0 +1,482 @@
+{
+  "source_run": "runs/phase3-resumed-live-25",
+  "run": {
+    "benchmark": "valentine",
+    "completed_minutes": 4320,
+    "epoch": "2023-02-13T00:00:00+00:00",
+    "phase": 3,
+    "problem": null,
+    "requested_minutes": 4320,
+    "status": "completed"
+  },
+  "event_count": 16149,
+  "event_log_sha256": "00f977f2ae32d08c58b1369726bb2c26011e4bc2bbfb0217c22e35bf5b98b452",
+  "event_projection_check": "passed",
+  "method": "Read-only recorded events, final projections and exact response cache; no inference.",
+  "limits": [
+    "Single exploratory seed/model; descriptive findings do not isolate causal effects.",
+    "Campaign detection reuses the existing narrow phrase-based metric, not semantic understanding.",
+    "Response types are classified by JSON fields; this does not validate response quality.",
+    "Unique memory counts use id/minute/source/text to avoid snapshot duplication."
+  ],
+  "cohort": {
+    "residents": 25,
+    "with_life_history": 0,
+    "historical_messages": 0,
+    "population_artifact_present": false,
+    "tiers": {
+      "deep": 5,
+      "standard": 20
+    },
+    "models": {
+      "model_deep": "openrouter/minimax/minimax-m3.1-flash:free",
+      "model_fast": "openrouter/minimax/minimax-m3.1-flash:free",
+      "model_gm": "openrouter/minimax/minimax-m3.1-flash:free",
+      "embed_model": "local/lexical",
+      "model_overrides": {}
+    }
+  },
+  "behavior": {
+    "intentions": {
+      "attempt": 33,
+      "attend": 19,
+      "buy": 97,
+      "calendar": 6,
+      "eat": 157,
+      "leisure": 472,
+      "message": 89,
+      "move": 1173,
+      "post_notice": 2,
+      "read_news": 232,
+      "sleep": 345,
+      "transfer": 2,
+      "vote": 24,
+      "wait": 101,
+      "work": 458
+    },
+    "completed_actions": {
+      "attempt": 25,
+      "attend": 6,
+      "buy": 93,
+      "calendar": 5,
+      "eat": 154,
+      "leisure": 469,
+      "message": 89,
+      "move": 1139,
+      "post_notice": 2,
+      "read_news": 232,
+      "sleep": 364,
+      "transfer": 2,
+      "vote": 24,
+      "wait": 101,
+      "work": 455
+    },
+    "intention_sources": {
+      "model": 2865,
+      "routine": 345
+    },
+    "live_messages": 89,
+    "message_dyads": 33,
+    "social_text_examples": [
+      {
+        "minute": 535,
+        "actor": "hailey_johnson",
+        "kind": "leisure",
+        "intention_text": "I want to spend an hour at Oak Hill College, relax and see whether one of the people nearby is open to a friendly conversation.",
+        "note": "Intention wording does not establish a conversation."
+      },
+      {
+        "minute": 1070,
+        "actor": "latoya_williams",
+        "kind": "leisure",
+        "intention_text": "I want to hang out and chat with Rajiv about the local mayor election and community food proposal.",
+        "note": "Intention wording does not establish a conversation."
+      },
+      {
+        "minute": 1070,
+        "actor": "hailey_johnson",
+        "kind": "leisure",
+        "intention_text": "I want to hang out with Latoya and Rajiv for a while and chat about our day.",
+        "note": "Intention wording does not establish a conversation."
+      },
+      {
+        "minute": 1071,
+        "actor": "francisco_lopez",
+        "kind": "leisure",
+        "intention_text": "I want to stay at the pub for a little while and enjoy some relaxed conversation.",
+        "note": "Intention wording does not establish a conversation."
+      },
+      {
+        "minute": 1073,
+        "actor": "wolfgang_schulz",
+        "kind": "leisure",
+        "intention_text": "I want to relax at the pub and talk with some of the people here.",
+        "note": "Intention wording does not establish a conversation."
+      }
+    ],
+    "attempt_completion_examples": [
+      {
+        "minute": 2526,
+        "actor": "rajiv_patel",
+        "observations": {
+          "rajiv_patel": "I spent a little time trying that; I have no confirmed wider outcome."
+        },
+        "changed_tables": [
+          "agents"
+        ]
+      },
+      {
+        "minute": 2711,
+        "actor": "rajiv_patel",
+        "observations": {
+          "rajiv_patel": "I spent a little time trying that; I have no confirmed wider outcome."
+        },
+        "changed_tables": [
+          "agents"
+        ]
+      },
+      {
+        "minute": 2726,
+        "actor": "rajiv_patel",
+        "observations": {
+          "rajiv_patel": "I spent a little time trying that; I have no confirmed wider outcome."
+        },
+        "changed_tables": [
+          "agents"
+        ]
+      }
+    ],
+    "attempts_modifying_only_actor_table": 25
+  },
+  "memory": {
+    "final_lengths": {
+      "128": 25
+    },
+    "original_seed_entries_initial": 62,
+    "original_seed_entries_final": 2,
+    "agents_losing_at_least_one_original_seed": 24,
+    "first_original_seed_eviction_minute_by_agent": {
+      "tamara_taylor": 3060,
+      "ayesha_khan": 3305,
+      "klaus_mueller": 3413,
+      "carmen_ortiz": 3469,
+      "mei_lin": 3519,
+      "maria_lopez": 3562,
+      "john_lin": 3581,
+      "francisco_lopez": 3588,
+      "sam_moore": 3780,
+      "abigail_chen": 3787,
+      "isabella_rodriguez": 3788,
+      "adam_smith": 3840,
+      "arthur_burton": 3840,
+      "rajiv_patel": 3903,
+      "wolfgang_schulz": 3908,
+      "yuriko_yamamoto": 3917,
+      "eddy_lin": 3923,
+      "jennifer_moore": 3930,
+      "jane_moreno": 3964,
+      "latoya_williams": 3967,
+      "giorgio_rossi": 4048,
+      "hailey_johnson": 4200,
+      "tom_moreno": 4222,
+      "carlos_gomez": 4260
+    },
+    "sam_first_original_seed_eviction_minute": 3780,
+    "ever_detected_campaign_evidence": [
+      "sam_moore"
+    ],
+    "first_detected_campaign_loss_minute": {
+      "sam_moore": 3780
+    },
+    "retained_campaign_evidence": [],
+    "unique_memory_sources_over_run": {
+      "cal": 5,
+      "gm_outcome": 3160,
+      "gm_rejection": 69,
+      "initial_contract": 25,
+      "invalid_plan": 55,
+      "msg": 178,
+      "news": 124,
+      "notice": 50,
+      "original_seed": 62,
+      "reflection": 64,
+      "reflection_failed": 8
+    },
+    "final_memory_sources": {
+      "cal": 3,
+      "gm_outcome": 2718,
+      "gm_rejection": 60,
+      "initial_contract": 2,
+      "invalid_plan": 51,
+      "msg": 161,
+      "news": 84,
+      "notice": 50,
+      "original_seed": 2,
+      "reflection": 61,
+      "reflection_failed": 8
+    }
+  },
+  "inference": {
+    "successful_response_types": {
+      "plan": 378,
+      "action": 2865,
+      "reflection": 72,
+      "adjudication": 25
+    },
+    "responses_per_resident_day": 44.53333333333333,
+    "responses_by_agent": {
+      "abigail_chen": 127,
+      "adam_smith": 125,
+      "arthur_burton": 116,
+      "ayesha_khan": 152,
+      "carlos_gomez": 113,
+      "carmen_ortiz": 189,
+      "eddy_lin": 125,
+      "francisco_lopez": 141,
+      "giorgio_rossi": 130,
+      "hailey_johnson": 116,
+      "isabella_rodriguez": 135,
+      "jane_moreno": 113,
+      "jennifer_moore": 112,
+      "john_lin": 150,
+      "klaus_mueller": 145,
+      "latoya_williams": 119,
+      "maria_lopez": 154,
+      "mei_lin": 134,
+      "rajiv_patel": 141,
+      "ryan_park": 109,
+      "sam_moore": 120,
+      "tamara_taylor": 190,
+      "tom_moreno": 122,
+      "wolfgang_schulz": 133,
+      "yuriko_yamamoto": 129
+    },
+    "whole_experiment_cost": {
+      "provider_attempts": 3342,
+      "cache_reconstruction_hits": 1500,
+      "known_input_tokens": 13105152,
+      "known_output_tokens": 794401,
+      "uncertain_requests": 2,
+      "usd": "0",
+      "max_usd": "0",
+      "usd_per_agent_per_simulated_day": "0",
+      "active_wall_seconds_lower_bound": 10787.017,
+      "accounting": "Published free-route rates, not an invoice. Includes the interrupted attempt; unknown usage excluded. Wall time excludes the outage and exact shutdown time is unavailable."
+    }
+  },
+  "existing_metrics": {
+    "diffusion": {
+      "sam": {
+        "initial": 1,
+        "retained_final": 0,
+        "paper_final": 8
+      },
+      "party": {
+        "initial": 1,
+        "retained_final": 5,
+        "paper_final": 13
+      },
+      "method": "Retained memory evidence, not omniscient delivery or unverified interview assertions."
+    },
+    "relationships": {
+      "initial_density": 0.23333333333333334,
+      "final_density": 0.24333333333333335,
+      "growth": 0.010000000000000009,
+      "definition": "Undirected edge only when both residents have relationship records; negative ties count."
+    },
+    "party": {
+      "invited_guests": 4,
+      "read_invitation_guests": 4,
+      "attending_guests": 3,
+      "guest_ids": [
+        "maria_lopez",
+        "ryan_park",
+        "tamara_taylor"
+      ],
+      "invited_attending_guests": 3,
+      "attendance_rate": 0.75,
+      "paper_attendance_rate": 0.4166666666666667,
+      "window": {
+        "location": "hobbs_cafe",
+        "start": 2460,
+        "end": 2580
+      },
+      "method": "Completed attend actions overlapping the party window; host excluded."
+    },
+    "rejected_actions": {
+      "the destination will be closed when I arrive": 32,
+      "I cannot afford that purchase or the shop has insufficient stock": 3,
+      "this place will close before I finish": 9,
+      "My phone request is invalid.": 1,
+      "my daily work limit would be exceeded": 1,
+      "I am not at my workplace": 2,
+      "unsupported action arguments": 14,
+      "I have no event here at this time": 5,
+      "I am already there": 2
+    },
+    "interviews": {
+      "responses": 0,
+      "human_believability_score": null,
+      "note": "Run the interview command and collect blinded human ratings; no automatic score is fabricated."
+    }
+  },
+  "campaign_message_review": {
+    "note": "Topic matches are review candidates, not proof of awareness. Distinguish considering a candidacy from declaring one. The Sam/Adam exchange exposes phrase/attribution limitations in the current scorer.",
+    "messages": [
+      {
+        "id": "msg:sam_moore:523",
+        "sender": "sam_moore",
+        "to": "adam_smith",
+        "body": "Adam, I am thinking of running for local mayor in the upcoming election. I would welcome your advice and encouragement. I will try not to make a campaign speech of every conversation, though naval habits are hard to break.",
+        "sent_at": 523,
+        "read_at": 525,
+        "narrow_metric_recognizes_recipient_memory": false,
+        "retained_in_recipient_memories": false
+      },
+      {
+        "id": "msg:adam_smith:550",
+        "sender": "adam_smith",
+        "to": "sam_moore",
+        "body": "Your willingness to stand for mayor is admirable. I think your naval habits and practical experience could serve the town well. I encourage you to run, and I would be glad to help you think through how to present your ideas clearly without turning every conversation into a campaign speech.",
+        "sent_at": 550,
+        "read_at": 550,
+        "narrow_metric_recognizes_recipient_memory": false,
+        "retained_in_recipient_memories": false
+      },
+      {
+        "id": "msg:adam_smith:615",
+        "sender": "adam_smith",
+        "to": "sam_moore",
+        "body": "I would be glad to help you develop a clear campaign message. Perhaps we could meet at Hobbs Cafe tomorrow afternoon to identify the practical issues most important to voters and practice presenting them without sounding overly formal.",
+        "sent_at": 615,
+        "read_at": 660,
+        "narrow_metric_recognizes_recipient_memory": false,
+        "retained_in_recipient_memories": true
+      },
+      {
+        "id": "msg:latoya_williams:1060",
+        "sender": "latoya_williams",
+        "to": "rajiv_patel",
+        "body": "Hey Rajiv! Since you're nearby, are you up for chatting about the local mayor election and the community food proposal?",
+        "sent_at": 1060,
+        "read_at": 1080,
+        "narrow_metric_recognizes_recipient_memory": false,
+        "retained_in_recipient_memories": true
+      },
+      {
+        "id": "msg:rajiv_patel:1085",
+        "sender": "rajiv_patel",
+        "to": "latoya_williams",
+        "body": "Are you free to chat briefly about the mayor election and the community food proposal?",
+        "sent_at": 1085,
+        "read_at": 1100,
+        "narrow_metric_recognizes_recipient_memory": false,
+        "retained_in_recipient_memories": true
+      },
+      {
+        "id": "msg:latoya_williams:1105",
+        "sender": "latoya_williams",
+        "to": "rajiv_patel",
+        "body": "I\u2019m free for a quick chat. Yes, let\u2019s discuss the mayor election and the community food proposal.",
+        "sent_at": 1105,
+        "read_at": 1115,
+        "narrow_metric_recognizes_recipient_memory": false,
+        "retained_in_recipient_memories": true
+      },
+      {
+        "id": "msg:latoya_williams:1110",
+        "sender": "latoya_williams",
+        "to": "rajiv_patel",
+        "body": "I\u2019m at the artists\u2019 co-living space. Come by so we can chat briefly about the mayor election and community food proposal.",
+        "sent_at": 1110,
+        "read_at": 1115,
+        "narrow_metric_recognizes_recipient_memory": false,
+        "retained_in_recipient_memories": true
+      },
+      {
+        "id": "msg:latoya_williams:2481",
+        "sender": "latoya_williams",
+        "to": "rajiv_patel",
+        "body": "Hey Rajiv, I\u2019m back at the artists\u2019 co-living space. Come by and join me for a quick chat about the mayor election and community food proposal.",
+        "sent_at": 2481,
+        "read_at": 2481,
+        "narrow_metric_recognizes_recipient_memory": false,
+        "retained_in_recipient_memories": true
+      },
+      {
+        "id": "msg:adam_smith:2554",
+        "sender": "adam_smith",
+        "to": "yuriko_yamamoto",
+        "body": "I wanted to ask your thoughts about the upcoming mayoral election, particularly which local issues you think candidates should address.",
+        "sent_at": 2554,
+        "read_at": 2554,
+        "narrow_metric_recognizes_recipient_memory": false,
+        "retained_in_recipient_memories": true
+      },
+      {
+        "id": "msg:rajiv_patel:2666",
+        "sender": "rajiv_patel",
+        "to": "latoya_williams",
+        "body": "I\u2019m ready to chat briefly. What do you think about the mayor election and the community food proposal?",
+        "sent_at": 2666,
+        "read_at": 2670,
+        "narrow_metric_recognizes_recipient_memory": false,
+        "retained_in_recipient_memories": true
+      },
+      {
+        "id": "msg:latoya_williams:3955",
+        "sender": "latoya_williams",
+        "to": "rajiv_patel",
+        "body": "Hey Rajiv, I\u2019m back at the artists\u2019 co-living space. Come by for a quick chat about the mayor election and community food proposal when you\u2019re ready.",
+        "sent_at": 3955,
+        "read_at": 3956,
+        "narrow_metric_recognizes_recipient_memory": false,
+        "retained_in_recipient_memories": true
+      },
+      {
+        "id": "msg:latoya_williams:4104",
+        "sender": "latoya_williams",
+        "to": "rajiv_patel",
+        "body": "Hey Rajiv! I\u2019m at the artists\u2019 co-living space and I see you\u2019re nearby. Want to come by for our quick chat about the mayor election and community food proposal?",
+        "sent_at": 4104,
+        "read_at": 4140,
+        "narrow_metric_recognizes_recipient_memory": false,
+        "retained_in_recipient_memories": true
+      }
+    ]
+  },
+  "heuristic_probes": {
+    "method": "Isolated resident copies; no world writes. Illustrative counterexamples, not calibrated psychology.",
+    "cases": [
+      {
+        "utterance": "I do not disagree with you.",
+        "relationship_delta": -0.12,
+        "emotion_after_message": {
+          "valence": -0.293842,
+          "arousal": 0.534948,
+          "label": "annoyed"
+        },
+        "emotion_after_zero_elapsed_drive_update": {
+          "valence": -0.168842,
+          "arousal": 0.534948,
+          "label": "neutral"
+        }
+      },
+      {
+        "utterance": "No thanks, I am upset about what you did.",
+        "relationship_delta": 0.04,
+        "emotion_after_message": {
+          "valence": -0.133842,
+          "arousal": 0.534948,
+          "label": "engaged"
+        },
+        "emotion_after_zero_elapsed_drive_update": {
+          "valence": -0.148842,
+          "arousal": 0.534948,
+          "label": "neutral"
+        }
+      }
+    ]
+  },
+  "additional_provider_calls": 0
+}
