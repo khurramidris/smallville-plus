@@ -1,5 +1,36 @@
 # Decisions
 
+## Connected realism implementation, batch 1 — 2026-10-22
+- Implement R0 and only the foundational part of R1 first. Better measurement,
+  durable motives and relevant recall are prerequisites for judging more complex
+  social behavior; R2 conversations are not folded into this batch.
+- Add an explicit `connected_v1` run profile and require a validated rich
+  population. Record the population digest in every evaluation manifest. Keep
+  existing artifacts and legacy scores readable rather than relabeling old runs.
+- Treat knowledge as owner-scoped evidence. A delivered message is not exposure
+  until read; testimony is not truth or automatic belief; an interview answer is
+  not awareness until assessed. Preserve claim status such as considering,
+  declared and denied instead of collapsing every mayor reference to a boolean.
+- Use a bounded, labeled parser for the current campaign benchmark. Its 32-case
+  fixture states the supported language boundary. Do not hide unknown statements
+  behind a model judgment or spend budget on semantic scoring at evaluation time.
+- Keep durable goals outside the 128-entry working-memory stream. Protect source
+  identity, coalesce recent identical outcomes and rank retrieval by current task,
+  place, nearby people, active goals, low needs and appointments. Retrieval remains
+  lexical and limited; no embedding service or omniscient archive is introduced.
+- Record diagnostics without changing GM authority: agents still propose intents,
+  the GM still owns outcomes, and existing `Mind.decide` replacement hooks remain
+  valid under concurrent execution. Timing stays outside deterministic events.
+- Require replay evidence for the new profile. Exact event bytes and material
+  projections must match; run-only wall-clock and gateway timing fields need not
+  exist in a state replay report.
+- Use MockLLM only for this implementation pass. The existing API authorization
+  is not needed for deterministic engineering validation, so no key, network call
+  or provider charge is involved.
+- Do not claim superior realism from more state fields, higher diffusion or a
+  passing fixture. R1 behavioral gates, R2 interaction, controlled comparisons
+  and human ratings remain necessary.
+
 ## Realism audit — 2026-10-22
 - Reassess the implementation against the original research goal, not the number
   of modules or passing tests. Separate demonstrated mechanisms, simplified

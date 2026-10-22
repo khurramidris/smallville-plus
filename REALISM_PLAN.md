@@ -5,6 +5,21 @@ This is the development plan requested by the user, not a claim that these chang
 are already built. The original SPEC remains intact. Phase 3 is functionally
 complete; the goal of exceeding the original study's realism remains unproven.
 
+## Implementation status — 2026-10-22
+
+Batch 1 implements the R0 measurement foundation and part of R1 behind the
+opt-in `connected_v1` profile. It adds owner-scoped campaign evidence, a versioned
+evaluation manifest, request/cognition/opportunity diagnostics, durable initial
+goals, retention-aware bounded memory and contextual lexical retrieval. A fresh
+25-resident artifact with 21 history days completed a one-day offline smoke run
+and exact event/state replay. See
+[`reports/REALISM_IMPLEMENTATION_1.md`](reports/REALISM_IMPLEMENTATION_1.md).
+
+R1 is still open for connected household/work histories, an archived episodic
+store, explicit goal revision/abandonment, local future-plan repair and the full
+missed-travel/closure/conflict diagnostic gate. R2 and later stages have not
+started. Passing deterministic fixtures does not establish greater realism.
+
 The immediate priority is to connect motives, memory, interaction and consequences.
 Adding more residents, model calls or reference libraries first would amplify the
 current limitations. Preserve the working clock, GM authority, privacy, resource

@@ -10,6 +10,8 @@ Park et al.** MockLLM is a deterministic, partly scenario-specific test fixture.
 The [realism audit](reports/REALISM_AUDIT.md) identifies the remaining integration
 and measurement gaps. [REALISM_PLAN.md](REALISM_PLAN.md) defines the next work and
 acceptance gates before claims of greater realism or further population scaling.
+The first implementation batch is documented in
+[reports/REALISM_IMPLEMENTATION_1.md](reports/REALISM_IMPLEMENTATION_1.md).
 
 ```bash
 python -m pip install -e '.[test]'
@@ -17,6 +19,22 @@ python -m pytest
 python -m smallville benchmark valentine --out runs/valentine --days 2
 python -m smallville serve --run runs/valentine
 ```
+
+The opt-in `connected_v1` profile launches a validated population artifact with
+life histories, private digital history, durable goals, contextual memory
+retrieval and versioned evidence metrics. Generate and run the original 25 as a
+rich cohort with:
+
+```bash
+python -m smallville populate --out runs/rich-25 --residents 25 --history-days 21
+python -m smallville run --phase 3 --optimized --realism --days 2 \
+  --population runs/rich-25/population.json --out runs/connected-25
+```
+
+`--realism` refuses a thin seed-only cohort or fewer than 14 history days. This
+profile is an implementation milestone, not proof of human realism or superiority
+to Park et al. Its current durable goals are initial context; goal revision,
+targeted plan repair and multi-turn spoken scenes remain later gates in the plan.
 
 Open http://127.0.0.1:8000. Move the time slider, play the history, and click a
 resident to inspect their memories, needs, emotions, plans, calendar and messages.

@@ -1,5 +1,46 @@
 # Smallville+ progress
 
+## Connected realism implementation, batch 1 — completed 2026-10-22
+- The user authorized implementation of the new realism plan. This batch covers
+  the R0 evidence foundation and a bounded subset of R1; R2 social scenes and
+  later stages remain outside this change.
+- Step 1, evidence and reproducibility: added owner-scoped campaign claim records
+  with attribution, candidacy status, epistemic status, source, timestamps,
+  confidence and retained-memory linkage. Exposure, accepted self-knowledge,
+  retention and human-assessed interview recall are reported separately. The
+  legacy diffusion score remains present for historical comparison.
+- Step 2, people and cognition: added durable goal records, protected identity
+  memories, repeated-outcome coalescing and context-sensitive lexical retrieval.
+  The opt-in `connected_v1` profile requires a validated population with complete
+  life histories and at least 14 history days; it supplies active goals, relevant
+  personal relationships, current place/people/needs and appointments to retrieval.
+- Step 3, diagnostics: the request ledger records purpose; intention events report
+  accepted/fallback/reused plans and actions plus reflection results; perception
+  events count co-presence and unread-phone opportunities. Evaluation output now
+  carries `realism-eval-v1` configuration, population digest and measurement rules.
+- Step 4, tests: added 32 labeled campaign statements, a 500-event memory flood,
+  knowledge/privacy/retention checks, rich-cohort launch checks and request-purpose
+  accounting. Ruff passes and **119 tests pass offline** with network disabled.
+- Step 5, operational smoke: generated 25 residents with 21 history days, 1,050
+  messages, 75 calendar entries and digest
+  `ddf8133c5210546ae26205b0f5971e9a856a85ff09ec9f34935daf43da157f09`.
+  The final Phase 3 day completed in 70.716 seconds with 761 MockLLM calls, 75 goals,
+  eight structured campaign records, zero uncertain calls and $0 cost. Mock token
+  counts are synthetic and do not predict provider billing.
+- Step 6, replay: all 4,030 events replayed with byte-identical JSONL SHA-256
+  `b1f5eeabcfd36fbe5dca2729cea97f2504b607aebf7daa0a271b823351271f51`.
+  Agent, goal, knowledge, message, calendar and metadata projections match. The
+  41,675,392-byte event log confirms full snapshots remain a scaling problem.
+  An earlier byte-identical run took 42.987 seconds, so host wall time is not a
+  stable performance benchmark.
+- No network or provider API was used and no service was added. This work does
+  not show that Smallville+ is more realistic than Park et al.; the run is a
+  deterministic engineering fixture.
+- Next: finish R1 with connected histories and unfinished obligations, archived
+  episodes, explicit goal changes and bounded plan repair; then implement R2
+  consent-based, multi-turn interaction. Run controlled real-model comparisons
+  and human evaluation only after those behavioral gates pass.
+
 ## Realism audit — completed 2026-10-22
 - The user asked why complexity/realism still falls short of the original goal
   and requested an evidence-based development plan. This step audits code,
