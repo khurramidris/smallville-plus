@@ -143,13 +143,20 @@ def evaluate(world: WorldState) -> dict:
     averages = {k: mean(v[k] for v in per_agent.values()) for k in next(iter(per_agent.values()))}
     behavior_variance = {k: pvariance(v[k] for v in per_agent.values()) for k in averages}
     knowledge = world.all("knowledge")
+    goals = world.all("goals")
+    goal_history = world.all("goal_history")
+    archived_memories = world.all("memory_archive")
     campaign_records = [
         row
         for row in knowledge
         if row["predicate"] == "mayoral_candidacy"
         and row["claim_status"] in ("considering", "declared")
     ]
-    memory_ids = {agent.id: {memory.id for memory in agent.memories} for agent in agents}
+    working_memory_ids = {agent.id: {memory.id for memory in agent.memories} for agent in agents}
+    archive_ids = {
+        agent.id: {row["memory"]["id"] for row in archived_memories if row["owner"] == agent.id}
+        for agent in agents
+    }
     campaign_interviews = [
         event.data
         for event in events
@@ -157,6 +164,9 @@ def evaluate(world: WorldState) -> dict:
     ]
     cognition = [event.data.get("cognition", {}) for event in events if event.kind == "intention"]
     perceptions = [event.data for event in events if event.kind == "perceived"]
+    plan_counts = Counter(row.get("plan", "legacy_unknown") for row in cognition)
+    full_plan_attempts = plan_counts["accepted"] + plan_counts["fallback"]
+    repair_attempts = plan_counts["repaired"] + plan_counts["repair_fallback"]
     return {
         "run": run,
         "backend": config["backend"],
@@ -197,7 +207,25 @@ def evaluate(world: WorldState) -> dict:
                     {
                         row["owner"]
                         for row in campaign_records
-                        if row["retained_memory_id"] in memory_ids.get(row["owner"], set())
+                        if row["retained_memory_id"]
+                        in (
+                            working_memory_ids.get(row["owner"], set())
+                            | archive_ids.get(row["owner"], set())
+                        )
+                    }
+                ),
+                "working_evidence_residents": sorted(
+                    {
+                        row["owner"]
+                        for row in campaign_records
+                        if row["retained_memory_id"] in working_memory_ids.get(row["owner"], set())
+                    }
+                ),
+                "archived_evidence_residents": sorted(
+                    {
+                        row["owner"]
+                        for row in campaign_records
+                        if row["retained_memory_id"] in archive_ids.get(row["owner"], set())
                     }
                 ),
                 "claim_status_counts": dict(
@@ -218,7 +246,13 @@ def evaluate(world: WorldState) -> dict:
             ),
         },
         "cognition_diagnostics": {
-            "plans": dict(Counter(row.get("plan", "legacy_unknown") for row in cognition)),
+            "plans": dict(plan_counts),
+            "full_plan_fallback_rate": (
+                plan_counts["fallback"] / full_plan_attempts if full_plan_attempts else None
+            ),
+            "repair_fallback_rate": (
+                plan_counts["repair_fallback"] / repair_attempts if repair_attempts else None
+            ),
             "actions": dict(Counter(row.get("action", "legacy_unknown") for row in cognition)),
             "reflections": dict(
                 Counter(row["reflection"] for row in cognition if row.get("reflection") is not None)
@@ -233,6 +267,29 @@ def evaluate(world: WorldState) -> dict:
                 ),
             },
             "note": "Opportunities are co-presence/notifications at activation, not proof of interaction.",
+        },
+        "memory_system": {
+            "working_limit_per_resident": 128,
+            "archived_episodes": len(archived_memories),
+            "residents_with_archived_episodes": len({row["owner"] for row in archived_memories}),
+            "retrieval_backend": (
+                "local_lexical_v1"
+                if config.get("realism_profile") == "connected_v1"
+                else "legacy_local_lexical"
+            ),
+            "note": "Archive retrieval remains owner-scoped, query-ranked and bounded.",
+        },
+        "goal_diagnostics": {
+            "goals": len(goals),
+            "status_counts": dict(Counter(row["status"] for row in goals)),
+            "source_counts": dict(Counter(row["source"] for row in goals)),
+            "transitions": dict(Counter(row["action"] for row in goal_history)),
+            "overdue_active": sum(
+                row["status"] in ("active", "blocked")
+                and row["deadline"] is not None
+                and row["deadline"] < run["completed_minutes"]
+                for row in goals
+            ),
         },
         "relationships": {
             "initial_density": density(initial),

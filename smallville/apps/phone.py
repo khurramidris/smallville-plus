@@ -4,7 +4,7 @@ from pydantic import Field
 
 from smallville.agents.drives import conversation_effect
 from smallville.agents.knowledge import campaign_knowledge_change
-from smallville.agents.memory import remember
+from smallville.agents.memory import archive_changes, remember
 from smallville.apps.gatherings import Gatherings
 from smallville.world.models import Agent, CalendarEntry, Change, Message, Model, change
 from smallville.world.store import WorldState
@@ -56,7 +56,15 @@ class Messaging:
         if request.to not in actor.contacts:
             actor.contacts.append(request.to)
         conversation_effect(actor, request.to, request.body)
-        memory = remember(actor, minute, f"I sent {request.to}: {request.body}", identifier, 0.65)
+        evicted = []
+        memory = remember(
+            actor,
+            minute,
+            f"I sent {request.to}: {request.body}",
+            identifier,
+            0.65,
+            evicted=evicted,
+        )
         actor.last_social_at = minute
         evidence = campaign_knowledge_change(
             owner=actor.id,
@@ -75,6 +83,7 @@ class Messaging:
             *Gatherings(self.world).invitation_changes(
                 actor, request.body, request.event_id, identifier, request.to
             ),
+            *archive_changes(actor.id, evicted, minute),
         ]
 
     def inbox(self, owner: str) -> list[Message]:
@@ -82,13 +91,18 @@ class Messaging:
         return [m for m in self.world.messages(owner) if m.to == owner]
 
     def read_changes(self, actor: Agent, minute: int) -> list[Change]:
-        changes = []
+        changes, evicted = [], []
         for message in self.inbox(actor.id):
             if message.read_at is not None or message.sent_at > minute:
                 continue
             message.read_at = minute
             memory = remember(
-                actor, minute, f"{message.sender} told me: {message.body}", message.id, 0.85
+                actor,
+                minute,
+                f"{message.sender} told me: {message.body}",
+                message.id,
+                0.85,
+                evicted=evicted,
             )
             if message.sender not in actor.contacts:
                 actor.contacts.append(message.sender)
@@ -108,6 +122,7 @@ class Messaging:
             )
             if evidence:
                 changes.append(evidence)
+        changes.extend(archive_changes(actor.id, evicted, minute))
         return changes
 
     def notifications(
@@ -149,7 +164,15 @@ class Calendar:
         event = CalendarEntry(
             id=identifier, owner=actor.id, **request.model_dump(exclude={"event_id"})
         )
-        remember(actor, minute, f"I scheduled {event.title} at {event.location}.", identifier, 0.75)
+        evicted = []
+        remember(
+            actor,
+            minute,
+            f"I scheduled {event.title} at {event.location}.",
+            identifier,
+            0.75,
+            evicted=evicted,
+        )
         shared = Gatherings(self.world).calendar_event(actor, request)
         links = (
             [
@@ -162,7 +185,11 @@ class Calendar:
             if shared
             else []
         )
-        return [change("calendar", identifier, event), *links]
+        return [
+            change("calendar", identifier, event),
+            *links,
+            *archive_changes(actor.id, evicted, minute),
+        ]
 
     def list_events(self, owner: str) -> list[CalendarEntry]:
         self.world.agent(owner)

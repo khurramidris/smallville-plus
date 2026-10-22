@@ -5,7 +5,7 @@ from typing import Literal
 
 from pydantic import Field
 
-from smallville.agents.memory import remember
+from smallville.agents.memory import archive_changes, remember
 from smallville.economy.ledger import LedgerBatch
 from smallville.economy.models import Shop
 from smallville.world.models import Agent, Model, change
@@ -125,10 +125,17 @@ class NoticeBoard:
             proposals.update(self.world.get("news_reads", actor.id)["proposals"])
         except KeyError:
             pass
-        observations = {}
+        observations, evicted = {}, []
         for row in selected:
             label = "Public resident opinion" if row["category"] == "opinion" else "Town bulletin"
-            remember(actor, minute, f"{label}: {row['title']}. {row['body']}", row["id"], 0.65)
+            remember(
+                actor,
+                minute,
+                f"{label}: {row['title']}. {row['body']}",
+                row["id"],
+                0.65,
+                evicted=evicted,
+            )
             if row["proposal_id"]:
                 proposals.add(row["proposal_id"])
             for location, stock in row.get("shop_reports", {}).items():
@@ -167,6 +174,7 @@ class NoticeBoard:
                 change("shop_observations", key, value)
                 for key, value in sorted(observations.items())
             ],
+            *archive_changes(actor.id, evicted, minute),
         ], selected
 
     def post_changes(self, actor: Agent, request: Notice, minute: int):

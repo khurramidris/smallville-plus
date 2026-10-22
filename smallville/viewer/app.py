@@ -101,6 +101,18 @@ def create_app(directory: str | Path) -> FastAPI:
                 m for m in state["messages"].values() if identifier in (m["to"], m["sender"])
             ],
             "calendar": [e for e in state["calendar"].values() if e["owner"] == identifier],
+            "goals": sorted(
+                [goal for goal in state["goals"].values() if goal["owner"] == identifier],
+                key=lambda goal: (-goal["priority"], goal["id"]),
+            ),
+            "goal_history": sorted(
+                [row for row in state["goal_history"].values() if row["owner"] == identifier],
+                key=lambda row: (row["minute"], row["id"]),
+            ),
+            "archived_memories": sorted(
+                [row for row in state["memory_archive"].values() if row["owner"] == identifier],
+                key=lambda row: (row["archived_at"], row["id"]),
+            )[-10:],
             "finances": {
                 "account": state["accounts"].get(identifier),
                 "inventory": state["inventories"].get(identifier),

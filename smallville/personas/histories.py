@@ -13,10 +13,12 @@ from smallville.world.models import Agent, CalendarEntry, Message, Model
 class HistoryTemplates(Model):
     openings: list[str] = Field(min_length=3, max_length=8)
     replies: list[str] = Field(min_length=3, max_length=8)
+    requests: list[str] = Field(min_length=3, max_length=8)
+    acceptances: list[str] = Field(min_length=3, max_length=8)
 
     @model_validator(mode="after")
     def grounded_templates(self):
-        for text in [*self.openings, *self.replies]:
+        for text in [*self.openings, *self.replies, *self.requests, *self.acceptances]:
             if not 10 <= len(text) <= 400:
                 raise ValueError("history messages must be short natural-language templates")
             if re.search(
@@ -25,7 +27,9 @@ class HistoryTemplates(Model):
                 raise ValueError("history template leaks future benchmark news or self-awareness")
             for _, field, spec, conversion in Formatter().parse(text):
                 if field is not None and (
-                    field not in {"sender_name", "recipient_name", "interest"} or spec or conversion
+                    field not in {"sender_name", "recipient_name", "interest", "relationship"}
+                    or spec
+                    or conversion
                 ):
                     raise ValueError("unknown history template placeholder")
         return self
@@ -35,7 +39,7 @@ def mock_history(context: dict) -> dict:
     if "blunt" in context["style"] or "reserved" in context["style"]:
         return {
             "openings": [
-                "Any time for a short walk, {recipient_name}?",
+                "Any time for a short walk, {recipient_name}? We can catch up about {relationship}.",
                 "I made a little progress with {interest}. Still plenty to do.",
                 "Busy day. Checking in before I get back to my own work.",
             ],
@@ -44,10 +48,20 @@ def mock_history(context: dict) -> dict:
                 "I can spare a little time later. Send a message first.",
                 "I hear you. I've been occupied with my own responsibilities.",
             ],
+            "requests": [
+                "Could you check in with me about {interest} by Wednesday?",
+                "Please remind me to finish my {interest} plans by Wednesday.",
+                "Can you follow up with me about {interest} by Wednesday?",
+            ],
+            "acceptances": [
+                "Yes. I will check in with you about {interest} by Wednesday.",
+                "All right. I will remind you about {interest} by Wednesday.",
+                "I can do that. I will follow up about {interest} by Wednesday.",
+            ],
         }
     return {
         "openings": [
-            "Hi {recipient_name}, have you had a chance to take a break?",
+            "Hi {recipient_name}, how are things with {relationship}? Have you had a break?",
             "I spent some time on {interest} today. How has your day been?",
             "I've been balancing my responsibilities with a little time to myself.",
         ],
@@ -56,7 +70,57 @@ def mock_history(context: dict) -> dict:
             "A short catch-up would be good. Let's make time when we are both free.",
             "Thanks for checking in. I am keeping my own plans for the evening.",
         ],
+        "requests": [
+            "Would you check in with me about {interest} by Wednesday?",
+            "Could you remind me to finish my {interest} plans by Wednesday?",
+            "Can you follow up with me about {interest} by Wednesday?",
+        ],
+        "acceptances": [
+            "Yes, I will check in with you about {interest} by Wednesday.",
+            "I can do that. I will remind you about {interest} by Wednesday.",
+            "Agreed. I will follow up about {interest} by Wednesday.",
+        ],
     }
+
+
+def _social_graph(agents: list[Agent]) -> dict[str, list[tuple[Agent, str]]]:
+    """Connect household, workplace and friendship peers without sharing private state."""
+
+    graph: dict[str, list[tuple[Agent, str]]] = {}
+    for index, actor in enumerate(agents):
+        candidates: list[tuple[Agent, str, float]] = []
+        household = sorted(
+            (
+                peer
+                for peer in agents
+                if peer.id != actor.id and peer.persona.home == actor.persona.home
+            ),
+            key=lambda peer: peer.id,
+        )
+        workplace = sorted(
+            (
+                peer
+                for peer in agents
+                if peer.id != actor.id and peer.persona.workplace == actor.persona.workplace
+            ),
+            key=lambda peer: peer.id,
+        )
+        if household:
+            candidates.append((household[0], "our household routines", 0.35))
+        if workplace:
+            candidates.append((workplace[0], "work", 0.2))
+        candidates.append((agents[(index + 1) % len(agents)], "our usual catch-ups", 0.15))
+        peers = []
+        for peer, relationship, closeness in candidates:
+            if peer.id == actor.id or any(existing.id == peer.id for existing, _ in peers):
+                continue
+            peers.append((peer, relationship))
+            for left, right in ((actor, peer), (peer, actor)):
+                if right.id not in left.contacts:
+                    left.contacts.append(right.id)
+                left.relationships.setdefault(right.id, closeness)
+        graph[actor.id] = peers
+    return graph
 
 
 def compile_histories(
@@ -66,21 +130,28 @@ def compile_histories(
         raise ValueError("digital history must cover 14 to 60 prior calendar days")
     by_id = {a.id: a for a in agents}
     messages, calendar = [], []
-    # A ring creates a small connected acquaintance network. Existing source
-    # relationships (including negative ones) are retained, not overwritten.
+    graph = _social_graph(agents)
+    commitment_deadline = 2 * 1440 + 720  # Wednesday at noon after the Monday epoch.
     for index, actor in enumerate(agents):
-        peer = agents[(index + 1) % len(agents)]
-        for a, b in ((actor, peer), (peer, actor)):
-            if b.id not in a.contacts:
-                a.contacts.append(b.id)
-            a.relationships.setdefault(b.id, 0.15)
         for day in range(-days, 0):
+            peers = graph[actor.id]
+            peer, relationship = peers[(abs(day) + index) % len(peers)]
+            if day == -1:
+                peer, relationship = agents[(index + 1) % len(agents)], "our usual catch-ups"
             sent = day * 1440 + 840 + index % 120
             interest = actor.persona.life_history.interests[(day + index) % 2]
-            opening = templates[actor.id].openings[
-                (day + index) % len(templates[actor.id].openings)
-            ]
-            reply = templates[peer.id].replies[(day + index) % len(templates[peer.id].replies)]
+            if day == -1:
+                opening = templates[actor.id].requests[
+                    (day + index) % len(templates[actor.id].requests)
+                ]
+                reply = templates[peer.id].acceptances[
+                    (day + index) % len(templates[peer.id].acceptances)
+                ]
+            else:
+                opening = templates[actor.id].openings[
+                    (day + index) % len(templates[actor.id].openings)
+                ]
+                reply = templates[peer.id].replies[(day + index) % len(templates[peer.id].replies)]
             for offset, sender, recipient, text in (
                 (0, actor, peer, opening),
                 (7, peer, actor, reply),
@@ -96,10 +167,22 @@ def compile_histories(
                             sender_name=sender.persona.name,
                             recipient_name=recipient.persona.name,
                             interest=interest,
+                            relationship=relationship,
                         ),
                         sent_at=sent + offset,
                         read_at=None if unread else sent + offset + 3,
                     )
+                )
+            if day == -1:
+                reply_id = f"history:message:{index}:{day}:7"
+                remember(
+                    peer,
+                    sent + 7,
+                    f"I promised {actor.persona.name} I would check in about {interest} "
+                    "by Wednesday.",
+                    f"historical_commitment:{commitment_deadline}:{reply_id}",
+                    0.9,
+                    "seed",
                 )
     venues = ("johnson_park", "hobbs_cafe", "oak_hill_college")
     for week in range(days // 7):

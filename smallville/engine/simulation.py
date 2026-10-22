@@ -152,6 +152,7 @@ def bootstrap(
                 "population",
                 {
                     "digest": population.digest or population.fingerprint(),
+                    "version": population.version,
                     "history_days": population.history_days,
                     "residents": len(population.agents),
                     "historical_messages": len(population.messages),
@@ -180,12 +181,13 @@ class Simulation:
     ):
         if config.realism_profile == "connected_v1" and (
             population is None
+            or population.version < 3
             or population.history_days < 14
             or any(agent.persona.life_history is None for agent in population.agents)
         ):
             raise ValueError(
                 "connected realism requires a validated population with life histories "
-                "and at least 14 days of digital history"
+                "and version 3 connected digital history of at least 14 days"
             )
         self.config, self.town = (
             config,
@@ -279,6 +281,7 @@ class Simulation:
 
         async def think(actor, buffer):
             token = self.call_buffer.set(buffer)
+            self.mind.begin_turn()
             try:
                 reflection = None
                 if minute % 1440 >= 1260 and actor.last_reflection_day != minute // 1440:
@@ -289,13 +292,19 @@ class Simulation:
                         intent,
                         "routine",
                         {"plan": "reused", "action": "routine", "reflection": reflection},
+                        self.mind.take_archive_changes(actor.id, minute),
                     )
                 intent = await self.mind.decide(actor, minute)
                 diagnostics = self.mind.take_decision_diagnostics() or {
                     "plan": "external",
                     "action": "accepted",
                 }
-                return intent, "model", diagnostics | {"reflection": reflection}
+                return (
+                    intent,
+                    "model",
+                    diagnostics | {"reflection": reflection},
+                    self.mind.take_archive_changes(actor.id, minute),
+                )
             finally:
                 self.call_buffer.reset(token)
 
@@ -313,9 +322,9 @@ class Simulation:
             for actor, buffer in prepared:
                 for record in buffer:
                     self.world.log.append(minute, "llm_call", actor.id, record)
-        for (actor, _), (intent, source, cognition) in zip(prepared, results):
+        for (actor, _), (intent, source, cognition, memory_changes) in zip(prepared, results):
             self.active_agent = actor.id
-            changes = [change("agents", actor.id, actor)]
+            changes = [change("agents", actor.id, actor), *memory_changes]
             if source == "model" and self.config.routine_actions:
                 changes.append(self.mind.routine_change(actor, intent, minute))
             await self._publish(

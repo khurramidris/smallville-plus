@@ -196,6 +196,10 @@ class MockLLM:
         task = context["task"]
         if task == "plan":
             result = routine(context)
+        elif task == "repair_plan":
+            from smallville.agents.planning import deterministic_patch
+
+            result = deterministic_patch(context).model_dump()
         elif task == "action":
             result = action(context, seed)
         elif task == "reflection":

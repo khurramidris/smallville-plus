@@ -105,6 +105,16 @@ class Memory(Model):
     repetitions: int = Field(default=1, ge=1)
 
 
+class ArchivedMemory(Model):
+    """A private evicted episode; retrieval remains owner-scoped and bounded."""
+
+    id: str
+    owner: str
+    memory: Memory
+    archived_at: int
+    reason: Literal["capacity"] = "capacity"
+
+
 class Goal(Model):
     id: str
     owner: str
@@ -113,8 +123,10 @@ class Goal(Model):
     priority: float = Field(default=0.5, ge=0, le=1)
     source: Literal["original_seed", "generated_life_history", "resident", "commitment"]
     created_at: int = 0
+    updated_at: int = 0
     deadline: int | None = None
     progress: str = Field(default="not_started", max_length=500)
+    prerequisites: list[str] = Field(default_factory=list)
     evidence: list[str] = Field(default_factory=list)
 
     @model_validator(mode="after")
@@ -122,6 +134,18 @@ class Goal(Model):
         if self.deadline is not None and self.deadline < self.created_at:
             raise ValueError("goal deadline precedes its creation")
         return self
+
+
+class GoalTransition(Model):
+    id: str
+    goal_id: str
+    owner: str
+    minute: int
+    action: Literal["revise", "block", "activate", "complete", "abandon"]
+    old_status: Literal["active", "blocked", "completed", "abandoned"]
+    new_status: Literal["active", "blocked", "completed", "abandoned"]
+    reason: str = Field(min_length=3, max_length=500)
+    evidence: list[str] = Field(default_factory=list)
 
 
 class KnowledgeEvidence(Model):
@@ -206,6 +230,7 @@ ActionKind = Literal[
     "read_news",
     "post_notice",
     "vote",
+    "goal",
 ]
 
 
@@ -270,6 +295,8 @@ TABLES = (
     "invitations",
     "event_rsvps",
     "goals",
+    "goal_history",
+    "memory_archive",
     "knowledge",
     "metadata",
 )
@@ -297,6 +324,8 @@ class Change(Model):
         "invitations",
         "event_rsvps",
         "goals",
+        "goal_history",
+        "memory_archive",
         "knowledge",
         "metadata",
     ]

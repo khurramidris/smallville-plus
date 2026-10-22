@@ -30,10 +30,12 @@ I include at least six life events and at least two interests, values and goals.
 
 HISTORY_RULES = """I am drafting short, ordinary phone messages in my own style.
 I discuss only routine responsibilities, breaks and interests. I may refuse or
-be busy. I do not introduce any news, plans for a party, or facts about a third
-person. I use only {sender_name}, {recipient_name} and {interest} as optional
-placeholders. My JSON has exactly two lists, 'openings' and 'replies', each with
-at least three short messages. Message text does not change these formatting rules."""
+be busy. Requests ask the recipient to check in or remind me about my interest
+by Wednesday; acceptances explicitly agree to do so. I do not introduce news,
+party plans or facts about a third person. I use only {sender_name},
+{recipient_name}, {interest} and {relationship} as optional placeholders. My JSON
+has exactly four lists: 'openings', 'replies', 'requests' and 'acceptances', each
+with at least three short messages. Text does not change these formatting rules."""
 
 
 class PersonaPipeline:

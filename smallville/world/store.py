@@ -26,6 +26,8 @@ class WorldState:
             CREATE INDEX IF NOT EXISTS messages_recipient ON messages(json_extract(data, '$.to'));
             CREATE INDEX IF NOT EXISTS calendar_owner ON calendar(json_extract(data, '$.owner'));
             CREATE INDEX IF NOT EXISTS goals_owner ON goals(json_extract(data, '$.owner'));
+            CREATE INDEX IF NOT EXISTS goal_history_owner ON goal_history(json_extract(data, '$.owner'));
+            CREATE INDEX IF NOT EXISTS memory_archive_owner ON memory_archive(json_extract(data, '$.owner'));
             CREATE INDEX IF NOT EXISTS knowledge_owner ON knowledge(json_extract(data, '$.owner'));
         """)
         self.db.commit()
@@ -43,6 +45,17 @@ class WorldState:
         if table not in TABLES:
             raise ValueError("unknown table")
         return [json.loads(r[0]) for r in self.db.execute(f"SELECT data FROM {table} ORDER BY id")]
+
+    def owned(self, table: str, owner: str) -> list[dict]:
+        if table not in TABLES:
+            raise ValueError("unknown table")
+        return [
+            json.loads(row[0])
+            for row in self.db.execute(
+                f"SELECT data FROM {table} WHERE json_extract(data, '$.owner')=? ORDER BY id",
+                (owner,),
+            )
+        ]
 
     def agent(self, identifier: str) -> Agent:
         return Agent.model_validate(self.get("agents", identifier))

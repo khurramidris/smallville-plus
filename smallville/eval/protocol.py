@@ -24,6 +24,7 @@ def evaluation_manifest(world, config: dict, run: dict) -> dict:
             {
                 "kind": "validated_artifact",
                 "digest": population["digest"],
+                "version": population.get("version", 2),
                 "residents": population["residents"],
                 "history_days": population["history_days"],
             }
@@ -36,6 +37,9 @@ def evaluation_manifest(world, config: dict, run: dict) -> dict:
             "legacy_diffusion": "retained phrase evidence; preserved for historical comparison",
             "structured_knowledge": "owner-scoped exposure/acceptance/retention/recall stages",
             "interview_recall": "reported only after human claim assessment",
+            "memory_retrieval": "owner-scoped bounded working/archive lexical ranking",
+            "goal_lifecycle": "current projection plus immutable validated transitions",
+            "plan_repair": "future-only patch; elapsed plan blocks remain unchanged",
             "relationship_density": "mutual recorded relationship edges",
             "attendance": "completed and confirmed event actions",
         },

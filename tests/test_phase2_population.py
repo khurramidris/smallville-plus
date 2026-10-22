@@ -39,6 +39,7 @@ def population(tmp_path_factory):
 
 
 def test_population_originals_source_facts_histories_and_capacity(population):
+    assert population.version == 3
     assert len(population.agents) == 100 and len({a.id for a in population.agents}) == 100
     assert len(population.messages) == 4200 and len(population.calendar) == 300
     assert len(population.locations) == 75
@@ -63,6 +64,22 @@ def test_population_originals_source_facts_histories_and_capacity(population):
         a.persona.life_history.narrative.startswith("My name is " + a.persona.name)
         for a in population.agents
     )
+    assert all(
+        any(memory.source.startswith("historical_commitment:") for memory in agent.memories)
+        for agent in population.agents
+    )
+    assert all(
+        any(
+            peer.id in agent.contacts
+            for peer in population.agents
+            if peer.id != agent.id and peer.persona.workplace == agent.persona.workplace
+        )
+        for agent in population.agents
+        if any(
+            peer.id != agent.id and peer.persona.workplace == agent.persona.workplace
+            for peer in population.agents
+        )
+    )
     homes = Counter(a.persona.home for a in population.agents)
     town = SmallvilleMap(extra_locations=population.locations)
     assert all(count <= town.locations[identifier].capacity for identifier, count in homes.items())
@@ -79,6 +96,7 @@ def test_artifact_integrity_and_original_identity_guards(population, tmp_path):
         Population.load(path)
     data = population.model_dump()
     data["digest"] = ""
+    data["version"] = 2
     data["agents"][0]["memories"] = []
     changed = Population.model_validate(data)
     with pytest.raises(ValueError, match="original seed memories"):
@@ -187,6 +205,7 @@ async def test_hundred_residents_bootstrap_run_replay_and_history_view(populatio
             identifier = population.agents[-1].id
             data = (await client.get(f"/api/agents/{identifier}?minute=0")).json()
             assert data["agent"]["persona"]["life_history"] and data["messages"]
+            assert {"goals", "goal_history", "archived_memories"} <= data.keys()
             assert all(m["sent_at"] < 0 for m in data["messages"])
     finally:
         sim.close()

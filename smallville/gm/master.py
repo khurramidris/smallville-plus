@@ -3,7 +3,8 @@ import json
 from pydantic import ValidationError
 
 from smallville.agents.drives import advance_drives, clamp
-from smallville.agents.memory import remember
+from smallville.agents.goals import GoalRequest, Goals
+from smallville.agents.memory import archive_changes, remember
 from smallville.apps.bank import Bank
 from smallville.apps.civic import CastVote, Council, Notice, NoticeBoard
 from smallville.apps.gatherings import Gatherings
@@ -26,6 +27,7 @@ class GameMaster:
         self.world, self.town, self.gateway, self.config = world, town, gateway, config
         self.messaging, self.calendar = Messaging(world), Calendar(world)
         self.bank, self.economy = Bank(world), Economy(world, config)
+        self.goals = Goals(world)
         self.board, self.council, self.gatherings = (
             NoticeBoard(world),
             Council(world),
@@ -54,7 +56,8 @@ class GameMaster:
         ):
             raise RuleViolation("that app is not available")
         if (
-            intent.kind not in ("message", "calendar", "buy", "transfer", "post_notice", "vote")
+            intent.kind
+            not in ("message", "calendar", "buy", "transfer", "post_notice", "vote", "goal")
             and intent.arguments
         ):
             raise RuleViolation("unsupported action arguments")
@@ -120,6 +123,11 @@ class GameMaster:
         elif intent.kind == "calendar":
             self.calendar.validate(actor, CreateEvent.model_validate(intent.arguments), minute + 5)
             duration = 5
+        elif intent.kind == "goal":
+            if self.config.realism_profile != "connected_v1":
+                raise RuleViolation("goal updates require the connected realism profile")
+            self.goals.validate(actor, GoalRequest.model_validate(intent.arguments), minute + 5)
+            duration = 5
         elif intent.kind == "attend":
             matches = [
                 e
@@ -142,14 +150,15 @@ class GameMaster:
         return duration
 
     def reject(self, actor: Agent, minute: int, reason: str, intent: Intent | None = None):
-        remember(actor, minute, reason, "gm_rejection", 0.7)
+        evicted = []
+        remember(actor, minute, reason, "gm_rejection", 0.7, evicted=evicted)
         actor.surprise = True
         return self.world.log.append(
             minute,
             "action_rejected",
             actor.id,
             {"reason": reason, **({"intent": intent.model_dump()} if intent else {})},
-            [change("agents", actor.id, actor)],
+            [change("agents", actor.id, actor), *archive_changes(actor.id, evicted, minute)],
             {actor.id: reason},
         )
 
@@ -218,7 +227,8 @@ class GameMaster:
         advance_drives(actor, minute)
         pending = actor.pending
         intent = Intent.model_validate(pending["intent"])
-        changes, data = [], {"kind": intent.kind, "start": pending["start"], "succeeded": True}
+        changes, evicted = [], []
+        data = {"kind": intent.kind, "start": pending["start"], "succeeded": True}
         observation = f"I finished {intent.kind}."
         if intent.kind == "move":
             destination = self.world.location(actor.destination)
@@ -319,6 +329,11 @@ class GameMaster:
             except ValueError:
                 observation = "I could not save that calendar entry because it conflicts."
                 actor.surprise = True
+        elif intent.kind == "goal":
+            request = GoalRequest.model_validate(intent.arguments)
+            changes.extend(self.goals.transition_changes(actor, request, minute))
+            data.update(goal_id=request.goal_id, goal_action=request.action)
+            observation = f"I recorded a {request.action} update to one of my goals."
         elif intent.kind == "attend":
             data["location"] = actor.location
             observation = f"I spent time at the event in {actor.location}."
@@ -333,7 +348,8 @@ class GameMaster:
         actor.pending = None
         actor.busy_until = minute
         actor.activity = "wait"
-        remember(actor, minute, observation, "gm_outcome", 0.45)
+        remember(actor, minute, observation, "gm_outcome", 0.45, evicted=evicted)
+        changes.extend(archive_changes(actor.id, evicted, minute))
         changes.append(change("agents", actor.id, actor))
         return self.world.log.append(
             minute, "action_completed", actor.id, data, changes, {actor.id: observation}

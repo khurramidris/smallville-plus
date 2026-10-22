@@ -16,7 +16,7 @@ from smallville.world.models import Agent, CalendarEntry, Location, Message, Mod
 
 
 class Population(Model):
-    version: Literal[2] = 2
+    version: Literal[2, 3] = 3
     seed: int
     history_days: int = Field(ge=14, le=60)
     agents: list[Agent] = Field(min_length=25, max_length=100)
@@ -70,6 +70,25 @@ class Population(Model):
             dates = {m.sent_at // 1440 for m in self.messages if actor.id in (m.sender, m.to)}
             if len(dates) < self.history_days:
                 raise ValueError("resident has insufficient daily digital history")
+        if self.version >= 3:
+            messages_by_id = {message.id: message for message in self.messages}
+            for actor in self.agents:
+                commitments = [
+                    memory
+                    for memory in actor.memories
+                    if memory.source.startswith("historical_commitment:")
+                ]
+                if not commitments:
+                    raise ValueError("resident has no unfinished historical commitment")
+                for memory in commitments:
+                    _, deadline, message_id = memory.source.split(":", 2)
+                    if not deadline.isdigit() or int(deadline) <= 0:
+                        raise ValueError("historical commitment must have a future deadline")
+                    if (
+                        message_id not in messages_by_id
+                        or messages_by_id[message_id].sender != actor.id
+                    ):
+                        raise ValueError("historical commitment lacks the resident's acceptance")
         if len({e.id for e in self.calendar}) != len(self.calendar):
             raise ValueError("duplicate calendar IDs")
         for e in self.calendar:
