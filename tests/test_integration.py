@@ -31,6 +31,16 @@ async def test_two_days_party_evaluation_replay_and_viewer(tmp_path):
         assert abs(sum(report["daily_life"]["average_hours"].values()) - 24) < 1e-9
         assert report["anti_homogeneity"]["observed_daily_behavior_variance"]["work_hours"] > 0
         assert report["paper_reference"]["party_attending_guests"] == 5
+        assert report["evaluation_manifest"]["protocol_version"] == "realism-eval-v1"
+        assert report["evaluation_manifest"]["population"]["kind"] == "original_25_seed_workflow"
+        assert report["cost"]["purposes"]["action"] > 0
+        assert report["cognition_diagnostics"]["plans"]["accepted"] > 0
+        assert (
+            report["cognition_diagnostics"]["interaction_opportunities"][
+                "activations_with_someone_nearby"
+            ]
+            > 0
+        )
         write_report(tmp_path / "town", report)
 
         restored = replay(sim.world.log.path, tmp_path / "replayed")
@@ -58,7 +68,9 @@ async def test_two_days_party_evaluation_replay_and_viewer(tmp_path):
             assert [e["seq"] for e in events] == [1, 2]
 
         answers = await interview(sim.mind, "isabella_rodriguez", 2880)
-        assert len(answers) == 5 and all(a["human_rating"] is None for a in answers)
+        assert len(answers) == 6 and all(a["human_rating"] is None for a in answers)
+        assert answers[-1]["category"] == "campaign_recall"
+        assert answers[-1]["claim_assessment"] is None
         assert all(a["available_evidence"] for a in answers)
     finally:
         sim.close()

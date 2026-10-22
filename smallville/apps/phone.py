@@ -3,6 +3,7 @@ from typing import Literal
 from pydantic import Field
 
 from smallville.agents.drives import conversation_effect
+from smallville.agents.knowledge import campaign_knowledge_change
 from smallville.agents.memory import remember
 from smallville.apps.gatherings import Gatherings
 from smallville.world.models import Agent, CalendarEntry, Change, Message, Model, change
@@ -55,10 +56,22 @@ class Messaging:
         if request.to not in actor.contacts:
             actor.contacts.append(request.to)
         conversation_effect(actor, request.to, request.body)
-        remember(actor, minute, f"I sent {request.to}: {request.body}", identifier, 0.65)
+        memory = remember(actor, minute, f"I sent {request.to}: {request.body}", identifier, 0.65)
         actor.last_social_at = minute
+        evidence = campaign_knowledge_change(
+            owner=actor.id,
+            text=request.body,
+            source_id=identifier,
+            source_kind="self_report",
+            asserted_at=minute,
+            observed_at=minute,
+            speaker=actor.id,
+            listener=request.to,
+            retained_memory_id=memory.id,
+        )
         return message, [
             change("messages", identifier, message),
+            *([evidence] if evidence is not None and evidence.value["subject"] == actor.id else []),
             *Gatherings(self.world).invitation_changes(
                 actor, request.body, request.event_id, identifier, request.to
             ),
@@ -74,12 +87,27 @@ class Messaging:
             if message.read_at is not None or message.sent_at > minute:
                 continue
             message.read_at = minute
-            remember(actor, minute, f"{message.sender} told me: {message.body}", message.id, 0.85)
+            memory = remember(
+                actor, minute, f"{message.sender} told me: {message.body}", message.id, 0.85
+            )
             if message.sender not in actor.contacts:
                 actor.contacts.append(message.sender)
             conversation_effect(actor, message.sender, message.body)
             actor.surprise = True
             changes.append(change("messages", message.id, message))
+            evidence = campaign_knowledge_change(
+                owner=actor.id,
+                text=message.body,
+                source_id=message.id,
+                source_kind="testimony",
+                asserted_at=message.sent_at,
+                observed_at=minute,
+                speaker=message.sender,
+                listener=actor.id,
+                retained_memory_id=memory.id,
+            )
+            if evidence:
+                changes.append(evidence)
         return changes
 
     def notifications(

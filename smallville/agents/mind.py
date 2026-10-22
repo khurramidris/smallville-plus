@@ -1,7 +1,9 @@
 import json
+from contextvars import ContextVar
 
 from pydantic import ValidationError
 
+from smallville.agents.goals import active_goals
 from smallville.agents.memory import remember, retrieve
 from smallville.agents.perception import perceive
 from smallville.apps.bank import Bank
@@ -74,6 +76,9 @@ performance, payment or delivery completed merely by describing it."""
 class Mind:
     def __init__(self, world: WorldState, town: MapProvider, gateway: Gateway, config: Config):
         self.world, self.town, self.gateway, self.config = world, town, gateway, config
+        self._decision_diagnostics: ContextVar[dict | None] = ContextVar(
+            "decision_diagnostics", default=None
+        )
 
     def stable_prompt(self, agent: Agent) -> str:
         p = agent.persona
@@ -199,10 +204,39 @@ class Mind:
             return None
         return intent.model_copy(update={"duration": duration})
 
-    def context(self, agent: Agent, minute: int, task: str) -> dict:
+    def context(self, agent: Agent, minute: int, task: str, query: str | None = None) -> dict:
+        perception = perceive(self.world, agent, minute)
+        goals = (
+            active_goals(self.world, agent.id)
+            if self.config.realism_profile == "connected_v1"
+            else []
+        )
+        if self.config.realism_profile == "connected_v1":
+            low_needs = [key for key, value in agent.needs.model_dump().items() if value < 40]
+            upcoming = [
+                entry.title
+                for entry in self.world.calendar(agent.id)
+                if minute <= entry.start <= minute + 1440
+            ][:4]
+            retrieval_query = " ".join(
+                str(value)
+                for value in (
+                    task,
+                    query or "",
+                    agent.location or "travelling",
+                    agent.activity,
+                    " ".join(goal["description"] for goal in goals),
+                    " ".join(peer["name"] for peer in perception["nearby"]),
+                    " ".join(low_needs),
+                    " ".join(upcoming),
+                )
+                if value
+            )
+        else:
+            retrieval_query = "plans today work family party Valentine mayor needs messages"
         memories = retrieve(
             agent,
-            "plans today work family party Valentine mayor needs messages",
+            retrieval_query,
             minute,
             limit=8 if agent.persona.tier == "deep" else 5,
         )
@@ -262,7 +296,7 @@ class Mind:
             "needs": agent.needs.model_dump(),
             "emotion": agent.emotion.model_dump(),
             "memories": [m.model_dump() for m in memories],
-            "perception": perceive(self.world, agent, minute),
+            "perception": perception,
             "calendar": [e.model_dump() for e in self.world.calendar(agent.id)],
             "sent": [m.model_dump() for m in self.world.messages(agent.id) if m.sender == agent.id],
             "last_social_at": agent.last_social_at,
@@ -275,6 +309,15 @@ class Mind:
                 for i in agent.persona.known_locations
             },
         }
+        if self.config.realism_profile == "connected_v1":
+            relevant = set(agent.contacts) | {peer["id"] for peer in perception["nearby"]}
+            context["active_goals"] = goals
+            context["my_relationships"] = {
+                peer: score
+                for peer, score in sorted(agent.relationships.items())
+                if peer in relevant
+            }
+            context["retrieval_query"] = retrieval_query
         if self.config.phase == 3:
             context.update(
                 economy=Economy(self.world, self.config).context(agent),
@@ -337,8 +380,9 @@ class Mind:
             temperature=agent.persona.temperature,
         )
 
-    async def decide(self, agent: Agent, minute: int) -> Intent:
+    async def decide_with_diagnostics(self, agent: Agent, minute: int) -> tuple[Intent, dict]:
         context = self.context(agent, minute, "action")
+        diagnostics = {"plan": "reused", "action": "accepted"}
         if agent.plan is None or agent.plan.day != minute // 1440 or agent.surprise:
             context["task"] = "plan"
             raw = await self.ask(agent, context)
@@ -349,8 +393,10 @@ class Mind:
                 ):
                     raise ValueError("unknown day/location")
                 agent.plan = plan
+                diagnostics["plan"] = "accepted"
             except (ValueError, ValidationError):
                 agent.plan = DailyPlan.model_validate(routine(context))
+                diagnostics["plan"] = "fallback"
                 remember(
                     agent, minute, "I need to fall back to my usual daily routine.", "invalid_plan"
                 )
@@ -367,7 +413,7 @@ class Mind:
         }
         raw = await self.ask(agent, context)
         try:
-            return Intent.model_validate_json(raw)
+            return Intent.model_validate_json(raw), diagnostics
         except (ValueError, ValidationError):
             remember(
                 agent,
@@ -376,7 +422,18 @@ class Mind:
                 "invalid_intent",
             )
             agent.surprise = True
-            return Intent(kind="wait", text="I want a moment to think.", duration=15)
+            diagnostics["action"] = "fallback"
+            return Intent(kind="wait", text="I want a moment to think.", duration=15), diagnostics
+
+    async def decide(self, agent: Agent, minute: int) -> Intent:
+        intent, diagnostics = await self.decide_with_diagnostics(agent, minute)
+        self._decision_diagnostics.set(diagnostics)
+        return intent
+
+    def take_decision_diagnostics(self) -> dict | None:
+        diagnostics = self._decision_diagnostics.get()
+        self._decision_diagnostics.set(None)
+        return diagnostics
 
     async def reflect(self, agent: Agent, minute: int):
         context = self.context(agent, minute, "reflection")
@@ -395,8 +452,11 @@ class Mind:
                 0.8,
                 "reflection",
             )
+            status = "recorded"
         except (ValueError, KeyError, TypeError):
             remember(
                 agent, minute, "I cannot yet make sense of today's events.", "reflection_failed"
             )
+            status = "failed"
         agent.last_reflection_day = minute // 1440
+        return status

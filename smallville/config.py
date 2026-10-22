@@ -39,6 +39,7 @@ class Config(Model):
     decision_concurrency: int = Field(default=1, ge=1, le=16)
     routine_actions: bool = False
     compact_context: bool = False
+    realism_profile: Literal["baseline", "connected_v1"] = "baseline"
 
     @model_validator(mode="after")
     def live_ready(self):
@@ -83,6 +84,7 @@ class Config(Model):
                 decision_concurrency=int(os.getenv("SIM_DECISION_CONCURRENCY", "1")),
                 routine_actions=os.getenv("SIM_ROUTINE_ACTIONS", "0") == "1",
                 compact_context=os.getenv("SIM_COMPACT_CONTEXT", "0") == "1",
+                realism_profile=os.getenv("SIM_REALISM_PROFILE", "baseline"),
             )
         return cls(
             backend=backend,
@@ -102,6 +104,7 @@ class Config(Model):
             decision_concurrency=int(os.getenv("SIM_DECISION_CONCURRENCY", "1")),
             routine_actions=os.getenv("SIM_ROUTINE_ACTIONS", "0") == "1",
             compact_context=os.getenv("SIM_COMPACT_CONTEXT", "0") == "1",
+            realism_profile=os.getenv("SIM_REALISM_PROFILE", "baseline"),
         )
 
     def model_for(self, identifier: str, tier: str) -> str:

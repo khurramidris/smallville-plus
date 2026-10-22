@@ -6,6 +6,8 @@ from contextvars import ContextVar
 from pathlib import Path
 
 from smallville.agents.drives import advance_drives
+from smallville.agents.goals import initial_goal_changes
+from smallville.agents.knowledge import campaign_knowledge_change
 from smallville.agents.mind import Mind
 from smallville.apps.civic import Council, NoticeBoard, initial_council
 from smallville.apps.gatherings import initial_gathering
@@ -61,6 +63,23 @@ def bootstrap(
                 change("accounts", agent.id, {"id": agent.id, "cents": 10000}),
             ]
         )
+        for memory in agent.memories:
+            if memory.source != "original_seed":
+                continue
+            evidence = campaign_knowledge_change(
+                owner=agent.id,
+                text=memory.text,
+                source_id=memory.id,
+                source_kind="seed",
+                asserted_at=memory.minute,
+                observed_at=0,
+                speaker=agent.id,
+                retained_memory_id=memory.id,
+            )
+            if evidence:
+                changes.append(evidence)
+        if config.realism_profile == "connected_v1":
+            changes.extend(initial_goal_changes(agent))
     changes.extend(
         [
             change("metadata", "map", town.view()),
@@ -80,8 +99,53 @@ def bootstrap(
         ]
     )
     if population:
+        agents_by_id = {agent.id: agent for agent in agents}
         changes.extend(change("messages", m.id, m) for m in population.messages)
         changes.extend(change("calendar", e.id, e) for e in population.calendar)
+        for message in population.messages:
+            sender_memory = next(
+                (
+                    memory.id
+                    for memory in agents_by_id[message.sender].memories
+                    if memory.source == message.id
+                ),
+                None,
+            )
+            own_evidence = campaign_knowledge_change(
+                owner=message.sender,
+                text=message.body,
+                source_id=message.id,
+                source_kind="self_report",
+                asserted_at=message.sent_at,
+                observed_at=message.sent_at,
+                speaker=message.sender,
+                listener=message.to,
+                retained_memory_id=sender_memory,
+            )
+            if own_evidence and own_evidence.value["subject"] == message.sender:
+                changes.append(own_evidence)
+            if message.read_at is not None:
+                recipient_memory = next(
+                    (
+                        memory.id
+                        for memory in agents_by_id[message.to].memories
+                        if memory.source == message.id
+                    ),
+                    None,
+                )
+                exposure = campaign_knowledge_change(
+                    owner=message.to,
+                    text=message.body,
+                    source_id=message.id,
+                    source_kind="testimony",
+                    asserted_at=message.sent_at,
+                    observed_at=message.read_at,
+                    speaker=message.sender,
+                    listener=message.to,
+                    retained_memory_id=recipient_memory,
+                )
+                if exposure:
+                    changes.append(exposure)
         changes.append(
             change(
                 "metadata",
@@ -114,6 +178,15 @@ class Simulation:
         cache_path: Path | None = None,
         population: Population | None = None,
     ):
+        if config.realism_profile == "connected_v1" and (
+            population is None
+            or population.history_days < 14
+            or any(agent.persona.life_history is None for agent in population.agents)
+        ):
+            raise ValueError(
+                "connected realism requires a validated population with life histories "
+                "and at least 14 days of digital history"
+            )
         self.config, self.town = (
             config,
             town or SmallvilleMap(extra_locations=population.locations if population else None),
@@ -190,6 +263,14 @@ class Simulation:
                     minute,
                     "perceived",
                     actor.id,
+                    data={
+                        "nearby": [
+                            peer.id for peer in self.world.at(actor.location) if peer.id != actor.id
+                        ]
+                        if actor.location is not None
+                        else [],
+                        "unread_notifications": len(self.gm.messaging.notifications(actor.id)),
+                    },
                     changes=changes,
                     observations={actor.id: "I notice my surroundings and check my phone."},
                 )
@@ -199,12 +280,22 @@ class Simulation:
         async def think(actor, buffer):
             token = self.call_buffer.set(buffer)
             try:
+                reflection = None
                 if minute % 1440 >= 1260 and actor.last_reflection_day != minute // 1440:
-                    await self.mind.reflect(actor, minute)
+                    reflection = await self.mind.reflect(actor, minute)
                 intent = self.mind.continue_routine(actor, minute)
                 if intent is not None:
-                    return intent, "routine"
-                return await self.mind.decide(actor, minute), "model"
+                    return (
+                        intent,
+                        "routine",
+                        {"plan": "reused", "action": "routine", "reflection": reflection},
+                    )
+                intent = await self.mind.decide(actor, minute)
+                diagnostics = self.mind.take_decision_diagnostics() or {
+                    "plan": "external",
+                    "action": "accepted",
+                }
+                return intent, "model", diagnostics | {"reflection": reflection}
             finally:
                 self.call_buffer.reset(token)
 
@@ -222,7 +313,7 @@ class Simulation:
             for actor, buffer in prepared:
                 for record in buffer:
                     self.world.log.append(minute, "llm_call", actor.id, record)
-        for (actor, _), (intent, source) in zip(prepared, results):
+        for (actor, _), (intent, source, cognition) in zip(prepared, results):
             self.active_agent = actor.id
             changes = [change("agents", actor.id, actor)]
             if source == "model" and self.config.routine_actions:
@@ -232,7 +323,7 @@ class Simulation:
                     minute,
                     "intention",
                     actor.id,
-                    {"intent": intent.model_dump(), "source": source},
+                    {"intent": intent.model_dump(), "source": source, "cognition": cognition},
                     changes,
                 )
             )

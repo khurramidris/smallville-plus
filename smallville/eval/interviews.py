@@ -9,6 +9,10 @@ QUESTIONS = {
     "plans": "What do I intend to do next, and what might prevent it?",
     "reaction": "If the place I planned to visit were closed, what would I do?",
     "reflection": "What have I learned about getting along with the people I know?",
+    "campaign_recall": (
+        "Has Sam Moore said whether he will run for mayor? State what status I remember "
+        "and who told me; say that I do not know if I cannot recall evidence."
+    ),
 }
 
 
@@ -16,7 +20,7 @@ async def interview(mind: Mind, identifier: str, minute: int) -> list[dict]:
     agent = mind.world.agent(identifier)
     responses = []
     for category, question in QUESTIONS.items():
-        context = mind.context(agent, minute, "interview")
+        context = mind.context(agent, minute, "interview", query=question)
         context["question"] = question
         raw = await mind.ask(agent, context)
         try:
@@ -35,6 +39,7 @@ async def interview(mind: Mind, identifier: str, minute: int) -> list[dict]:
             **answer,
             "available_evidence": [m["id"] for m in context["memories"]],
             "human_rating": None,
+            "claim_assessment": None,
         }
         mind.world.log.append(
             minute, "interview", identifier, record, [change("agents", identifier, agent)]

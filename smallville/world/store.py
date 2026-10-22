@@ -25,6 +25,8 @@ class WorldState:
             CREATE INDEX IF NOT EXISTS agents_location ON agents(json_extract(data, '$.location'));
             CREATE INDEX IF NOT EXISTS messages_recipient ON messages(json_extract(data, '$.to'));
             CREATE INDEX IF NOT EXISTS calendar_owner ON calendar(json_extract(data, '$.owner'));
+            CREATE INDEX IF NOT EXISTS goals_owner ON goals(json_extract(data, '$.owner'));
+            CREATE INDEX IF NOT EXISTS knowledge_owner ON knowledge(json_extract(data, '$.owner'));
         """)
         self.db.commit()
         self.log = EventLog(self.db, self.directory / "events.jsonl")

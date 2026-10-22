@@ -6,6 +6,7 @@ from types import SimpleNamespace
 
 from smallville.agents.knowledge import campaign_evidence, party_schedule_evidence
 from smallville.economy.metrics import evaluate_economy
+from smallville.eval.protocol import evaluation_manifest
 from smallville.world.models import Agent
 from smallville.world.store import WorldState
 
@@ -48,6 +49,7 @@ def cost_from_events(events: list) -> dict:
         "output_tokens": sum(c["output_tokens"] for c in calls),
         "usd": str(sum((Decimal(c["usd"]) for c in calls), Decimal(0))),
         "uncertain_calls": sum(c["status"] == "uncertain" for c in calls),
+        "purposes": dict(Counter(c.get("purpose", "legacy_unknown") for c in calls)),
     }
 
 
@@ -140,6 +142,21 @@ def evaluate(world: WorldState) -> dict:
         }
     averages = {k: mean(v[k] for v in per_agent.values()) for k in next(iter(per_agent.values()))}
     behavior_variance = {k: pvariance(v[k] for v in per_agent.values()) for k in averages}
+    knowledge = world.all("knowledge")
+    campaign_records = [
+        row
+        for row in knowledge
+        if row["predicate"] == "mayoral_candidacy"
+        and row["claim_status"] in ("considering", "declared")
+    ]
+    memory_ids = {agent.id: {memory.id for memory in agent.memories} for agent in agents}
+    campaign_interviews = [
+        event.data
+        for event in events
+        if event.kind == "interview" and event.data.get("category") == "campaign_recall"
+    ]
+    cognition = [event.data.get("cognition", {}) for event in events if event.kind == "intention"]
+    perceptions = [event.data for event in events if event.kind == "perceived"]
     return {
         "run": run,
         "backend": config["backend"],
@@ -150,6 +167,7 @@ def evaluate(world: WorldState) -> dict:
             else f"Exploratory Phase {run.get('phase', 1)} run. No matched experimental design or human believability judgment."
         ),
         "paper_reference": PAPER,
+        "evaluation_manifest": evaluation_manifest(world, config, run),
         "diffusion": {
             "sam": {
                 "initial": sum(aware(a, "sam") for a in initial),
@@ -162,6 +180,59 @@ def evaluate(world: WorldState) -> dict:
                 "paper_final": 13,
             },
             "method": "Retained memory evidence, not omniscient delivery or unverified interview assertions.",
+        },
+        "knowledge_evidence": {
+            "version": 1,
+            "campaign": {
+                "records": len(campaign_records),
+                "exposed_residents": sorted({row["owner"] for row in campaign_records}),
+                "accepted_belief_residents": sorted(
+                    {
+                        row["owner"]
+                        for row in campaign_records
+                        if row["epistemic_status"] == "accepted"
+                    }
+                ),
+                "retained_evidence_residents": sorted(
+                    {
+                        row["owner"]
+                        for row in campaign_records
+                        if row["retained_memory_id"] in memory_ids.get(row["owner"], set())
+                    }
+                ),
+                "claim_status_counts": dict(
+                    Counter(row["claim_status"] for row in campaign_records)
+                ),
+                "interview_recall": {
+                    "collected": len(campaign_interviews),
+                    "human_assessed": sum(
+                        row.get("claim_assessment") is not None for row in campaign_interviews
+                    ),
+                    "aware": None,
+                },
+            },
+            "method": (
+                "Owner-scoped structured evidence distinguishes exposure, acceptance, retained "
+                "records and recall. Testimony is not world truth; unassessed interview answers "
+                "do not become awareness scores. The historical diffusion metric is preserved."
+            ),
+        },
+        "cognition_diagnostics": {
+            "plans": dict(Counter(row.get("plan", "legacy_unknown") for row in cognition)),
+            "actions": dict(Counter(row.get("action", "legacy_unknown") for row in cognition)),
+            "reflections": dict(
+                Counter(row["reflection"] for row in cognition if row.get("reflection") is not None)
+            ),
+            "interaction_opportunities": {
+                "activations_with_someone_nearby": sum(
+                    bool(row.get("nearby")) for row in perceptions
+                ),
+                "nearby_resident_exposures": sum(len(row.get("nearby", [])) for row in perceptions),
+                "activations_with_unread_notifications": sum(
+                    row.get("unread_notifications", 0) > 0 for row in perceptions
+                ),
+            },
+            "note": "Opportunities are co-presence/notifications at activation, not proof of interaction.",
         },
         "relationships": {
             "initial_density": density(initial),

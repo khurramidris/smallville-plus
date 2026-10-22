@@ -102,6 +102,44 @@ class Memory(Model):
     kind: Literal["episode", "reflection", "seed"] = "episode"
     source: str
     last_access: int = 0
+    repetitions: int = Field(default=1, ge=1)
+
+
+class Goal(Model):
+    id: str
+    owner: str
+    description: str = Field(min_length=3, max_length=1000)
+    status: Literal["active", "blocked", "completed", "abandoned"] = "active"
+    priority: float = Field(default=0.5, ge=0, le=1)
+    source: Literal["original_seed", "generated_life_history", "resident", "commitment"]
+    created_at: int = 0
+    deadline: int | None = None
+    progress: str = Field(default="not_started", max_length=500)
+    evidence: list[str] = Field(default_factory=list)
+
+    @model_validator(mode="after")
+    def valid_times(self):
+        if self.deadline is not None and self.deadline < self.created_at:
+            raise ValueError("goal deadline precedes its creation")
+        return self
+
+
+class KnowledgeEvidence(Model):
+    """Owner-scoped evidence about a claim, never an omniscient truth record."""
+
+    id: str
+    owner: str
+    subject: str
+    predicate: Literal["mayoral_candidacy"]
+    claim_status: Literal["considering", "declared", "denied", "unknown"]
+    epistemic_status: Literal["exposed", "accepted", "rejected"]
+    source_kind: Literal["seed", "self_report", "testimony", "world_event"]
+    source_id: str
+    asserted_at: int
+    observed_at: int
+    text: str = Field(min_length=1, max_length=4000)
+    confidence: float = Field(default=0.5, ge=0, le=1)
+    retained_memory_id: str | None = None
 
 
 class PlanBlock(Model):
@@ -231,6 +269,8 @@ TABLES = (
     "gatherings",
     "invitations",
     "event_rsvps",
+    "goals",
+    "knowledge",
     "metadata",
 )
 
@@ -256,6 +296,8 @@ class Change(Model):
         "gatherings",
         "invitations",
         "event_rsvps",
+        "goals",
+        "knowledge",
         "metadata",
     ]
     id: str

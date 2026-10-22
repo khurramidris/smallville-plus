@@ -68,6 +68,7 @@ async def run_command(args):
         | {
             "phase": args.phase or (2 if population else 1),
             "supply_delay_day": args.supply_delay_day,
+            **({"realism_profile": "connected_v1"} if args.realism else {}),
             **(
                 {"decision_concurrency": 4, "routine_actions": True, "compact_context": True}
                 if args.optimized
@@ -277,6 +278,11 @@ def parser():
         command.add_argument("--cache", type=Path)
         command.add_argument("--replay-only", action="store_true")
         command.add_argument("--allow-paid", action="store_true")
+        command.add_argument(
+            "--realism",
+            action="store_true",
+            help="Use the connected-realism profile; requires a validated rich population",
+        )
         command.add_argument(
             "--optimized",
             action="store_true",

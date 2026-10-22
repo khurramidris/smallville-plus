@@ -133,10 +133,15 @@ class Gateway:
         self.ledger.execute("""
             CREATE TABLE IF NOT EXISTS calls(
                 id INTEGER PRIMARY KEY, model TEXT NOT NULL, prompt_hash TEXT NOT NULL,
-                seed INTEGER NOT NULL, status TEXT NOT NULL, cached INTEGER NOT NULL,
+                seed INTEGER NOT NULL, purpose TEXT NOT NULL, status TEXT NOT NULL, cached INTEGER NOT NULL,
                 input_tokens INTEGER NOT NULL, output_tokens INTEGER NOT NULL,
                 usd TEXT NOT NULL, reservation TEXT NOT NULL)
         """)
+        columns = {row[1] for row in self.ledger.execute("PRAGMA table_info(calls)")}
+        if "purpose" not in columns:
+            self.ledger.execute(
+                "ALTER TABLE calls ADD COLUMN purpose TEXT NOT NULL DEFAULT 'legacy_unknown'"
+            )
         self.ledger.execute("""
             CREATE TABLE IF NOT EXISTS call_timings(
                 call_id INTEGER PRIMARY KEY, queue_ms REAL NOT NULL,
@@ -189,15 +194,19 @@ class Gateway:
             "usd": str(self.spent),
             "max_usd": str(self.max_usd),
             "uncertain_calls": sum(r["status"] in ("reserved", "uncertain") for r in rows),
+            "purposes": {
+                purpose: sum(r["purpose"] == purpose for r in rows)
+                for purpose in sorted({r["purpose"] for r in rows})
+            },
             "accounting": "conservative configured token prices; not a provider invoice",
         }
 
-    def _insert(self, model, digest, seed, status, cached, reservation):
+    def _insert(self, model, digest, seed, purpose, status, cached, reservation):
         with self.ledger:
             cursor = self.ledger.execute(
-                "INSERT INTO calls(model,prompt_hash,seed,status,cached,input_tokens,"
-                "output_tokens,usd,reservation) VALUES(?,?,?,?,?,0,0,'0',?)",
-                (model, digest, seed, status, cached, str(reservation)),
+                "INSERT INTO calls(model,prompt_hash,seed,purpose,status,cached,input_tokens,"
+                "output_tokens,usd,reservation) VALUES(?,?,?,?,?,?,0,0,'0',?)",
+                (model, digest, seed, purpose, status, cached, str(reservation)),
             )
         return cursor.lastrowid
 
@@ -247,14 +256,15 @@ class Gateway:
         if self.config.reasoning_effort is not None:
             envelope["reasoning_effort"] = self.config.reasoning_effort
         digest = hashlib.sha256(canonical(envelope).encode()).hexdigest()
+        purpose = str(dynamic.get("task", "unknown"))[:80]
         started = time.perf_counter()
         # Serialize duplicate prompts, not unrelated requests. Recheck the cache
         # after waiting; a peer may have populated it while this task queued.
         request_lock = self.request_locks[int(digest[:8], 16) % len(self.request_locks)]
         async with request_lock, self.slots:
-            return await self._dispatch(model, prompt, digest, seed, temperature, started)
+            return await self._dispatch(model, prompt, digest, seed, temperature, purpose, started)
 
-    async def _dispatch(self, model, prompt, digest, seed, temperature, started):
+    async def _dispatch(self, model, prompt, digest, seed, temperature, purpose, started):
         provider_started = None
         identifier = None
         async with self.lock:
@@ -263,11 +273,11 @@ class Gateway:
                 (model, digest, seed),
             ).fetchone()
             if cached:
-                identifier = self._insert(model, digest, seed, "cached", 1, Decimal(0))
+                identifier = self._insert(model, digest, seed, purpose, "cached", 1, Decimal(0))
                 self._finish(identifier, "cached", 0, 0, Decimal(0))
                 return cached[0]
             if self.config.replay_only:
-                identifier = self._insert(model, digest, seed, "cache_miss", 0, Decimal(0))
+                identifier = self._insert(model, digest, seed, purpose, "cache_miss", 0, Decimal(0))
                 self._finish(identifier, "cache_miss", 0, 0, Decimal(0))
                 raise CacheMiss("exact replay requested but response is absent from cache")
 
@@ -286,10 +296,12 @@ class Gateway:
             if self.config.backend == "litellm" and price is None:
                 raise ModelFailure("missing model price: refusing unbounded paid call")
             if self.spent + reservation > self.max_usd:
-                identifier = self._insert(model, digest, seed, "budget_blocked", 0, Decimal(0))
+                identifier = self._insert(
+                    model, digest, seed, purpose, "budget_blocked", 0, Decimal(0)
+                )
                 self._finish(identifier, "budget_blocked", 0, 0, Decimal(0))
                 raise BudgetExceeded("next call reservation exceeds SIM_MAX_USD")
-            identifier = self._insert(model, digest, seed, "reserved", 0, reservation)
+            identifier = self._insert(model, digest, seed, purpose, "reserved", 0, reservation)
         try:
             try:
                 provider_started = time.perf_counter()
