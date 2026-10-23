@@ -18,6 +18,11 @@
 - Keep the viewer local. Public source access enables external audit without
   exposing an unauthenticated FastAPI process or local simulation databases to
   the internet.
+- Treat GitHub's `Resource not accessible by integration` response as an
+  authorization boundary. Do not work around it with an unreviewed temporary
+  upload service. Produce a secret-scanned source archive and full-history Git
+  bundle, then wait for the account owner to create the empty canonical repository
+  and grant the existing integration access.
 
 ## Connected realism implementation, batch 3 — 2026-10-22
 - Extend the opt-in `connected_v1` profile for R2 while keeping legacy profiles

@@ -18,6 +18,17 @@
 - Next: validate the publication diff, create the public GitHub repository, push
   the complete Git history, enable private vulnerability reporting, tag the R2
   audit snapshot and verify anonymous read access.
+- Publication attempt: committed the audit layer after metadata, link-path,
+  130-test collection, Ruff and repeat secret-scan checks. GitHub then rejected
+  `createRepository` with `Resource not accessible by integration`; this token
+  can identify the account but lacks repository-creation permission.
+- No remote was added and no partial public copy exists. The optional Sites skill
+  was unavailable, so the project was not uploaded to an unrelated or temporary
+  host. `PUBLICATION.md` records the account-side handoff.
+- Current packaging step: tag the final local audit commit and create a source
+  archive plus a full-history Git bundle under ignored `dist/`, then verify both.
+  Public GitHub push, security configuration and anonymous URL verification remain
+  blocked only on creation of the empty repository and integration access.
 
 ## Connected realism implementation, batch 3 — completed 2026-10-22
 - R2 step 1, social state and attention: added replayable directed relationship

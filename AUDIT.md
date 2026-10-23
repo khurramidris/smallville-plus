@@ -1,10 +1,12 @@
 # External audit guide
 
-Smallville+ is public so researchers, engineers, and automated reviewers can
+Smallville+ is prepared so researchers, engineers, and automated reviewers can
 inspect the implementation, reproduce deterministic runs, challenge the
 measurements, and propose corrections. The stable R2 audit snapshot is tagged
-`audit-r2-2026-10-23` in the
-[public repository](https://github.com/khurramidris/smallville-plus).
+`audit-r2-2026-10-23`. Its canonical public target is
+[github.com/khurramidris/smallville-plus](https://github.com/khurramidris/smallville-plus);
+if that URL is unavailable, repository creation is still pending as described in
+`PUBLICATION.md`, and the verified local release bundles are ready to transfer.
 
 The repository contains the complete tracked source, tests, Smallville map and
 persona inputs, Phase 2 public research inputs, provenance records, compact
