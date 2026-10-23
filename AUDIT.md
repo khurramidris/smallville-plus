@@ -88,6 +88,11 @@ checksums, and screenshots needed to inspect the reported conclusions are under
 `reports/`. Every documented run can be regenerated with MockLLM without network
 access. Live provider responses are not redistributed as a public dataset.
 
+For handoff before the canonical repository is available, `dist/` contains a
+source archive, a cloneable full-history Git bundle, and `SHA256SUMS`. These local
+release files are intentionally ignored so publishing them cannot recursively add
+the bundle to itself.
+
 Each new run writes `world.sqlite3`, `events.jsonl`, `calls.sqlite3`,
 `cache.sqlite3`, `report.json`, and `report.md`. Treat the viewer as a local,
 read-only research interface; it has no authentication layer for internet

@@ -25,10 +25,13 @@
 - No remote was added and no partial public copy exists. The optional Sites skill
   was unavailable, so the project was not uploaded to an unrelated or temporary
   host. `PUBLICATION.md` records the account-side handoff.
-- Current packaging step: tag the final local audit commit and create a source
-  archive plus a full-history Git bundle under ignored `dist/`, then verify both.
-  Public GitHub push, security configuration and anonymous URL verification remain
-  blocked only on creation of the empty repository and integration access.
+- Packaging completed: the source archive contains all 294 tracked files, the Git
+  bundle reports complete history, and a fresh bundle clone checked out the audit
+  tag at the intended commit with a clean worktree. A separate SHA-256 manifest is
+  stored beside both ignored artifacts under `dist/`.
+- Public GitHub push, security configuration and anonymous URL verification remain
+  blocked only on creation of the empty repository and integration access. No code,
+  tests, simulation state or research report remains unfinished for that push.
 
 ## Connected realism implementation, batch 3 — completed 2026-10-22
 - R2 step 1, social state and attention: added replayable directed relationship
