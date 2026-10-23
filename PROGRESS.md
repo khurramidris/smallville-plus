@@ -1,6 +1,6 @@
 # Smallville+ progress
 
-## Public external audit — prepared 2026-10-23
+## Public external audit — published 2026-10-23
 - Confirmed the worktree is clean at the completed R2 engineering gate before
   publication work; the repository had no existing remote or public copy.
 - Scanned the complete tracked tree and Git patch history for OpenRouter/OpenAI,
@@ -15,23 +15,32 @@
 - The 14 GB local `runs/` tree will not be pushed. It contains generated databases
   and repeated experiment output; compact evidence is already tracked under
   `reports/`, and deterministic runs can be regenerated from the published code.
-- Next: validate the publication diff, create the public GitHub repository, push
-  the complete Git history, enable private vulnerability reporting, tag the R2
-  audit snapshot and verify anonymous read access.
+- Initial publication plan was to validate the diff, create the public repository,
+  push the complete history, tag the R2 snapshot and verify anonymous access.
 - Publication attempt: committed the audit layer after metadata, link-path,
   130-test collection, Ruff and repeat secret-scan checks. GitHub then rejected
   `createRepository` with `Resource not accessible by integration`; this token
   can identify the account but lacks repository-creation permission.
-- No remote was added and no partial public copy exists. The optional Sites skill
-  was unavailable, so the project was not uploaded to an unrelated or temporary
-  host. `PUBLICATION.md` records the account-side handoff.
+- At that point no remote had been added and no partial public copy existed. The
+  optional Sites skill was unavailable, so the project was not uploaded to an
+  unrelated or temporary host; the owner received a precise account-side handoff.
 - Packaging completed: the source archive contains all 294 tracked files, the Git
   bundle reports complete history, and a fresh bundle clone checked out the audit
   tag at the intended commit with a clean worktree. A separate SHA-256 manifest is
   stored beside both ignored artifacts under `dist/`.
-- Public GitHub push, security configuration and anonymous URL verification remain
-  blocked only on creation of the empty repository and integration access. No code,
-  tests, simulation state or research report remains unfinished for that push.
+- Before the owner's handoff, the GitHub push and anonymous URL verification were
+  blocked only on creation of the empty repository and integration access. No
+  code, tests, simulation state or research report was unfinished for that push.
+- The owner created the empty public repository and granted content access. Pushed
+  the complete history to `main`; an unauthenticated raw `README.md` request
+  returned HTTP 200 and matched the local bytes exactly.
+- GitHub continues to reject description, topic, wiki/project and private
+  vulnerability-reporting changes with HTTP 403 for this integration. These are
+  optional account-owner settings and are listed in `PUBLICATION.md`; they do not
+  limit anonymous source, clone, issue or release access.
+- Final publication step: move the stable audit tag to this completed publication
+  documentation, rebuild and reverify the source/history artifacts, push the tag,
+  and attach those artifacts to its GitHub release.
 
 ## Connected realism implementation, batch 3 — completed 2026-10-22
 - R2 step 1, social state and attention: added replayable directed relationship

@@ -23,6 +23,10 @@
   upload service. Produce a secret-scanned source archive and full-history Git
   bundle, then wait for the account owner to create the empty canonical repository
   and grant the existing integration access.
+- Once the owner created the empty public repository, publish the audited history
+  directly to its `main` branch and verify anonymous raw-file access. Treat blocked
+  metadata and security toggles as optional owner actions; do not delay source and
+  release access or misstate those toggles as enabled.
 
 ## Connected realism implementation, batch 3 — 2026-10-22
 - Extend the opt-in `connected_v1` profile for R2 while keeping legacy profiles

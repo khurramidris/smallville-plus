@@ -1,12 +1,12 @@
 # External audit guide
 
-Smallville+ is prepared so researchers, engineers, and automated reviewers can
+Smallville+ is public so researchers, engineers, and automated reviewers can
 inspect the implementation, reproduce deterministic runs, challenge the
 measurements, and propose corrections. The stable R2 audit snapshot is tagged
-`audit-r2-2026-10-23`. Its canonical public target is
-[github.com/khurramidris/smallville-plus](https://github.com/khurramidris/smallville-plus);
-if that URL is unavailable, repository creation is still pending as described in
-`PUBLICATION.md`, and the verified local release bundles are ready to transfer.
+`audit-r2-2026-10-23` at
+[github.com/khurramidris/smallville-plus](https://github.com/khurramidris/smallville-plus).
+The tag's GitHub release carries the independently checksummed source archive,
+full-history Git bundle, and artifact manifest.
 
 The repository contains the complete tracked source, tests, Smallville map and
 persona inputs, Phase 2 public research inputs, provenance records, compact
@@ -88,10 +88,10 @@ checksums, and screenshots needed to inspect the reported conclusions are under
 `reports/`. Every documented run can be regenerated with MockLLM without network
 access. Live provider responses are not redistributed as a public dataset.
 
-For handoff before the canonical repository is available, `dist/` contains a
-source archive, a cloneable full-history Git bundle, and `SHA256SUMS`. These local
-release files are intentionally ignored so publishing them cannot recursively add
-the bundle to itself.
+The tag's release assets are built locally under `dist/`: a source archive, a
+cloneable full-history Git bundle, an artifact manifest, and `SHA256SUMS`. These
+files are intentionally ignored so publishing them cannot recursively add the
+bundle to itself.
 
 Each new run writes `world.sqlite3`, `events.jsonl`, `calls.sqlite3`,
 `cache.sqlite3`, `report.json`, and `report.md`. Treat the viewer as a local,

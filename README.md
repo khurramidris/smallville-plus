@@ -7,12 +7,12 @@ Python 3.11+, asyncio, Pydantic, SQLite WAL and LiteLLM.
 This is working research infrastructure, **not evidence that realism exceeds
 Park et al.** MockLLM is a deterministic, partly scenario-specific test fixture.
 
-The complete project is prepared for public inspection at the canonical target
+The complete project is available for public inspection at
 [github.com/khurramidris/smallville-plus](https://github.com/khurramidris/smallville-plus).
-If that URL is not live yet, [PUBLICATION.md](PUBLICATION.md) records the blocked
-repository-creation step and the ready-to-transfer release bundles. Start with
-the [external audit guide](AUDIT.md) for a stable review snapshot, offline
-reproduction commands, evidence boundaries, and suggested checks.
+[PUBLICATION.md](PUBLICATION.md) records the published scope, release artifacts,
+and the optional repository settings that GitHub reserves for the account owner.
+Start with the [external audit guide](AUDIT.md) for a stable review snapshot,
+offline reproduction commands, evidence boundaries, and suggested checks.
 Original Smallville+ code and documentation use the MIT license; retained map,
 persona, demographic, and survey inputs keep the licenses recorded in
 [THIRD_PARTY.md](THIRD_PARTY.md) and [NOTICE](NOTICE).
