@@ -7,6 +7,14 @@ Python 3.11+, asyncio, Pydantic, SQLite WAL and LiteLLM.
 This is working research infrastructure, **not evidence that realism exceeds
 Park et al.** MockLLM is a deterministic, partly scenario-specific test fixture.
 
+The complete project is available for public inspection at
+[github.com/khurramidris/smallville-plus](https://github.com/khurramidris/smallville-plus).
+Start with the [external audit guide](AUDIT.md) for a stable review snapshot,
+offline reproduction commands, evidence boundaries, and suggested checks.
+Original Smallville+ code and documentation use the MIT license; retained map,
+persona, demographic, and survey inputs keep the licenses recorded in
+[THIRD_PARTY.md](THIRD_PARTY.md) and [NOTICE](NOTICE).
+
 The [realism audit](reports/REALISM_AUDIT.md) identifies the remaining integration
 and measurement gaps. [REALISM_PLAN.md](REALISM_PLAN.md) defines the next work and
 acceptance gates before claims of greater realism or further population scaling.

@@ -1,5 +1,24 @@
 # Smallville+ progress
 
+## Public external audit — prepared 2026-10-23
+- Confirmed the worktree is clean at the completed R2 engineering gate before
+  publication work; the repository had no existing remote or public copy.
+- Scanned the complete tracked tree and Git patch history for OpenRouter/OpenAI,
+  GitHub, AWS and private-key signatures. No findings were detected. `.env`,
+  `runs/`, caches and scratch inputs remain ignored.
+- Reviewed the retained source/license manifests. Added an MIT license for
+  original Smallville+ work plus a `NOTICE` that preserves the separate
+  Apache-2.0, MIT and CC BY 4.0 terms on retained research inputs.
+- Added `AUDIT.md`, `SECURITY.md` and `CONTRIBUTING.md` with offline reproduction,
+  claim boundaries, reviewer targets and safe reporting paths. The public target
+  is `https://github.com/khurramidris/smallville-plus`.
+- The 14 GB local `runs/` tree will not be pushed. It contains generated databases
+  and repeated experiment output; compact evidence is already tracked under
+  `reports/`, and deterministic runs can be regenerated from the published code.
+- Next: validate the publication diff, create the public GitHub repository, push
+  the complete Git history, enable private vulnerability reporting, tag the R2
+  audit snapshot and verify anonymous read access.
+
 ## Connected realism implementation, batch 3 — completed 2026-10-22
 - R2 step 1, social state and attention: added replayable directed relationship
   state with separate trust, affinity, familiarity and obligation dimensions.

@@ -1,0 +1,17 @@
+Smallville+
+Copyright (c) 2026 Khurram Idris
+
+The MIT license in LICENSE applies to the original Smallville+ software and
+documentation in this repository.
+
+The repository also retains third-party map data, persona seeds, demographic
+records, and survey material. Those files remain under their respective
+licenses; the root MIT license does not replace those terms. THIRD_PARTY.md
+identifies every source, retained path, revision, modification, and applicable
+license. Copies of upstream license notices are under references/licenses/.
+
+Smallville character and map material retained from Generative Agents is
+distributed under that project's Apache License 2.0. Public GSS demographic
+records retained from genagents are distributed under its MIT license. The
+normalized Twin-2K-500 survey sample is distributed under CC BY 4.0 with the
+attribution and changes recorded in THIRD_PARTY.md.

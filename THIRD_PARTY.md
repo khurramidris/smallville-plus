@@ -1,5 +1,10 @@
 # Third-party provenance
 
+The root MIT license applies to original Smallville+ code and documentation.
+It does not replace the licenses on retained third-party material. `NOTICE`
+summarizes that boundary, and the upstream license texts named below are retained
+under `references/licenses/`.
+
 Licenses were downloaded and read before taking reference material (2026-10-20).
 Copies are in `references/licenses/`; exact upstream commits, paths and SHA-256
 digests are in `references/sources.json`. No reference engine code is vendored.

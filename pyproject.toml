@@ -7,6 +7,7 @@ name = "smallville-plus"
 version = "0.3.0"
 description = "Research town simulation with bounded inference, personas and survey validation"
 requires-python = ">=3.11"
+license = {file = "LICENSE"}
 dependencies = ["pydantic>=2.11,<3", "fastapi>=0.115,<1", "uvicorn>=0.30,<1", "litellm>=1.80,<2"]
 
 [project.optional-dependencies]

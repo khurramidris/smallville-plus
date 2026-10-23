@@ -1,5 +1,24 @@
 # Decisions
 
+## Public external audit — 2026-10-23
+- Publish the full tracked project and history in a public GitHub repository so
+  another AI or human auditor can clone a stable, reviewable artifact. The user's
+  request explicitly authorizes this external publication.
+- License original Smallville+ work under MIT while preserving each retained
+  research input under its upstream terms. Make the boundary visible in the root
+  `NOTICE`, `THIRD_PARTY.md`, and retained license copies rather than implying
+  that one license overrides all repository content.
+- Keep generated `runs/` out of Git. The local tree is about 14 GB, includes
+  redundant deterministic snapshots and provider response caches, and is not
+  required to reproduce the work. Publish compact reports, screenshots, hashes,
+  test evidence and exact regeneration commands instead.
+- Provide a stable annotated audit tag after publication. Treat saved reports as
+  inspectable evidence rather than remote attestation, and ask auditors to rerun
+  the offline suite and MockLLM scenarios.
+- Keep the viewer local. Public source access enables external audit without
+  exposing an unauthenticated FastAPI process or local simulation databases to
+  the internet.
+
 ## Connected realism implementation, batch 3 — 2026-10-22
 - Extend the opt-in `connected_v1` profile for R2 while keeping legacy profiles
   replayable. New tables are projections of the same immutable event log.
