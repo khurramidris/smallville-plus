@@ -27,6 +27,10 @@
   directly to its `main` branch and verify anonymous raw-file access. Treat blocked
   metadata and security toggles as optional owner actions; do not delay source and
   release access or misstate those toggles as enabled.
+- When the custom release-asset endpoint rejects the integration, retain the
+  verified local bundle and checksums and use GitHub's standard source downloads
+  plus public clone history. Do not route audit binaries through an unrelated
+  upload service or claim that unattached assets are public.
 
 ## Connected realism implementation, batch 3 — 2026-10-22
 - Extend the opt-in `connected_v1` profile for R2 while keeping legacy profiles

@@ -4,16 +4,24 @@ The complete tracked project and Git history are public at
 <https://github.com/khurramidris/smallville-plus>. Anonymous retrieval of the
 `main` branch was checked against the local file bytes after the first push.
 
-The stable snapshot is `audit-r2-2026-10-23`. Its GitHub release contains:
+The stable snapshot is `audit-r2-2026-10-23`, published at
+<https://github.com/khurramidris/smallville-plus/releases/tag/audit-r2-2026-10-23>.
+GitHub provides automatic source ZIP and TAR downloads for the tag, and cloning
+the repository provides its complete history.
+
+The independently verified local handoff set contains:
 
 - `smallville-plus-audit-r2-source.tar.gz`, containing every tracked file;
 - `smallville-plus-audit-r2.git.bundle`, containing the complete Git history;
 - `manifest.json`, recording the tag, commit, sizes, hashes and verification; and
 - `SHA256SUMS`, covering all three artifacts.
 
-Local copies remain under ignored `dist/`. The 14 GB generated `runs/` tree is
-not source and is not published; the deterministic commands in `AUDIT.md`
-regenerate it, while compact research evidence is tracked under `reports/`.
+These files remain under ignored `dist/`. GitHub created the public release, but
+its separate custom-asset upload endpoint returned HTTP 401 for this integration,
+so they are not release attachments. This limitation does not affect public source
+downloads or full-history clones. The 14 GB generated `runs/` tree is not source
+and is not published; the deterministic commands in `AUDIT.md` regenerate it,
+while compact research evidence is tracked under `reports/`.
 
 An auditor can clone the bundle with:
 
@@ -25,10 +33,10 @@ git checkout audit-r2-2026-10-23
 
 ## Account-owner settings
 
-The connected integration can push code and releases but GitHub rejects repository
-metadata and security-setting changes with `Resource not accessible by
-integration`. The account owner can optionally finish these settings in the web
-interface:
+The connected integration can push code and create the release record, but GitHub
+rejects repository metadata and security-setting changes with `Resource not
+accessible by integration`. The account owner can optionally finish these
+settings in the web interface:
 
 1. Add the description: “Research town simulation with authoritative world
    rules, bounded cognition, economy, social processes, replay, and offline

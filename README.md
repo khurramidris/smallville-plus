@@ -13,6 +13,8 @@ The complete project is available for public inspection at
 and the optional repository settings that GitHub reserves for the account owner.
 Start with the [external audit guide](AUDIT.md) for a stable review snapshot,
 offline reproduction commands, evidence boundaries, and suggested checks.
+The stable snapshot is the
+[Phase 3 + connected-realism R2 audit release](https://github.com/khurramidris/smallville-plus/releases/tag/audit-r2-2026-10-23).
 Original Smallville+ code and documentation use the MIT license; retained map,
 persona, demographic, and survey inputs keep the licenses recorded in
 [THIRD_PARTY.md](THIRD_PARTY.md) and [NOTICE](NOTICE).

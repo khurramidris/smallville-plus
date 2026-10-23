@@ -38,9 +38,18 @@
   vulnerability-reporting changes with HTTP 403 for this integration. These are
   optional account-owner settings and are listed in `PUBLICATION.md`; they do not
   limit anonymous source, clone, issue or release access.
-- Final publication step: move the stable audit tag to this completed publication
-  documentation, rebuild and reverify the source/history artifacts, push the tag,
-  and attach those artifacts to its GitHub release.
+- Rebuilt the source archive and full-history bundle from the public-state commit;
+  bundle verification, clean-clone checkout, archive/tree equality and SHA-256
+  checks passed. Pushed the stable tag and created its public GitHub release.
+- GitHub's separate custom release-asset endpoint returned HTTP 401 and rolled
+  back that attachment attempt. The release was recreated without custom assets;
+  GitHub's automatic source ZIP/TAR and the repository's complete clone history
+  remain public. The verified local artifacts stay under ignored `dist/`, and no
+  temporary host or credential workaround was used.
+- Final bookkeeping records these exact publication results in the tagged commit.
+  The local handoff set was rebuilt from that commit, and anonymous checks of the
+  public branch, tag and release passed. Only the optional owner settings listed
+  above remain; the external-audit publication itself is complete.
 
 ## Connected realism implementation, batch 3 — completed 2026-10-22
 - R2 step 1, social state and attention: added replayable directed relationship
