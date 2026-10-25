@@ -65,6 +65,7 @@ class PersonaPipeline:
                     },
                     seed=self.config.seed,
                     temperature=baseline.temperature,
+                    resident=True,
                 )
                 try:
                     data = json.loads(raw)
@@ -101,6 +102,7 @@ class PersonaPipeline:
                 },
                 seed=self.config.seed,
                 temperature=agent.persona.temperature,
+                resident=True,
             )
             templates[agent.id] = HistoryTemplates.model_validate_json(raw)
         messages, calendar = compile_histories(agents, templates, history_days)

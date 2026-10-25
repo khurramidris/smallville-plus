@@ -98,6 +98,7 @@ class SurveyRunner:
             },
             seed=self.config.seed,
             temperature=temperature,
+            resident=True,
         )
         result = SurveyResult(subject=subject)
         try:

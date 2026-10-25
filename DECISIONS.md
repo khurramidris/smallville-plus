@@ -12,6 +12,13 @@
 - Strip internal context metadata at the resident prompt boundary while retaining
   diagnostics for researchers. Reject prohibited terms before cache/budget/provider
   access, including dynamic content; do not silently alter private testimony.
+- Keep evidence IDs unchanged so privacy and citation validation remain exact.
+  MockLLM now detects its existing economic path from the economic context rather
+  than a development phase number; no scripted choices or scorer formulas change.
+- The strict vocabulary rule also blocks ordinary uses of the specified words
+  (for example, an occupation containing “agent”). That explicit rule is enforced
+  consistently and fails without printing private context; relaxing it would be
+  a separate policy decision, not silent text replacement.
 
 ## Public external audit — 2026-10-23
 - Publish the full tracked project and history in a public GitHub repository so

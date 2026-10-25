@@ -12,6 +12,16 @@
 - Next: resident prompt boundary and regression, then separately mock-report
   labeling without scoring changes, offline checks, and capped paid validation.
 - M0 is not complete; M1–M4 have not started.
+- Prompt step: replaced the resident's “Game Master” wording with ordinary-world
+  uncertainty. Removed phase/retrieval implementation metadata and memory storage
+  labels from dispatched context; researcher diagnostics retain them.
+- All resident call sites opt into a full-prompt vocabulary guard before cache,
+  budget reservation or provider access. Private text is rejected, never silently
+  rewritten. Internal GM adjudication remains outside that resident boundary.
+- The 23 new prompt tests pass offline, covering original and rich 100-resident
+  cohorts, both tiers, all current resident request types, and forbidden terms in
+  stable text, nested memories and JSON keys. An initial test-clock setup error
+  was corrected; no engine clock change was needed. Paid validation remains pending.
 
 ## Public external audit — published 2026-10-23
 - Confirmed the worktree is clean at the completed R2 engineering gate before
