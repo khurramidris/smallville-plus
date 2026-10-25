@@ -1,5 +1,5 @@
 {
-  "interpretation": "Synthetic provider, fixed 100ms delay; not an API or full-engine speed measurement.",
+  "interpretation": "Fixture only: Synthetic provider, fixed 100ms delay; not an API or full-engine speed measurement.",
   "serial": {
     "concurrency": 1,
     "requests": 12,
@@ -32,5 +32,8 @@
       "note": "Provider duration includes network and generation; concurrent durations overlap."
     }
   },
-  "speedup": 4.067
+  "speedup": 4.067,
+  "evidence_label": "fixture only",
+  "evidence_scope": "All mock-derived behavior, survey predictions, requests, tokens, costs, timing and storage in this report are fixture only. Source/human reference values and test counts are not model-validation results. Scripted campaign/party behavior cannot support a comparison with Park et al.",
+  "paper_comparison_allowed": false
 }

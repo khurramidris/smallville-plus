@@ -1,5 +1,10 @@
 # External audit guide
 
+**Current roadmap:** [MILESTONES.md](MILESTONES.md) supersedes historical completion
+criteria. Every mock-derived number below is **fixture only**; the audit tag remains
+an immutable engineering snapshot and does not satisfy the new paid-model gate.
+See [report evidence labels](reports/EVIDENCE.md).
+
 Smallville+ is public so researchers, engineers, and automated reviewers can
 inspect the implementation, reproduce deterministic runs, challenge the
 measurements, and propose corrections. The stable R2 audit snapshot is tagged
@@ -87,8 +92,10 @@ favor transparency over storage efficiency. Publishing them in Git would make
 the repository difficult to clone and would duplicate deterministic output.
 They are excluded by `.gitignore`; the compact JSON/Markdown reports, plots,
 checksums, and screenshots needed to inspect the reported conclusions are under
-`reports/`. Every documented run can be regenerated with MockLLM without network
-access. Live provider responses are not redistributed as a public dataset.
+`reports/`. Deterministic test fixtures can be regenerated with MockLLM without
+network access. Historical live results require their recorded responses for exact
+re-execution; MockLLM cannot reproduce those decisions. Live provider responses
+are not redistributed as a public dataset.
 
 Local handoff artifacts are built under `dist/`: a source archive, a cloneable
 full-history Git bundle, an artifact manifest, and `SHA256SUMS`. They were verified

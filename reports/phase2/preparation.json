@@ -18,5 +18,8 @@
     "uncertain_calls": 0,
     "accounting": "conservative configured token prices; not a provider invoice"
   },
-  "wall_seconds": 4.763
+  "wall_seconds": 4.763,
+  "evidence_label": "fixture only",
+  "evidence_scope": "All mock-derived behavior, survey predictions, requests, tokens, costs, timing and storage in this report are fixture only. Source/human reference values and test counts are not model-validation results. Scripted campaign/party behavior cannot support a comparison with Park et al.",
+  "paper_comparison_allowed": false
 }

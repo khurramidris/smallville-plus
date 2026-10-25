@@ -1,6 +1,7 @@
 import json
 
 from smallville.agents.mind import Mind
+from smallville.eval.reporting import evidence_labels
 from smallville.world.models import change
 
 QUESTIONS = {
@@ -44,5 +45,5 @@ async def interview(mind: Mind, identifier: str, minute: int) -> list[dict]:
         mind.world.log.append(
             minute, "interview", identifier, record, [change("agents", identifier, agent)]
         )
-        responses.append(record)
+        responses.append(record | evidence_labels(mind.config.backend))
     return responses

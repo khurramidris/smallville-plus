@@ -30,7 +30,9 @@ async def test_two_days_party_evaluation_replay_and_viewer(tmp_path):
         assert 0 < report["party"]["attending_guests"] <= report["party"]["invited_guests"]
         assert abs(sum(report["daily_life"]["average_hours"].values()) - 24) < 1e-9
         assert report["anti_homogeneity"]["observed_daily_behavior_variance"]["work_hours"] > 0
-        assert report["paper_reference"]["party_attending_guests"] == 5
+        assert report["evidence_label"] == "fixture only"
+        assert report["paper_comparison_allowed"] is False
+        assert "paper_reference" not in report
         assert report["evaluation_manifest"]["protocol_version"] == "realism-eval-v1"
         assert report["evaluation_manifest"]["population"]["kind"] == "original_25_seed_workflow"
         assert report["cost"]["purposes"]["action"] > 0

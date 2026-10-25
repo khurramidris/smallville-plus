@@ -25,5 +25,8 @@
     "usd_per_agent_per_simulated_day": "0E+1",
     "max_usd": "0",
     "accounting": "MockLLM has no billable tokens or USD; token counts are synthetic."
-  }
+  },
+  "evidence_label": "fixture only",
+  "evidence_scope": "All mock-derived behavior, survey predictions, requests, tokens, costs, timing and storage in this report are fixture only. Source/human reference values and test counts are not model-validation results. Scripted campaign/party behavior cannot support a comparison with Park et al.",
+  "paper_comparison_allowed": false
 }

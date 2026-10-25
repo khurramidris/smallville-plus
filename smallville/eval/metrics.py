@@ -7,6 +7,7 @@ from types import SimpleNamespace
 from smallville.agents.knowledge import campaign_evidence, party_schedule_evidence
 from smallville.economy.metrics import evaluate_economy
 from smallville.eval.protocol import evaluation_manifest
+from smallville.eval.reporting import label_report
 from smallville.world.models import Agent
 from smallville.world.store import WorldState
 
@@ -219,7 +220,7 @@ def evaluate(world: WorldState) -> dict:
     # validation. This remains accurate for logs written before turn events
     # included an explicit applied-appraisal count.
     applied_appraisals = len(relationship_history)
-    return {
+    report = {
         "run": run,
         "backend": config["backend"],
         "agents": len(agents),
@@ -481,3 +482,4 @@ def evaluate(world: WorldState) -> dict:
             "note": "Run the interview command and collect blinded human ratings; no automatic score is fabricated.",
         },
     }
+    return label_report(report)

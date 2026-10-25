@@ -78,7 +78,9 @@
         "source": "generative_agents",
         "biography": "fictional expansion"
       }
-    }
+    },
+    "evidence_label": "fixture only",
+    "evidence_scope": "All mock-derived behavior, survey predictions, requests, tokens, costs, timing and storage in this report are fixture only. Source/human reference values and test counts are not model-validation results. Scripted campaign/party behavior cannot support a comparison with Park et al."
   },
   {
     "id": "anthony_williams_fdaa94",
@@ -187,6 +189,8 @@
         "license": "MIT",
         "biography": "fictional expansion; not a real interview"
       }
-    }
+    },
+    "evidence_label": "fixture only",
+    "evidence_scope": "All mock-derived behavior, survey predictions, requests, tokens, costs, timing and storage in this report are fixture only. Source/human reference values and test counts are not model-validation results. Scripted campaign/party behavior cannot support a comparison with Park et al."
   }
 ]

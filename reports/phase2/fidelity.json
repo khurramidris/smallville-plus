@@ -4747,7 +4747,10 @@
       "note": "Missing/invalid predictions count as categorical errors and maximum normalized numerical error. MAE on valid numerical predictions is reported separately. No causal or population-fidelity claim.",
       "backend": "mock",
       "mock_scores_are_engineering_fixtures": true,
-      "model_training_contamination_assessed": false
+      "model_training_contamination_assessed": false,
+      "evidence_label": "fixture only",
+      "evidence_scope": "All mock-derived behavior, survey predictions, requests, tokens, costs, timing and storage in this report are fixture only. Source/human reference values and test counts are not model-validation results. Scripted campaign/party behavior cannot support a comparison with Park et al.",
+      "paper_comparison_allowed": false
     },
     {
       "dataset": "genagents-gss-heldout-demographics",
@@ -6569,7 +6572,10 @@
       "note": "Missing/invalid predictions count as categorical errors and maximum normalized numerical error. MAE on valid numerical predictions is reported separately. No causal or population-fidelity claim.",
       "backend": "mock",
       "mock_scores_are_engineering_fixtures": true,
-      "model_training_contamination_assessed": false
+      "model_training_contamination_assessed": false,
+      "evidence_label": "fixture only",
+      "evidence_scope": "All mock-derived behavior, survey predictions, requests, tokens, costs, timing and storage in this report are fixture only. Source/human reference values and test counts are not model-validation results. Scripted campaign/party behavior cannot support a comparison with Park et al.",
+      "paper_comparison_allowed": false
     }
   ],
   "cost": {
@@ -6581,5 +6587,8 @@
     "max_usd": "0",
     "uncertain_calls": 0,
     "accounting": "conservative configured token prices; not a provider invoice"
-  }
+  },
+  "evidence_label": "fixture only",
+  "evidence_scope": "All mock-derived behavior, survey predictions, requests, tokens, costs, timing and storage in this report are fixture only. Source/human reference values and test counts are not model-validation results. Scripted campaign/party behavior cannot support a comparison with Park et al.",
+  "paper_comparison_allowed": false
 }

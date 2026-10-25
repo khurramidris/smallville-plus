@@ -19,6 +19,16 @@
   (for example, an occupation containing “agent”). That explicit rule is enforced
   consistently and fails without printing private context; relaxing it would be
   a separate policy decision, not silent text replacement.
+- Label historical fixture observations in place on the development branch and
+  preserve original numbers and audit-tag bytes. Remove paper comparison columns
+  from mock exports, including machine-readable counterparts, so downstream tables
+  cannot accidentally reuse them. Keep the scorer formulas intact.
+- Mark mixed report provenance explicitly: source/human reference data and test
+  counts are not mock predictions, and the old free-route observations are not paid
+  validation. Paid-run metrics stay null/unmeasured until an actual capped run exists.
+- Publish M0 as a draft review change while the paid gate is pending; keep the
+  audited `main` and its tag intact. Offline correctness is sufficient to review
+  the implementation but is not the new milestone completion criterion.
 
 ## Public external audit — 2026-10-23
 - Publish the full tracked project and history in a public GitHub repository so

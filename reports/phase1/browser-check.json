@@ -8,5 +8,8 @@
   "party_time_selected": 2520,
   "page_errors": [],
   "external_requests": [],
-  "screenshot": "viewer.png"
+  "screenshot": "viewer.png",
+  "evidence_label": "fixture only",
+  "evidence_scope": "All mock-derived behavior, survey predictions, requests, tokens, costs, timing and storage in this report are fixture only. Source/human reference values and test counts are not model-validation results. Scripted campaign/party behavior cannot support a comparison with Park et al.",
+  "paper_comparison_allowed": false
 }

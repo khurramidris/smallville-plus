@@ -116,12 +116,15 @@ linked reflections, daily plans, hourly decomposition and replanning on surprise
 Deep and standard tiers retrieve different memory limits and may use different
 models. Stable persona/rule content precedes dynamic context in prompts.
 
-The benchmark report compares retained awareness, mutual-knowledge density and
+Live-model reports compare retained awareness, mutual-knowledge density and
 time-bounded party attendance with [Park et al. §7.1](https://arxiv.org/html/2304.03442v2#S7.SS1).
 It also reports behavior variance and a rough time-use shape comparison with
 [BLS ATUS 2024](https://www.bls.gov/news.release/archives/atus_06262025.htm).
 Starting seed relationships, communication channel, activity taxonomy and
 population composition differ; the figures are descriptive, not matched replication.
+Mock reports are labeled **fixture only** and contain no Park comparison table;
+their scripted campaign and party outcomes cannot establish behavioral fidelity.
+See [report evidence labels](reports/EVIDENCE.md) for archived artifact coverage.
 Interviews cover self-knowledge, memory, planning, reactions and reflection.
 Human ratings remain null until collected; synthetic opinion variance is not
 survey fidelity.

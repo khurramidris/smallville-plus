@@ -1,0 +1,18 @@
+{
+  "milestone": "M0",
+  "status": "paid_validation_pending",
+  "implementation_ready": true,
+  "paid_validation": {
+    "status": "not_run",
+    "reason": "Paid model, verified prices, credential and M0 cap not configured",
+    "provider_calls": 0,
+    "usd_spent": "0",
+    "completed_resident_days": null,
+    "usd_per_resident_day": null,
+    "input_tokens_per_resident_day": null,
+    "event_bytes_per_resident_day": null,
+    "persistent_bytes_per_resident_day": null
+  },
+  "next_milestone_started": false,
+  "original_audit_tag": "audit-r2-2026-10-23"
+}

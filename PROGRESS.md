@@ -22,6 +22,23 @@
   cohorts, both tiers, all current resident request types, and forbidden terms in
   stable text, nested memories and JSON keys. An initial test-clock setup error
   was corrected; no engine clock change was needed. Paid validation remains pending.
+- Reporting step (separate from behavior): mock exports now say `fixture only` and
+  omit paper comparison fields/tables. Unknown backend provenance fails closed for
+  comparison rendering. Four focused reporting tests pass, including legacy input
+  and unchanged measurements. No metric formula changed.
+- Relabeled 27 archived fixture JSON reports plus narratives, interviews, sample
+  personas and 207 stock-timeline rows. Compared all numeric measurements to the
+  previous commit; they match, excluding deliberately removed paper references.
+  `reports/EVIDENCE.md` labels preserved image artifacts without altering their bytes.
+- Preflight confirms no paid model, prices, cap or provider key is configured.
+  `reports/M0_REPORT.md` explicitly leaves paid results and per-resident-day cost,
+  tokens and storage unmeasured. M0 remains incomplete and the original audit tag
+  is preserved.
+- Final offline regression: 157 tests passed in 128.94 seconds with internet
+  sockets disabled; Ruff and whitespace checks pass. Existing replay, privacy,
+  conservation and budget gates remain green. No paid provider call was made.
+- Preparing a draft PR for independent review; do not merge or declare M0 complete
+  before paid validation. M1 and later work remains stopped.
 
 ## Public external audit — published 2026-10-23
 - Confirmed the worktree is clean at the completed R2 engineering gate before

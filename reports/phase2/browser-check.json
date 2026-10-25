@@ -12,5 +12,8 @@
   "page_errors": [],
   "external_requests": [],
   "screenshot": "viewer.png",
-  "readable_life_story_locations": true
+  "readable_life_story_locations": true,
+  "evidence_label": "fixture only",
+  "evidence_scope": "All mock-derived behavior, survey predictions, requests, tokens, costs, timing and storage in this report are fixture only. Source/human reference values and test counts are not model-validation results. Scripted campaign/party behavior cannot support a comparison with Park et al.",
+  "paper_comparison_allowed": false
 }

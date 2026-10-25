@@ -1,5 +1,10 @@
 # Phase 1 report
 
+**Evidence label: fixture only.** Every MockLLM-derived behavioral, cost, token,
+runtime and storage number in this report is fixture only. Tests demonstrate
+engineering correctness; no paid-model milestone is completed by these results.
+Historical implementation status below predates the [M0–M4 rules](../MILESTONES.md).
+
 The Phase 1 implementation and offline checks are complete. Three acceptance
 criteria pass; **the real-API day remains unvalidated** because models, credentials
 and spending approval are absent. No paid calls were made.
@@ -43,12 +48,12 @@ still matches its recorded hashes.
 - Subsequent interviews added 125 requests for 25 residents at $0 additional cost.
   Human believability scores are uncollected.
 
-| Measurement | This mock fixture | Original paper |
-| --- | ---: | ---: |
-| Sam candidacy awareness | 1 → 14 of 25 | 1 → 8 of 25 |
-| Party awareness | 1 → 19 of 25 | 1 → 13 of 25 |
-| Invited guests attending | 12 / 18 | 5 / 12 |
-| Mutual-knowledge density | 0.233 → 0.327 | 0.167 → 0.740 |
+| Measurement | Fixture only |
+| --- | ---: |
+| Sam candidacy awareness | 1 → 14 of 25 |
+| Party awareness | 1 → 19 of 25 |
+| Invited guests attending | 12 / 18 |
+| Mutual-knowledge density | 0.233 → 0.327 |
 
 Mock decisions include explicit scenario logic. These figures verify the engine
 and measurement paths; **they do not establish emergence or improved realism**.

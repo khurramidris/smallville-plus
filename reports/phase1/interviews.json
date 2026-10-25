@@ -15,7 +15,9 @@
         "abigail_chen:2160:gm_outcome:48",
         "abigail_chen:2100:gm_outcome:47"
       ],
-      "human_rating": null
+      "human_rating": null,
+      "evidence_label": "fixture only",
+      "evidence_scope": "All mock-derived behavior, survey predictions, requests, tokens, costs, timing and storage in this report are fixture only. Source/human reference values and test counts are not model-validation results. Scripted campaign/party behavior cannot support a comparison with Park et al."
     },
     {
       "category": "memory",
@@ -32,7 +34,9 @@
         "abigail_chen:2160:gm_outcome:48",
         "abigail_chen:2100:gm_outcome:47"
       ],
-      "human_rating": null
+      "human_rating": null,
+      "evidence_label": "fixture only",
+      "evidence_scope": "All mock-derived behavior, survey predictions, requests, tokens, costs, timing and storage in this report are fixture only. Source/human reference values and test counts are not model-validation results. Scripted campaign/party behavior cannot support a comparison with Park et al."
     },
     {
       "category": "plans",
@@ -49,7 +53,9 @@
         "abigail_chen:2160:gm_outcome:48",
         "abigail_chen:2100:gm_outcome:47"
       ],
-      "human_rating": null
+      "human_rating": null,
+      "evidence_label": "fixture only",
+      "evidence_scope": "All mock-derived behavior, survey predictions, requests, tokens, costs, timing and storage in this report are fixture only. Source/human reference values and test counts are not model-validation results. Scripted campaign/party behavior cannot support a comparison with Park et al."
     },
     {
       "category": "reaction",
@@ -66,7 +72,9 @@
         "abigail_chen:2160:gm_outcome:48",
         "abigail_chen:2100:gm_outcome:47"
       ],
-      "human_rating": null
+      "human_rating": null,
+      "evidence_label": "fixture only",
+      "evidence_scope": "All mock-derived behavior, survey predictions, requests, tokens, costs, timing and storage in this report are fixture only. Source/human reference values and test counts are not model-validation results. Scripted campaign/party behavior cannot support a comparison with Park et al."
     },
     {
       "category": "reflection",
@@ -83,7 +91,9 @@
         "abigail_chen:2160:gm_outcome:48",
         "abigail_chen:2100:gm_outcome:47"
       ],
-      "human_rating": null
+      "human_rating": null,
+      "evidence_label": "fixture only",
+      "evidence_scope": "All mock-derived behavior, survey predictions, requests, tokens, costs, timing and storage in this report are fixture only. Source/human reference values and test counts are not model-validation results. Scripted campaign/party behavior cannot support a comparison with Park et al."
     }
   ],
   "adam_smith": [
@@ -99,7 +109,9 @@
         "adam_smith:2700:reflection:adam_smith:2165:msg:jennifer_moore:2165:52,adam_smith:2165:msg:carmen_ortiz:2165:51,adam_smith:605:msg:sam_moore:605:12:62",
         "adam_smith:1260:reflection:adam_smith:605:msg:sam_moore:605:12,adam_smith:0:original_seed:0,adam_smith:0:original_seed:1:27"
       ],
-      "human_rating": null
+      "human_rating": null,
+      "evidence_label": "fixture only",
+      "evidence_scope": "All mock-derived behavior, survey predictions, requests, tokens, costs, timing and storage in this report are fixture only. Source/human reference values and test counts are not model-validation results. Scripted campaign/party behavior cannot support a comparison with Park et al."
     },
     {
       "category": "memory",
@@ -113,7 +125,9 @@
         "adam_smith:2700:reflection:adam_smith:2165:msg:jennifer_moore:2165:52,adam_smith:2165:msg:carmen_ortiz:2165:51,adam_smith:605:msg:sam_moore:605:12:62",
         "adam_smith:1260:reflection:adam_smith:605:msg:sam_moore:605:12,adam_smith:0:original_seed:0,adam_smith:0:original_seed:1:27"
       ],
-      "human_rating": null
+      "human_rating": null,
+      "evidence_label": "fixture only",
+      "evidence_scope": "All mock-derived behavior, survey predictions, requests, tokens, costs, timing and storage in this report are fixture only. Source/human reference values and test counts are not model-validation results. Scripted campaign/party behavior cannot support a comparison with Park et al."
     },
     {
       "category": "plans",
@@ -127,7 +141,9 @@
         "adam_smith:2700:reflection:adam_smith:2165:msg:jennifer_moore:2165:52,adam_smith:2165:msg:carmen_ortiz:2165:51,adam_smith:605:msg:sam_moore:605:12:62",
         "adam_smith:1260:reflection:adam_smith:605:msg:sam_moore:605:12,adam_smith:0:original_seed:0,adam_smith:0:original_seed:1:27"
       ],
-      "human_rating": null
+      "human_rating": null,
+      "evidence_label": "fixture only",
+      "evidence_scope": "All mock-derived behavior, survey predictions, requests, tokens, costs, timing and storage in this report are fixture only. Source/human reference values and test counts are not model-validation results. Scripted campaign/party behavior cannot support a comparison with Park et al."
     },
     {
       "category": "reaction",
@@ -141,7 +157,9 @@
         "adam_smith:2700:reflection:adam_smith:2165:msg:jennifer_moore:2165:52,adam_smith:2165:msg:carmen_ortiz:2165:51,adam_smith:605:msg:sam_moore:605:12:62",
         "adam_smith:1260:reflection:adam_smith:605:msg:sam_moore:605:12,adam_smith:0:original_seed:0,adam_smith:0:original_seed:1:27"
       ],
-      "human_rating": null
+      "human_rating": null,
+      "evidence_label": "fixture only",
+      "evidence_scope": "All mock-derived behavior, survey predictions, requests, tokens, costs, timing and storage in this report are fixture only. Source/human reference values and test counts are not model-validation results. Scripted campaign/party behavior cannot support a comparison with Park et al."
     },
     {
       "category": "reflection",
@@ -155,7 +173,9 @@
         "adam_smith:2700:reflection:adam_smith:2165:msg:jennifer_moore:2165:52,adam_smith:2165:msg:carmen_ortiz:2165:51,adam_smith:605:msg:sam_moore:605:12:62",
         "adam_smith:1260:reflection:adam_smith:605:msg:sam_moore:605:12,adam_smith:0:original_seed:0,adam_smith:0:original_seed:1:27"
       ],
-      "human_rating": null
+      "human_rating": null,
+      "evidence_label": "fixture only",
+      "evidence_scope": "All mock-derived behavior, survey predictions, requests, tokens, costs, timing and storage in this report are fixture only. Source/human reference values and test counts are not model-validation results. Scripted campaign/party behavior cannot support a comparison with Park et al."
     }
   ],
   "arthur_burton": [
@@ -171,7 +191,9 @@
         "arthur_burton:725:msg:ryan_park:725:20",
         "arthur_burton:725:msg:isabella_rodriguez:725:18"
       ],
-      "human_rating": null
+      "human_rating": null,
+      "evidence_label": "fixture only",
+      "evidence_scope": "All mock-derived behavior, survey predictions, requests, tokens, costs, timing and storage in this report are fixture only. Source/human reference values and test counts are not model-validation results. Scripted campaign/party behavior cannot support a comparison with Park et al."
     },
     {
       "category": "memory",
@@ -185,7 +207,9 @@
         "arthur_burton:725:msg:ryan_park:725:20",
         "arthur_burton:725:msg:isabella_rodriguez:725:18"
       ],
-      "human_rating": null
+      "human_rating": null,
+      "evidence_label": "fixture only",
+      "evidence_scope": "All mock-derived behavior, survey predictions, requests, tokens, costs, timing and storage in this report are fixture only. Source/human reference values and test counts are not model-validation results. Scripted campaign/party behavior cannot support a comparison with Park et al."
     },
     {
       "category": "plans",
@@ -199,7 +223,9 @@
         "arthur_burton:725:msg:ryan_park:725:20",
         "arthur_burton:725:msg:isabella_rodriguez:725:18"
       ],
-      "human_rating": null
+      "human_rating": null,
+      "evidence_label": "fixture only",
+      "evidence_scope": "All mock-derived behavior, survey predictions, requests, tokens, costs, timing and storage in this report are fixture only. Source/human reference values and test counts are not model-validation results. Scripted campaign/party behavior cannot support a comparison with Park et al."
     },
     {
       "category": "reaction",
@@ -213,7 +239,9 @@
         "arthur_burton:725:msg:ryan_park:725:20",
         "arthur_burton:725:msg:isabella_rodriguez:725:18"
       ],
-      "human_rating": null
+      "human_rating": null,
+      "evidence_label": "fixture only",
+      "evidence_scope": "All mock-derived behavior, survey predictions, requests, tokens, costs, timing and storage in this report are fixture only. Source/human reference values and test counts are not model-validation results. Scripted campaign/party behavior cannot support a comparison with Park et al."
     },
     {
       "category": "reflection",
@@ -227,7 +255,9 @@
         "arthur_burton:725:msg:ryan_park:725:20",
         "arthur_burton:725:msg:isabella_rodriguez:725:18"
       ],
-      "human_rating": null
+      "human_rating": null,
+      "evidence_label": "fixture only",
+      "evidence_scope": "All mock-derived behavior, survey predictions, requests, tokens, costs, timing and storage in this report are fixture only. Source/human reference values and test counts are not model-validation results. Scripted campaign/party behavior cannot support a comparison with Park et al."
     }
   ],
   "ayesha_khan": [
@@ -243,7 +273,9 @@
         "ayesha_khan:2045:msg:giorgio_rossi:2045:57",
         "ayesha_khan:2045:msg:eddy_lin:2045:56"
       ],
-      "human_rating": null
+      "human_rating": null,
+      "evidence_label": "fixture only",
+      "evidence_scope": "All mock-derived behavior, survey predictions, requests, tokens, costs, timing and storage in this report are fixture only. Source/human reference values and test counts are not model-validation results. Scripted campaign/party behavior cannot support a comparison with Park et al."
     },
     {
       "category": "memory",
@@ -257,7 +289,9 @@
         "ayesha_khan:2045:msg:giorgio_rossi:2045:57",
         "ayesha_khan:2045:msg:eddy_lin:2045:56"
       ],
-      "human_rating": null
+      "human_rating": null,
+      "evidence_label": "fixture only",
+      "evidence_scope": "All mock-derived behavior, survey predictions, requests, tokens, costs, timing and storage in this report are fixture only. Source/human reference values and test counts are not model-validation results. Scripted campaign/party behavior cannot support a comparison with Park et al."
     },
     {
       "category": "plans",
@@ -271,7 +305,9 @@
         "ayesha_khan:2045:msg:giorgio_rossi:2045:57",
         "ayesha_khan:2045:msg:eddy_lin:2045:56"
       ],
-      "human_rating": null
+      "human_rating": null,
+      "evidence_label": "fixture only",
+      "evidence_scope": "All mock-derived behavior, survey predictions, requests, tokens, costs, timing and storage in this report are fixture only. Source/human reference values and test counts are not model-validation results. Scripted campaign/party behavior cannot support a comparison with Park et al."
     },
     {
       "category": "reaction",
@@ -285,7 +321,9 @@
         "ayesha_khan:2045:msg:giorgio_rossi:2045:57",
         "ayesha_khan:2045:msg:eddy_lin:2045:56"
       ],
-      "human_rating": null
+      "human_rating": null,
+      "evidence_label": "fixture only",
+      "evidence_scope": "All mock-derived behavior, survey predictions, requests, tokens, costs, timing and storage in this report are fixture only. Source/human reference values and test counts are not model-validation results. Scripted campaign/party behavior cannot support a comparison with Park et al."
     },
     {
       "category": "reflection",
@@ -299,7 +337,9 @@
         "ayesha_khan:2045:msg:giorgio_rossi:2045:57",
         "ayesha_khan:2045:msg:eddy_lin:2045:56"
       ],
-      "human_rating": null
+      "human_rating": null,
+      "evidence_label": "fixture only",
+      "evidence_scope": "All mock-derived behavior, survey predictions, requests, tokens, costs, timing and storage in this report are fixture only. Source/human reference values and test counts are not model-validation results. Scripted campaign/party behavior cannot support a comparison with Park et al."
     }
   ],
   "carlos_gomez": [
@@ -315,7 +355,9 @@
         "carlos_gomez:2165:msg:giorgio_rossi:2165:50",
         "carlos_gomez:1925:msg:ryan_park:1925:41"
       ],
-      "human_rating": null
+      "human_rating": null,
+      "evidence_label": "fixture only",
+      "evidence_scope": "All mock-derived behavior, survey predictions, requests, tokens, costs, timing and storage in this report are fixture only. Source/human reference values and test counts are not model-validation results. Scripted campaign/party behavior cannot support a comparison with Park et al."
     },
     {
       "category": "memory",
@@ -329,7 +371,9 @@
         "carlos_gomez:2165:msg:giorgio_rossi:2165:50",
         "carlos_gomez:1925:msg:ryan_park:1925:41"
       ],
-      "human_rating": null
+      "human_rating": null,
+      "evidence_label": "fixture only",
+      "evidence_scope": "All mock-derived behavior, survey predictions, requests, tokens, costs, timing and storage in this report are fixture only. Source/human reference values and test counts are not model-validation results. Scripted campaign/party behavior cannot support a comparison with Park et al."
     },
     {
       "category": "plans",
@@ -343,7 +387,9 @@
         "carlos_gomez:2165:msg:giorgio_rossi:2165:50",
         "carlos_gomez:1925:msg:ryan_park:1925:41"
       ],
-      "human_rating": null
+      "human_rating": null,
+      "evidence_label": "fixture only",
+      "evidence_scope": "All mock-derived behavior, survey predictions, requests, tokens, costs, timing and storage in this report are fixture only. Source/human reference values and test counts are not model-validation results. Scripted campaign/party behavior cannot support a comparison with Park et al."
     },
     {
       "category": "reaction",
@@ -357,7 +403,9 @@
         "carlos_gomez:2165:msg:giorgio_rossi:2165:50",
         "carlos_gomez:1925:msg:ryan_park:1925:41"
       ],
-      "human_rating": null
+      "human_rating": null,
+      "evidence_label": "fixture only",
+      "evidence_scope": "All mock-derived behavior, survey predictions, requests, tokens, costs, timing and storage in this report are fixture only. Source/human reference values and test counts are not model-validation results. Scripted campaign/party behavior cannot support a comparison with Park et al."
     },
     {
       "category": "reflection",
@@ -371,7 +419,9 @@
         "carlos_gomez:2165:msg:giorgio_rossi:2165:50",
         "carlos_gomez:1925:msg:ryan_park:1925:41"
       ],
-      "human_rating": null
+      "human_rating": null,
+      "evidence_label": "fixture only",
+      "evidence_scope": "All mock-derived behavior, survey predictions, requests, tokens, costs, timing and storage in this report are fixture only. Source/human reference values and test counts are not model-validation results. Scripted campaign/party behavior cannot support a comparison with Park et al."
     }
   ],
   "carmen_ortiz": [
@@ -390,7 +440,9 @@
         "carmen_ortiz:2165:msg:carmen_ortiz:2165:66",
         "carmen_ortiz:2045:msg:carmen_ortiz:2045:58"
       ],
-      "human_rating": null
+      "human_rating": null,
+      "evidence_label": "fixture only",
+      "evidence_scope": "All mock-derived behavior, survey predictions, requests, tokens, costs, timing and storage in this report are fixture only. Source/human reference values and test counts are not model-validation results. Scripted campaign/party behavior cannot support a comparison with Park et al."
     },
     {
       "category": "memory",
@@ -407,7 +459,9 @@
         "carmen_ortiz:2165:msg:carmen_ortiz:2165:66",
         "carmen_ortiz:2045:msg:carmen_ortiz:2045:58"
       ],
-      "human_rating": null
+      "human_rating": null,
+      "evidence_label": "fixture only",
+      "evidence_scope": "All mock-derived behavior, survey predictions, requests, tokens, costs, timing and storage in this report are fixture only. Source/human reference values and test counts are not model-validation results. Scripted campaign/party behavior cannot support a comparison with Park et al."
     },
     {
       "category": "plans",
@@ -424,7 +478,9 @@
         "carmen_ortiz:2165:msg:carmen_ortiz:2165:66",
         "carmen_ortiz:2045:msg:carmen_ortiz:2045:58"
       ],
-      "human_rating": null
+      "human_rating": null,
+      "evidence_label": "fixture only",
+      "evidence_scope": "All mock-derived behavior, survey predictions, requests, tokens, costs, timing and storage in this report are fixture only. Source/human reference values and test counts are not model-validation results. Scripted campaign/party behavior cannot support a comparison with Park et al."
     },
     {
       "category": "reaction",
@@ -441,7 +497,9 @@
         "carmen_ortiz:2165:msg:carmen_ortiz:2165:66",
         "carmen_ortiz:2045:msg:carmen_ortiz:2045:58"
       ],
-      "human_rating": null
+      "human_rating": null,
+      "evidence_label": "fixture only",
+      "evidence_scope": "All mock-derived behavior, survey predictions, requests, tokens, costs, timing and storage in this report are fixture only. Source/human reference values and test counts are not model-validation results. Scripted campaign/party behavior cannot support a comparison with Park et al."
     },
     {
       "category": "reflection",
@@ -458,7 +516,9 @@
         "carmen_ortiz:2165:msg:carmen_ortiz:2165:66",
         "carmen_ortiz:2045:msg:carmen_ortiz:2045:58"
       ],
-      "human_rating": null
+      "human_rating": null,
+      "evidence_label": "fixture only",
+      "evidence_scope": "All mock-derived behavior, survey predictions, requests, tokens, costs, timing and storage in this report are fixture only. Source/human reference values and test counts are not model-validation results. Scripted campaign/party behavior cannot support a comparison with Park et al."
     }
   ],
   "eddy_lin": [
@@ -474,7 +534,9 @@
         "eddy_lin:1925:msg:ayesha_khan:1925:46",
         "eddy_lin:2165:msg:eddy_lin:2165:60"
       ],
-      "human_rating": null
+      "human_rating": null,
+      "evidence_label": "fixture only",
+      "evidence_scope": "All mock-derived behavior, survey predictions, requests, tokens, costs, timing and storage in this report are fixture only. Source/human reference values and test counts are not model-validation results. Scripted campaign/party behavior cannot support a comparison with Park et al."
     },
     {
       "category": "memory",
@@ -488,7 +550,9 @@
         "eddy_lin:1925:msg:ayesha_khan:1925:46",
         "eddy_lin:2165:msg:eddy_lin:2165:60"
       ],
-      "human_rating": null
+      "human_rating": null,
+      "evidence_label": "fixture only",
+      "evidence_scope": "All mock-derived behavior, survey predictions, requests, tokens, costs, timing and storage in this report are fixture only. Source/human reference values and test counts are not model-validation results. Scripted campaign/party behavior cannot support a comparison with Park et al."
     },
     {
       "category": "plans",
@@ -502,7 +566,9 @@
         "eddy_lin:1925:msg:ayesha_khan:1925:46",
         "eddy_lin:2165:msg:eddy_lin:2165:60"
       ],
-      "human_rating": null
+      "human_rating": null,
+      "evidence_label": "fixture only",
+      "evidence_scope": "All mock-derived behavior, survey predictions, requests, tokens, costs, timing and storage in this report are fixture only. Source/human reference values and test counts are not model-validation results. Scripted campaign/party behavior cannot support a comparison with Park et al."
     },
     {
       "category": "reaction",
@@ -516,7 +582,9 @@
         "eddy_lin:1925:msg:ayesha_khan:1925:46",
         "eddy_lin:2165:msg:eddy_lin:2165:60"
       ],
-      "human_rating": null
+      "human_rating": null,
+      "evidence_label": "fixture only",
+      "evidence_scope": "All mock-derived behavior, survey predictions, requests, tokens, costs, timing and storage in this report are fixture only. Source/human reference values and test counts are not model-validation results. Scripted campaign/party behavior cannot support a comparison with Park et al."
     },
     {
       "category": "reflection",
@@ -530,7 +598,9 @@
         "eddy_lin:1925:msg:ayesha_khan:1925:46",
         "eddy_lin:2165:msg:eddy_lin:2165:60"
       ],
-      "human_rating": null
+      "human_rating": null,
+      "evidence_label": "fixture only",
+      "evidence_scope": "All mock-derived behavior, survey predictions, requests, tokens, costs, timing and storage in this report are fixture only. Source/human reference values and test counts are not model-validation results. Scripted campaign/party behavior cannot support a comparison with Park et al."
     }
   ],
   "francisco_lopez": [
@@ -546,7 +616,9 @@
         "francisco_lopez:2400:gm_outcome:53",
         "francisco_lopez:2340:gm_outcome:52"
       ],
-      "human_rating": null
+      "human_rating": null,
+      "evidence_label": "fixture only",
+      "evidence_scope": "All mock-derived behavior, survey predictions, requests, tokens, costs, timing and storage in this report are fixture only. Source/human reference values and test counts are not model-validation results. Scripted campaign/party behavior cannot support a comparison with Park et al."
     },
     {
       "category": "memory",
@@ -560,7 +632,9 @@
         "francisco_lopez:2400:gm_outcome:53",
         "francisco_lopez:2340:gm_outcome:52"
       ],
-      "human_rating": null
+      "human_rating": null,
+      "evidence_label": "fixture only",
+      "evidence_scope": "All mock-derived behavior, survey predictions, requests, tokens, costs, timing and storage in this report are fixture only. Source/human reference values and test counts are not model-validation results. Scripted campaign/party behavior cannot support a comparison with Park et al."
     },
     {
       "category": "plans",
@@ -574,7 +648,9 @@
         "francisco_lopez:2400:gm_outcome:53",
         "francisco_lopez:2340:gm_outcome:52"
       ],
-      "human_rating": null
+      "human_rating": null,
+      "evidence_label": "fixture only",
+      "evidence_scope": "All mock-derived behavior, survey predictions, requests, tokens, costs, timing and storage in this report are fixture only. Source/human reference values and test counts are not model-validation results. Scripted campaign/party behavior cannot support a comparison with Park et al."
     },
     {
       "category": "reaction",
@@ -588,7 +664,9 @@
         "francisco_lopez:2400:gm_outcome:53",
         "francisco_lopez:2340:gm_outcome:52"
       ],
-      "human_rating": null
+      "human_rating": null,
+      "evidence_label": "fixture only",
+      "evidence_scope": "All mock-derived behavior, survey predictions, requests, tokens, costs, timing and storage in this report are fixture only. Source/human reference values and test counts are not model-validation results. Scripted campaign/party behavior cannot support a comparison with Park et al."
     },
     {
       "category": "reflection",
@@ -602,7 +680,9 @@
         "francisco_lopez:2400:gm_outcome:53",
         "francisco_lopez:2340:gm_outcome:52"
       ],
-      "human_rating": null
+      "human_rating": null,
+      "evidence_label": "fixture only",
+      "evidence_scope": "All mock-derived behavior, survey predictions, requests, tokens, costs, timing and storage in this report are fixture only. Source/human reference values and test counts are not model-validation results. Scripted campaign/party behavior cannot support a comparison with Park et al."
     }
   ],
   "giorgio_rossi": [
@@ -618,7 +698,9 @@
         "giorgio_rossi:2045:msg:ayesha_khan:2045:56",
         "giorgio_rossi:1925:msg:mei_lin:1925:50"
       ],
-      "human_rating": null
+      "human_rating": null,
+      "evidence_label": "fixture only",
+      "evidence_scope": "All mock-derived behavior, survey predictions, requests, tokens, costs, timing and storage in this report are fixture only. Source/human reference values and test counts are not model-validation results. Scripted campaign/party behavior cannot support a comparison with Park et al."
     },
     {
       "category": "memory",
@@ -632,7 +714,9 @@
         "giorgio_rossi:2045:msg:ayesha_khan:2045:56",
         "giorgio_rossi:1925:msg:mei_lin:1925:50"
       ],
-      "human_rating": null
+      "human_rating": null,
+      "evidence_label": "fixture only",
+      "evidence_scope": "All mock-derived behavior, survey predictions, requests, tokens, costs, timing and storage in this report are fixture only. Source/human reference values and test counts are not model-validation results. Scripted campaign/party behavior cannot support a comparison with Park et al."
     },
     {
       "category": "plans",
@@ -646,7 +730,9 @@
         "giorgio_rossi:2045:msg:ayesha_khan:2045:56",
         "giorgio_rossi:1925:msg:mei_lin:1925:50"
       ],
-      "human_rating": null
+      "human_rating": null,
+      "evidence_label": "fixture only",
+      "evidence_scope": "All mock-derived behavior, survey predictions, requests, tokens, costs, timing and storage in this report are fixture only. Source/human reference values and test counts are not model-validation results. Scripted campaign/party behavior cannot support a comparison with Park et al."
     },
     {
       "category": "reaction",
@@ -660,7 +746,9 @@
         "giorgio_rossi:2045:msg:ayesha_khan:2045:56",
         "giorgio_rossi:1925:msg:mei_lin:1925:50"
       ],
-      "human_rating": null
+      "human_rating": null,
+      "evidence_label": "fixture only",
+      "evidence_scope": "All mock-derived behavior, survey predictions, requests, tokens, costs, timing and storage in this report are fixture only. Source/human reference values and test counts are not model-validation results. Scripted campaign/party behavior cannot support a comparison with Park et al."
     },
     {
       "category": "reflection",
@@ -674,7 +762,9 @@
         "giorgio_rossi:2045:msg:ayesha_khan:2045:56",
         "giorgio_rossi:1925:msg:mei_lin:1925:50"
       ],
-      "human_rating": null
+      "human_rating": null,
+      "evidence_label": "fixture only",
+      "evidence_scope": "All mock-derived behavior, survey predictions, requests, tokens, costs, timing and storage in this report are fixture only. Source/human reference values and test counts are not model-validation results. Scripted campaign/party behavior cannot support a comparison with Park et al."
     }
   ],
   "hailey_johnson": [
@@ -690,7 +780,9 @@
         "hailey_johnson:2527:msg:sam_moore:2525:63",
         "hailey_johnson:2700:reflection:hailey_johnson:2225:cal:hailey_johnson:2225:53,hailey_johnson:2220:msg:isabella_rodriguez:2165:52,hailey_johnson:2230:msg:hailey_johnson:2230:55:68"
       ],
-      "human_rating": null
+      "human_rating": null,
+      "evidence_label": "fixture only",
+      "evidence_scope": "All mock-derived behavior, survey predictions, requests, tokens, costs, timing and storage in this report are fixture only. Source/human reference values and test counts are not model-validation results. Scripted campaign/party behavior cannot support a comparison with Park et al."
     },
     {
       "category": "memory",
@@ -704,7 +796,9 @@
         "hailey_johnson:2527:msg:sam_moore:2525:63",
         "hailey_johnson:2700:reflection:hailey_johnson:2225:cal:hailey_johnson:2225:53,hailey_johnson:2220:msg:isabella_rodriguez:2165:52,hailey_johnson:2230:msg:hailey_johnson:2230:55:68"
       ],
-      "human_rating": null
+      "human_rating": null,
+      "evidence_label": "fixture only",
+      "evidence_scope": "All mock-derived behavior, survey predictions, requests, tokens, costs, timing and storage in this report are fixture only. Source/human reference values and test counts are not model-validation results. Scripted campaign/party behavior cannot support a comparison with Park et al."
     },
     {
       "category": "plans",
@@ -718,7 +812,9 @@
         "hailey_johnson:2527:msg:sam_moore:2525:63",
         "hailey_johnson:2700:reflection:hailey_johnson:2225:cal:hailey_johnson:2225:53,hailey_johnson:2220:msg:isabella_rodriguez:2165:52,hailey_johnson:2230:msg:hailey_johnson:2230:55:68"
       ],
-      "human_rating": null
+      "human_rating": null,
+      "evidence_label": "fixture only",
+      "evidence_scope": "All mock-derived behavior, survey predictions, requests, tokens, costs, timing and storage in this report are fixture only. Source/human reference values and test counts are not model-validation results. Scripted campaign/party behavior cannot support a comparison with Park et al."
     },
     {
       "category": "reaction",
@@ -732,7 +828,9 @@
         "hailey_johnson:2527:msg:sam_moore:2525:63",
         "hailey_johnson:2700:reflection:hailey_johnson:2225:cal:hailey_johnson:2225:53,hailey_johnson:2220:msg:isabella_rodriguez:2165:52,hailey_johnson:2230:msg:hailey_johnson:2230:55:68"
       ],
-      "human_rating": null
+      "human_rating": null,
+      "evidence_label": "fixture only",
+      "evidence_scope": "All mock-derived behavior, survey predictions, requests, tokens, costs, timing and storage in this report are fixture only. Source/human reference values and test counts are not model-validation results. Scripted campaign/party behavior cannot support a comparison with Park et al."
     },
     {
       "category": "reflection",
@@ -746,7 +844,9 @@
         "hailey_johnson:2527:msg:sam_moore:2525:63",
         "hailey_johnson:2700:reflection:hailey_johnson:2225:cal:hailey_johnson:2225:53,hailey_johnson:2220:msg:isabella_rodriguez:2165:52,hailey_johnson:2230:msg:hailey_johnson:2230:55:68"
       ],
-      "human_rating": null
+      "human_rating": null,
+      "evidence_label": "fixture only",
+      "evidence_scope": "All mock-derived behavior, survey predictions, requests, tokens, costs, timing and storage in this report are fixture only. Source/human reference values and test counts are not model-validation results. Scripted campaign/party behavior cannot support a comparison with Park et al."
     }
   ],
   "isabella_rodriguez": [
@@ -765,7 +865,9 @@
         "isabella_rodriguez:2285:msg:isabella_rodriguez:2285:71",
         "isabella_rodriguez:2165:msg:isabella_rodriguez:2165:65"
       ],
-      "human_rating": null
+      "human_rating": null,
+      "evidence_label": "fixture only",
+      "evidence_scope": "All mock-derived behavior, survey predictions, requests, tokens, costs, timing and storage in this report are fixture only. Source/human reference values and test counts are not model-validation results. Scripted campaign/party behavior cannot support a comparison with Park et al."
     },
     {
       "category": "memory",
@@ -782,7 +884,9 @@
         "isabella_rodriguez:2285:msg:isabella_rodriguez:2285:71",
         "isabella_rodriguez:2165:msg:isabella_rodriguez:2165:65"
       ],
-      "human_rating": null
+      "human_rating": null,
+      "evidence_label": "fixture only",
+      "evidence_scope": "All mock-derived behavior, survey predictions, requests, tokens, costs, timing and storage in this report are fixture only. Source/human reference values and test counts are not model-validation results. Scripted campaign/party behavior cannot support a comparison with Park et al."
     },
     {
       "category": "plans",
@@ -799,7 +903,9 @@
         "isabella_rodriguez:2285:msg:isabella_rodriguez:2285:71",
         "isabella_rodriguez:2165:msg:isabella_rodriguez:2165:65"
       ],
-      "human_rating": null
+      "human_rating": null,
+      "evidence_label": "fixture only",
+      "evidence_scope": "All mock-derived behavior, survey predictions, requests, tokens, costs, timing and storage in this report are fixture only. Source/human reference values and test counts are not model-validation results. Scripted campaign/party behavior cannot support a comparison with Park et al."
     },
     {
       "category": "reaction",
@@ -816,7 +922,9 @@
         "isabella_rodriguez:2285:msg:isabella_rodriguez:2285:71",
         "isabella_rodriguez:2165:msg:isabella_rodriguez:2165:65"
       ],
-      "human_rating": null
+      "human_rating": null,
+      "evidence_label": "fixture only",
+      "evidence_scope": "All mock-derived behavior, survey predictions, requests, tokens, costs, timing and storage in this report are fixture only. Source/human reference values and test counts are not model-validation results. Scripted campaign/party behavior cannot support a comparison with Park et al."
     },
     {
       "category": "reflection",
@@ -833,7 +941,9 @@
         "isabella_rodriguez:2285:msg:isabella_rodriguez:2285:71",
         "isabella_rodriguez:2165:msg:isabella_rodriguez:2165:65"
       ],
-      "human_rating": null
+      "human_rating": null,
+      "evidence_label": "fixture only",
+      "evidence_scope": "All mock-derived behavior, survey predictions, requests, tokens, costs, timing and storage in this report are fixture only. Source/human reference values and test counts are not model-validation results. Scripted campaign/party behavior cannot support a comparison with Park et al."
     }
   ],
   "jane_moreno": [
@@ -849,7 +959,9 @@
         "jane_moreno:2045:msg:mei_lin:2045:53",
         "jane_moreno:725:msg:carmen_ortiz:725:21"
       ],
-      "human_rating": null
+      "human_rating": null,
+      "evidence_label": "fixture only",
+      "evidence_scope": "All mock-derived behavior, survey predictions, requests, tokens, costs, timing and storage in this report are fixture only. Source/human reference values and test counts are not model-validation results. Scripted campaign/party behavior cannot support a comparison with Park et al."
     },
     {
       "category": "memory",
@@ -863,7 +975,9 @@
         "jane_moreno:2045:msg:mei_lin:2045:53",
         "jane_moreno:725:msg:carmen_ortiz:725:21"
       ],
-      "human_rating": null
+      "human_rating": null,
+      "evidence_label": "fixture only",
+      "evidence_scope": "All mock-derived behavior, survey predictions, requests, tokens, costs, timing and storage in this report are fixture only. Source/human reference values and test counts are not model-validation results. Scripted campaign/party behavior cannot support a comparison with Park et al."
     },
     {
       "category": "plans",
@@ -877,7 +991,9 @@
         "jane_moreno:2045:msg:mei_lin:2045:53",
         "jane_moreno:725:msg:carmen_ortiz:725:21"
       ],
-      "human_rating": null
+      "human_rating": null,
+      "evidence_label": "fixture only",
+      "evidence_scope": "All mock-derived behavior, survey predictions, requests, tokens, costs, timing and storage in this report are fixture only. Source/human reference values and test counts are not model-validation results. Scripted campaign/party behavior cannot support a comparison with Park et al."
     },
     {
       "category": "reaction",
@@ -891,7 +1007,9 @@
         "jane_moreno:2045:msg:mei_lin:2045:53",
         "jane_moreno:725:msg:carmen_ortiz:725:21"
       ],
-      "human_rating": null
+      "human_rating": null,
+      "evidence_label": "fixture only",
+      "evidence_scope": "All mock-derived behavior, survey predictions, requests, tokens, costs, timing and storage in this report are fixture only. Source/human reference values and test counts are not model-validation results. Scripted campaign/party behavior cannot support a comparison with Park et al."
     },
     {
       "category": "reflection",
@@ -905,7 +1023,9 @@
         "jane_moreno:2045:msg:mei_lin:2045:53",
         "jane_moreno:725:msg:carmen_ortiz:725:21"
       ],
-      "human_rating": null
+      "human_rating": null,
+      "evidence_label": "fixture only",
+      "evidence_scope": "All mock-derived behavior, survey predictions, requests, tokens, costs, timing and storage in this report are fixture only. Source/human reference values and test counts are not model-validation results. Scripted campaign/party behavior cannot support a comparison with Park et al."
     }
   ],
   "jennifer_moore": [
@@ -921,7 +1041,9 @@
         "jennifer_moore:2165:msg:eddy_lin:2165:50",
         "jennifer_moore:1925:msg:carmen_ortiz:1925:40"
       ],
-      "human_rating": null
+      "human_rating": null,
+      "evidence_label": "fixture only",
+      "evidence_scope": "All mock-derived behavior, survey predictions, requests, tokens, costs, timing and storage in this report are fixture only. Source/human reference values and test counts are not model-validation results. Scripted campaign/party behavior cannot support a comparison with Park et al."
     },
     {
       "category": "memory",
@@ -935,7 +1057,9 @@
         "jennifer_moore:2165:msg:eddy_lin:2165:50",
         "jennifer_moore:1925:msg:carmen_ortiz:1925:40"
       ],
-      "human_rating": null
+      "human_rating": null,
+      "evidence_label": "fixture only",
+      "evidence_scope": "All mock-derived behavior, survey predictions, requests, tokens, costs, timing and storage in this report are fixture only. Source/human reference values and test counts are not model-validation results. Scripted campaign/party behavior cannot support a comparison with Park et al."
     },
     {
       "category": "plans",
@@ -949,7 +1073,9 @@
         "jennifer_moore:2165:msg:eddy_lin:2165:50",
         "jennifer_moore:1925:msg:carmen_ortiz:1925:40"
       ],
-      "human_rating": null
+      "human_rating": null,
+      "evidence_label": "fixture only",
+      "evidence_scope": "All mock-derived behavior, survey predictions, requests, tokens, costs, timing and storage in this report are fixture only. Source/human reference values and test counts are not model-validation results. Scripted campaign/party behavior cannot support a comparison with Park et al."
     },
     {
       "category": "reaction",
@@ -963,7 +1089,9 @@
         "jennifer_moore:2165:msg:eddy_lin:2165:50",
         "jennifer_moore:1925:msg:carmen_ortiz:1925:40"
       ],
-      "human_rating": null
+      "human_rating": null,
+      "evidence_label": "fixture only",
+      "evidence_scope": "All mock-derived behavior, survey predictions, requests, tokens, costs, timing and storage in this report are fixture only. Source/human reference values and test counts are not model-validation results. Scripted campaign/party behavior cannot support a comparison with Park et al."
     },
     {
       "category": "reflection",
@@ -977,7 +1105,9 @@
         "jennifer_moore:2165:msg:eddy_lin:2165:50",
         "jennifer_moore:1925:msg:carmen_ortiz:1925:40"
       ],
-      "human_rating": null
+      "human_rating": null,
+      "evidence_label": "fixture only",
+      "evidence_scope": "All mock-derived behavior, survey predictions, requests, tokens, costs, timing and storage in this report are fixture only. Source/human reference values and test counts are not model-validation results. Scripted campaign/party behavior cannot support a comparison with Park et al."
     }
   ],
   "john_lin": [
@@ -993,7 +1123,9 @@
         "john_lin:2700:reflection:john_lin:2170:cal:john_lin:2170:56,john_lin:2165:msg:tamara_taylor:2165:55,john_lin:2165:msg:sam_moore:2165:54:70",
         "john_lin:1260:reflection:john_lin:1020:gm_outcome:22,john_lin:960:gm_outcome:21,john_lin:900:gm_outcome:20:28"
       ],
-      "human_rating": null
+      "human_rating": null,
+      "evidence_label": "fixture only",
+      "evidence_scope": "All mock-derived behavior, survey predictions, requests, tokens, costs, timing and storage in this report are fixture only. Source/human reference values and test counts are not model-validation results. Scripted campaign/party behavior cannot support a comparison with Park et al."
     },
     {
       "category": "memory",
@@ -1007,7 +1139,9 @@
         "john_lin:2700:reflection:john_lin:2170:cal:john_lin:2170:56,john_lin:2165:msg:tamara_taylor:2165:55,john_lin:2165:msg:sam_moore:2165:54:70",
         "john_lin:1260:reflection:john_lin:1020:gm_outcome:22,john_lin:960:gm_outcome:21,john_lin:900:gm_outcome:20:28"
       ],
-      "human_rating": null
+      "human_rating": null,
+      "evidence_label": "fixture only",
+      "evidence_scope": "All mock-derived behavior, survey predictions, requests, tokens, costs, timing and storage in this report are fixture only. Source/human reference values and test counts are not model-validation results. Scripted campaign/party behavior cannot support a comparison with Park et al."
     },
     {
       "category": "plans",
@@ -1021,7 +1155,9 @@
         "john_lin:2700:reflection:john_lin:2170:cal:john_lin:2170:56,john_lin:2165:msg:tamara_taylor:2165:55,john_lin:2165:msg:sam_moore:2165:54:70",
         "john_lin:1260:reflection:john_lin:1020:gm_outcome:22,john_lin:960:gm_outcome:21,john_lin:900:gm_outcome:20:28"
       ],
-      "human_rating": null
+      "human_rating": null,
+      "evidence_label": "fixture only",
+      "evidence_scope": "All mock-derived behavior, survey predictions, requests, tokens, costs, timing and storage in this report are fixture only. Source/human reference values and test counts are not model-validation results. Scripted campaign/party behavior cannot support a comparison with Park et al."
     },
     {
       "category": "reaction",
@@ -1035,7 +1171,9 @@
         "john_lin:2700:reflection:john_lin:2170:cal:john_lin:2170:56,john_lin:2165:msg:tamara_taylor:2165:55,john_lin:2165:msg:sam_moore:2165:54:70",
         "john_lin:1260:reflection:john_lin:1020:gm_outcome:22,john_lin:960:gm_outcome:21,john_lin:900:gm_outcome:20:28"
       ],
-      "human_rating": null
+      "human_rating": null,
+      "evidence_label": "fixture only",
+      "evidence_scope": "All mock-derived behavior, survey predictions, requests, tokens, costs, timing and storage in this report are fixture only. Source/human reference values and test counts are not model-validation results. Scripted campaign/party behavior cannot support a comparison with Park et al."
     },
     {
       "category": "reflection",
@@ -1049,7 +1187,9 @@
         "john_lin:2700:reflection:john_lin:2170:cal:john_lin:2170:56,john_lin:2165:msg:tamara_taylor:2165:55,john_lin:2165:msg:sam_moore:2165:54:70",
         "john_lin:1260:reflection:john_lin:1020:gm_outcome:22,john_lin:960:gm_outcome:21,john_lin:900:gm_outcome:20:28"
       ],
-      "human_rating": null
+      "human_rating": null,
+      "evidence_label": "fixture only",
+      "evidence_scope": "All mock-derived behavior, survey predictions, requests, tokens, costs, timing and storage in this report are fixture only. Source/human reference values and test counts are not model-validation results. Scripted campaign/party behavior cannot support a comparison with Park et al."
     }
   ],
   "klaus_mueller": [
@@ -1065,7 +1205,9 @@
         "klaus_mueller:1925:msg:giorgio_rossi:1925:47",
         "klaus_mueller:2700:reflection:klaus_mueller:2165:msg:maria_lopez:2165:57,klaus_mueller:2165:msg:klaus_mueller:2165:55,klaus_mueller:2045:msg:klaus_mueller:2045:51:68"
       ],
-      "human_rating": null
+      "human_rating": null,
+      "evidence_label": "fixture only",
+      "evidence_scope": "All mock-derived behavior, survey predictions, requests, tokens, costs, timing and storage in this report are fixture only. Source/human reference values and test counts are not model-validation results. Scripted campaign/party behavior cannot support a comparison with Park et al."
     },
     {
       "category": "memory",
@@ -1079,7 +1221,9 @@
         "klaus_mueller:1925:msg:giorgio_rossi:1925:47",
         "klaus_mueller:2700:reflection:klaus_mueller:2165:msg:maria_lopez:2165:57,klaus_mueller:2165:msg:klaus_mueller:2165:55,klaus_mueller:2045:msg:klaus_mueller:2045:51:68"
       ],
-      "human_rating": null
+      "human_rating": null,
+      "evidence_label": "fixture only",
+      "evidence_scope": "All mock-derived behavior, survey predictions, requests, tokens, costs, timing and storage in this report are fixture only. Source/human reference values and test counts are not model-validation results. Scripted campaign/party behavior cannot support a comparison with Park et al."
     },
     {
       "category": "plans",
@@ -1093,7 +1237,9 @@
         "klaus_mueller:1925:msg:giorgio_rossi:1925:47",
         "klaus_mueller:2700:reflection:klaus_mueller:2165:msg:maria_lopez:2165:57,klaus_mueller:2165:msg:klaus_mueller:2165:55,klaus_mueller:2045:msg:klaus_mueller:2045:51:68"
       ],
-      "human_rating": null
+      "human_rating": null,
+      "evidence_label": "fixture only",
+      "evidence_scope": "All mock-derived behavior, survey predictions, requests, tokens, costs, timing and storage in this report are fixture only. Source/human reference values and test counts are not model-validation results. Scripted campaign/party behavior cannot support a comparison with Park et al."
     },
     {
       "category": "reaction",
@@ -1107,7 +1253,9 @@
         "klaus_mueller:1925:msg:giorgio_rossi:1925:47",
         "klaus_mueller:2700:reflection:klaus_mueller:2165:msg:maria_lopez:2165:57,klaus_mueller:2165:msg:klaus_mueller:2165:55,klaus_mueller:2045:msg:klaus_mueller:2045:51:68"
       ],
-      "human_rating": null
+      "human_rating": null,
+      "evidence_label": "fixture only",
+      "evidence_scope": "All mock-derived behavior, survey predictions, requests, tokens, costs, timing and storage in this report are fixture only. Source/human reference values and test counts are not model-validation results. Scripted campaign/party behavior cannot support a comparison with Park et al."
     },
     {
       "category": "reflection",
@@ -1121,7 +1269,9 @@
         "klaus_mueller:1925:msg:giorgio_rossi:1925:47",
         "klaus_mueller:2700:reflection:klaus_mueller:2165:msg:maria_lopez:2165:57,klaus_mueller:2165:msg:klaus_mueller:2165:55,klaus_mueller:2045:msg:klaus_mueller:2045:51:68"
       ],
-      "human_rating": null
+      "human_rating": null,
+      "evidence_label": "fixture only",
+      "evidence_scope": "All mock-derived behavior, survey predictions, requests, tokens, costs, timing and storage in this report are fixture only. Source/human reference values and test counts are not model-validation results. Scripted campaign/party behavior cannot support a comparison with Park et al."
     }
   ],
   "latoya_williams": [
@@ -1140,7 +1290,9 @@
         "latoya_williams:2160:gm_outcome:49",
         "latoya_williams:2100:gm_outcome:48"
       ],
-      "human_rating": null
+      "human_rating": null,
+      "evidence_label": "fixture only",
+      "evidence_scope": "All mock-derived behavior, survey predictions, requests, tokens, costs, timing and storage in this report are fixture only. Source/human reference values and test counts are not model-validation results. Scripted campaign/party behavior cannot support a comparison with Park et al."
     },
     {
       "category": "memory",
@@ -1157,7 +1309,9 @@
         "latoya_williams:2160:gm_outcome:49",
         "latoya_williams:2100:gm_outcome:48"
       ],
-      "human_rating": null
+      "human_rating": null,
+      "evidence_label": "fixture only",
+      "evidence_scope": "All mock-derived behavior, survey predictions, requests, tokens, costs, timing and storage in this report are fixture only. Source/human reference values and test counts are not model-validation results. Scripted campaign/party behavior cannot support a comparison with Park et al."
     },
     {
       "category": "plans",
@@ -1174,7 +1328,9 @@
         "latoya_williams:2160:gm_outcome:49",
         "latoya_williams:2100:gm_outcome:48"
       ],
-      "human_rating": null
+      "human_rating": null,
+      "evidence_label": "fixture only",
+      "evidence_scope": "All mock-derived behavior, survey predictions, requests, tokens, costs, timing and storage in this report are fixture only. Source/human reference values and test counts are not model-validation results. Scripted campaign/party behavior cannot support a comparison with Park et al."
     },
     {
       "category": "reaction",
@@ -1191,7 +1347,9 @@
         "latoya_williams:2160:gm_outcome:49",
         "latoya_williams:2100:gm_outcome:48"
       ],
-      "human_rating": null
+      "human_rating": null,
+      "evidence_label": "fixture only",
+      "evidence_scope": "All mock-derived behavior, survey predictions, requests, tokens, costs, timing and storage in this report are fixture only. Source/human reference values and test counts are not model-validation results. Scripted campaign/party behavior cannot support a comparison with Park et al."
     },
     {
       "category": "reflection",
@@ -1208,7 +1366,9 @@
         "latoya_williams:2160:gm_outcome:49",
         "latoya_williams:2100:gm_outcome:48"
       ],
-      "human_rating": null
+      "human_rating": null,
+      "evidence_label": "fixture only",
+      "evidence_scope": "All mock-derived behavior, survey predictions, requests, tokens, costs, timing and storage in this report are fixture only. Source/human reference values and test counts are not model-validation results. Scripted campaign/party behavior cannot support a comparison with Park et al."
     }
   ],
   "maria_lopez": [
@@ -1224,7 +1384,9 @@
         "maria_lopez:1925:msg:maria_lopez:1925:44",
         "maria_lopez:2165:msg:mei_lin:2165:56"
       ],
-      "human_rating": null
+      "human_rating": null,
+      "evidence_label": "fixture only",
+      "evidence_scope": "All mock-derived behavior, survey predictions, requests, tokens, costs, timing and storage in this report are fixture only. Source/human reference values and test counts are not model-validation results. Scripted campaign/party behavior cannot support a comparison with Park et al."
     },
     {
       "category": "memory",
@@ -1238,7 +1400,9 @@
         "maria_lopez:1925:msg:maria_lopez:1925:44",
         "maria_lopez:2165:msg:mei_lin:2165:56"
       ],
-      "human_rating": null
+      "human_rating": null,
+      "evidence_label": "fixture only",
+      "evidence_scope": "All mock-derived behavior, survey predictions, requests, tokens, costs, timing and storage in this report are fixture only. Source/human reference values and test counts are not model-validation results. Scripted campaign/party behavior cannot support a comparison with Park et al."
     },
     {
       "category": "plans",
@@ -1252,7 +1416,9 @@
         "maria_lopez:1925:msg:maria_lopez:1925:44",
         "maria_lopez:2165:msg:mei_lin:2165:56"
       ],
-      "human_rating": null
+      "human_rating": null,
+      "evidence_label": "fixture only",
+      "evidence_scope": "All mock-derived behavior, survey predictions, requests, tokens, costs, timing and storage in this report are fixture only. Source/human reference values and test counts are not model-validation results. Scripted campaign/party behavior cannot support a comparison with Park et al."
     },
     {
       "category": "reaction",
@@ -1266,7 +1432,9 @@
         "maria_lopez:1925:msg:maria_lopez:1925:44",
         "maria_lopez:2165:msg:mei_lin:2165:56"
       ],
-      "human_rating": null
+      "human_rating": null,
+      "evidence_label": "fixture only",
+      "evidence_scope": "All mock-derived behavior, survey predictions, requests, tokens, costs, timing and storage in this report are fixture only. Source/human reference values and test counts are not model-validation results. Scripted campaign/party behavior cannot support a comparison with Park et al."
     },
     {
       "category": "reflection",
@@ -1280,7 +1448,9 @@
         "maria_lopez:1925:msg:maria_lopez:1925:44",
         "maria_lopez:2165:msg:mei_lin:2165:56"
       ],
-      "human_rating": null
+      "human_rating": null,
+      "evidence_label": "fixture only",
+      "evidence_scope": "All mock-derived behavior, survey predictions, requests, tokens, costs, timing and storage in this report are fixture only. Source/human reference values and test counts are not model-validation results. Scripted campaign/party behavior cannot support a comparison with Park et al."
     }
   ],
   "mei_lin": [
@@ -1296,7 +1466,9 @@
         "mei_lin:2045:msg:mei_lin:2045:57",
         "mei_lin:1925:msg:mei_lin:1925:51"
       ],
-      "human_rating": null
+      "human_rating": null,
+      "evidence_label": "fixture only",
+      "evidence_scope": "All mock-derived behavior, survey predictions, requests, tokens, costs, timing and storage in this report are fixture only. Source/human reference values and test counts are not model-validation results. Scripted campaign/party behavior cannot support a comparison with Park et al."
     },
     {
       "category": "memory",
@@ -1310,7 +1482,9 @@
         "mei_lin:2045:msg:mei_lin:2045:57",
         "mei_lin:1925:msg:mei_lin:1925:51"
       ],
-      "human_rating": null
+      "human_rating": null,
+      "evidence_label": "fixture only",
+      "evidence_scope": "All mock-derived behavior, survey predictions, requests, tokens, costs, timing and storage in this report are fixture only. Source/human reference values and test counts are not model-validation results. Scripted campaign/party behavior cannot support a comparison with Park et al."
     },
     {
       "category": "plans",
@@ -1324,7 +1498,9 @@
         "mei_lin:2045:msg:mei_lin:2045:57",
         "mei_lin:1925:msg:mei_lin:1925:51"
       ],
-      "human_rating": null
+      "human_rating": null,
+      "evidence_label": "fixture only",
+      "evidence_scope": "All mock-derived behavior, survey predictions, requests, tokens, costs, timing and storage in this report are fixture only. Source/human reference values and test counts are not model-validation results. Scripted campaign/party behavior cannot support a comparison with Park et al."
     },
     {
       "category": "reaction",
@@ -1338,7 +1514,9 @@
         "mei_lin:2045:msg:mei_lin:2045:57",
         "mei_lin:1925:msg:mei_lin:1925:51"
       ],
-      "human_rating": null
+      "human_rating": null,
+      "evidence_label": "fixture only",
+      "evidence_scope": "All mock-derived behavior, survey predictions, requests, tokens, costs, timing and storage in this report are fixture only. Source/human reference values and test counts are not model-validation results. Scripted campaign/party behavior cannot support a comparison with Park et al."
     },
     {
       "category": "reflection",
@@ -1352,7 +1530,9 @@
         "mei_lin:2045:msg:mei_lin:2045:57",
         "mei_lin:1925:msg:mei_lin:1925:51"
       ],
-      "human_rating": null
+      "human_rating": null,
+      "evidence_label": "fixture only",
+      "evidence_scope": "All mock-derived behavior, survey predictions, requests, tokens, costs, timing and storage in this report are fixture only. Source/human reference values and test counts are not model-validation results. Scripted campaign/party behavior cannot support a comparison with Park et al."
     }
   ],
   "rajiv_patel": [
@@ -1368,7 +1548,9 @@
         "rajiv_patel:2400:gm_outcome:55",
         "rajiv_patel:2340:gm_outcome:54"
       ],
-      "human_rating": null
+      "human_rating": null,
+      "evidence_label": "fixture only",
+      "evidence_scope": "All mock-derived behavior, survey predictions, requests, tokens, costs, timing and storage in this report are fixture only. Source/human reference values and test counts are not model-validation results. Scripted campaign/party behavior cannot support a comparison with Park et al."
     },
     {
       "category": "memory",
@@ -1382,7 +1564,9 @@
         "rajiv_patel:2400:gm_outcome:55",
         "rajiv_patel:2340:gm_outcome:54"
       ],
-      "human_rating": null
+      "human_rating": null,
+      "evidence_label": "fixture only",
+      "evidence_scope": "All mock-derived behavior, survey predictions, requests, tokens, costs, timing and storage in this report are fixture only. Source/human reference values and test counts are not model-validation results. Scripted campaign/party behavior cannot support a comparison with Park et al."
     },
     {
       "category": "plans",
@@ -1396,7 +1580,9 @@
         "rajiv_patel:2400:gm_outcome:55",
         "rajiv_patel:2340:gm_outcome:54"
       ],
-      "human_rating": null
+      "human_rating": null,
+      "evidence_label": "fixture only",
+      "evidence_scope": "All mock-derived behavior, survey predictions, requests, tokens, costs, timing and storage in this report are fixture only. Source/human reference values and test counts are not model-validation results. Scripted campaign/party behavior cannot support a comparison with Park et al."
     },
     {
       "category": "reaction",
@@ -1410,7 +1596,9 @@
         "rajiv_patel:2400:gm_outcome:55",
         "rajiv_patel:2340:gm_outcome:54"
       ],
-      "human_rating": null
+      "human_rating": null,
+      "evidence_label": "fixture only",
+      "evidence_scope": "All mock-derived behavior, survey predictions, requests, tokens, costs, timing and storage in this report are fixture only. Source/human reference values and test counts are not model-validation results. Scripted campaign/party behavior cannot support a comparison with Park et al."
     },
     {
       "category": "reflection",
@@ -1424,7 +1612,9 @@
         "rajiv_patel:2400:gm_outcome:55",
         "rajiv_patel:2340:gm_outcome:54"
       ],
-      "human_rating": null
+      "human_rating": null,
+      "evidence_label": "fixture only",
+      "evidence_scope": "All mock-derived behavior, survey predictions, requests, tokens, costs, timing and storage in this report are fixture only. Source/human reference values and test counts are not model-validation results. Scripted campaign/party behavior cannot support a comparison with Park et al."
     }
   ],
   "ryan_park": [
@@ -1440,7 +1630,9 @@
         "ryan_park:2045:msg:ryan_park:2045:49",
         "ryan_park:1925:msg:ryan_park:1925:45"
       ],
-      "human_rating": null
+      "human_rating": null,
+      "evidence_label": "fixture only",
+      "evidence_scope": "All mock-derived behavior, survey predictions, requests, tokens, costs, timing and storage in this report are fixture only. Source/human reference values and test counts are not model-validation results. Scripted campaign/party behavior cannot support a comparison with Park et al."
     },
     {
       "category": "memory",
@@ -1454,7 +1646,9 @@
         "ryan_park:2045:msg:ryan_park:2045:49",
         "ryan_park:1925:msg:ryan_park:1925:45"
       ],
-      "human_rating": null
+      "human_rating": null,
+      "evidence_label": "fixture only",
+      "evidence_scope": "All mock-derived behavior, survey predictions, requests, tokens, costs, timing and storage in this report are fixture only. Source/human reference values and test counts are not model-validation results. Scripted campaign/party behavior cannot support a comparison with Park et al."
     },
     {
       "category": "plans",
@@ -1468,7 +1662,9 @@
         "ryan_park:2045:msg:ryan_park:2045:49",
         "ryan_park:1925:msg:ryan_park:1925:45"
       ],
-      "human_rating": null
+      "human_rating": null,
+      "evidence_label": "fixture only",
+      "evidence_scope": "All mock-derived behavior, survey predictions, requests, tokens, costs, timing and storage in this report are fixture only. Source/human reference values and test counts are not model-validation results. Scripted campaign/party behavior cannot support a comparison with Park et al."
     },
     {
       "category": "reaction",
@@ -1482,7 +1678,9 @@
         "ryan_park:2045:msg:ryan_park:2045:49",
         "ryan_park:1925:msg:ryan_park:1925:45"
       ],
-      "human_rating": null
+      "human_rating": null,
+      "evidence_label": "fixture only",
+      "evidence_scope": "All mock-derived behavior, survey predictions, requests, tokens, costs, timing and storage in this report are fixture only. Source/human reference values and test counts are not model-validation results. Scripted campaign/party behavior cannot support a comparison with Park et al."
     },
     {
       "category": "reflection",
@@ -1496,7 +1694,9 @@
         "ryan_park:2045:msg:ryan_park:2045:49",
         "ryan_park:1925:msg:ryan_park:1925:45"
       ],
-      "human_rating": null
+      "human_rating": null,
+      "evidence_label": "fixture only",
+      "evidence_scope": "All mock-derived behavior, survey predictions, requests, tokens, costs, timing and storage in this report are fixture only. Source/human reference values and test counts are not model-validation results. Scripted campaign/party behavior cannot support a comparison with Park et al."
     }
   ],
   "sam_moore": [
@@ -1515,7 +1715,9 @@
         "sam_moore:2045:msg:sam_moore:2045:56",
         "sam_moore:1925:msg:sam_moore:1925:51"
       ],
-      "human_rating": null
+      "human_rating": null,
+      "evidence_label": "fixture only",
+      "evidence_scope": "All mock-derived behavior, survey predictions, requests, tokens, costs, timing and storage in this report are fixture only. Source/human reference values and test counts are not model-validation results. Scripted campaign/party behavior cannot support a comparison with Park et al."
     },
     {
       "category": "memory",
@@ -1532,7 +1734,9 @@
         "sam_moore:2045:msg:sam_moore:2045:56",
         "sam_moore:1925:msg:sam_moore:1925:51"
       ],
-      "human_rating": null
+      "human_rating": null,
+      "evidence_label": "fixture only",
+      "evidence_scope": "All mock-derived behavior, survey predictions, requests, tokens, costs, timing and storage in this report are fixture only. Source/human reference values and test counts are not model-validation results. Scripted campaign/party behavior cannot support a comparison with Park et al."
     },
     {
       "category": "plans",
@@ -1549,7 +1753,9 @@
         "sam_moore:2045:msg:sam_moore:2045:56",
         "sam_moore:1925:msg:sam_moore:1925:51"
       ],
-      "human_rating": null
+      "human_rating": null,
+      "evidence_label": "fixture only",
+      "evidence_scope": "All mock-derived behavior, survey predictions, requests, tokens, costs, timing and storage in this report are fixture only. Source/human reference values and test counts are not model-validation results. Scripted campaign/party behavior cannot support a comparison with Park et al."
     },
     {
       "category": "reaction",
@@ -1566,7 +1772,9 @@
         "sam_moore:2045:msg:sam_moore:2045:56",
         "sam_moore:1925:msg:sam_moore:1925:51"
       ],
-      "human_rating": null
+      "human_rating": null,
+      "evidence_label": "fixture only",
+      "evidence_scope": "All mock-derived behavior, survey predictions, requests, tokens, costs, timing and storage in this report are fixture only. Source/human reference values and test counts are not model-validation results. Scripted campaign/party behavior cannot support a comparison with Park et al."
     },
     {
       "category": "reflection",
@@ -1583,7 +1791,9 @@
         "sam_moore:2045:msg:sam_moore:2045:56",
         "sam_moore:1925:msg:sam_moore:1925:51"
       ],
-      "human_rating": null
+      "human_rating": null,
+      "evidence_label": "fixture only",
+      "evidence_scope": "All mock-derived behavior, survey predictions, requests, tokens, costs, timing and storage in this report are fixture only. Source/human reference values and test counts are not model-validation results. Scripted campaign/party behavior cannot support a comparison with Park et al."
     }
   ],
   "tamara_taylor": [
@@ -1599,7 +1809,9 @@
         "tamara_taylor:1925:msg:isabella_rodriguez:1925:46",
         "tamara_taylor:2165:msg:tamara_taylor:2165:58"
       ],
-      "human_rating": null
+      "human_rating": null,
+      "evidence_label": "fixture only",
+      "evidence_scope": "All mock-derived behavior, survey predictions, requests, tokens, costs, timing and storage in this report are fixture only. Source/human reference values and test counts are not model-validation results. Scripted campaign/party behavior cannot support a comparison with Park et al."
     },
     {
       "category": "memory",
@@ -1613,7 +1825,9 @@
         "tamara_taylor:1925:msg:isabella_rodriguez:1925:46",
         "tamara_taylor:2165:msg:tamara_taylor:2165:58"
       ],
-      "human_rating": null
+      "human_rating": null,
+      "evidence_label": "fixture only",
+      "evidence_scope": "All mock-derived behavior, survey predictions, requests, tokens, costs, timing and storage in this report are fixture only. Source/human reference values and test counts are not model-validation results. Scripted campaign/party behavior cannot support a comparison with Park et al."
     },
     {
       "category": "plans",
@@ -1627,7 +1841,9 @@
         "tamara_taylor:1925:msg:isabella_rodriguez:1925:46",
         "tamara_taylor:2165:msg:tamara_taylor:2165:58"
       ],
-      "human_rating": null
+      "human_rating": null,
+      "evidence_label": "fixture only",
+      "evidence_scope": "All mock-derived behavior, survey predictions, requests, tokens, costs, timing and storage in this report are fixture only. Source/human reference values and test counts are not model-validation results. Scripted campaign/party behavior cannot support a comparison with Park et al."
     },
     {
       "category": "reaction",
@@ -1641,7 +1857,9 @@
         "tamara_taylor:1925:msg:isabella_rodriguez:1925:46",
         "tamara_taylor:2165:msg:tamara_taylor:2165:58"
       ],
-      "human_rating": null
+      "human_rating": null,
+      "evidence_label": "fixture only",
+      "evidence_scope": "All mock-derived behavior, survey predictions, requests, tokens, costs, timing and storage in this report are fixture only. Source/human reference values and test counts are not model-validation results. Scripted campaign/party behavior cannot support a comparison with Park et al."
     },
     {
       "category": "reflection",
@@ -1655,7 +1873,9 @@
         "tamara_taylor:1925:msg:isabella_rodriguez:1925:46",
         "tamara_taylor:2165:msg:tamara_taylor:2165:58"
       ],
-      "human_rating": null
+      "human_rating": null,
+      "evidence_label": "fixture only",
+      "evidence_scope": "All mock-derived behavior, survey predictions, requests, tokens, costs, timing and storage in this report are fixture only. Source/human reference values and test counts are not model-validation results. Scripted campaign/party behavior cannot support a comparison with Park et al."
     }
   ],
   "tom_moreno": [
@@ -1671,7 +1891,9 @@
         "tom_moreno:2045:msg:tom_moreno:2045:52",
         "tom_moreno:1020:msg:sam_moore:965:23"
       ],
-      "human_rating": null
+      "human_rating": null,
+      "evidence_label": "fixture only",
+      "evidence_scope": "All mock-derived behavior, survey predictions, requests, tokens, costs, timing and storage in this report are fixture only. Source/human reference values and test counts are not model-validation results. Scripted campaign/party behavior cannot support a comparison with Park et al."
     },
     {
       "category": "memory",
@@ -1685,7 +1907,9 @@
         "tom_moreno:2045:msg:tom_moreno:2045:52",
         "tom_moreno:1020:msg:sam_moore:965:23"
       ],
-      "human_rating": null
+      "human_rating": null,
+      "evidence_label": "fixture only",
+      "evidence_scope": "All mock-derived behavior, survey predictions, requests, tokens, costs, timing and storage in this report are fixture only. Source/human reference values and test counts are not model-validation results. Scripted campaign/party behavior cannot support a comparison with Park et al."
     },
     {
       "category": "plans",
@@ -1699,7 +1923,9 @@
         "tom_moreno:2045:msg:tom_moreno:2045:52",
         "tom_moreno:1020:msg:sam_moore:965:23"
       ],
-      "human_rating": null
+      "human_rating": null,
+      "evidence_label": "fixture only",
+      "evidence_scope": "All mock-derived behavior, survey predictions, requests, tokens, costs, timing and storage in this report are fixture only. Source/human reference values and test counts are not model-validation results. Scripted campaign/party behavior cannot support a comparison with Park et al."
     },
     {
       "category": "reaction",
@@ -1713,7 +1939,9 @@
         "tom_moreno:2045:msg:tom_moreno:2045:52",
         "tom_moreno:1020:msg:sam_moore:965:23"
       ],
-      "human_rating": null
+      "human_rating": null,
+      "evidence_label": "fixture only",
+      "evidence_scope": "All mock-derived behavior, survey predictions, requests, tokens, costs, timing and storage in this report are fixture only. Source/human reference values and test counts are not model-validation results. Scripted campaign/party behavior cannot support a comparison with Park et al."
     },
     {
       "category": "reflection",
@@ -1727,7 +1955,9 @@
         "tom_moreno:2045:msg:tom_moreno:2045:52",
         "tom_moreno:1020:msg:sam_moore:965:23"
       ],
-      "human_rating": null
+      "human_rating": null,
+      "evidence_label": "fixture only",
+      "evidence_scope": "All mock-derived behavior, survey predictions, requests, tokens, costs, timing and storage in this report are fixture only. Source/human reference values and test counts are not model-validation results. Scripted campaign/party behavior cannot support a comparison with Park et al."
     }
   ],
   "wolfgang_schulz": [
@@ -1743,7 +1973,9 @@
         "wolfgang_schulz:1260:reflection:wolfgang_schulz:1020:gm_outcome:21,wolfgang_schulz:960:gm_outcome:20,wolfgang_schulz:900:gm_outcome:19:27",
         "wolfgang_schulz:2460:gm_outcome:60"
       ],
-      "human_rating": null
+      "human_rating": null,
+      "evidence_label": "fixture only",
+      "evidence_scope": "All mock-derived behavior, survey predictions, requests, tokens, costs, timing and storage in this report are fixture only. Source/human reference values and test counts are not model-validation results. Scripted campaign/party behavior cannot support a comparison with Park et al."
     },
     {
       "category": "memory",
@@ -1757,7 +1989,9 @@
         "wolfgang_schulz:1260:reflection:wolfgang_schulz:1020:gm_outcome:21,wolfgang_schulz:960:gm_outcome:20,wolfgang_schulz:900:gm_outcome:19:27",
         "wolfgang_schulz:2460:gm_outcome:60"
       ],
-      "human_rating": null
+      "human_rating": null,
+      "evidence_label": "fixture only",
+      "evidence_scope": "All mock-derived behavior, survey predictions, requests, tokens, costs, timing and storage in this report are fixture only. Source/human reference values and test counts are not model-validation results. Scripted campaign/party behavior cannot support a comparison with Park et al."
     },
     {
       "category": "plans",
@@ -1771,7 +2005,9 @@
         "wolfgang_schulz:1260:reflection:wolfgang_schulz:1020:gm_outcome:21,wolfgang_schulz:960:gm_outcome:20,wolfgang_schulz:900:gm_outcome:19:27",
         "wolfgang_schulz:2460:gm_outcome:60"
       ],
-      "human_rating": null
+      "human_rating": null,
+      "evidence_label": "fixture only",
+      "evidence_scope": "All mock-derived behavior, survey predictions, requests, tokens, costs, timing and storage in this report are fixture only. Source/human reference values and test counts are not model-validation results. Scripted campaign/party behavior cannot support a comparison with Park et al."
     },
     {
       "category": "reaction",
@@ -1785,7 +2021,9 @@
         "wolfgang_schulz:1260:reflection:wolfgang_schulz:1020:gm_outcome:21,wolfgang_schulz:960:gm_outcome:20,wolfgang_schulz:900:gm_outcome:19:27",
         "wolfgang_schulz:2460:gm_outcome:60"
       ],
-      "human_rating": null
+      "human_rating": null,
+      "evidence_label": "fixture only",
+      "evidence_scope": "All mock-derived behavior, survey predictions, requests, tokens, costs, timing and storage in this report are fixture only. Source/human reference values and test counts are not model-validation results. Scripted campaign/party behavior cannot support a comparison with Park et al."
     },
     {
       "category": "reflection",
@@ -1799,7 +2037,9 @@
         "wolfgang_schulz:1260:reflection:wolfgang_schulz:1020:gm_outcome:21,wolfgang_schulz:960:gm_outcome:20,wolfgang_schulz:900:gm_outcome:19:27",
         "wolfgang_schulz:2460:gm_outcome:60"
       ],
-      "human_rating": null
+      "human_rating": null,
+      "evidence_label": "fixture only",
+      "evidence_scope": "All mock-derived behavior, survey predictions, requests, tokens, costs, timing and storage in this report are fixture only. Source/human reference values and test counts are not model-validation results. Scripted campaign/party behavior cannot support a comparison with Park et al."
     }
   ],
   "yuriko_yamamoto": [
@@ -1815,7 +2055,9 @@
         "yuriko_yamamoto:0:original_seed:0",
         "yuriko_yamamoto:2460:gm_outcome:54"
       ],
-      "human_rating": null
+      "human_rating": null,
+      "evidence_label": "fixture only",
+      "evidence_scope": "All mock-derived behavior, survey predictions, requests, tokens, costs, timing and storage in this report are fixture only. Source/human reference values and test counts are not model-validation results. Scripted campaign/party behavior cannot support a comparison with Park et al."
     },
     {
       "category": "memory",
@@ -1829,7 +2071,9 @@
         "yuriko_yamamoto:0:original_seed:0",
         "yuriko_yamamoto:2460:gm_outcome:54"
       ],
-      "human_rating": null
+      "human_rating": null,
+      "evidence_label": "fixture only",
+      "evidence_scope": "All mock-derived behavior, survey predictions, requests, tokens, costs, timing and storage in this report are fixture only. Source/human reference values and test counts are not model-validation results. Scripted campaign/party behavior cannot support a comparison with Park et al."
     },
     {
       "category": "plans",
@@ -1843,7 +2087,9 @@
         "yuriko_yamamoto:0:original_seed:0",
         "yuriko_yamamoto:2460:gm_outcome:54"
       ],
-      "human_rating": null
+      "human_rating": null,
+      "evidence_label": "fixture only",
+      "evidence_scope": "All mock-derived behavior, survey predictions, requests, tokens, costs, timing and storage in this report are fixture only. Source/human reference values and test counts are not model-validation results. Scripted campaign/party behavior cannot support a comparison with Park et al."
     },
     {
       "category": "reaction",
@@ -1857,7 +2103,9 @@
         "yuriko_yamamoto:0:original_seed:0",
         "yuriko_yamamoto:2460:gm_outcome:54"
       ],
-      "human_rating": null
+      "human_rating": null,
+      "evidence_label": "fixture only",
+      "evidence_scope": "All mock-derived behavior, survey predictions, requests, tokens, costs, timing and storage in this report are fixture only. Source/human reference values and test counts are not model-validation results. Scripted campaign/party behavior cannot support a comparison with Park et al."
     },
     {
       "category": "reflection",
@@ -1871,7 +2119,9 @@
         "yuriko_yamamoto:0:original_seed:0",
         "yuriko_yamamoto:2460:gm_outcome:54"
       ],
-      "human_rating": null
+      "human_rating": null,
+      "evidence_label": "fixture only",
+      "evidence_scope": "All mock-derived behavior, survey predictions, requests, tokens, costs, timing and storage in this report are fixture only. Source/human reference values and test counts are not model-validation results. Scripted campaign/party behavior cannot support a comparison with Park et al."
     }
   ]
 }

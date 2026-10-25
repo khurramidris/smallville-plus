@@ -1,5 +1,10 @@
 # Connected realism implementation: batch 2
 
+**Evidence label: fixture only.** Every MockLLM-derived behavioral, cost, token,
+runtime and storage number in this report is fixture only. Tests demonstrate
+engineering correctness; no paid-model milestone is completed by these results.
+Historical implementation status below predates the [M0–M4 rules](../MILESTONES.md).
+
 Date: 2026-10-22
 
 Scope: complete the R1 engineering gate
@@ -94,8 +99,8 @@ projections all match. The full-snapshot log remains a material scaling problem.
 
 This completes the R1 engineering gate, not the realism claim. MockLLM is scripted,
 the histories are fictional, and the run is neither matched to Park et al. nor
-human-rated. Sam's retained-awareness count happened to equal the paper's reported
-eight in this fixture; that is an outcome, not validation or an optimization target.
+human-rated. Sam's retained-awareness count is fixture only and is excluded from
+comparisons with the paper; the mock explicitly scripts campaign messages.
 
 R2 remains next: consent-based multi-turn conversations, independently chosen
 responses, interruption, bounded phone attention, private listener routing and
