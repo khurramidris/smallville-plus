@@ -4,7 +4,7 @@
   "wall_seconds": 130.339,
   "internet_sockets_disabled": true,
   "evidence_label": "offline engineering tests; fixture only behavior",
-  "stdout_log": "scratch/m0-pytest.txt",
+  "stdout_log_retained": false,
   "paid_validation_completed": false,
   "passed": 157,
   "failed": 0,
