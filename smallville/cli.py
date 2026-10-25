@@ -13,6 +13,7 @@ from smallville.eval.datasets import gss_dataset, twin_dataset
 from smallville.eval.fidelity import FidelityDataset, run_fidelity
 from smallville.eval.interviews import interview
 from smallville.eval.metrics import evaluate
+from smallville.eval.reporting import evidence_labels, label_report
 from smallville.eval.surveys import SurveyRunner
 from smallville.llm.gateway import BudgetExceeded, Gateway, LiteLLMBackend, ModelFailure
 from smallville.llm.mock import MockLLM
@@ -23,6 +24,7 @@ from smallville.world.store import WorldState, replay
 
 
 def write_report(directory: Path, report: dict):
+    report = label_report(report)
     (directory / "report.json").write_text(json.dumps(report, indent=2) + "\n")
     r, p, cost = report["relationships"], report["party"], report["cost"]
     text = (
@@ -32,14 +34,29 @@ def write_report(directory: Path, report: dict):
         f"{report['run']['completed_minutes'] / 1440:g} simulated days.\n"
         f"- Cost: ${cost['usd']}; ${cost['usd_per_agent_per_simulated_day']} per resident/day.\n"
         f"- Model requests: {cost['calls']}; cache hits: {cost['cache_hits']}.\n\n"
-        "| Measurement | This run | Paper |\n| --- | ---: | ---: |\n"
-        f"| Sam awareness | {report['diffusion']['sam']['retained_final']}/{report['agents']} | 8/25 |\n"
-        f"| Party awareness | {report['diffusion']['party']['retained_final']}/{report['agents']} | 13/25 |\n"
-        f"| Invited guests attending | {p['invited_attending_guests']}/{p['invited_guests']} | 5/12 |\n"
-        f"| Mutual-knowledge density | {r['initial_density']:.3f} → {r['final_density']:.3f} | 0.167 → 0.740 |\n\n"
-        "[Paper §7.1](https://arxiv.org/html/2304.03442v2#S7.SS1). "
-        "The starting relationship graph and communication channel differ from the paper. "
-        "These descriptive results do not establish an improvement in realism.\n\n"
+    )
+    if report["paper_comparison_allowed"]:
+        text += (
+            "| Measurement | This exploratory run | Paper |\n| --- | ---: | ---: |\n"
+            f"| Sam awareness | {report['diffusion']['sam']['retained_final']}/{report['agents']} | 8/25 |\n"
+            f"| Party awareness | {report['diffusion']['party']['retained_final']}/{report['agents']} | 13/25 |\n"
+            f"| Invited guests attending | {p['invited_attending_guests']}/{p['invited_guests']} | 5/12 |\n"
+            f"| Mutual-knowledge density | {r['initial_density']:.3f} → {r['final_density']:.3f} | 0.167 → 0.740 |\n\n"
+            "[Paper §7.1](https://arxiv.org/html/2304.03442v2#S7.SS1). "
+            "The starting relationship graph and communication channel differ from the paper. "
+            "These descriptive results do not establish an improvement in realism.\n\n"
+        )
+    else:
+        label = report["evidence_label"]
+        text += (
+            f"**{label}:** {report['evidence_scope']}\n\n"
+            f"| Measurement | {label} |\n| --- | ---: |\n"
+            f"| Sam awareness | {report['diffusion']['sam']['retained_final']}/{report['agents']} |\n"
+            f"| Party awareness | {report['diffusion']['party']['retained_final']}/{report['agents']} |\n"
+            f"| Invited guests attending | {p['invited_attending_guests']}/{p['invited_guests']} |\n"
+            f"| Mutual-knowledge density | {r['initial_density']:.3f} → {r['final_density']:.3f} |\n\n"
+        )
+    text += (
         "Full time-use, variance, error and accounting details are in `report.json`. "
         "Human believability scores remain uncollected.\n"
     )
@@ -102,6 +119,7 @@ async def run_command(args):
     sim = Simulation(args.out, config, cache_path=args.cache, population=population)
     try:
         result = await sim.run(args.days)
+        result.update(evidence_labels(config.backend))
         report = evaluate(sim.world)
         report["wall_seconds"] = round(time.perf_counter() - start, 3)
         report["inference_timing"] = sim.gateway.timing_summary()
@@ -161,6 +179,7 @@ async def interview_command(args):
                     "residents_interviewed": len(answers),
                     "path": str(args.run / "interviews.json"),
                     "cost": gateway.summary(),
+                    **evidence_labels(config.backend),
                 },
                 indent=2,
             )
@@ -189,6 +208,8 @@ async def populate_command(args):
         population.save(args.out / "population.json")
         result = {
             "status": "validated",
+            "backend": config.backend,
+            **evidence_labels(config.backend),
             "residents": len(population.agents),
             "history_days": population.history_days,
             "messages": len(population.messages),
@@ -206,6 +227,8 @@ async def populate_command(args):
     except (ValueError, BudgetExceeded, ModelFailure) as error:
         result = {
             "status": "incomplete",
+            "backend": config.backend,
+            **evidence_labels(config.backend),
             "error_type": type(error).__name__,
             "consistency_attempts": [a.model_dump() for a in pipeline.attempts],
             "cost": gateway.summary(),
@@ -241,6 +264,7 @@ async def fidelity_command(args):
         result = {
             "status": "completed",
             "backend": args.backend,
+            **evidence_labels(config.backend),
             "reports": reports,
             "cost": gateway.summary(),
         }
@@ -249,6 +273,7 @@ async def fidelity_command(args):
             json.dumps(
                 {
                     "status": result["status"],
+                    **evidence_labels(config.backend),
                     "reports": [
                         {
                             "dataset": r["dataset"],
@@ -270,6 +295,8 @@ async def fidelity_command(args):
             json.dumps(
                 {
                     "status": "incomplete",
+                    "backend": config.backend,
+                    **evidence_labels(config.backend),
                     "error_type": type(error).__name__,
                     "completed_reports": reports,
                     "cost": gateway.summary(),

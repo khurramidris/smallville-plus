@@ -1,0 +1,21 @@
+{
+  "milestone": "M0",
+  "status": "paid_validation_pending",
+  "implementation_ready": true,
+  "paid_validation": {
+    "status": "not_run",
+    "reason": "Paid model, verified prices, credential and M0 cap not configured",
+    "provider_calls": 0,
+    "usd_spent": "0",
+    "completed_resident_days": null,
+    "usd_per_resident_day": null,
+    "input_tokens_per_resident_day": null,
+    "event_bytes_per_resident_day": null,
+    "persistent_bytes_per_resident_day": null
+  },
+  "next_milestone_started": false,
+  "original_audit_tag": "audit-r2-2026-10-23",
+  "pull_request": "https://github.com/khurramidris/smallville-plus/pull/1",
+  "draft": true,
+  "legacy_event_log_sha256": "9eac01223e75aed37d805c6eb152bb81cf39050d193d6049668ee7c12fd80dce"
+}

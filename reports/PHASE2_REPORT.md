@@ -1,5 +1,10 @@
 # Phase 2 report
 
+**Evidence label: fixture only.** Every MockLLM-derived behavioral, cost, token,
+runtime and storage number in this report is fixture only. Tests demonstrate
+engineering correctness; no paid-model milestone is completed by these results.
+Historical implementation status below predates the [M0–M4 rules](../MILESTONES.md).
+
 Phase 2 is implemented and verified offline. The original 25-resident workflow
 still passes its acceptance tests. No Phase 3 work or paid inference was started.
 
@@ -70,7 +75,7 @@ These are **MockLLM fixture scores**, not evidence of human fidelity or improvem
 over Park et al. Categorical answers use deterministic hashed choices; numerical
 answers use range midpoints when the held-out fact is unavailable.
 
-| Measure | Twin subset | GSS bank subset |
+| Measure | Twin subset (fixture only predictions) | GSS bank subset (fixture only predictions) |
 | --- | ---: | ---: |
 | Subjects | 20 / 2,058 | 75 / 3,505 |
 | Held-out scalar items | 122 | 4 |

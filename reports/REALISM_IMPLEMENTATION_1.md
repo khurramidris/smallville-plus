@@ -1,5 +1,10 @@
 # Connected realism implementation: batch 1
 
+**Evidence label: fixture only.** Every MockLLM-derived behavioral, cost, token,
+runtime and storage number in this report is fixture only. Tests demonstrate
+engineering correctness; no paid-model milestone is completed by these results.
+Historical implementation status below predates the [M0–M4 rules](../MILESTONES.md).
+
 Date: 2026-10-22  
 Scope: R0 measurement foundation and a bounded subset of R1  
 Inference: deterministic MockLLM only; no network or provider API

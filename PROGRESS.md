@@ -1,5 +1,50 @@
 # Smallville+ progress
 
+## M0 — in progress, 2026-10-25
+- Accepted the independent review and recorded the revised M0–M4 roadmap in
+  `MILESTONES.md`; it supersedes the older delivery/completion order. Target is
+  about 1,000 residents with 100 deep and 900 standard, with breadth frozen through M4.
+- Paid-model validation is mandatory for each milestone. Requested a paid model
+  and an explicit M0 cap; no new provider calls or spending are authorized by the
+  historical free-route configuration. M3's $25 is a combined experiment budget.
+- Found the connected prompt's “Game Master” reference and internal phase/retrieval
+  metadata. Also found the report writer inserts paper comparisons for mock runs.
+- Next: resident prompt boundary and regression, then separately mock-report
+  labeling without scoring changes, offline checks, and capped paid validation.
+- M0 is not complete; M1–M4 have not started.
+- Prompt step: replaced the resident's “Game Master” wording with ordinary-world
+  uncertainty. Removed phase/retrieval implementation metadata and memory storage
+  labels from dispatched context; researcher diagnostics retain them.
+- All resident call sites opt into a full-prompt vocabulary guard before cache,
+  budget reservation or provider access. Private text is rejected, never silently
+  rewritten. Internal GM adjudication remains outside that resident boundary.
+- The 23 new prompt tests pass offline, covering original and rich 100-resident
+  cohorts, both tiers, all current resident request types, and forbidden terms in
+  stable text, nested memories and JSON keys. An initial test-clock setup error
+  was corrected; no engine clock change was needed. Paid validation remains pending.
+- Reporting step (separate from behavior): mock exports now say `fixture only` and
+  omit paper comparison fields/tables. Unknown backend provenance fails closed for
+  comparison rendering. Four focused reporting tests pass, including legacy input
+  and unchanged measurements. No metric formula changed.
+- Relabeled 27 archived fixture JSON reports plus narratives, interviews, sample
+  personas and 207 stock-timeline rows. Compared all numeric measurements to the
+  previous commit; they match, excluding deliberately removed paper references.
+  `reports/EVIDENCE.md` labels preserved image artifacts without altering their bytes.
+- Preflight confirms no paid model, prices, cap or provider key is configured.
+  `reports/M0_REPORT.md` explicitly leaves paid results and per-resident-day cost,
+  tokens and storage unmeasured. M0 remains incomplete and the original audit tag
+  is preserved.
+- Final offline regression: 157 tests passed in 128.94 seconds with internet
+  sockets disabled; Ruff and whitespace checks pass. Existing replay, privacy,
+  conservation and budget gates remain green. No paid provider call was made.
+- Published [draft PR #1](https://github.com/khurramidris/smallville-plus/pull/1)
+  from `m0-review-cleanup`. Verified it is open and draft. `main` and the audit tag
+  still point to `a560fac`; the preserved R2 event log still has SHA-256
+  `9eac01223e75aed37d805c6eb152bb81cf39050d193d6049668ee7c12fd80dce`.
+- Stopped at M0's paid-validation gate. Do not merge or declare M0 complete before
+  that run. M1 and later work remains stopped; missing inputs are the named paid
+  model, verified rates, M0 cap and an environment-injected credential.
+
 ## Public external audit — published 2026-10-23
 - Confirmed the worktree is clean at the completed R2 engineering gate before
   publication work; the repository had no existing remote or public copy.

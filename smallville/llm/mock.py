@@ -148,7 +148,7 @@ def action(context: dict, seed: int) -> dict:
                     text="I want to ask the people here whether they want to talk.",
                 )
 
-    if context.get("phase") == 3 and block["activity"] != "sleep":
+    if "economy" in context and block["activity"] != "sleep":
         from smallville.llm.mock_economy import economic_action
 
         if chosen := economic_action(context, intend):
@@ -186,7 +186,7 @@ def action(context: dict, seed: int) -> dict:
                 "location": "hobbs_cafe",
                 **(
                     {"event_id": "valentine_2023"}
-                    if context.get("phase") == 3
+                    if "economy" in context
                     and any(e["id"] == "valentine_2023" for e in context["shared_events"])
                     else {}
                 ),
@@ -229,7 +229,7 @@ def action(context: dict, seed: int) -> dict:
                         "body": body,
                         **(
                             {"event_id": "valentine_2023"}
-                            if context.get("phase") == 3
+                            if "economy" in context
                             and topic == "Valentine"
                             and any(e["id"] == "valentine_2023" for e in context["shared_events"])
                             else {}
@@ -239,7 +239,7 @@ def action(context: dict, seed: int) -> dict:
                 )
     destination = block["location"]
     duration = min(60, block["end"] - hour)
-    if context.get("phase") == 3 and block["activity"] == "work":
+    if "economy" in context and block["activity"] == "work":
         job = context["economy"]["job"]
         used = job["worked_minutes"].get(str(day), 0)
         if (

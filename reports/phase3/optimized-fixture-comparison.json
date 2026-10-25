@@ -1,5 +1,5 @@
 {
-  "interpretation": "Descriptive engineering fixtures; attention limits and timing change behavior. Different competing work prevents a controlled wall-time speed claim. Mock token counts are synthetic.",
+  "interpretation": "Fixture only: Descriptive engineering fixtures; attention limits and timing change behavior. Different competing work prevents a controlled wall-time speed claim. Mock token counts are synthetic.",
   "cohorts": {
     "25": {
       "days": 3,
@@ -35,5 +35,8 @@
       "wall_seconds_before": 2260.967,
       "wall_seconds_after": 1686.868
     }
-  }
+  },
+  "evidence_label": "fixture only",
+  "evidence_scope": "All mock-derived behavior, survey predictions, requests, tokens, costs, timing and storage in this report are fixture only. Source/human reference values and test counts are not model-validation results. Scripted campaign/party behavior cannot support a comparison with Park et al.",
+  "paper_comparison_allowed": false
 }

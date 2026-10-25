@@ -183,7 +183,7 @@ class Mind:
             + (
                 "\nknown_feasible_actions reflects only constraints I can currently know. "
                 "I choose from it, while accepting that hidden stock, capacity or changed "
-                "circumstances can still make the Game Master refuse the action."
+                "circumstances can still prevent me from carrying out my intention."
                 if self.config.realism_profile == "connected_v1"
                 else ""
             )
@@ -547,12 +547,24 @@ class Mind:
         return context
 
     async def ask(self, agent: Agent, context: dict) -> str:
+        # Keep implementation diagnostics available to researchers, outside the
+        # person's notebook. Evidence IDs remain unchanged for validated citations.
+        personal_context = {
+            key: value
+            for key, value in context.items()
+            if key not in {"phase", "retrieval_query", "retrieval_backend"}
+        }
+        personal_context["memories"] = [
+            {key: value for key, value in memory.items() if key != "storage"}
+            for memory in context.get("memories", [])
+        ]
         return await self.gateway.complete(
             model=self.config.model_for(agent.id, agent.persona.tier),
             stable=self.stable_prompt(agent),
-            dynamic=context,
+            dynamic=personal_context,
             seed=self.config.seed,
             temperature=agent.persona.temperature,
+            resident=True,
         )
 
     async def decide_with_diagnostics(self, agent: Agent, minute: int) -> tuple[Intent, dict]:

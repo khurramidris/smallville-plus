@@ -1,0 +1,15 @@
+{
+  "command": "python -m pytest",
+  "exit_code": 0,
+  "wall_seconds": 130.339,
+  "internet_sockets_disabled": true,
+  "evidence_label": "offline engineering tests; fixture only behavior",
+  "stdout_log_retained": false,
+  "paid_validation_completed": false,
+  "passed": 157,
+  "failed": 0,
+  "pytest_seconds": 128.94,
+  "ruff": "passed",
+  "historical_json_files_verified": 27,
+  "historical_stock_rows_verified": 207
+}

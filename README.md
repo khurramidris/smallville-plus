@@ -7,6 +7,11 @@ Python 3.11+, asyncio, Pydantic, SQLite WAL and LiteLLM.
 This is working research infrastructure, **not evidence that realism exceeds
 Park et al.** MockLLM is a deterministic, partly scenario-specific test fixture.
 
+The [revised M0–M4 milestones](MILESTONES.md) govern current development: about
+1,000 residents (100 deep / 900 standard), paid-model validation for every
+milestone, and a breadth freeze through M4. All MockLLM run numbers are **fixture
+only**. Historical offline acceptance does not complete these new milestones.
+
 The complete project is available for public inspection at
 [github.com/khurramidris/smallville-plus](https://github.com/khurramidris/smallville-plus).
 [PUBLICATION.md](PUBLICATION.md) records the published scope, release artifacts,
@@ -111,12 +116,15 @@ linked reflections, daily plans, hourly decomposition and replanning on surprise
 Deep and standard tiers retrieve different memory limits and may use different
 models. Stable persona/rule content precedes dynamic context in prompts.
 
-The benchmark report compares retained awareness, mutual-knowledge density and
+Live-model reports compare retained awareness, mutual-knowledge density and
 time-bounded party attendance with [Park et al. §7.1](https://arxiv.org/html/2304.03442v2#S7.SS1).
 It also reports behavior variance and a rough time-use shape comparison with
 [BLS ATUS 2024](https://www.bls.gov/news.release/archives/atus_06262025.htm).
 Starting seed relationships, communication channel, activity taxonomy and
 population composition differ; the figures are descriptive, not matched replication.
+Mock reports are labeled **fixture only** and contain no Park comparison table;
+their scripted campaign and party outcomes cannot establish behavioral fidelity.
+See [report evidence labels](reports/EVIDENCE.md) for archived artifact coverage.
 Interviews cover self-knowledge, memory, planning, reactions and reflection.
 Human ratings remain null until collected; synthetic opinion variance is not
 survey fidelity.

@@ -9,6 +9,7 @@ from statistics import mean
 
 from pydantic import Field, model_validator
 
+from smallville.eval.reporting import evidence_labels
 from smallville.eval.surveys import Answer, SurveyItem, SurveyResult, SurveyRunner
 from smallville.world.models import Model
 
@@ -180,4 +181,5 @@ async def run_fidelity(runner: SurveyRunner, dataset: FidelityDataset, batch_siz
     report["backend"] = runner.config.backend
     report["mock_scores_are_engineering_fixtures"] = runner.config.backend == "mock"
     report["model_training_contamination_assessed"] = False
+    report.update(evidence_labels(runner.config.backend))
     return report

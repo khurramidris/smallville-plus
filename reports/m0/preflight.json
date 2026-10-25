@@ -1,0 +1,21 @@
+{
+  "configured": {
+    "SIM_MODEL_DEEP": false,
+    "SIM_MODEL_FAST": false,
+    "SIM_MODEL_GM": false,
+    "SIM_EMBED_MODEL": false,
+    "SIM_MAX_USD": false,
+    "SIM_MODEL_PRICES": false
+  },
+  "credential_presence_only": {
+    "OPENAI_API_KEY": false,
+    "ANTHROPIC_API_KEY": false,
+    "GEMINI_API_KEY": false,
+    "AZURE_API_KEY": false,
+    "OPENROUTER_API_KEY": false
+  },
+  "network_calls": 0,
+  "paid_calls": 0,
+  "note": "Readiness only; does not authenticate or authorize spending.",
+  "configuration_valid": false
+}

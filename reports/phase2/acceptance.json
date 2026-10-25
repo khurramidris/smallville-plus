@@ -63,5 +63,8 @@
     "max_tokens": 1200,
     "fidelity_batch_size": 8,
     "fidelity_temperature": 0.5
-  }
+  },
+  "evidence_label": "fixture only",
+  "evidence_scope": "All mock-derived behavior, survey predictions, requests, tokens, costs, timing and storage in this report are fixture only. Source/human reference values and test counts are not model-validation results. Scripted campaign/party behavior cannot support a comparison with Park et al.",
+  "paper_comparison_allowed": false
 }

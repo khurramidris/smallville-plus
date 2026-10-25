@@ -1,5 +1,10 @@
 # Phase 3 — Completed three-day simulation
 
+**Evidence labels:** all MockLLM-derived numbers in this report are **fixture only**,
+including the offline table. The fixed-delay concurrency probe is also **fixture
+only**. Separately identified real-model results used the historical free route;
+they do not satisfy the paid-validation requirement in [MILESTONES.md](../MILESTONES.md).
+
 Phase 3 and the performance/planning improvements are implemented. The real-model
 experiment completed **25 residents × three days** (4,320 minutes each), using
 `openrouter/minimax/minimax-m3.1-flash:free` through LiteLLM. Both optimized offline
@@ -126,7 +131,7 @@ A subsequently strengthened populated-history/privacy case also passed offline;
 no simulation code changed. Tests cover budget races, deduplication, concurrency,
 cancellation, ordered capacity, partial observability, routines and replay.
 
-| Optimized three-day fixture | Original 25 | Expanded 100 |
+| Optimized three-day fixture only | Original 25 (fixture only) | Expanded 100 (fixture only) |
 | --- | ---: | ---: |
 | Mock requests | 2,870 | 12,141 |
 | Previous unoptimized requests | 3,317 | 14,076 |

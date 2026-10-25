@@ -10,28 +10,15 @@
   },
   "backend": "mock",
   "agents": 100,
-  "interpretation": "Deterministic scripted MockLLM fixture: engineering evidence only, not realism or emergence.",
-  "paper_reference": {
-    "source": "https://arxiv.org/html/2304.03442v2#S7.SS1",
-    "agents": 25,
-    "days": 2,
-    "sam_awareness": 8,
-    "party_awareness": 13,
-    "party_invited_guests": 12,
-    "party_attending_guests": 5,
-    "network_density_initial": 0.167,
-    "network_density_final": 0.74
-  },
+  "interpretation": "Fixture only: Deterministic scripted MockLLM fixture: engineering evidence only, not realism or emergence.",
   "diffusion": {
     "sam": {
       "initial": 1,
-      "retained_final": 59,
-      "paper_final": 8
+      "retained_final": 59
     },
     "party": {
       "initial": 1,
-      "retained_final": 49,
-      "paper_final": 13
+      "retained_final": 49
     },
     "method": "Retained memory evidence, not omniscient delivery or unverified interview assertions."
   },
@@ -78,7 +65,6 @@
     ],
     "invited_attending_guests": 29,
     "attendance_rate": 0.5918367346938775,
-    "paper_attendance_rate": 0.4166666666666667,
     "window": {
       "location": "hobbs_cafe",
       "start": 2460,
@@ -956,5 +942,8 @@
     "queue_ms_sum": 128958.68,
     "note": "Provider duration includes network and generation; concurrent durations overlap."
   },
-  "wall_seconds": 1686.868
+  "wall_seconds": 1686.868,
+  "evidence_label": "fixture only",
+  "evidence_scope": "All mock-derived behavior, survey predictions, requests, tokens, costs, timing and storage in this report are fixture only. Source/human reference values and test counts are not model-validation results. Scripted campaign/party behavior cannot support a comparison with Park et al.",
+  "paper_comparison_allowed": false
 }

@@ -1,5 +1,10 @@
 # Connected realism implementation 3: R2 social process
 
+**Evidence label: fixture only.** Every MockLLM-derived behavioral, cost, token,
+runtime and storage number in this report is fixture only. Tests demonstrate
+engineering correctness; no paid-model milestone is completed by these results.
+Historical implementation status below predates the [M0–M4 rules](../MILESTONES.md).
+
 Completed 2026-10-22. This batch implements the R2 engineering scope in
 [`REALISM_PLAN.md`](../REALISM_PLAN.md). It establishes working social-process
 mechanisms; it does not establish that Smallville+ is more believable than Park
@@ -34,7 +39,7 @@ and the published 25-resident version 3 population with digest
 `227c856e91acb3160d61e50b582646b8ec9a40e237bf87cff0bb178a6bc7ccc1`.
 It completed 1,440 simulated minutes in 121.248 wall seconds.
 
-| Measurement | Result |
+| Measurement | Result (fixture only) |
 | --- | ---: |
 | Model decisions | 955 |
 | Action / plan / repair / turn / reflection calls | 735 / 25 / 158 / 12 / 25 |
@@ -67,8 +72,9 @@ The trace contains concrete independent behavior:
   and Yuriko and Sam completed four turns. Sam's later appraisal cited Yuriko's
   actual preceding turn.
 
-The run retained Sam-campaign evidence for 8 of 25 residents, matching the paper's
-reported count only as an unmatched descriptive result. Party evidence reached 11
+The run retained Sam-campaign evidence for 8 of 25 residents (**fixture only**).
+The mock scripts campaign and party messages; these counts are excluded from paper
+comparisons. Party evidence reached 11
 of 25. This one-day horizon ends before the Valentine's event on day two, so its
 zero attendance is not a party benchmark result. Money, food, ledger and work-limit
 audits all passed.

@@ -15,6 +15,7 @@ from typing import Callable, Protocol
 
 from smallville.config import Config
 from smallville.engine.events import canonical
+from smallville.llm.prompts import has_meta_terms
 
 
 class BudgetExceeded(RuntimeError):
@@ -28,6 +29,10 @@ class ModelFailure(RuntimeError):
 
 
 class CacheMiss(ModelFailure):
+    pass
+
+
+class ResidentPromptViolation(ModelFailure):
     pass
 
 
@@ -244,8 +249,13 @@ class Gateway:
         dynamic: dict,
         seed: int,
         temperature: float = 0.7,
+        resident: bool = False,
     ) -> str:
         prompt = stable + "\n\nCURRENT CONTEXT:\n" + canonical(dynamic)
+        if resident and has_meta_terms(prompt):
+            # Fail before hashing, cache reads, reservations or dispatch. Never echo
+            # private prompt text into errors, and never rewrite received testimony.
+            raise ResidentPromptViolation("resident prompt contains prohibited meta terminology")
         # Sampling parameters are part of the prompt hash's request envelope.
         envelope = {
             "prompt": prompt,
