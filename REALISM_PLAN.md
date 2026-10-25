@@ -1,5 +1,12 @@
 # Smallville+ realism plan
 
+**Superseded delivery order (2026-10-25):** [MILESTONES.md](MILESTONES.md) now
+governs M0–M4, the approximately 1,000-resident target (100 deep / 900 standard),
+paid validation and spending gates. R3 below maps to M2. Institutions, Graphiti,
+new economy features and social media are frozen until M4. The sections below
+preserve historical design rationale, not authorization to skip those gates.
+All historical MockLLM run numbers below are **fixture only**.
+
 Proposed on 2026-10-22 after the [implementation/trace audit](reports/REALISM_AUDIT.md).
 This is the development plan requested by the user, not a claim that these changes
 are already built. The original SPEC remains intact. Phase 3 is functionally

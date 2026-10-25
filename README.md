@@ -7,6 +7,11 @@ Python 3.11+, asyncio, Pydantic, SQLite WAL and LiteLLM.
 This is working research infrastructure, **not evidence that realism exceeds
 Park et al.** MockLLM is a deterministic, partly scenario-specific test fixture.
 
+The [revised M0–M4 milestones](MILESTONES.md) govern current development: about
+1,000 residents (100 deep / 900 standard), paid-model validation for every
+milestone, and a breadth freeze through M4. All MockLLM run numbers are **fixture
+only**. Historical offline acceptance does not complete these new milestones.
+
 The complete project is available for public inspection at
 [github.com/khurramidris/smallville-plus](https://github.com/khurramidris/smallville-plus).
 [PUBLICATION.md](PUBLICATION.md) records the published scope, release artifacts,

@@ -1,5 +1,18 @@
 # Smallville+ progress
 
+## M0 — in progress, 2026-10-25
+- Accepted the independent review and recorded the revised M0–M4 roadmap in
+  `MILESTONES.md`; it supersedes the older delivery/completion order. Target is
+  about 1,000 residents with 100 deep and 900 standard, with breadth frozen through M4.
+- Paid-model validation is mandatory for each milestone. Requested a paid model
+  and an explicit M0 cap; no new provider calls or spending are authorized by the
+  historical free-route configuration. M3's $25 is a combined experiment budget.
+- Found the connected prompt's “Game Master” reference and internal phase/retrieval
+  metadata. Also found the report writer inserts paper comparisons for mock runs.
+- Next: resident prompt boundary and regression, then separately mock-report
+  labeling without scoring changes, offline checks, and capped paid validation.
+- M0 is not complete; M1–M4 have not started.
+
 ## Public external audit — published 2026-10-23
 - Confirmed the worktree is clean at the completed R2 engineering gate before
   publication work; the repository had no existing remote or public copy.

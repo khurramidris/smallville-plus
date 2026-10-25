@@ -1,5 +1,18 @@
 # Decisions
 
+## Revised milestones and M0 — 2026-10-25
+- Use `MILESTONES.md` as the active roadmap; preserve the original spec and historical
+  R0–R6 rationale. Prior offline gates are engineering evidence only, not completed
+  milestones under the new paid-run rule.
+- Implement only M0 in this pass and stop before M1. A named paid model and cap are
+  prerequisites to live validation; the earlier free route does not satisfy it.
+- Keep behavior cleanup and reporting cleanup in separate commits. Preserve raw
+  event logs, historical scores and the public audit tag; remove mock/paper
+  juxtaposition and add explicit fixture labels without changing scorer formulas.
+- Strip internal context metadata at the resident prompt boundary while retaining
+  diagnostics for researchers. Reject prohibited terms before cache/budget/provider
+  access, including dynamic content; do not silently alter private testimony.
+
 ## Public external audit — 2026-10-23
 - Publish the full tracked project and history in a public GitHub repository so
   another AI or human auditor can clone a stable, reviewable artifact. The user's
