@@ -39,7 +39,9 @@ Remove engine/meta terms from resident-facing prompts. A regression must reject
 prompt, including dynamic context. Label every mock-derived reported number
 `fixture only`; remove mock/Park comparison tables. Do not change metric formulas.
 
-Status: implementation in progress; paid validation pending model/cap selection.
+Status: implementation ready in [draft PR #1](https://github.com/khurramidris/smallville-plus/pull/1);
+157 offline tests pass. **M0 remains incomplete:** paid validation is pending
+model/cap selection and environment configuration. See `reports/M0_REPORT.md`.
 
 ## M1 — Memory at least as good as Park et al.
 

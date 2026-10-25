@@ -3,6 +3,8 @@
 Date: 2026-10-25. Milestone status: **incomplete** under the new paid-model rule.
 The active scope and stop conditions are in [MILESTONES.md](../MILESTONES.md).
 Only M0 has been implemented in this pass; M1–M4 have not started.
+The implementation is available in
+[draft PR #1](https://github.com/khurramidris/smallville-plus/pull/1).
 
 ## Built
 
@@ -25,6 +27,8 @@ Only M0 has been implemented in this pass; M1–M4 have not started.
   figure files. Every numeric observation in the 27 edited JSON artifacts and
   207 stock rows was checked against its prior value. Only paper reference fields
   were removed. Raw logs, source data and the published audit tag remain unchanged.
+  The preserved R2 event log still hashes to
+  `9eac01223e75aed37d805c6eb152bb81cf39050d193d6049668ee7c12fd80dce`.
 
 ## Verification and paid results
 

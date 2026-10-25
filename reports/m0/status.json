@@ -14,5 +14,8 @@
     "persistent_bytes_per_resident_day": null
   },
   "next_milestone_started": false,
-  "original_audit_tag": "audit-r2-2026-10-23"
+  "original_audit_tag": "audit-r2-2026-10-23",
+  "pull_request": "https://github.com/khurramidris/smallville-plus/pull/1",
+  "draft": true,
+  "legacy_event_log_sha256": "9eac01223e75aed37d805c6eb152bb81cf39050d193d6049668ee7c12fd80dce"
 }

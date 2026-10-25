@@ -29,6 +29,9 @@
 - Publish M0 as a draft review change while the paid gate is pending; keep the
   audited `main` and its tag intact. Offline correctness is sufficient to review
   the implementation but is not the new milestone completion criterion.
+- Stop after the reviewable draft and offline checks because the paid model/cap
+  selection is still unanswered. Report per-resident-day fields as unmeasured,
+  rather than dividing zero test spend by fictional exposure or advancing to M1.
 
 ## Public external audit — 2026-10-23
 - Publish the full tracked project and history in a public GitHub repository so

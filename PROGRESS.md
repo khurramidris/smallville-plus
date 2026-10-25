@@ -37,8 +37,13 @@
 - Final offline regression: 157 tests passed in 128.94 seconds with internet
   sockets disabled; Ruff and whitespace checks pass. Existing replay, privacy,
   conservation and budget gates remain green. No paid provider call was made.
-- Preparing a draft PR for independent review; do not merge or declare M0 complete
-  before paid validation. M1 and later work remains stopped.
+- Published [draft PR #1](https://github.com/khurramidris/smallville-plus/pull/1)
+  from `m0-review-cleanup`. Verified it is open and draft. `main` and the audit tag
+  still point to `a560fac`; the preserved R2 event log still has SHA-256
+  `9eac01223e75aed37d805c6eb152bb81cf39050d193d6049668ee7c12fd80dce`.
+- Stopped at M0's paid-validation gate. Do not merge or declare M0 complete before
+  that run. M1 and later work remains stopped; missing inputs are the named paid
+  model, verified rates, M0 cap and an environment-injected credential.
 
 ## Public external audit — published 2026-10-23
 - Confirmed the worktree is clean at the completed R2 engineering gate before
